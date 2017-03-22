@@ -1,0 +1,134 @@
+/* Inicio estilos para los tablas emergentes */
+.tabla-Tbl{
+	border:1px solid;
+	border-collapse:collapse;
+	empty-cells: show;
+	background-color:#EEEEEE;
+	font: bold 11px/14px Verdana, Geneva, Arial, Helvetica, sans-serif;
+ 	width:600px;
+ 	height:100px;
+	
+}
+.formato-Tbl{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 0px;
+	padding-right: 0px;
+	font-family: Tahoma, Arial, Verdana, Geneva, Helvetica, sans-serif;
+	font-size: 12px;
+	text-align:center;
+	color: #EFEFEF;
+	font-weight:bold;
+	background: #0C346D;
+	border-color: #0C346D;
+	height:20px;	
+}
+.titulo-Tbl{
+	position: absolute;
+	cursor: move;
+	width: 570px;
+}
+.cerrar-Tbl{
+	position: relative;
+	float: right;
+	cursor: pointer;
+	width:30px;
+}
+.etiqueta-Tbl{
+	padding: 10px 10px 10px 10px;
+	font-family: Tahoma, Arial, Verdana, Geneva, Helvetica, sans-serif;
+	font-size: 13px;
+	text-align: left;
+    font-weight:bold;
+	color:#0000A0;	
+	width:100px;
+}
+.contenido-Tbl{
+	padding: 10px 10px 10px 10px;
+	font-size: 12px;
+	line-height: 18px;
+	background: #FFFFFF;
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color:#0000A0;
+	text-align: left;
+}
+.boton-Tbl{
+	padding: 10px 10px 10px 10px;
+	font-family: Tahoma, Arial, Verdana, Geneva, Helvetica, sans-serif;
+	font-size: 13px;
+	text-align: center;
+    font-weight:bold;
+	color:#0000A0;	
+}
+/* Fin estilos para los tablas emergentes */
+
+.invisible-Tbl{
+  visibility:hidden;
+  background-color:white;
+  position:absolute;
+  height:0;
+  width:0;
+}
+.visible-Tbl{
+  visibility:visible;
+  background-color:#EEF6FF;
+  position:absolute;
+  height:auto;
+  width:auto;
+  border:1px solid #162766;
+}
+.visible-Tbl-Rel{
+  visibility:visible;
+/*  background-color:#EEF6FF; */
+  position:relative;
+  height:auto;
+  width:auto;
+  border:1px solid #162766;
+}
+.div-color{
+  position:relative;
+  height:15px;
+  width:20px;
+  border:1px solid #000000;
+}
+/* estilo de los fieldset de los formularios */
+ .fiel-for{
+	border: 1px solid #AEB8BB;
+	width: 90%;
+ }
+
+/* estilo de los legend de los formularios */
+.leg-for{
+	padding: 2px 6px;
+ }
+
+/* estilo del texto de los legend de los formularios */
+ .text-leg{
+ 	/* estilo del titulo */
+	font-family: Tahoma, Arial, Verdana, Geneva, Helvetica, sans-serif;
+	font-size: 13px;
+	text-align: left;
+    font-weight:bold;
+	color:#0000A0;
+ }
+
+
+
+ #The_colorPicker{
+	position:absolute;
+	width:224px;
+	padding-bottom:1px;
+	background-color:#FFF;
+	border:1px solid #317082;
+}
+
+
+.div-ventana{
+  position:relative;
+  border:1px solid #000000;
+}
+.contenedor{
+    text-align: left;
+    width: 650px;
+    margin: auto;
+}

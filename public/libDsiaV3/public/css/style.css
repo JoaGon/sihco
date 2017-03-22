@@ -1,0 +1,92 @@
+﻿.navbar {
+	height: 90px;
+}
+.navbar-default {
+	background-color: #eee;
+	border-color: #e7e7e7;
+}
+.navbar-nav {
+	padding-top: 20px;
+	padding-left: 10px;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+	color: #555;
+	background: none;
+	border-bottom: 1px solid #3071a9;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+	border-color: #e7e7e7;
+	background-color: #eee;
+}
+
+.navbar-toggle {
+	position: relative;
+	float: right;
+	padding: 9px 10px;
+	margin-top: 25px;
+	margin-right: 15px;
+	margin-bottom: 8px;
+	background-color: transparent;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+/* Jumbotron */
+.jumbotron {
+	padding: 68px 0;
+	margin-bottom: 0px;
+}
+.jumbotron img {
+	margin: 20px 0 20px 0;
+}
+.jumbotron h1, h2 , p{
+	color: #555;
+}
+.jumbotron .login {
+	background-color: #e4e4e4;
+	padding-bottom: 50px;
+}
+.jumbotron .message { 
+	padding-right: 55px;
+}
+
+/* Jumbotron Twitter */
+.twitter {
+	margin-top: 90px; 
+}
+.twitter img { 	
+	float:left;
+	padding-right: 30px;
+}
+.twitter p{
+	color: #fff;		
+	font-size: 1.7em;
+}
+
+.footer {
+	margin-top: 100px;
+}
+
+.footer p { 
+	color: #fff;
+}
+/* .glyphicon */ 
+
+.glyphicon {
+	position: relative;
+	top: 1px;
+	display: inline-block;
+	font-family: 'Glyphicons Halflings';
+	font-style: normal;
+	font-weight: 200;
+	font-size: 25px;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	padding-right: 5px;
+}
+
+

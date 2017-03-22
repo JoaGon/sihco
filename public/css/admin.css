@@ -1,0 +1,13 @@
+.row_border {
+
+    margin-bottom: 2em;
+    border: solid 1px #ececec;
+    border-radius: 10px;
+    background-color: #8c4a4a;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    color: white;
+    margin-left: 50px !important;
+    width: 90% !important;
+
+}

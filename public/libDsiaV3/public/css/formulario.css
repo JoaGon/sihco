@@ -1,0 +1,641 @@
+body {
+	font: small arial, helvetica, sans-serif;
+	margin-top: 0px;
+	color: #57596D;
+	font-size: 13px;
+}
+
+.logo-cabecera-der {
+	background-image: url(../img/home/logo-minamb.gif);
+	background-repeat: no-repeat;
+	float: right;
+	margin: 5px 10px 0px 0px;
+	padding: 0;
+	height: 90px;
+	width: 124px;
+}
+
+.logo-cabecera-izq {
+	background-image: url(../img/home/logo-gobierno.gif);
+	background-repeat: no-repeat;
+	float: left;
+	margin: 20px 10px 0px 10px;
+	padding: 0;
+	height: 50px;
+	width: 235px;
+}
+
+.seccion-menu {
+	padding-left: 5px;
+}
+
+.seccion-nombre {
+	float: right;
+	padding-top: 5px;
+	padding-right: 5px;
+}
+
+a {
+	font-family: Tahoma, sans-serif;
+	font-size: 10px;
+	color: #000000;
+}
+
+fieldset {
+	border: 1px dashed #87B77D !important;
+	padding: 2px;
+	height: 300px;
+}
+
+fieldset.sfieldset {
+	width: 390px;
+}
+
+legend {
+	background-color: #FFFFFF;
+}
+
+/* Titulos de los formularios */
+h1 {
+	font-size: 12px;
+	color: #C00000;
+}
+
+h2 {
+	font-family: Tahoma, sans-serif;
+	font-weight: bold;
+	font-size: 11pt;
+	color: #A0522D;
+	margin-top: 5px;
+}
+
+.line-title {
+	text-align: left;
+	border-bottom: 1px solid #428C00;
+	/*	width: 600px;*/
+	width: auto;
+	margin-bottom: 5px;
+	margin-left: 180px;
+	/*	margin-left: 230px;*/
+}
+
+.line-title-con {
+	text-align: left;
+	border-bottom: 1px solid #428C00;
+	/*	width: 600px;*/
+	width: auto;
+	margin-bottom: 5px;
+	margin-left: 50px;
+	/*	margin-left: 230px;*/
+}
+
+/* Lineas */
+.line-h {
+	border-top: 1px solid #87B77D;
+	width: 880px;
+}
+
+/* Etiquetas */
+.label-black {
+	color: #000000;
+	font-family: Tahoma, sans-serif;
+	font-size: 12px;
+	text-align: left;
+	font-weight: bold;
+}
+
+.label-elemento {
+	color: #000000;
+	font-family: Tahoma, sans-serif;
+	font-size: 12px;
+	text-align: left;
+	padding-top: 5px;
+}
+
+.label-bold {
+	color: #000000;
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.label-red {
+	color: #FF0000;
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.label-clave {
+	padding: 5px 5px 5px 5px;
+	color: #074F7F;
+	font-family: Tahoma, sans-serif;
+	font-size: 13px;
+	text-align: center;
+	font-weight: bold;
+}
+
+/* Texto libre */
+.p-black {
+	color: #000000;
+	font-family: Tahoma, sans-serif;
+	font-size: 12px;
+	text-align: justify;
+	padding-left: 5px;
+	padding-right: 5px;
+	line-height: 1.5;
+	margin-bottom: 5px;
+}
+
+/* Inputs */
+.input-sstext-g {
+	color: #000000;
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	width: 70px;
+}
+
+.input-sstext {
+	color: #000000;
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	width: 50px;
+}
+
+.input-stext {
+	color: #000000;
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	width: 150px;
+}
+
+.input-text {
+	color: #000000;
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	width: 250px;
+}
+
+.input-text-ro {
+	color: #000000;
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	width: 250px;
+}
+
+.input-stext-ro {
+	color: #000000;
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	width: 150px;
+}
+
+.input-sstext-ro {
+	color: #000000;
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	width: 50px;
+}
+
+.typeCheckbox {
+	height: auto;
+}
+
+.typeRadio {
+	height: auto;
+}
+
+.input-autosize {
+	color: #000000;
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	width: 95%;
+}
+
+.input-fecha {
+	color: #000000;
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	width: 70px;
+	text-align: center;
+}
+
+.input-button {
+	font-family: Tahoma, sans-serif;
+	font-size: 12px;
+}
+
+/* Combos */
+.combo {
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+}
+
+.combo-fixed {
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	width: 200px;
+}
+
+.combo-sfixed {
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	width: 150px;
+}
+
+.combo-ssfixed {
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	width: 50px;
+}
+
+.combo-autosize {
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	width: 95%;
+}
+
+/* Mensajes de error o informacion */
+.msg-red {
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #EF0000;
+	border: 1px solid #EF0000;
+	padding: 5px 5px 5px 5px;
+	margin-bottom: 5px;
+}
+
+.msg-green {
+	font-family: Tahoma, sans-serif;
+	font-size: 17px;
+	font-weight: bold;
+	color: #008000;
+	border: 1px solid #008000;
+	padding: 5px 5px 5px 5px;
+	text-align: center;
+}
+
+.msg-orange {
+	font-family: Tahoma, sans-serif;
+	font-size: 17px;
+	font-weight: bold;
+	color: #FD9800;
+	border: 1px solid #FD9800;
+	padding: 5px 5px 5px 5px;
+	text-align: center;
+}
+
+.msg-blue {
+	font-family: Tahoma, sans-serif;
+	font-size: 17px;
+	font-weight: bold;
+	color: #0000FF;
+	border: 1px solid #0000FF;
+	padding: 5px 5px 5px 5px;
+	text-align: center;
+}
+
+/*Div con scroll para las tablas de busqueda*/
+.div-scroll-table {
+	height: 450px;
+	width: 800px;
+	overflow-x: auto;
+	overflow-y: auto;
+	border: 1px solid #7F9DB9;
+	background-color: #FFFFFF;
+}
+
+.div-vscroll-table {
+	height: 450px;
+	width: 800px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	border: 1px solid #7F9DB9;
+	background-color: #FFFFFF;
+}
+
+.div-scroll-mtable {
+	height: 350px;
+	width: 800px;
+	overflow-x: auto;
+	overflow-y: auto;
+	border: 1px solid #7F9DB9;
+	background-color: #FFFFFF;
+}
+
+.div-scroll-stable {
+	height: 250px;
+	width: 800px;
+	overflow-x: auto;
+	overflow-y: auto;
+	border: 1px solid #7F9DB9;
+	background-color: #FFFFFF;
+}
+
+/* Tablas de resultados */
+.tr-header {
+	background-color: #C3D9FF;
+	height: 20px;
+}
+
+.tr-header-green {
+	background-color: #E7EFE0;
+	height: 20px;
+}
+
+.tr-par {
+	background-color: #EFEFEF;
+	height: 20px;
+}
+
+.tr-impar {
+	background-color: #E8EEF7;
+	height: 20px;
+}
+
+.tr-par:hover {
+	background-color: #CFE6FF;
+}
+
+.tr-impar:hover {
+	background-color: #CFE6FF;
+}
+
+.td-header {
+	color: #000000;
+	padding-left: 50px;
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	height: 20px;
+}
+
+.td-content {
+	color: #000000;
+	padding-left: 50px;
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	height: 15px;
+}
+
+.visible {
+	visibility: visible;
+	display: inline;
+}
+
+.invisible {
+	visibility: hidden;
+	display: none;
+}
+
+.cursor {
+	cursor: pointer;
+}
+
+.div-errores {
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #EF0000;
+	border: 1px solid #EF0000;
+	padding: 5px 5px 5px 5px;
+}
+
+.blue-border {
+	border: 1px solid #8FD2FF;
+}
+
+.transp {
+	background-color: transparent;
+	border: 0px solid #000000;
+}
+
+.titulo-imagen {
+	padding: 5px 5px 5px 5px;
+	font-family: Tahoma, Arial, Verdana, Geneva, Helvetica, sans-serif;
+	font-size: 12px;
+	text-align: center;
+	color: #000062;
+	font-weight: bold;
+	background: #B9B9FF;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #7777FF;
+	height: 125px;
+	width: 170px;
+}
+
+.area_clasificar {
+	height: 150px;
+	width: 200px;
+	overflow-x: auto;
+	overflow-y: auto;
+	border: 1px solid #7F9DB9;
+	background-color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+.noClases {
+	width: 40px;
+}
+
+.div-botonera {
+	border: 1px solid #7F9DB9;
+	background-color: #DFF5C5;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+
+.div-grid-contenedor {
+	background-color: blue;
+	overflow: auto;
+	width: 920px;
+	height: 430px;
+}
+
+.div-grid-consulta {
+	background-color: white;
+	overflow: hidden;
+	width: 830px;
+	/*	height: 430px;*/
+	height: 305px;
+}
+
+.div-grid-consulta-mediano {
+	background-color: white;
+	overflow: hidden;
+	width: 830px;
+	height: 205px;
+}
+
+.div-grid-consulta-pequeno {
+	background-color: white;
+	overflow: hidden;
+	width: 830px;
+	height: 100px;
+}
+
+.div-grid-pequeno {
+	background-color: white;
+	overflow: hidden;
+	width: 290px;
+	height: 280px;
+}
+
+.div-grid-mediano {
+	background-color: white;
+	overflow: hidden;
+	width: 380px;
+	height: 280px;
+}
+
+.pagerCurrent {
+	padding: 2px 2px 2px 2px;
+	color: #12E827;
+	font-family: Verdana, Arial, Geneva, Helvetica, sans-serif, Tahoma;
+	font-weight: bold;
+	font-size: 10px;
+	cursor: pointer;
+}
+
+.pager {
+	padding: 2px 2px 2px 2px;
+	color: #055A78;
+	font-family: Verdana, Arial, Geneva, Helvetica, sans-serif, Tahoma;
+	font-weight: bold;
+	font-size: 10px;
+	cursor: pointer;
+}
+
+.codSeguridad {
+	text-align: center;
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	width: 70px;
+	font-weight: bold;
+	background-color: #D4D0C8;
+	border-color: #006600;
+	border-style: inset;
+	border-width: 2px;
+	color: #055A78;
+}
+
+a img {
+	border: 0;
+}
+
+#errores {
+	padding-top: 6px;
+}
+
+.jxDialogContent {
+	font-size: 12px;
+}
+
+.actClave {
+	color: #055a78;
+	font-family: Tahoma, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.classHand {
+	cursor: pointer;
+}
+
+.jumbotron {
+	padding: 0px 0px;
+	margin-bottom: 30px;
+	color: inherit;
+	background-color: #F3F5FB;
+	/*    background-color: ##F3F5FB;*/
+}
+
+.jxDialog {
+	width: 80% !important;
+	height: 90% !important;
+}
+.ContGrupo {
+	width: 100%;
+	text-align: center;
+}
+.Grupo1 {
+	width: 40%;
+/*	background-color: green;*/
+	display: -moz-inline-grid;
+	margin: 5px;
+}
+
+.Grupo2 {
+	width: 40%;
+	display: -moz-inline-grid;
+	margin: 5px;
+}
+/*.jxDialogContentContainer {*/
+/*    width: 97% !important;*/
+/*    height: 92% !important;*/
+/*    margin: 0 0 0 15 !important;*/
+/*}*/
+@media ( max-width : 360px) and (min-width: 300px) {
+	.jxDialogContentContainer {
+		width: 91% !important;
+		height: 92% !important;
+		margin: 0 0 0 12px !important;
+	}
+	.encabezado-right {
+		display: none;
+	}
+	.Grupo1 {
+		width: 90%;
+	/*	background-color: green;*/
+		display: -moz-inline-grid;
+		margin: 5px;
+	}
+	
+	.Grupo2 {
+		width: 90%;
+		display: -moz-inline-grid;
+		margin: 5px;
+	}	
+}
+
+@media ( max-width : 1300px) and (min-width: 365px) {
+	.jxDialogContentContainer {
+		width: 97.5% !important;
+		height: 92% !important;
+		margin: 0 0 0 12px !important;
+	}
+}
+
+@media ( max-width : 1700px) and (min-width: 1305px) {
+	.jxDialogContentContainer {
+		width: 97.5% !important;
+		height: 92% !important;
+		margin: 0 0 0 12px !important;
+	}
+}
+
+.container {
+	width: 100%;
+}
+.contenidoVer {
+	width: 70%;
+}
+
+
+.test {
+	width: 400px!important;
+	height: 200px!important;
+	background-color: #3B87E7;
+	color: white;
+	padding: 3px;
+	float: right;
+	
+	margin: 0 0 0 12px !important;	
+}

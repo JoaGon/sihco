@@ -1,0 +1,129 @@
+/* Mensajes de error o informacion */
+.msg-red {
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #EF0000;
+	border: 1px solid #EF0000;
+	padding: 5px 5px 5px 5px;
+}
+
+.msg-green {
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #008000;
+	border: 1px solid #008000;
+	padding: 5px 5px 5px 5px;
+}
+
+.msg-orange {
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #FD9800;
+	border: 1px solid #FD9800;
+	padding: 5px 5px 5px 5px;
+}
+
+.msg-blue {
+	font-family: Tahoma, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #0000FF;
+	border: 1px solid #0000FF;
+	padding: 5px 5px 5px 5px;
+}
+
+.informacion{
+	font-family: Trebuchet;
+	font-size: 13px;
+	color: #000000;
+	padding: 5px 5px 5px 5px;
+}
+
+/* Tablas emergentes */
+.tabla-Tbl{
+	border:1px solid;
+	border-collapse:collapse;
+	empty-cells: show;
+	background-color:#EEEEEE;
+	font: bold 11px/14px Verdana, Geneva, Arial, Helvetica, sans-serif;
+ 	width:600px;
+ 	height:280px;
+	
+}
+.etiqueta-Tbl{
+	padding: 1px 2px 1px 1px;
+	font-family: Tahoma, Arial, Verdana, Geneva, Helvetica, sans-serif;
+	font-size: 11px;
+	text-align: left;
+    font-weight:bold;
+	color:#000000;	
+	width:130px;
+}
+.contenido-Tbl{
+	padding: 1px 2px 1px 1px;
+	font-size: 11px;
+	line-height: 18px;
+	background: #FFFFFF;
+	font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;
+	color:#000000;
+	text-align: left;
+}
+.botonera-Tbl{
+	padding: 1px 2px 1px 1px;
+	font-family: Tahoma, Arial, Verdana, Geneva, Helvetica, sans-serif;
+	font-size: 13px;
+	text-align: center;
+    font-weight:bold;
+	color:#0000A0;
+	background: #D4D4D4;
+}
+.pieTemplate{
+	font-size: 10px;
+/*	text-align: center;*/
+    font-weight:bold;
+	color:#0000A0;
+}
+/*REVISAR*/
+.barraHorizontal{
+	margin: 0px;
+	padding: 0px 20px 1px 20px;
+	border: 2px solid;
+	border-color: #002828;
+	background-color: #FFE16A;
+	text-align:left;
+	font-size: 14px;
+}
+
+.barraEstado{
+/*	display: inline;*/
+/*	font-size: 12px;*/
+/*	margin: 2px 2px 2px 2px;*/
+/*	border-top:1px dotted #A9ADD3;*/
+/*	border-right-style:none;*/
+/*	border-bottom:1px dotted #A9ADD3;*/
+/*	border-left-style:none;*/
+}
+.error{
+	color:#993300;
+}
+.perfil_usuario{
+	background-color: #FFFFFF;
+/*	color: #4F76B0;*/
+	color: #3B5998;
+/*	color: #000062;*/
+	font-size: 18px;
+	width: 350px;
+	position: relative;
+	left:480px;
+	top: 20px;
+}
+.contDiv {
+    display: flex;
+    padding: 5px;
+}
+.jxSplitBarHorizontal{
+	display:none!important;
+}

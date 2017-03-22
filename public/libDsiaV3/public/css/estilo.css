@@ -1,0 +1,189 @@
+a:link, a:active, a:visited 
+{
+		font: 11px sans-serif;
+		color: #0000FF;
+		text-decoration: none;
+		}
+a:hover {
+		font: 11px sans-serif;
+		color: #000000;
+		text-decoration: none;
+		}
+BODY {
+	font: 10px sans-serif;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;	
+	background-color: White;
+	border-collapse: collapse;
+	caption-side: top;
+	empty-cells: show;
+	}
+	
+td,th {
+	font: 12px sans-serif;
+	
+}
+hr	{ width: 90%; height: 1px; }
+button 	{
+	font: 12px sans-serif;
+	padding:0px;
+	}
+input  {
+	font: 11px sans-serif;
+	/*height: 20px;*/
+	background-color: #ffffff;
+	color: #000066;
+	}
+select  
+{
+	font: 11px sans-serif;
+	height: 20px;
+	background-color: #ffffff;
+	color: #000066;
+	}
+
+textarea  {
+	font: 12px sans-serif;
+	
+	}
+
+.chk_ini 
+{
+	width:14px;
+	height:14px;
+}
+
+
+
+	/* Big box with list of options */
+	#ajax_listOfOptions{
+		position:absolute;	/* Never change this one */
+		width:580px;	/* Width of box */
+		height:90px;	/* Height of box */
+		overflow:auto;	/* Scrolling features */
+		border:1px solid #317082;	/* Dark green border */
+		background-color:#FFF;	/* White background color */
+		text-align:left;
+		font-size:11px;
+		z-index:100;
+	}
+	#ajax_listOfOptions div{	/* General rule for both .optionDiv and .optionDivSelected */
+		margin:1px;
+		padding:1px;
+		cursor:pointer;
+		font-size:11px;
+	}
+	#ajax_listOfOptions .optionDiv{	/* Div for each item in list */
+
+	}
+	#ajax_listOfOptions .optionDivSelected{ /* Selected item in the list */
+		background-color:#317082;
+		color:#FFF;
+	}
+	#ajax_listOfOptions_iframe{
+		background-color:#F00;
+		position:absolute;
+		z-index:5;
+	}
+
+.numeros{}
+
+input.numeros  {
+	font: 11px sans-serif;
+	height: 20px;
+	text-align: right;
+	background-color:white;
+	color: #000066;
+	}
+	
+.textos{}
+
+input.textos  {
+	font: 11px sans-serif;
+	height: 20px;
+	text-align: left;
+	background-color:white;
+	color: #000066;
+	}
+.punto {
+cursor:pointer;
+}
+.reporte{
+	border: 1px solid #D6D6D6;
+	border-radius: 15px;
+	box-shadow: 0 0 1px 2px rgba(200, 200, 200, 0.2) inset;
+    /*height: 30px;*/
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    width: 100px;
+}
+.divLoginCont{	
+    border: 3px solid #999FEB;
+    border-radius: 10px;    
+    /*display: inline-block;*/
+    /*height: 235px;*/
+    padding: 20PX;
+    text-align: center;
+    width: 300px;
+    font-size:11px;
+    margin-top: 130px;
+    /*background:#eee;*/
+}
+.divLogin{	
+    display: inline-block;
+    /*height: 235px;*/
+    padding: 0;
+    text-align: left;
+/*    width: 240px;*/
+    width: 100%;
+    /*background:#7161E6;*/
+    /*background: url("../../public/img/menu/fondoBtn.png");*/
+    
+}
+.divRecuperar{
+	border-radius:10px; 
+	-moz-border-radius:3px; /* Firefox */ 
+	-webkit-border-radius:3px; /* Safari y Chrome */ 
+	
+	/* Otros estilos */ 
+	border:1px solid #333;
+	background:#CEF98E;
+	width:100%;
+	padding:10px;	
+}
+.divNuevoUsuario{
+	border-radius:10px; 
+	-moz-border-radius:3px; /* Firefox */ 
+	-webkit-border-radius:3px; /* Safari y Chrome */ 
+	
+	/* Otros estilos */ 
+	border:1px solid #333;
+	background:#FFFDBF;
+	width:100%;
+	padding:10px;	
+}
+.titleSesion{
+	font: 16px sans-serif;
+	color: #000000;	
+}
+.divg1{
+	background:#eee;	
+}
+.divg2{
+	background:gray;	
+}
+.contDatos{
+    background: whitesmoke;
+    border: 2px solid;
+    padding: 8px;
+    width: 280px;
+}
+.tablaDatos{
+	width:99%;
+}
+.encabezado{
+	margin-top:10px;
+}

@@ -51,8 +51,30 @@ Route::get('imagen/{consulta}/{id_paciente}','ImagenController@index');
 Route::post('/register/imaging','ImagenController@safeImaging');
 Route::post('/register/imaging/study','ImagenController@safeStudy');
 
+Route::get('datos/paciente/{paciente_id}/{consulta_id}','ConsultaController@datos_principal');
+
 Route::get("antecedentefamiliar/{paciente_id}/{consulta_id}",'HistoriaController@antecedentefamiliarIndex');
 Route::post("antecedente_familiar",'HistoriaController@antecedentefamiliar');
+
+Route::post("enfermedad_cardiovascular/",'HistoriaController@enfermedadCardiovascular');
+Route::post("eliminar/paciente/enfermedad_cardiovascular/",'HistoriaController@EliminarEnfermedadCardiovascular');
+Route::post("insertar/enfermedad_cardiovascular/",'HistoriaController@InsertarEnfermedadCardiovascular');
+Route::post("eliminar/enfermedad_cardiovascular/",'HistoriaController@EliminarCardiovascular');
+
+Route::post("cardiovasculares",'HistoriaController@cardiovasculares');
+Route::get("circulos",'HistoriaController@circulo');
+
+Route::get("renales",'HistoriaController@renales');
+Route::post("enfermedad_renal/",'HistoriaController@enfermedadRenal');
+Route::post("eliminar/paciente/enfermedad_renal/",'HistoriaController@EliminarEnfermedadRenal');
+Route::post("insertar/enfermedad_renal",'HistoriaController@InsertarEnfermedadRenal');
+Route::post("eliminar/enfermedad_cardiovascular/",'HistoriaController@EliminarCardiovascular');
+
+
+
+
+
+
 
 Route::get("antecedentepersonal/{paciente_id}/{consulta_id}",'HistoriaController@antecedentepersonalIndex');
 Route::post("antecedente_personal",'HistoriaController@antecedentepersonal');

@@ -51,7 +51,7 @@
 						<tr>
 							<td>
 								<strong>
-								<a href="{{ url('datos/consulta/'.$paciente->nro_historia) }}" class="btn btn-link" style="font-weight: bold" data-toggle="tooltip" title="Cita"> {{$paciente->nro_historia}} </a>
+								<a href="{{ url('consulta/'.$paciente->nro_historia) }}" class="btn btn-link" style="font-weight: bold" data-toggle="tooltip" title="Cita"> {{$paciente->nro_historia}} </a>
 								</strong>
 							</td>
 							<td class="name">
@@ -105,37 +105,6 @@ $(document).ready(function () {
   $('[data-submenu]').submenupicker();
  });
 // #myInput is a <input type="text"> element
-function edit_patient(val){
-    /*var x = document.getElementById("stauts");
-    setTimeout(function(){ x.value="2 seconds" }, 2000);*/
-    console.log('entro '+val);
-    var url = $('#try').attr("data-link");
-    //var _token = $(this).data("data-token");
-    console.log(url);
-    $.ajax({
-        url: url,
-        type:"POST",
-        data: {  '_token': $('input[name=_token]').val(),id_paciente : val },
-        success:function(data){
-            console.log(data);
-            document.getElementById("id_edit").value = data[0].id_paciente;
-            document.getElementById("name_edit").value = data[0].nombre;
-            document.getElementById("apellido_edit").value = data[0].apellido;
-            document.getElementById("cedula_edit").value = data[0].ci;
-            document.getElementById("sexo_edit").value = data[0].sexo;
-            document.getElementById("telefono_edit").value = data[0].telefono;
-            document.getElementById("celular_edit").value = data[0].celular;
-            document.getElementById("nacimiento_edit").value = data[0].fecha_nacimiento;
-            document.getElementById("direccion_edit").value = data[0].direccion;
-            document.getElementById("ingreso_edit").value = data[0].fecha_ingreso;
-            document.getElementById("ocupacion_edit").value = data[0].ocupacion;
-            document.getElementById("email_edit").value = data[0].email;
-            document.getElementById("nro_edit").value = data[0].nro_historia;
-            $('#edit_modal').modal('show');
-        },error:function(){
-            alert("error!!!!");
-        }
-    }); //end of ajax
-}
+
 </script>
 @endsection

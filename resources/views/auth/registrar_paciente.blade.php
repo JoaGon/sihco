@@ -27,7 +27,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-12 col-md-offset-1">
+            <div class="col-lg-10 col-sm-8 col-sm-offset-4 col-lg-offset-2 col-md-offset-1">
                 <div class="panel panel-default" style="margin-top: 15px">
                     <div class="panel-heading">Registrar Paciente</div>
                     <div class="panel-body">

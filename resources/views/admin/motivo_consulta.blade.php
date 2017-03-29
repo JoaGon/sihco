@@ -38,7 +38,7 @@
                 
                 <div style="font-size: 20px; text-align: center; color:#59bddd;"> Motivo de la Consulta</div>
                     
-               <form class="form-horizontal" id="register_motivo" role="form" method="POST" action="{{ url('/motivo_consulta') }}">
+               <form class="form-horizontal" id="register_motivo" enctype="multipart/form-data" method="POST" action="{{ url('/motivo_consulta') }}">
                 {{ csrf_field() }}
                 <input type="hidden" name="consulta" value= {{$consulta}} >
                 <input type="hidden" name="paciente_id" value="{{$paciente->id_paciente}}">
@@ -94,7 +94,7 @@
 
             <div class="form-group">
               <div class="col-md-6 col-md-offset-4">
-              <button type="submit" onclick="$('#register_motivo').submit();" class="btn btn-primary">
+              <button type="submit" onclick="insertar_motivo()" class="btn btn-primary">
                 <i class="fa fa-btn fa-user"></i> Registrar
             </button>
              
@@ -110,6 +110,7 @@
 
       </form>
   </div>
+  <a id="info" tabindex="0" role="button" data-toggle="popover" data-trigger="focus" title="Información Guardada" data-content="Los datos del paciente fueron guardados"></a>
   <!-- /.row -->
 </div>
 </div>
@@ -163,10 +164,17 @@ var myLanguage = {
 
 
  });
-  
-  
 
+function popover_show() {
+        $('#info').popover('show'); 
+        setTimeout(function(){ $('#info').popover('hide'); },1500 );
+    }
 
+function insertar_motivo(){
+
+   $('#register_motivo').submit();
+ 
+}
 
 
 </script>

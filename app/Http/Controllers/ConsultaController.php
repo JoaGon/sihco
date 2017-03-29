@@ -38,17 +38,77 @@ class ConsultaController extends Controller
     }
     public function save(Request $req)
     {	
-      //  dd("lega",$req->input('paciente_id'));
-        $consulta2 = DB::table('consulta')->insertGetId(
-        	['paciente_id'=>$req->input('paciente_id'),
-        	'nro_historia'=>$req->input('historia'),
-        	'motivo_consulta'=>$req->input('motivo'),
-        	'enfermedad_actual'=>$req->input('enfermedad'),
-        	'fecha_consulta'=>$req->input('fecha_consulta'),
+      // dd("lega",$req->input('paciente_id'));
+            $data= $req;
+          
+            $verificar = DB::table('consulta')
+                ->where('paciente_id',$req->input('paciente_id'))
+                ->where('fecha_consulta',$req->input('fecha_consulta'))
+                ->count();
 
-        	]);
+             if ($verificar > 0) {
+
+                $id = DB::table('consulta')
+                    ->where('paciente_id',$req->input('paciente_id'))
+                    ->where('fecha_consulta',$req->input('fecha_consulta'))
+                    ->pluck('consulta.id');
+            //    dd($id);
+                
+                DB::table('consulta')->where('paciente_id',$req->input('paciente_id'))
+                            ->where('fecha_consulta',$req->input('fecha_consulta'))->delete();
+
+                 $consulta2 = DB::table('consulta')->insertGetId(
+                ['id'=>$id[0],
+                'paciente_id'=>$req->input('paciente_id'),
+                'nro_historia'=>$req->input('historia'),
+                'motivo_consulta'=>$req->input('motivo'),
+                'enfermedad_actual'=>$req->input('enfermedad'),
+                'fecha_consulta'=>$req->input('fecha_consulta'),
+
+                ]);
+            }else{
+
+                $consulta2 = DB::table('consulta')->insertGetId(
+                ['paciente_id'=>$req->input('paciente_id'),
+                'nro_historia'=>$req->input('historia'),
+                'motivo_consulta'=>$req->input('motivo'),
+                'enfermedad_actual'=>$req->input('enfermedad'),
+                'fecha_consulta'=>$req->input('fecha_consulta'),
+
+                ]);
+            }
+
         $persona = DB::table('paciente')
               ->where('nro_historia',$req->input('historia'))
+              ->pluck('paciente.persona_id');
+
+        $nro_historia = DB::table('paciente')
+              ->where('id_paciente',$req->input('paciente_id'))
+              ->pluck('paciente.nro_historia');
+
+         $paciente = DB::table('persona')
+         ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+         ->where('persona.id_persona',$persona[0])
+         ->get();
+
+         $cardiovascular = DB::table('enfermedades_cardiovasculares')
+         ->get();
+
+          $circulo = DB::table('listas')
+                        ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
+                        ->where('listas.lista', 'circulo_familiar') 
+                        ->get();
+
+      
+        
+        return redirect('/datos/paciente/'.$req->input('paciente_id').'/'. $consulta2)->with('status','Se ha insertado la Consulta');
+
+
+    }
+    public function datos_principal($paciente_id, $consulta_id){
+
+         $persona = DB::table('paciente')
+              ->where('id_paciente',$paciente_id)
               ->pluck('paciente.persona_id');
 
          $paciente = DB::table('persona')
@@ -64,16 +124,13 @@ class ConsultaController extends Controller
                         ->where('listas.lista', 'circulo_familiar') 
                         ->get();
 
-        return view('admin.antecedente_familiar', [
-            'consulta'=>$consulta2,
-            'id_paciente'=>$req->input('id_paciente'), 
+          return view('admin.consulta_datos_paciente', [
+            'consulta'=>$consulta_id,
+            'id_paciente'=>$paciente_id, 
             'pacientes'=>$paciente,
             'cardiovasculares'=>$cardiovascular,
             'circulos'=>$circulo
             ]);
-    
-
-
     }
 
     public function odonto(){

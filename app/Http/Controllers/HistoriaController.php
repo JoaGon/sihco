@@ -111,16 +111,197 @@ class HistoriaController extends Controller
 
 
     }
+
+    public function cardiovasculares(){
+
+
+        $cardiovascular = DB::table('enfermedades_cardiovasculares')
+         ->get();
+
+         return $cardiovascular;
+    }
+      public function renales(){
+
+
+        $renal = DB::table('enfermedades_renales')
+         ->get();
+
+         return $renal;
+    }
+
+    public function circulo(){
+
+
+        $circulo = DB::table('listas')
+                        ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
+                        ->where('listas.lista', 'circulo_familiar') 
+                        ->get();
+
+         return $circulo;
+    }
+
        public function antecedentefamiliarIndex($paciente_id,$consulta)
+    
     {	
     	//$data = $req->all();
     	$consulta = intval($consulta);
         
-          $paciente = Paciente::where('id_paciente', $paciente_id)->get();
+      //  $paciente = Paciente::where('id_paciente', $paciente_id)->get();
 
-        return view('admin.antecedente_familiar', ['consulta'=>$consulta,'id_paciente'=>$paciente_id], ['pacientes'=> $paciente]);
+        $persona = DB::table('paciente')
+              ->where('id_paciente',$paciente_id)
+              ->pluck('paciente.persona_id');
+
+         $paciente = DB::table('persona')
+         ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+         ->where('persona.id_persona',$persona[0])
+         ->get();
+
+
+        $cardiovascular = DB::table('enfermedades_cardiovasculares')
+         ->get();
+
+          $circulo = DB::table('listas')
+                        ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
+                        ->where('listas.lista', 'circulo_familiar') 
+                        ->get();
+
+        return view('admin.antecedente_familiar', [
+            'consulta'=>$consulta,
+            'id_paciente'=>$paciente_id,
+             'pacientes'=> $paciente,
+             'circulos'=>$circulo,
+             'cardiovasculares' =>$cardiovascular
+             ]);
        
       // return redirect('/imagen/'.$consulta.'/'.$req->input('id_paciente'));
+
+
+    }
+     public function enfermedadCardiovascular(Request $req)
+    {   
+       // dd($req);
+        DB::table('paciente_enfer_cardiovascular')
+              ->insert([
+                'paciente_id'=> $req->input('paciente'),
+                'enfermedad_cardiovascular_id'=>$req->input('id_enfermedad'),
+                'circulo_hereditario'=>$req->input('circulo_id'),
+                'consulta_id'=>$req->input('consulta')]);
+
+       $enfer = DB::table('paciente_enfer_cardiovascular')
+                ->join('enfermedades_cardiovasculares','paciente_enfer_cardiovascular.enfermedad_cardiovascular_id','=','enfermedades_cardiovasculares.id_enfermedad_cardiovascular')
+                ->join('valores_listas','paciente_enfer_cardiovascular.circulo_hereditario','=','valores_listas.id_valor')
+                ->where('paciente_id',$req->input('paciente'))
+                ->where('consulta_id',$req->input('consulta'))
+                ->get();
+                //dd($enfer);
+       return $enfer;
+
+
+    }
+     public function EliminarEnfermedadCardiovascular(Request $req)
+    {   
+       // dd($req);
+        DB::table('paciente_enfer_cardiovascular')
+        ->where('id_paciente_enfer_cardiovascular',$req->input('id_paciente_enfer_cardiovascular'))
+        ->delete();
+
+        $enfer = DB::table('paciente_enfer_cardiovascular')
+                ->join('enfermedades_cardiovasculares','paciente_enfer_cardiovascular.enfermedad_cardiovascular_id','=','enfermedades_cardiovasculares.id_enfermedad_cardiovascular')
+                ->join('valores_listas','paciente_enfer_cardiovascular.circulo_hereditario','=','valores_listas.id_valor')
+                ->where('paciente_id',$req->input('paciente'))
+                ->where('consulta_id',$req->input('consulta'))
+                ->get();
+
+                //dd($enfer);
+       return $enfer;
+
+
+    }
+
+    public function EliminarCardiovascular(Request $req){
+
+        DB::table('enfermedades_cardiovasculares')
+        ->where('id_enfermedad_cardiovascular',$req->input('id_enfermedad'))
+        ->delete();
+         $enfer = DB::table('enfermedades_cardiovasculares')
+                ->get();
+
+         return $enfer;
+
+    }
+        public function InsertarEnfermedadCardiovascular(Request $req)
+    
+    {   
+       // dd($req);
+        DB::table('enfermedades_cardiovasculares')
+        ->insert([
+            'enfermedad'=>$req->input('enfermedad'),
+            'ultimo_usuario'=> Auth::user()->id ]);
+
+        $enfer = DB::table('enfermedades_cardiovasculares')
+                ->get();
+
+                //dd($enfer);
+       return $enfer;
+
+
+    }
+    public function enfermedadRenal(Request $req)
+    {   
+       // dd($req);
+        DB::table('paciente_enfer_renal')
+              ->insert([
+                'paciente_id'=> $req->input('paciente'),
+                'enfermedad_renal_id'=>$req->input('id_enfermedad'),
+                'circulo_hereditario'=>$req->input('circulo_id'),
+                'consulta_id'=>$req->input('consulta'),
+                'ultimo_usuario'=> Auth::user()->id ]);
+
+       $enfer_ = DB::table('paciente_enfer_renal')
+                ->join('enfermedades_renales','paciente_enfer_renal.enfermedad_renal_id','=','enfermedades_renales.id_enfermedad_renal')
+                ->join('valores_listas','paciente_enfer_renal.circulo_hereditario','=','valores_listas.id_valor')
+                ->where('paciente_id',$req->input('paciente'))
+                ->where('consulta_id',$req->input('consulta'))
+                ->get();
+                //dd($enfer);
+       return $enfer_;
+
+
+    }
+      public function EliminarEnfermedadRenal(Request $req)
+    {   
+       // dd($req);
+        DB::table('paciente_enfer_renal')
+        ->where('id_paciente_enfer_renal',$req->input('id_paciente_enfer_renal'))
+        ->delete();
+
+        $enfer = DB::table('paciente_enfer_renal')
+                ->join('enfermedades_renales','paciente_enfer_renal.enfermedad_renal_id','=','enfermedades_renales.id_enfermedad_renal')
+                ->join('valores_listas','paciente_enfer_renal.circulo_hereditario','=','valores_listas.id_valor')
+                ->where('paciente_id',$req->input('paciente'))
+                ->where('consulta_id',$req->input('consulta'))
+                ->get();
+
+                //dd($enfer);
+       return $enfer;
+
+
+    }
+       public function InsertarEnfermedadRenal(Request $req)
+    
+    {   
+       // dd($req);
+        DB::table('enfermedades_renales')
+        ->insert([
+            'enfermedad'=>$req->input('enfermedad'),
+            'ultimo_usuario'=> Auth::user()->id ]);
+
+        $enfer = DB::table('enfermedades_renales')
+                ->get();
+
+                //dd($enfer);
+       return $enfer;
 
 
     }

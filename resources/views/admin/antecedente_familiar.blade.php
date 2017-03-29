@@ -1,4 +1,8 @@
 @extends('admin-layout.sidebarAdmin') @section('content')
+
+<script type="text/javascript" src="{{ url('js/angular.min.js') }}"></script>
+<script type="text/javascript" src="{{ url('js/AdminDashboard.js') }}"></script>
+
 <!-- DataTables CSS -->
 <link href="{{ url('template/vendor/datatables-plugins/dataTables.bootstrap.css')}}" rel="stylesheet">
 <!-- DataTables Responsive CSS -->
@@ -11,7 +15,7 @@
 <div class="container">
 
     <!-- /.row -->
-    <div class="row">
+    <div class="row" ng-app="AdminDashboard" ng-controller="AdminController">
         <div class="col-lg-12 col-md-offset-1">
             @if(session('status'))
             <div class="alert alert-success text-center notification">
@@ -21,63 +25,16 @@
             </div>
             
             @endif @foreach ($pacientes as $paciente)
-            <ul class="nav nav-pills" style="margin-top: 15px;">
-                <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>I al VII<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-submenu"><a href="{{ url('antecedentefamiliar', array($paciente->id_paciente, $consulta)) }}" tabindex="0">III) Ant. Familiares</a></li>
-                        <li class="dropdown-submenu"><a href="{{ url('antecedentepersonal', array($paciente->id_paciente, $consulta)) }}" tabindex="0">IV) Ant. Personales</a></li>
-                        <li class="dropdown-submenu"><a href="{{ url('datosclinicos', array($paciente->id_paciente, $consulta)) }}" tabindex="0">V) Datos Clinicos Seleccionados</a></li>
-                        <li class="dropdown-submenu"><a href="{{ url('resumenclinica', array($paciente->id_paciente, $consulta)) }}" tabindex="0">Res. de la Historia Medica</a></li>
-                        <li class="dropdown-submenu"><a href="{{ url('signosvitales', array($paciente->id_paciente, $consulta)) }}" tabindex="0">VI) Signos Vitales</a></li>
-                        <li class="dropdown-submenu"><a href="{{ url('historiaodontologica', array($paciente->id_paciente, $consulta)) }}" tabindex="0">VII) Historia Odontologica</a></li>
-                        <li class="dropdown-submenu"><a href="{{ url('resumenodontologica', array($paciente->id_paciente, $consulta)) }}" tabindex="0">Res. de la Historia Odontologica</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>VIII al XIII<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-submenu"><a tabindex="0">VIII) Examen Clinico</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">IX) Evaluacion Periodontal</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">X) Odontodiagrama</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">XI) Control de Placa</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">XII) Imageneologia</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">XIII) Examen de la Oclusion</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">XIV) Examen Muscular y Articular</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">XV) Modelos de Diagnosticos</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">XVI) Examenes Complementarios</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">XVII) Coronas y Puentes Fijos</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>XIII al XXIV<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-submenu"><a tabindex="0">VIII) Dentaduras Totales</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">IV) Protesis Parcial Removible</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">V) Endodoncia</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">Operatoria</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">VI) Anestesiologia y Cidugia Estomatologica</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>Diagnostico/Pronostico<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-submenu"><a href="{{ url('consulta/'.$paciente->nro_historia) }}" tabindex="0">I y II)Motivo de la Consulta/ Enfer. Actual</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">Diagnostico Clinico</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">Diagnostico Definivo</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">Pronostico</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>Tratamiento<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-submenu"><a href="{{ url('consulta/'.$paciente->nro_historia) }}" tabindex="0">I y II)Motivo de la Consulta/ Enfer. Actual</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">Plan de Tratamiento</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">Reg. de Actividades Clinicas</a></li>
-                    </ul>
-            </ul>
+            
             <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12" style=" background-color:white;padding-left:0; margin-top: 25px">
                 <div style="font-size: 20px; text-align: center; color:#59bddd;">
                     Antecedente Familiar
                 </div>
-                <form class="form-horizontal" id="form_familiares" role="form" method="POST" action="{{ url('/antecedente_familiar') }}">
-                    {{ csrf_field() }} <input type="hidden" name="consulta_id" value={{$consulta}}>
-                    <input type="hidden" name="paciente_id" value="{{$paciente->id_paciente}}"> <input type="hidden" name="historia" value="{{$paciente->nro_historia}}">
+                <form class="form-horizontal" id="form_familiares" role="form" enctype="multipart/form-data" method="POST" action="{{ url('/antecedente_familiar') }}">
+                    {{ csrf_field() }} 
+                    <input type="hidden"  name="consulta_id" value={{$consulta}}>
+                    <input type="hidden"   name="paciente_id" value="{{$paciente->id_paciente}}"> 
+                    <input type="hidden" name="historia" value="{{$paciente->nro_historia}}">
                     <div class="form-group">
                         <div class="col-md-4">
                             <label for="motivo">Nombre</label>
@@ -94,11 +51,100 @@
                     </div>
                     <div class="row row_border ">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <input type="text" name="enfer_cardiov" id="enfer_cardiov" value="S"> 1-Enfermedades Cardiovasculares
+                            <input type="checkbox" name="enfer_cardiov" id="enfer_cardiov"  onchange="insertar_cardiovascular();" value="S"> 1-Enfermedades Cardiovasculares
                         </div>
-                        <div class="col-lg-12">
-                            <textarea name="espec_enfer_cardi" id="espec_enfer_cardi" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
+
+                        <div class="col-lg-6">
+                            <select ng-model="enfer" class="form-control" name="tipo_enfermedad"  style="width: auto;" id="tipo_enfermedad"  >
+
+                               <option ng-repeat="(i,res) in cardiovasculares" value="[[res.id_enfermedad_cardiovascular]]">[[res.enfermedad]]</option>
+                            </select>
                         </div>
+                        <div class="col-lg-6">
+                            <select ng-model="valor" class="form-control" name="circulo_familiar"  style="width: auto;" id="circulo_familiar"  >
+                                <option ng-repeat="(i,res) in circulos" value="[[res.id_valor]]">[[res.valor]]</option>
+                            </select>
+                        </div>
+                        <a  name="button_agregar" id="button_agregar" ng-click="add_enfermerdad({{$consulta}},{{$paciente->id_paciente}})" class="btn btn-primary">
+                        <i class="fa fa-btn fa-user"></i> Agregar </a>
+                        <div ng-hide="(!enfermedades)">
+                             <table  ng-hide="(!enfermedades)" class="table">
+                                 <thead>
+                                    <tr>
+                                      <th>
+                                        Enfermedad
+                                      </th>
+                                      <th>
+                                        Circulo
+                                      </th>
+                                      <th>
+                                        Acciones
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                   <tbody>
+                                        <tr ng-repeat="(i,res) in enfermedades">
+                                          <td>
+                                            [[ res.enfermedad ]]
+                                          </td>
+                                          <td>
+                                            [[ res.valor ]]
+                                          </td>
+                                          <td>
+                                            
+                                            <a class="btn btn-danger" ng-click="eliminarEnfermedad(i,res.id_paciente_enfer_cardiovascular, {{$consulta}},{{$paciente->id_paciente}})">Eliminar</a>
+                                          </td>
+
+                                        </tr>
+                                   </tbody>
+                            </table>
+                            
+                            </div>
+                        <div class="col-lg-6">
+                           
+                       </div>
+                    </div>
+                     <div class="row row_border ">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <input type="checkbox" name="enfer_renal" id="enfer_renal" onchange="insertar_renal()" value="S"> 2-Enfermedades Renales
+                        </div>
+
+                        <div ng-hide="(!enfer_renal)">
+                             <table  ng-hide="(!enfer_renal)" class="table">
+                                 <thead>
+                                    <tr>
+                                      <th>
+                                        Enfermedad
+                                      </th>
+                                      <th>
+                                        Circulo
+                                      </th>
+                                      <th>
+                                        Acciones
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                   <tbody>
+                                        <tr ng-repeat="(i,res) in enfer_renal">
+                                          <td>
+                                            [[ res.enfermedad ]]
+                                          </td>
+                                          <td>
+                                            [[ res.valor ]]
+                                          </td>
+                                          <td>
+                                            
+                                            <a class="btn btn-danger" ng-click="eliminarRenal(i,res.id_paciente_enfer_renal, {{$consulta}},{{$paciente->id_paciente}})">Eliminar</a>
+                                          </td>
+
+                                        </tr>
+                                   </tbody>
+                            </table>
+                            
+                            </div>
+                        <div class="col-lg-6">
+                           
+                       </div>
                     </div>
                     <div class="row row_border">
                         <div class="col-lg-4 col-md-4 col-sm-4">
@@ -144,10 +190,16 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
-                            <button type="submit" onclick="$('#form_familiares').submit();" class="btn btn-primary">
+                            <button type="submit" onclick="insertar_antecedente()" class="btn btn-primary">
 							<i class="fa fa-btn fa-user"></i> Registrar </button>
                             <button type="submit" href="{{ url('antecedente_personal')}}" class="btn btn-primary">
-							<i class="fa fa-btn fa-user"></i> Siguiente </button>
+                            <i class="fa fa-btn fa-user"></i> Siguiente </button>
+                              <a type="submit" href="{{ URL::previous() }}" class="btn btn-primary">
+                            <i class="fa fa-btn fa-user"></i> Volver </a>
+                            <a type="submit" href="#" onclick="insertar_cardiovascular()" class="btn btn-primary">
+                            <i class="fa fa-btn fa-user"></i> Insertar Enfermedad Cardiovascular </a>
+
+
                             <!--button type="submit" onclick="motive_submit('{{$paciente->id_paciente}}', '{{$paciente->nro_historia}}')" class="btn btn-primary">
                   Guardar
                 </button-->
@@ -160,6 +212,151 @@
             </div>
 
         </div>
+
+<div id="myModal"class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Insertar Enfermedad Cardiovascular</h4>
+        </div>
+        <div class="modal-body" style = "height: 530px;">
+          
+          <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Insertar</label>
+            <div class="col-sm-10">
+              <input style="margin-bottom: 15px;" type="text" ng-model="nombre_enfermedad" class="form-control" id="name_edit" name="name_edit" placeholder="nombre de la enfermedad">
+            </div>
+          </div>
+                <div class="col-md-4">
+                    <select ng-model="enfer" class="form-control" name="tipo_enfermedad"  style="width: auto;" id="tipo_enfermedad"  >
+
+                       <option ng-repeat="(i,res) in cardiovasculares" value="[[res.id_enfermedad_cardiovascular]]">[[res.enfermedad]]</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select ng-model="valor" class="form-control" name="circulo_familiar"  style="width: auto;" id="circulo_familiar"  >
+                        <option ng-repeat="(i,res) in circulos_renal" value="[[res.id_valor]]">[[res.valor]]</option>
+                    </select>
+                </div>
+
+                <a  name="button_agregar" id="button_agregar" ng-click="add_enfermerdad({{$consulta}},{{$paciente->id_paciente}})" class="btn btn-primary">
+                    <i class="fa fa-btn fa-user"></i> Agregar 
+                </a>
+                <div ng-hide="(!cardiovasculares)">
+                     <table  ng-hide="(!cardiovasculares)" class="table">
+                         <thead>
+                            <tr>
+                              <th>
+                                Enfermedad
+                              </th>
+                              <th>
+                                Acciones
+                              </th>
+                            </tr>
+                          </thead>
+                           <tbody>
+                                <tr ng-repeat="(i,res) in cardiovasculares">
+                                  <td>
+                                    [[ res.enfermedad ]]
+                                  </td>
+                                  <td>
+                                    
+                                    <a class="btn btn-danger" ng-click="eliminarEnfermedadCardiovascular(res.id_enfermedad_cardiovascular)">Eliminar</a>
+                                  </td>
+
+                                </tr>
+                           </tbody>
+                    </table>
+                    
+                </div>
+
+
+        </div>
+
+        <div class="modal-footer">
+        <a class="btn btn-primary" ng-click="insertarEnfermedadRenal()">Insertar</a>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         
+        </div>
+
+      </div><!-- /.modal-content -->
+      {!! Form::close() !!}
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+<div id="myModalRenal"class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Insertar Enfermedad Renal</h4>
+        </div>
+        <div class="modal-body" style = "height: 530px;">
+          
+          <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Insertar</label>
+            <div class="col-sm-10">
+              <input style="margin-bottom: 15px;" type="text" ng-model="nombre_enfermedad_renal" class="form-control" id="name_edit" name="name_edit" placeholder="nombre de la enfermedad">
+            </div>
+          </div>
+                <div class="col-md-4">
+                    <select ng-model="enf_renal" class="form-control" name="tipo_enfermedad"  style="width: auto;" id="tipo_enfermedad"  >
+
+                       <option ng-repeat="(i,res) in renales" value="[[res.id_enfermedad_renal]]">[[res.enfermedad]]</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select ng-model="valor_renal" class="form-control" name="circulo_familiar"  style="width: auto;" id="circulo_familiar"  >
+                        <option ng-repeat="(i,res) in circulos" value="[[res.id_valor]]">[[res.valor]]</option>
+                    </select>
+                </div>
+
+                <a  name="button_agregar" id="button_agregar" ng-click="add_enfermerdad_renal({{$consulta}},{{$paciente->id_paciente}})" class="btn btn-primary">
+                    <i class="fa fa-btn fa-user"></i> Agregar 
+                </a>
+                <div ng-hide="(!renales)">
+                     <table  ng-hide="(!renales)" class="table">
+                         <thead>
+                            <tr>
+                              <th>
+                                Enfermedad
+                              </th>
+                              <th>
+                                Acciones
+                              </th>
+                            </tr>
+                          </thead>
+                           <tbody>
+                                <tr ng-repeat="(i,res) in renales">
+                                  <td>
+                                    [[ res.enfermedad ]]
+                                  </td>
+                                  <td>
+                                    
+                                    <a class="btn btn-danger" ng-click="eliminarEnfermedadRenal(res.id_enfermedad_renal)">Eliminar</a>
+                                  </td>
+
+                                </tr>
+                           </tbody>
+                    </table>
+                    
+                </div>
+
+
+        </div>
+
+        <div class="modal-footer">
+        <a class="btn btn-primary" ng-click="insertarEnfermedadRenal()">Insertar</a>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         
+        </div>
+
+      </div><!-- /.modal-content -->
+      {!! Form::close() !!}
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
     </div>
 </div>
 <!-- /.row -->
@@ -173,6 +370,7 @@
 <script src="{{ url('js/list.min.js')}}"></script>
 <script>
     $(document).ready(function() {
+        show_select();
         $("#fecha_consulta").datepicker({
             dateFormat: "yy-mm-dd",
             changeYear: true,
@@ -194,6 +392,21 @@
         newDate.setDate(newDate.getDate() + 1);
         $('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
     });
+    function show_select(){
+                    if($('#enfer_cardiov:checked').length){
+                       $('#tipo_enfermedad').css('display','inline');
+                        $('#circulo_familiar').css('display','inline');
+                        $('#button_agregar').css('display','inline');
+
+                    }else{
+                        $('#tipo_enfermedad').css('display','none');
+                        $('#circulo_familiar').css('display','none');
+                        $('#button_agregar').css('display','none');
+
+
+                    }
+                    
+                }
        function show(nro_historia, consulta) {
                 /*var x = document.getElementById("stauts");
                 setTimeout(function(){ x.value="2 seconds" }, 2000);*/
@@ -245,5 +458,16 @@
                 });
                 //end of ajax
             }
+function insertar_antecedente(){
+    $('#form_familiares').submit();    
+}
+
+function insertar_cardiovascular(){
+      $('#myModal').modal('show');
+}
+
+function insertar_renal(){
+      $('#myModalRenal').modal('show');
+}
 </script>
 @endsection

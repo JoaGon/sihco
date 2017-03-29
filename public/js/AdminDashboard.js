@@ -4,144 +4,248 @@ angular.module("AdminDashboard",[], function($interpolateProvider){
 })
 .controller("AdminController",function($scope,$http,$timeout){
 
-  $scope.date_order=new Date().toISOString().slice(0,10);
-  $scope.menu_nav = 1;
-  $scope.main_content = 1;
-  $scope.displayContent = function(menu,main_content){
-    $scope.menu_nav = menu;
-    $scope.main_content = main_content;
-  };
-  $scope.orders_status = "7";
-  $scope.orders = [];
-  $scope.display_order = 0;
-  $scope.display_order_products = false;
+  $scope.data = $.param({});
+  var url1 = "http://localhost:8088/sihco/public/cardiovasculares";
+  var url2 = "http://localhost:8088/sihco/public/circulos";
+  var url3 = "http://localhost:8088/sihco/public/renales";
 
+ 
   $http({
-    method: "GET",
-    url: "adm_orders",
+    method: "POST",
+    url: url1,
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
-    params: {status: $scope.orders_status,date_order:$scope.date_order}
   })
   .then(function successCallback(resp){
-    $scope.orders = resp.data;
-    //console.log("order_date is "+$scope.date_order);
-
+    $scope.cardiovasculares = resp.data;
+    console.log(resp.data);
   }, function errorCallback(response) {
+    console.log(response);
 
   });
 
-  /*  $http({
-  method: "GET",
-  url: "adm_orders"
-})
-.then(function successCallback(resp){
-$scope.orders = resp.data;
-
-console.log($scope.orders);
-}, function errorCallback(response) {
-console.log("error");
-});*/
-
-$scope.getOrdersByDate = function(date){
   $http({
     method: "GET",
-    url: "adm_orders",
+    url: url2,
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
-    params: {date: date}
   })
   .then(function successCallback(resp){
-    $scope.orders = resp.data;
+    $scope.circulos = resp.data;
+    $scope.circulos_renal = resp.data;
 
+    $scope.valor = $scope.circulos[1].id_valor;
 
   }, function errorCallback(response) {
-
+    console.log(response);
   });
-}
 
-$scope.getOrdersByStatus = function(){
   $http({
     method: "GET",
-    url: "adm_orders",
+    url: url3,
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
-    params: {status: $scope.orders_status,date_order:$scope.date_order}
   })
   .then(function successCallback(resp){
-    $scope.orders = resp.data;
+    $scope.renales = resp.data;
 
   }, function errorCallback(response) {
-
+    console.log(response);
   });
-}
 
-$scope.showOrderProducts = function(index,order){
-  $scope.indexProds = index;
-  $scope.display_order = order;
-  $scope.display_order_products = true;
-}
 
-$scope.approveOrder = function(index,order){
-  var config = {
+  
+$scope.add_enfermerdad = function(consulta,paciente){
+
+var enfer_id = $scope.enfer;
+var circ = $scope.valor;
+//console.log('locagio',window.location);
+
+var config = {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
     }
   }
-  $scope.data = $.param({order: order});
-  $http.post("approve_order",  $scope.data, config)
+$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id, circulo_id: circ});
+//$http.post("http://localhost:8088/sihco/public/enfermedad_cardiovascular",  $scope.data, config)
 
+var url = "http://localhost:8088/sihco/public/enfermedad_cardiovascular";
   $http({
     method: "POST",
-    url: "approve_order",
+    url: url,
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
-    params: {order: order}
+    params: {consulta: consulta, paciente: paciente, id_enfermedad: enfer_id, circulo_id: circ}
   })
   .then(function successCallback(resp){
-    $scope.orders[index].status = "Aprobado";
-
-    //console.log($scope.orders);
-
-  }, function errorCallback(response) {
-
-  });
-}
-
-$scope.cancelOrder = function(index,order){
-  $http({
-    method: "GET",
-    url: "cancel_order",
-    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
-    params: {order: order}
-  })
-  .then(function successCallback(resp){
-    $scope.orders[index].status = "Cancelado";
-
-  }, function errorCallback(response) {
-
-  });
-}
-
-$scope.setProdNotAvailable = function(index,product)
-{
-  console.log("product es ",product);
-  var config = {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-    }
-  }
-  $scope.data = $.param({order: $scope.display_order,product: product});
-  $http.post("prod_not_available",  $scope.data, config)
-  $http({
-    method: "POST",
-    url: "prod_not_available",
-    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
-    params: {order: $scope.display_order,product: product}
-
-  })
-  .then(function successCallback(resp){
-    $scope.orders[$scope.indexProds].products[index].status = "No Disponible";
-    console.log($scope.orders);
+    $scope.enfermedades = resp.data;
+    console.log(resp.data)
 
   }, function errorCallback(response) {
     console.log("error");
+
+  });
+}
+
+$scope.eliminarEnfermedad = function(i,id_enfermedad, consulta, paciente){
+  var url = "http://localhost:8088/sihco/public/eliminar/paciente/enfermedad_cardiovascular";
+
+  $http({
+    method: "POST",
+    url: url,
+    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
+    params: {consulta: consulta, paciente: paciente, id_paciente_enfer_cardiovascular: id_enfermedad}
+  })
+  .then(function successCallback(resp){
+    $scope.enfermedades = resp.data;
+    console.log(resp.data)
+
+  }, function errorCallback(response) {
+    console.log("error");
+
+  });
+}
+
+$scope.insertarEnfermedad = function(){
+
+  var url = "http://localhost:8088/sihco/public/insertar/enfermedad_cardiovascular";
+
+var config = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+    }
+  }
+$scope.data = $.param({enfermedad: enfermedad});
+
+  var enfermedad = $scope.nombre_enfermedad_renal;
+  $http({
+    method: "POST",
+    url: url,
+    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
+    params: {enfermedad: enfermedad}
+  })
+  .then(function successCallback(resp){
+    $scope.cardiovasculares = resp.data;
+    $scope.enfermedades_cardiovasculares = resp.data;
+
+    console.log(resp.data)
+
+  }, function errorCallback(response) {
+    console.log("error");
+
+  });
+}
+
+$scope.eliminarEnfermedadCardiovascular = function(id_enfermedad){
+    var url = "http://localhost:8088/sihco/public/eliminar/enfermedad_cardiovascular";
+
+  $http({
+    method: "POST",
+    url: url,
+    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
+    params: {id_enfermedad: id_enfermedad}
+  })
+  .then(function successCallback(resp){
+    $scope.enfer = resp.data;
+    $scope.cardiovasculares = resp.data;
+    console.log(resp.data)
+
+  }, function errorCallback(response) {
+    console.log("error");
+
+  });
+}
+
+$scope.add_enfermerdad_renal = function(consulta,paciente){
+
+var enfer_id = $scope.enf_renal;
+var circ = $scope.valor_renal;
+//console.log('locagio',window.location);
+
+var config = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+    }
+  }
+$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id, circulo_id: circ});
+//$http.post("http://localhost:8088/sihco/public/enfermedad_cardiovascular",  $scope.data, config)
+
+var url = "http://localhost:8088/sihco/public/enfermedad_renal";
+  $http({
+    method: "POST",
+    url: url,
+    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
+    params: {consulta: consulta, paciente: paciente, id_enfermedad: enfer_id, circulo_id: circ}
+  })
+  .then(function successCallback(resp){
+    $scope.enfer_renal = resp.data;
+    console.log(resp.data)
+
+  }, function errorCallback(response) {
+    console.log("error");
+
+  });
+}
+
+
+$scope.eliminarEnfermedadRenal = function(id_enfermedad){
+    var url = "http://localhost:8088/sihco/public/eliminar/enfermedad_renal";
+
+  $http({
+    method: "POST",
+    url: url,
+    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
+    params: {id_enfermedad: id_enfermedad}
+  })
+  .then(function successCallback(resp){
+    $scope.enfer_renal = resp.data;
+    $scope.renales = resp.data;
+    console.log(resp.data)
+
+  }, function errorCallback(response) {
+    console.log("error");
+
+  });
+}
+
+$scope.eliminarRenal= function(i,id_enfermedad, consulta, paciente){
+  var url = "http://localhost:8088/sihco/public/eliminar/paciente/enfermedad_renal";
+  console.log(id_enfermedad);
+  $http({
+    method: "POST",
+    url: url,
+    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
+    params: {consulta: consulta, paciente: paciente, id_paciente_enfer_renal: id_enfermedad}
+  })
+  .then(function successCallback(resp){
+    $scope.enfer_renal = resp.data;
+    console.log(resp.data)
+
+  }, function errorCallback(response) {
+    console.log("error");
+
+  });
+}
+
+$scope.insertarEnfermedadRenal = function(){
+  var enfermedad = $scope.nombre_enfermedad_renal;
+  var config = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+    }
+  }
+  $scope.data = $.param({enfermedad: enfermedad});
+  var url_ = "http://localhost:8088/sihco/public/insertar/enfermedad_renal";
+
+  $http({
+    method: "POST",
+    url: url_,
+    headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
+    params: {enfermedad: enfermedad}
+  })
+  .then(function successCallback(resp){
+    $scope.renales = resp.data;
+    console.log(resp.data)
+
+  }, function errorCallback(response) {
+    console.log("error");
+
   });
 }
 

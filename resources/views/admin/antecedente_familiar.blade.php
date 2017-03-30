@@ -1,4 +1,6 @@
-@extends('admin-layout.sidebarAdmin') @section('content')
+@extends('admin-layout.sidebarAdmin') 
+
+@section('content')
 
 <script type="text/javascript" src="{{ url('js/angular.min.js') }}"></script>
 <script type="text/javascript" src="{{ url('js/AdminDashboard.js') }}"></script>
@@ -275,7 +277,7 @@
         </div>
 
         <div class="modal-footer">
-        <a class="btn btn-primary" ng-click="insertarEnfermedadRenal()">Insertar</a>
+        <a class="btn btn-primary" ng-click="insertarEnfermedad()">Insertar</a>
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
          
         </div>

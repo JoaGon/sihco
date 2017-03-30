@@ -63,12 +63,12 @@ Route::post("eliminar/enfermedad_cardiovascular/",'HistoriaController@EliminarCa
 
 Route::post("cardiovasculares",'HistoriaController@cardiovasculares');
 Route::get("circulos",'HistoriaController@circulo');
+Route::post("eliminar/enfermedad_renal",'HistoriaController@Eliminar_enfermedad_renal');
 
 Route::get("renales",'HistoriaController@renales');
 Route::post("enfermedad_renal/",'HistoriaController@enfermedadRenal');
 Route::post("eliminar/paciente/enfermedad_renal/",'HistoriaController@EliminarEnfermedadRenal');
-Route::post("insertar/enfermedad_renal",'HistoriaController@InsertarEnfermedadRenal');
-Route::post("eliminar/enfermedad_cardiovascular/",'HistoriaController@EliminarCardiovascular');
+Route::get("insertar_renal",'HistoriaController@InsertarEnfermedadRenal');
 
 
 

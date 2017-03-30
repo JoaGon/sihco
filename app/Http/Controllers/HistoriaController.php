@@ -232,6 +232,7 @@ class HistoriaController extends Controller
     }
         public function InsertarEnfermedadCardiovascular(Request $req)
     
+    
     {   
        // dd($req);
         DB::table('enfermedades_cardiovasculares')
@@ -288,11 +289,10 @@ class HistoriaController extends Controller
 
 
     }
-       public function InsertarEnfermedadRenal(Request $req)
+    public function InsertarEnfermedadRenal(Request $req)
     
     {   
-       // dd($req);
-        DB::table('enfermedades_renales')
+      DB::table('enfermedades_renales')
         ->insert([
             'enfermedad'=>$req->input('enfermedad'),
             'ultimo_usuario'=> Auth::user()->id ]);
@@ -303,8 +303,19 @@ class HistoriaController extends Controller
                 //dd($enfer);
        return $enfer;
 
+    }
+    public function Eliminar_enfermedad_renal(Request $req)
+    {
+        DB::table('enfermedades_renales')
+        ->where('id_enfermedad_renal',$req->input('id_enfermedad'))
+        ->delete();
+         $enfer = DB::table('enfermedades_renales')
+                ->get();
+
+         return $enfer;
 
     }
+
         public function antecedentepersonalIndex($paciente_id,$consulta)
     {	
     	//$data = $req->all();

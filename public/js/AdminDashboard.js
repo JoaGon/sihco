@@ -9,7 +9,7 @@ angular.module("AdminDashboard",[], function($interpolateProvider){
   var url2 = "http://localhost:8088/sihco/public/circulos";
   var url3 = "http://localhost:8088/sihco/public/renales";
 
- 
+ /*Obtienes las enfermedades cardiovasculares registradas en BD*/
   $http({
     method: "POST",
     url: url1,
@@ -22,6 +22,7 @@ angular.module("AdminDashboard",[], function($interpolateProvider){
     console.log(response);
 
   });
+ /*Obtiene los valores de circulo familiar registradas en BD*/
 
   $http({
     method: "GET",
@@ -37,6 +38,7 @@ angular.module("AdminDashboard",[], function($interpolateProvider){
   }, function errorCallback(response) {
     console.log(response);
   });
+ /*Obtienes las enfermedades renales registradas en BD*/
 
   $http({
     method: "GET",
@@ -51,7 +53,7 @@ angular.module("AdminDashboard",[], function($interpolateProvider){
   });
 
 
-  
+  /*Inserta la enfermedad asociada al paciente y a la consulta*/
 $scope.add_enfermerdad = function(consulta,paciente){
 
 var enfer_id = $scope.enfer;
@@ -82,13 +84,14 @@ var url = "http://localhost:8088/sihco/public/enfermedad_cardiovascular";
 
   });
 }
+/*Elimina la enfermedad que esta asociada al paciente y a la consulta*/
 
 $scope.eliminarEnfermedad = function(i,id_enfermedad, consulta, paciente){
-  var url = "http://localhost:8088/sihco/public/eliminar/paciente/enfermedad_cardiovascular";
+  var url_card = "http://localhost:8088/sihco/public/eliminar/paciente/enfermedad_cardiovascular";
 
   $http({
     method: "POST",
-    url: url,
+    url: url_card,
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
     params: {consulta: consulta, paciente: paciente, id_paciente_enfer_cardiovascular: id_enfermedad}
   })
@@ -102,23 +105,24 @@ $scope.eliminarEnfermedad = function(i,id_enfermedad, consulta, paciente){
   });
 }
 
+/*Inserta una efermedad cardiovascular en BD*/
 $scope.insertarEnfermedad = function(){
 
-  var url = "http://localhost:8088/sihco/public/insertar/enfermedad_cardiovascular";
+  var url_inser = "http://localhost:8088/sihco/public/insertar/enfermedad_cardiovascular";
+  var enfermedad_cardio = $scope.nombre_enfermedad;
 
-var config = {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-    }
+  var config = {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+      }
   }
-$scope.data = $.param({enfermedad: enfermedad});
+$scope.data = $.param({enfermedad: enfermedad_cardio});
 
-  var enfermedad = $scope.nombre_enfermedad_renal;
   $http({
     method: "POST",
-    url: url,
+    url: url_inser,
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
-    params: {enfermedad: enfermedad}
+    params: {enfermedad: enfermedad_cardio}
   })
   .then(function successCallback(resp){
     $scope.cardiovasculares = resp.data;
@@ -185,16 +189,19 @@ var url = "http://localhost:8088/sihco/public/enfermedad_renal";
 
 
 $scope.eliminarEnfermedadRenal = function(id_enfermedad){
-    var url = "http://localhost:8088/sihco/public/eliminar/enfermedad_renal";
+
+    var url_del= "http://localhost:8088/sihco/public/eliminar/enfermedad_renal";
+
+console.log(id_enfermedad);
+$scope.data = $.param({id_enfermedad: id_enfermedad});
 
   $http({
     method: "POST",
-    url: url,
+    url: url_del,
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
     params: {id_enfermedad: id_enfermedad}
   })
   .then(function successCallback(resp){
-    $scope.enfer_renal = resp.data;
     $scope.renales = resp.data;
     console.log(resp.data)
 
@@ -207,6 +214,7 @@ $scope.eliminarEnfermedadRenal = function(id_enfermedad){
 $scope.eliminarRenal= function(i,id_enfermedad, consulta, paciente){
   var url = "http://localhost:8088/sihco/public/eliminar/paciente/enfermedad_renal";
   console.log(id_enfermedad);
+
   $http({
     method: "POST",
     url: url,
@@ -224,29 +232,35 @@ $scope.eliminarRenal= function(i,id_enfermedad, consulta, paciente){
 }
 
 $scope.insertarEnfermedadRenal = function(){
-  var enfermedad = $scope.nombre_enfermedad_renal;
+
+  var url_inser = "http://localhost:8088/sihco/public/insertar_renal";
+  var enfermedad_renal = $scope.nombre_enfermedad_renal;
+
   var config = {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-    }
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+      }
   }
-  $scope.data = $.param({enfermedad: enfermedad});
-  var url_ = "http://localhost:8088/sihco/public/insertar/enfermedad_renal";
+$scope.data = $.param({enfermedad: enfermedad_renal});
 
   $http({
-    method: "POST",
-    url: url_,
+    method: "GET",
+    url: url_inser,
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
-    params: {enfermedad: enfermedad}
+    params: {enfermedad: enfermedad_renal}
   })
   .then(function successCallback(resp){
-    $scope.renales = resp.data;
+      $scope.renales = resp.data;
+
+
     console.log(resp.data)
 
   }, function errorCallback(response) {
     console.log("error");
 
   });
+
+
 }
 
 

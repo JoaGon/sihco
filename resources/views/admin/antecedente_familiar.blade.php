@@ -150,9 +150,6 @@
                     </div>
                     <div class="row row_border">
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="enfer_renal" id="enfer_renal" value="S"> 2-Enfermedades Renales
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
                             <input type="checkbox" name="neuropsicopatia" id="neuropsicopatia" value="S"> 3-Neuropsicopatias
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
@@ -168,6 +165,178 @@
                             <input type="checkbox" name="fiebre_reumatica" id="fiebre_reumatica" value="S"> 7-Fiebre Reumatica
                         </div>
                     </div>
+
+                     <div class="row row_border ">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <input type="checkbox" name="" id="enfer_renal" onchange="insertar_alergica()" value="S"> 2-Enfermedades Alergicas
+                        </div>
+
+                        <div ng-hide="(!enfer_alergica)">
+                             <table  ng-hide="(!enfer_alergica)" class="table">
+                                 <thead>
+                                    <tr>
+                                      <th>
+                                        Enfermedad
+                                      </th>
+                                      <th>
+                                        Circulo
+                                      </th>
+                                      <th>
+                                        Acciones
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                   <tbody>
+                                        <tr ng-repeat="(i,res) in enfer_alergica">
+                                          <td>
+                                            [[ res.enfermedad ]]
+                                          </td>
+                                          <td>
+                                            [[ res.valor ]]
+                                          </td>
+                                          <td>
+                                            
+                                            <a class="btn btn-danger" ng-click="eliminarAlergica(i,res.id_paciente_enfer_renal, {{$consulta}},{{$paciente->id_paciente}})">Eliminar</a>
+                                          </td>
+
+                                        </tr>
+                                   </tbody>
+                            </table>
+                            
+                            </div>
+                        <div class="col-lg-6">
+                           
+                       </div>
+                    </div>
+                    <div class="row row_border ">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <input type="checkbox" name="" id="enfer_renal" onchange="insertar_infecciosa()" value="S"> 2-Enfermedades Infecciosas
+                        </div>
+
+                        <div ng-hide="(!enfer_alergica)">
+                             <table  ng-hide="(!enfer_alergica)" class="table">
+                                 <thead>
+                                    <tr>
+                                      <th>
+                                        Enfermedad
+                                      </th>
+                                      <th>
+                                        Circulo
+                                      </th>
+                                      <th>
+                                        Acciones
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                   <tbody>
+                                        <tr ng-repeat="(i,res) in enfer_alergica">
+                                          <td>
+                                            [[ res.enfermedad ]]
+                                          </td>
+                                          <td>
+                                            [[ res.valor ]]
+                                          </td>
+                                          <td>
+                                            
+                                            <a class="btn btn-danger" ng-click="eliminarAlergica(i,res.id_paciente_enfer_renal, {{$consulta}},{{$paciente->id_paciente}})">Eliminar</a>
+                                          </td>
+
+                                        </tr>
+                                   </tbody>
+                            </table>
+                            
+                            </div>
+                        <div class="col-lg-6">
+                           
+                       </div>
+                    </div>
+                    <div class="row row_border ">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <input type="checkbox" name="" id="enfer_renal" onchange="insertar_sexual()" value="S"> 2-Enfermedades de Transmicion sexual
+                        </div>
+
+                        <div ng-hide="(!enfer_alergica)">
+                             <table  ng-hide="(!enfer_alergica)" class="table">
+                                 <thead>
+                                    <tr>
+                                      <th>
+                                        Enfermedad
+                                      </th>
+                                      <th>
+                                        Circulo
+                                      </th>
+                                      <th>
+                                        Acciones
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                   <tbody>
+                                        <tr ng-repeat="(i,res) in enfer_alergica">
+                                          <td>
+                                            [[ res.enfermedad ]]
+                                          </td>
+                                          <td>
+                                            [[ res.valor ]]
+                                          </td>
+                                          <td>
+                                            
+                                            <a class="btn btn-danger" ng-click="eliminarAlergica(i,res.id_paciente_enfer_renal, {{$consulta}},{{$paciente->id_paciente}})">Eliminar</a>
+                                          </td>
+
+                                        </tr>
+                                   </tbody>
+                            </table>
+                            
+                            </div>
+                        <div class="col-lg-6">
+                           
+                       </div>
+                    </div>
+                    <div class="row row_border ">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <input type="checkbox" name="" id="enfer_renal" onchange="insertar_cancer()" value="S"> 2-Cancer
+                        </div>
+
+                        <div ng-hide="(!enfer_alergica)">
+                             <table  ng-hide="(!enfer_alergica)" class="table">
+                                 <thead>
+                                    <tr>
+                                      <th>
+                                        Enfermedad
+                                      </th>
+                                      <th>
+                                        Circulo
+                                      </th>
+                                      <th>
+                                        Acciones
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                   <tbody>
+                                        <tr ng-repeat="(i,res) in enfer_alergica">
+                                          <td>
+                                            [[ res.enfermedad ]]
+                                          </td>
+                                          <td>
+                                            [[ res.valor ]]
+                                          </td>
+                                          <td>
+                                            
+                                            <a class="btn btn-danger" ng-click="eliminarAlergica(i,res.id_paciente_enfer_renal, {{$consulta}},{{$paciente->id_paciente}})">Eliminar</a>
+                                          </td>
+
+                                        </tr>
+                                   </tbody>
+                            </table>
+                            
+                            </div>
+                        <div class="col-lg-6">
+                           
+                       </div>
+                    </div>
+
+
+
                     <div class="row row_border">
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <input type="checkbox" name="artritis_reumatoidea" id="artritis_reumatoidea" value="S"> 8- Artritis Reumatoidea
@@ -359,6 +528,296 @@
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 
+
+<div id="myModalAlergica"class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Insertar Enfermedad Alergica</h4>
+        </div>
+        <div class="modal-body" style = "height: 530px;">
+          
+          <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Insertar</label>
+            <div class="col-sm-10">
+              <input style="margin-bottom: 15px;" type="text" ng-model="nombre_enfermedad_renal" class="form-control" id="name_edit" name="name_edit" placeholder="nombre de la enfermedad">
+            </div>
+          </div>
+                <div class="col-md-4">
+                    <select ng-model="enf_renal" class="form-control" name="tipo_enfermedad"  style="width: auto;" id="tipo_enfermedad"  >
+
+                       <option ng-repeat="(i,res) in renales" value="[[res.id_enfermedad_renal]]">[[res.enfermedad]]</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select ng-model="valor_renal" class="form-control" name="circulo_familiar"  style="width: auto;" id="circulo_familiar"  >
+                        <option ng-repeat="(i,res) in circulos" value="[[res.id_valor]]">[[res.valor]]</option>
+                    </select>
+                </div>
+
+                <a  name="button_agregar" id="button_agregar" ng-click="add_enfermerdad_renal({{$consulta}},{{$paciente->id_paciente}})" class="btn btn-primary">
+                    <i class="fa fa-btn fa-user"></i> Agregar 
+                </a>
+                <div ng-hide="(!renales)">
+                     <table  ng-hide="(!renales)" class="table">
+                         <thead>
+                            <tr>
+                              <th>
+                                Enfermedad
+                              </th>
+                              <th>
+                                Acciones
+                              </th>
+                            </tr>
+                          </thead>
+                           <tbody>
+                                <tr ng-repeat="(i,res) in renales">
+                                  <td>
+                                    [[ res.enfermedad ]]
+                                  </td>
+                                  <td>
+                                    
+                                    <a class="btn btn-danger" ng-click="eliminarEnfermedadRenal(res.id_enfermedad_renal)">Eliminar</a>
+                                  </td>
+
+                                </tr>
+                           </tbody>
+                    </table>
+                    
+                </div>
+
+
+        </div>
+
+        <div class="modal-footer">
+        <a class="btn btn-primary" ng-click="insertarEnfermedadRenal()">Insertar</a>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         
+        </div>
+
+      </div><!-- /.modal-content -->
+      {!! Form::close() !!}
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+<div id="myModalInfecciosa"class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Insertar Enfermedad Infecciosa</h4>
+        </div>
+        <div class="modal-body" style = "height: 530px;">
+          
+          <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Insertar</label>
+            <div class="col-sm-10">
+              <input style="margin-bottom: 15px;" type="text" ng-model="nombre_enfermedad_renal" class="form-control" id="name_edit" name="name_edit" placeholder="nombre de la enfermedad">
+            </div>
+          </div>
+                <div class="col-md-4">
+                    <select ng-model="enf_renal" class="form-control" name="tipo_enfermedad"  style="width: auto;" id="tipo_enfermedad"  >
+
+                       <option ng-repeat="(i,res) in renales" value="[[res.id_enfermedad_renal]]">[[res.enfermedad]]</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select ng-model="valor_renal" class="form-control" name="circulo_familiar"  style="width: auto;" id="circulo_familiar"  >
+                        <option ng-repeat="(i,res) in circulos" value="[[res.id_valor]]">[[res.valor]]</option>
+                    </select>
+                </div>
+
+                <a  name="button_agregar" id="button_agregar" ng-click="add_enfermerdad_renal({{$consulta}},{{$paciente->id_paciente}})" class="btn btn-primary">
+                    <i class="fa fa-btn fa-user"></i> Agregar 
+                </a>
+                <div ng-hide="(!renales)">
+                     <table  ng-hide="(!renales)" class="table">
+                         <thead>
+                            <tr>
+                              <th>
+                                Enfermedad
+                              </th>
+                              <th>
+                                Acciones
+                              </th>
+                            </tr>
+                          </thead>
+                           <tbody>
+                                <tr ng-repeat="(i,res) in renales">
+                                  <td>
+                                    [[ res.enfermedad ]]
+                                  </td>
+                                  <td>
+                                    
+                                    <a class="btn btn-danger" ng-click="eliminarEnfermedadRenal(res.id_enfermedad_renal)">Eliminar</a>
+                                  </td>
+
+                                </tr>
+                           </tbody>
+                    </table>
+                    
+                </div>
+
+
+        </div>
+
+        <div class="modal-footer">
+        <a class="btn btn-primary" ng-click="insertarEnfermedadRenal()">Insertar</a>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         
+        </div>
+
+      </div><!-- /.modal-content -->
+      {!! Form::close() !!}
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+<div id="myModalCancer"class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Insertar Cancer</h4>
+        </div>
+        <div class="modal-body" style = "height: 530px;">
+          
+          <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Insertar</label>
+            <div class="col-sm-10">
+              <input style="margin-bottom: 15px;" type="text" ng-model="nombre_enfermedad_renal" class="form-control" id="name_edit" name="name_edit" placeholder="nombre de la enfermedad">
+            </div>
+          </div>
+                <div class="col-md-4">
+                    <select ng-model="enf_renal" class="form-control" name="tipo_enfermedad"  style="width: auto;" id="tipo_enfermedad"  >
+
+                       <option ng-repeat="(i,res) in renales" value="[[res.id_enfermedad_renal]]">[[res.enfermedad]]</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select ng-model="valor_renal" class="form-control" name="circulo_familiar"  style="width: auto;" id="circulo_familiar"  >
+                        <option ng-repeat="(i,res) in circulos" value="[[res.id_valor]]">[[res.valor]]</option>
+                    </select>
+                </div>
+
+                <a  name="button_agregar" id="button_agregar" ng-click="add_enfermerdad_renal({{$consulta}},{{$paciente->id_paciente}})" class="btn btn-primary">
+                    <i class="fa fa-btn fa-user"></i> Agregar 
+                </a>
+                <div ng-hide="(!renales)">
+                     <table  ng-hide="(!renales)" class="table">
+                         <thead>
+                            <tr>
+                              <th>
+                                Enfermedad
+                              </th>
+                              <th>
+                                Acciones
+                              </th>
+                            </tr>
+                          </thead>
+                           <tbody>
+                                <tr ng-repeat="(i,res) in renales">
+                                  <td>
+                                    [[ res.enfermedad ]]
+                                  </td>
+                                  <td>
+                                    
+                                    <a class="btn btn-danger" ng-click="eliminarEnfermedadRenal(res.id_enfermedad_renal)">Eliminar</a>
+                                  </td>
+
+                                </tr>
+                           </tbody>
+                    </table>
+                    
+                </div>
+
+
+        </div>
+
+        <div class="modal-footer">
+        <a class="btn btn-primary" ng-click="insertarEnfermedadRenal()">Insertar</a>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         
+        </div>
+
+      </div><!-- /.modal-content -->
+      {!! Form::close() !!}
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  <div id="myModalSexual"class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Insertar Enfermedad de Transmision Sexual</h4>
+        </div>
+        <div class="modal-body" style = "height: 530px;">
+          
+          <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Insertar</label>
+            <div class="col-sm-10">
+              <input style="margin-bottom: 15px;" type="text" ng-model="nombre_enfermedad_renal" class="form-control" id="name_edit" name="name_edit" placeholder="nombre de la enfermedad">
+            </div>
+          </div>
+                <div class="col-md-4">
+                    <select ng-model="enf_renal" class="form-control" name="tipo_enfermedad"  style="width: auto;" id="tipo_enfermedad"  >
+
+                       <option ng-repeat="(i,res) in renales" value="[[res.id_enfermedad_renal]]">[[res.enfermedad]]</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select ng-model="valor_renal" class="form-control" name="circulo_familiar"  style="width: auto;" id="circulo_familiar"  >
+                        <option ng-repeat="(i,res) in circulos" value="[[res.id_valor]]">[[res.valor]]</option>
+                    </select>
+                </div>
+
+                <a  name="button_agregar" id="button_agregar" ng-click="add_enfermerdad_renal({{$consulta}},{{$paciente->id_paciente}})" class="btn btn-primary">
+                    <i class="fa fa-btn fa-user"></i> Agregar 
+                </a>
+                <div ng-hide="(!renales)">
+                     <table  ng-hide="(!renales)" class="table">
+                         <thead>
+                            <tr>
+                              <th>
+                                Enfermedad
+                              </th>
+                              <th>
+                                Acciones
+                              </th>
+                            </tr>
+                          </thead>
+                           <tbody>
+                                <tr ng-repeat="(i,res) in renales">
+                                  <td>
+                                    [[ res.enfermedad ]]
+                                  </td>
+                                  <td>
+                                    
+                                    <a class="btn btn-danger" ng-click="eliminarEnfermedadRenal(res.id_enfermedad_renal)">Eliminar</a>
+                                  </td>
+
+                                </tr>
+                           </tbody>
+                    </table>
+                    
+                </div>
+
+
+        </div>
+
+        <div class="modal-footer">
+        <a class="btn btn-primary" ng-click="insertarEnfermedadRenal()">Insertar</a>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         
+        </div>
+
+      </div><!-- /.modal-content -->
+      {!! Form::close() !!}
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
     </div>
 </div>
 <!-- /.row -->
@@ -470,6 +929,18 @@ function insertar_cardiovascular(){
 
 function insertar_renal(){
       $('#myModalRenal').modal('show');
+}
+function insertar_alergica(){
+      $('#myModalAlergica').modal('show');
+}
+function insertar_infecciosa(){
+      $('#myModalInfecciosa').modal('show');
+}
+function insertar_sexual(){
+      $('#myModalSexual').modal('show');
+}
+function insertar_cancer(){
+      $('#myModalCancer').modal('show');
 }
 </script>
 @endsection

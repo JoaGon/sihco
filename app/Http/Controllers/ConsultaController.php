@@ -54,18 +54,15 @@ class ConsultaController extends Controller
                     ->pluck('consulta.id');
             //    dd($id);
                 
-                DB::table('consulta')->where('paciente_id',$req->input('paciente_id'))
-                            ->where('fecha_consulta',$req->input('fecha_consulta'))->delete();
-
-                 $consulta2 = DB::table('consulta')->insertGetId(
-                ['id'=>$id[0],
+                DB::table('consulta')  ->where('id',$id[0])
+                ->update(  ['id'=>$id[0],
                 'paciente_id'=>$req->input('paciente_id'),
                 'nro_historia'=>$req->input('historia'),
                 'motivo_consulta'=>$req->input('motivo'),
                 'enfermedad_actual'=>$req->input('enfermedad'),
                 'fecha_consulta'=>$req->input('fecha_consulta'),
-
                 ]);
+                $consulta2 = $id[0];
             }else{
 
                 $consulta2 = DB::table('consulta')->insertGetId(

@@ -71,6 +71,41 @@ Route::post("eliminar/paciente/enfermedad_renal/",'HistoriaController@EliminarEn
 Route::get("insertar_renal",'HistoriaController@InsertarEnfermedadRenal');
 
 
+Route::get("alergicas",'HistoriaController@alergicas');
+Route::post("insertar/enfermedad_alergica/",'HistoriaController@InsertarEnfermedadAlergica');
+Route::post("eliminar/enfermedad_alergica/",'HistoriaController@EliminarAlergica');
+Route::post("enfermedad_alergica/",'HistoriaController@enfermedadAlergica');
+Route::post("eliminar/paciente/enfermedad_alergica/",'HistoriaController@EliminarEnfermedadAlergica');
+
+
+Route::get("infecciosas",'HistoriaController@infecciosas');
+Route::post("insertar/enfermedad_infecciosa/",'HistoriaController@InsertarEnfermedadInfecciosa');
+Route::post("eliminar/enfermedad_infecciosa/",'HistoriaController@EliminarInfecciosa');
+Route::post("enfermedad_infecciosa/",'HistoriaController@enfermedadInfecciosa');
+Route::post("eliminar/paciente/enfermedad_infecciosa/",'HistoriaController@EliminarEnfermedadInfecciosa');
+
+
+Route::get("transmision_sexual",'HistoriaController@transmision_sexual');
+Route::post("insertar/enfermedad_transmision_sexual",'HistoriaController@InsertarEnfermedadTransmSexual');
+Route::post("eliminar/enfermedad_transmision_sexual/",'HistoriaController@EliminarTransmSexual');
+Route::post("enfermedad_transmision_sexual",'HistoriaController@enfermedadTransmSexual');
+Route::post("eliminar/paciente/enfermedad_transmision_sexual/",'HistoriaController@EliminarEnfermedadTransmSexual');
+
+Route::get("cancer",'HistoriaController@cancer');
+Route::post("insertar/enfermedad_cancer/",'HistoriaController@InsertarEnfermedadCancer');
+Route::post("eliminar/enfermedad_cancer/",'HistoriaController@EliminarCancer');
+Route::post("enfermedad_cancer/",'HistoriaController@enfermedadCancer');
+Route::post("eliminar/paciente/enfermedad_cancer/",'HistoriaController@EliminarEnfermedadCancer');
+
+
+
+
+
+
+
+
+
+
 
 
 

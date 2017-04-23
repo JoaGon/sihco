@@ -1,4 +1,4 @@
-angular.module("AdminDashboard",[], function($interpolateProvider){
+angular.module("AdminDashboard",['angularUtils.directives.dirPagination'], function($interpolateProvider){
   $interpolateProvider.startSymbol('[[');
   $interpolateProvider.endSymbol(']]');
 })
@@ -119,18 +119,18 @@ angular.module("AdminDashboard",[], function($interpolateProvider){
 
 
   /*Inserta la enfermedad cardiovascular asociada al paciente y a la consulta*/
-$scope.add_enfermerdad = function(consulta,paciente){
+$scope.add_enfermerdad = function(consulta,paciente, enfermedad, valor){
 
-var enfer_id = $scope.enfer;
-var circ = $scope.valor;
-//console.log('locagio',window.location);
+var enfer_id = enfermedad[0];
+var circ = valor;
+console.log('locagio',enfer_id[0], valor);
 
 var config = {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
     }
   }
-$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id, circulo_id: circ});
+$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ});
 //$http.post("http://localhost:8088/sihco/public/enfermedad_cardiovascular",  $scope.data, config)
 
 var url = "http://localhost:8088/sihco/public/enfermedad_cardiovascular";
@@ -218,10 +218,10 @@ $scope.eliminarEnfermedadCardiovascular = function(id_enfermedad){
   });
 }
 
-$scope.add_enfermerdad_renal = function(consulta,paciente){
+$scope.add_enfermerdad_renal = function(consulta,paciente, enfermedad, valor){
 
-var enfer_id = $scope.enf_renal;
-var circ = $scope.valor_renal;
+var enfer_id = enfermedad[0];
+var circ = valor;
 //console.log('locagio',window.location);
 
 var config = {
@@ -229,7 +229,7 @@ var config = {
       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
     }
   }
-$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id, circulo_id: circ});
+$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ});
 //$http.post("http://localhost:8088/sihco/public/enfermedad_cardiovascular",  $scope.data, config)
 
 var url = "http://localhost:8088/sihco/public/enfermedad_renal";
@@ -325,10 +325,10 @@ $scope.data = $.param({enfermedad: enfermedad_renal});
 /***************Alergicas****************/
 
  /*Inserta la enfermedad cardiovascular asociada al paciente y a la consulta*/
-$scope.add_enfermerdad_alergica = function(consulta,paciente){
+$scope.add_enfermerdad_alergica = function(consulta,paciente, enfermedad, valor){
 
-var enfer_id = $scope.enf_alergica;
-var circ = $scope.valor_alergica;
+var enfer_id = enfermedad[0];
+var circ = valor;
 //console.log('locagio',window.location);
   
 var config = {
@@ -336,7 +336,7 @@ var config = {
       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
     }
   }
-$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id, circulo_id: circ});
+$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ});
 //$http.post("http://localhost:8088/sihco/public/enfermedad_cardiovascular",  $scope.data, config)
 
 var url = "http://localhost:8088/sihco/public/enfermedad_alergica";
@@ -477,10 +477,10 @@ $scope.eliminarEnfermedadInfecciosa = function(id_enfermedad){
 }
 
 /*Inserta la enfermedad infecciosa asociada al paciente y a la consulta*/
-$scope.add_enfermerdad_infecciosa = function(consulta,paciente){
+$scope.add_enfermerdad_infecciosa = function(consulta,paciente, enfermedad, valor){
 
-var enfer_id = $scope.enf_infecciosa;
-var circ = $scope.valor_infecciosa;
+var enfer_id = enfermedad[0];
+var circ = valor;
 //console.log('locagio',window.location);
   
 var config = {
@@ -488,7 +488,7 @@ var config = {
       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
     }
   }
-$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id, circulo_id: circ});
+$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ});
 //$http.post("http://localhost:8088/sihco/public/enfermedad_cardiovascular",  $scope.data, config)
 
 var url = "http://localhost:8088/sihco/public/enfermedad_infecciosa";
@@ -579,10 +579,10 @@ $scope.eliminarEnfermedadTransmSexual = function(id_enfermedad){
 }
 
 /*Inserta la enfermedad sexual asociada al paciente y a la consulta*/
-$scope.add_enfermerdad_transm_sexual = function(consulta,paciente){
+$scope.add_enfermerdad_transm_sexual = function(consulta,paciente, enfermedad, valor){
 
-var enfer_id = $scope.enf_trans_sexual;
-var circ = $scope.valor_transm_sexual;
+var enfer_id = enfermedad[0];
+var circ = valor;
 //console.log('locagio',window.location);
   
 var config = {
@@ -590,7 +590,7 @@ var config = {
       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
     }
   }
-$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id, circulo_id: circ});
+$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ});
 //$http.post("http://localhost:8088/sihco/public/enfermedad_cardiovascular",  $scope.data, config)
 
 var url = "http://localhost:8088/sihco/public/enfermedad_transmision_sexual";
@@ -683,10 +683,10 @@ $scope.eliminarEnfermedadCancer = function(id_enfermedad){
 
 
 /*Inserta la enfermedad sexual asociada al paciente y a la consulta*/
-$scope.add_enfermerdad_cancer = function(consulta,paciente){
+$scope.add_enfermerdad_cancer = function(consulta,paciente, enfermedad, valor){
 
-var enfer_id = $scope.enf_cancer;
-var circ = $scope.valor_cancer;
+var enfer_id = enfermedad[0];
+var circ = valor;
 //console.log('locagio',window.location);
   
 var config = {
@@ -694,7 +694,7 @@ var config = {
       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
     }
   }
-$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id, circulo_id: circ});
+$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ});
 //$http.post("http://localhost:8088/sihco/public/enfermedad_cardiovascular",  $scope.data, config)
 
 var url = "http://localhost:8088/sihco/public/enfermedad_cancer";

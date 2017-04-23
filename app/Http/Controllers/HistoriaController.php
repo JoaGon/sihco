@@ -33,18 +33,11 @@ class HistoriaController extends Controller
     	$consulta = intval($req->input('consulta_id'));
         $consulta2 = DB::table('antecedentes_familiares')->insert(
         	['paciente_id'=>$req->input('paciente_id'),
-        	'enfer_cardiov'=>$req->input('enfer_cardiov'),
-        	'enfer_renal'=>$req->input('enfer_renal'),
         	'enfer_meta_endocrina'=>$req->input('enfer_meta_endocrina'),
         	'discrasia_sanguinea'=>$req->input('discrasia_sanguinea'),
-        	'enfer_alergica'=>$req->input('enfer_alergica'),
         	'artritis_reumatoidea'=>$req->input('artritis_reumatoidea'),
-        	'cancer'=>$req->input('cancer'),
-        	'enfer_infecciosas'=>$req->input('enfer_infecciosas'),
-        	'enfer_trans_sexual'=>$req->input('enfer_trans_sexual'),
         	'otro'=>$req->input('otro'),
         	'espec_otro'=>$req->input('espec_otro'),
-        	'espec_enfer_cardi'=>$req->input('espec_enfer_cardi'),
         	'validar'=>'',
         	'profesor'=>Auth::user()->id,
         	'ultimo_usuario'=>Auth::user()->id,
@@ -58,7 +51,7 @@ class HistoriaController extends Controller
         	//$consulta = DB::table('consulta')->where('nro_historia',$req->input('nro_historia'))->value('id');
           $paciente = Paciente::where('nro_historia', $req->input('historia'))->get();
 
-        return view('admin.antecedente_personal', ['consulta'=>$req->input('consulta_id'),'id_paciente'=>$req->input('id_paciente')], ['pacientes'=> $paciente]);
+        return view('admin.antecedente_familiar', ['consulta'=>$req->input('consulta_id'),'id_paciente'=>$req->input('id_paciente')], ['pacientes'=> $paciente]);
        
       // return redirect('/imagen/'.$consulta.'/'.$req->input('id_paciente'));
 
@@ -290,13 +283,11 @@ class HistoriaController extends Controller
     
     {   
        // dd($req);
-        DB::table('enfermedades_cardiovasculares')
-        ->insert([
+        Enfer_Cardiovascular::create([
             'enfermedad'=>$req->input('enfermedad'),
             'ultimo_usuario'=> Auth::user()->id ]);
 
-        $enfer = DB::table('enfermedades_cardiovasculares')
-                ->get();
+        $enfer = Enfer_Cardiovascular::all();
 
                 //dd($enfer);
        return $enfer;
@@ -347,15 +338,12 @@ class HistoriaController extends Controller
     public function InsertarEnfermedadRenal(Request $req)
     
     {   
-      DB::table('enfermedades_renales')
-        ->insert([
+      Enfer_Renal::create([
             'enfermedad'=>$req->input('enfermedad'),
             'ultimo_usuario'=> Auth::user()->id ]);
 
-        $enfer = DB::table('enfermedades_renales')
-                ->get();
+        $enfer = Enfer_Renal::all();
 
-                //dd($enfer);
        return $enfer;
 
     }
@@ -919,10 +907,21 @@ class HistoriaController extends Controller
     	//$data = $req->all();
     	$consulta = intval($consulta);
         
-        $paciente = Paciente::where('id_paciente', $paciente_id)->get();
-        $condicion = DB::table('condicion_sexual')->get();
+        $persona = DB::table('paciente')
+              ->where('id_paciente',$paciente_id)
+              ->pluck('paciente.persona_id');
+
+         $paciente = DB::table('persona')
+         ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+         ->where('persona.id_persona',$persona[0])
+         ->get();
 
        
+        $condicion = DB::table('listas')
+                        ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
+                        ->where('listas.lista', 'preferencia_sexual') 
+                        ->get();
+
         return view('admin.historia_odontologica', ['consulta'=>$consulta,'id_paciente'=>$paciente_id], ['pacientes'=> $paciente,'condiciones'=>$condicion]);
        
       // return redirect('/imagen/'.$consulta.'/'.$req->input('id_paciente'));

@@ -11,6 +11,11 @@ use App\Http\Controllers\Controller;
 
 use App\Paciente as Paciente;
 use App\ResumenMedica;
+use App\Enfermedades_renales as Enfer_Renal;
+use App\Enfermedades_cardiovasculares as Enfer_Cardiovascular;
+use App\Enfermedades_patologicas as Enfer_Patologica;
+use App\Lista as Lista;
+use App\Paciente_enfer_patologica as Paciente_Enfer_Patologica;
 use App\ResumenOdontologico;
 use App\DatosClinicos;
 use App\CondicionSexual;
@@ -28,18 +33,11 @@ class HistoriaController extends Controller
     	$consulta = intval($req->input('consulta_id'));
         $consulta2 = DB::table('antecedentes_familiares')->insert(
         	['paciente_id'=>$req->input('paciente_id'),
-        	'enfer_cardiov'=>$req->input('enfer_cardiov'),
-        	'enfer_renal'=>$req->input('enfer_renal'),
         	'enfer_meta_endocrina'=>$req->input('enfer_meta_endocrina'),
         	'discrasia_sanguinea'=>$req->input('discrasia_sanguinea'),
-        	'enfer_alergica'=>$req->input('enfer_alergica'),
         	'artritis_reumatoidea'=>$req->input('artritis_reumatoidea'),
-        	'cancer'=>$req->input('cancer'),
-        	'enfer_infecciosas'=>$req->input('enfer_infecciosas'),
-        	'enfer_trans_sexual'=>$req->input('enfer_trans_sexual'),
         	'otro'=>$req->input('otro'),
         	'espec_otro'=>$req->input('espec_otro'),
-        	'espec_enfer_cardi'=>$req->input('espec_enfer_cardi'),
         	'validar'=>'',
         	'profesor'=>Auth::user()->id,
         	'ultimo_usuario'=>Auth::user()->id,
@@ -53,7 +51,7 @@ class HistoriaController extends Controller
         	//$consulta = DB::table('consulta')->where('nro_historia',$req->input('nro_historia'))->value('id');
           $paciente = Paciente::where('nro_historia', $req->input('historia'))->get();
 
-        return view('admin.antecedente_personal', ['consulta'=>$req->input('consulta_id'),'id_paciente'=>$req->input('id_paciente')], ['pacientes'=> $paciente]);
+        return view('admin.antecedente_familiar', ['consulta'=>$req->input('consulta_id'),'id_paciente'=>$req->input('id_paciente')], ['pacientes'=> $paciente]);
        
       // return redirect('/imagen/'.$consulta.'/'.$req->input('id_paciente'));
 
@@ -115,19 +113,68 @@ class HistoriaController extends Controller
     public function cardiovasculares(){
 
 
-        $cardiovascular = DB::table('enfermedades_cardiovasculares')
-         ->get();
+        $cardiovascular = Enfer_Cardiovascular::all();
 
          return $cardiovascular;
     }
-      public function renales(){
+    public function renales(){
 
 
-        $renal = DB::table('enfermedades_renales')
-         ->get();
+       
+         $renal = Enfer_Renal::all();
 
          return $renal;
     }
+    public function alergicas(){
+
+
+       
+         $alergica = DB::table('enfermedades_patologicas')
+         ->join('valores_listas','enfermedades_patologicas.valor_id','=','valores_listas.id_valor')
+         ->where('valores_listas.codigo','alergicas')
+         ->get();
+
+
+         return $alergica;
+    }
+    public function transmision_sexual(){
+
+
+       
+         $transmision_sexual = DB::table('enfermedades_patologicas')
+         ->join('valores_listas','enfermedades_patologicas.valor_id','=','valores_listas.id_valor')
+         ->where('valores_listas.codigo','transmision_sexual')
+         ->get();
+
+
+         return $transmision_sexual;
+    }
+    public function infecciosas(){
+
+
+       
+         $infecciosas = DB::table('enfermedades_patologicas')
+         ->join('valores_listas','enfermedades_patologicas.valor_id','=','valores_listas.id_valor')
+         ->where('valores_listas.codigo','infecciosas')
+         ->get();
+
+
+         return $infecciosas;
+    }
+    public function cancer(){
+
+
+       
+         $cancer = DB::table('enfermedades_patologicas')
+         ->join('valores_listas','enfermedades_patologicas.valor_id','=','valores_listas.id_valor')
+         ->where('valores_listas.codigo','cancer')
+         ->get();
+
+
+         return $cancer;
+    }
+
+
 
     public function circulo(){
 
@@ -186,7 +233,8 @@ class HistoriaController extends Controller
                 'paciente_id'=> $req->input('paciente'),
                 'enfermedad_cardiovascular_id'=>$req->input('id_enfermedad'),
                 'circulo_hereditario'=>$req->input('circulo_id'),
-                'consulta_id'=>$req->input('consulta')]);
+                'consulta_id'=>$req->input('consulta'),
+                'ultimo_usuario'=>Auth::user()->id]);
 
        $enfer = DB::table('paciente_enfer_cardiovascular')
                 ->join('enfermedades_cardiovasculares','paciente_enfer_cardiovascular.enfermedad_cardiovascular_id','=','enfermedades_cardiovasculares.id_enfermedad_cardiovascular')
@@ -235,13 +283,11 @@ class HistoriaController extends Controller
     
     {   
        // dd($req);
-        DB::table('enfermedades_cardiovasculares')
-        ->insert([
+        Enfer_Cardiovascular::create([
             'enfermedad'=>$req->input('enfermedad'),
             'ultimo_usuario'=> Auth::user()->id ]);
 
-        $enfer = DB::table('enfermedades_cardiovasculares')
-                ->get();
+        $enfer = Enfer_Cardiovascular::all();
 
                 //dd($enfer);
        return $enfer;
@@ -292,15 +338,12 @@ class HistoriaController extends Controller
     public function InsertarEnfermedadRenal(Request $req)
     
     {   
-      DB::table('enfermedades_renales')
-        ->insert([
+      Enfer_Renal::create([
             'enfermedad'=>$req->input('enfermedad'),
             'ultimo_usuario'=> Auth::user()->id ]);
 
-        $enfer = DB::table('enfermedades_renales')
-                ->get();
+        $enfer = Enfer_Renal::all();
 
-                //dd($enfer);
        return $enfer;
 
     }
@@ -315,6 +358,393 @@ class HistoriaController extends Controller
          return $enfer;
 
     }
+/*******************ALergicas******************/
+
+   
+    public function InsertarEnfermedadAlergica(Request $req)
+    {   
+          $id_categorias = DB::table('listas')
+                        ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
+                        ->where('listas.lista', 'categorias_patologicas') 
+                        ->where('valores_listas.codigo', 'alergicas') 
+                        ->pluck('valores_listas.id_valor');
+                        //dd($id_categorias);
+
+        DB::table('enfermedades_patologicas')
+        ->insert([
+            'enfermedad'=>$req->input('enfermedad'),
+            'valor_id'=>$id_categorias[0],
+            'ultimo_usuario'=> Auth::user()->id ]);
+
+         $alergica = DB::table('enfermedades_patologicas')
+         ->join('valores_listas','enfermedades_patologicas.valor_id','=','valores_listas.id_valor')
+         ->where('valores_listas.codigo','alergicas')
+         ->get();
+
+
+         return $alergica;
+    }
+
+    public function EliminarAlergica(Request $req){
+
+        DB::table('enfermedades_patologicas')
+        ->where('id_enfermedad_patologica',$req->input('id_enfermedad'))
+        ->delete();
+
+          $alergica = DB::table('enfermedades_patologicas')
+         ->join('valores_listas','enfermedades_patologicas.valor_id','=','valores_listas.id_valor')
+         ->where('valores_listas.codigo','alergicas')
+         ->get();
+        return $alergica;
+    }
+
+    public function enfermedadAlergica(Request $req)
+    {   
+        DB::table('paciente_enfer_patologicas')
+              ->insert([
+                'paciente_id'=> $req->input('paciente'),
+                'enfermedad_patologica_id'=>$req->input('id_enfermedad'),
+                'circulo_familiar_id'=>$req->input('circulo_id'),
+                'consulta_id'=>$req->input('consulta'),
+                'ultimo_usuario'=>Auth::user()->id]);
+
+       $id_categorias = DB::table('listas')
+                ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
+                ->where('listas.lista', 'categorias_patologicas') 
+                ->where('valores_listas.codigo', 'alergicas') 
+                ->pluck('valores_listas.id_valor');
+
+        $enfer = DB::table('paciente_enfer_patologicas')
+                ->join('enfermedades_patologicas','paciente_enfer_patologicas.enfermedad_patologica_id','=','enfermedades_patologicas.id_enfermedad_patologica')
+                ->join('valores_listas','paciente_enfer_patologicas.circulo_familiar_id','=','valores_listas.id_valor')
+                ->where('paciente_id',$req->input('paciente'))
+                ->where('consulta_id',$req->input('consulta'))
+                ->where('enfermedades_patologicas.valor_id',$id_categorias[0])
+                ->get();
+
+       return $enfer;
+
+    }
+
+    public function EliminarEnfermedadAlergica(Request $req)
+    {   
+       // dd($req);
+        DB::table('paciente_enfer_patologicas')
+        ->where('id_paciente_enfer_patologica',$req->input('id_paciente_enfer'))
+        ->delete();
+
+         $id_categorias = DB::table('listas')
+                ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
+                ->where('listas.lista', 'categorias_patologicas') 
+                ->where('valores_listas.codigo', 'alergicas') 
+                ->pluck('valores_listas.id_valor');
+
+        $enfer = DB::table('paciente_enfer_patologicas')
+                ->join('enfermedades_patologicas','paciente_enfer_patologicas.enfermedad_patologica_id','=','enfermedades_patologicas.id_enfermedad_patologica')
+                ->join('valores_listas','paciente_enfer_patologicas.circulo_familiar_id','=','valores_listas.id_valor')
+                ->where('paciente_id',$req->input('paciente'))
+                ->where('consulta_id',$req->input('consulta'))
+                ->where('enfermedades_patologicas.valor_id',$id_categorias[0])
+                ->get();
+
+       return $enfer;
+
+    }
+
+    /***************************************************************/
+
+    /*******************Infecciosas******************/
+
+   
+    public function InsertarEnfermedadInfecciosa(Request $req)
+    {   
+          $id_categorias = DB::table('listas')
+                        ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
+                        ->where('listas.lista', 'categorias_patologicas') 
+                        ->where('valores_listas.codigo', 'infecciosas') 
+                        ->pluck('valores_listas.id_valor');
+                        //dd($id_categorias);
+
+        DB::table('enfermedades_patologicas')
+        ->insert([
+            'enfermedad'=>$req->input('enfermedad'),
+            'valor_id'=>$id_categorias[0],
+            'ultimo_usuario'=> Auth::user()->id ]);
+
+         $infecciosa = DB::table('enfermedades_patologicas')
+         ->join('valores_listas','enfermedades_patologicas.valor_id','=','valores_listas.id_valor')
+         ->where('valores_listas.codigo','infecciosas')
+         ->get();
+
+
+         return $infecciosa;
+    }
+
+    public function EliminarInfecciosa(Request $req){
+
+        DB::table('enfermedades_patologicas')
+        ->where('id_enfermedad_patologica',$req->input('id_enfermedad'))
+        ->delete();
+
+          $infecciosas = DB::table('enfermedades_patologicas')
+         ->join('valores_listas','enfermedades_patologicas.valor_id','=','valores_listas.id_valor')
+         ->where('valores_listas.codigo','infecciosas')
+         ->get();
+
+        return $infecciosas;
+    }
+
+     public function enfermedadInfecciosa(Request $req)
+    {   
+        DB::table('paciente_enfer_patologicas')
+              ->insert([
+                'paciente_id'=> $req->input('paciente'),
+                'enfermedad_patologica_id'=>$req->input('id_enfermedad'),
+                'circulo_familiar_id'=>$req->input('circulo_id'),
+                'consulta_id'=>$req->input('consulta'),
+                'ultimo_usuario'=>Auth::user()->id]);
+
+       $id_categorias = DB::table('listas')
+                ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
+                ->where('listas.lista', 'categorias_patologicas') 
+                ->where('valores_listas.codigo', 'infecciosas') 
+                ->pluck('valores_listas.id_valor');
+
+        $enfer = DB::table('paciente_enfer_patologicas')
+                ->join('enfermedades_patologicas','paciente_enfer_patologicas.enfermedad_patologica_id','=','enfermedades_patologicas.id_enfermedad_patologica')
+                ->join('valores_listas','paciente_enfer_patologicas.circulo_familiar_id','=','valores_listas.id_valor')
+                ->where('paciente_id',$req->input('paciente'))
+                ->where('consulta_id',$req->input('consulta'))
+                ->where('enfermedades_patologicas.valor_id',$id_categorias[0])
+                ->get();
+
+       return $enfer;
+
+    }
+
+    public function EliminarEnfermedadInfecciosa(Request $req)
+    {   
+       // dd($req);
+        DB::table('paciente_enfer_patologicas')
+        ->where('id_paciente_enfer_patologica',$req->input('id_paciente_enfer'))
+        ->delete();
+
+         $id_categorias = DB::table('listas')
+                ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
+                ->where('listas.lista', 'categorias_patologicas') 
+                ->where('valores_listas.codigo', 'infecciosas') 
+                ->pluck('valores_listas.id_valor');
+
+        $enfer = DB::table('paciente_enfer_patologicas')
+                ->join('enfermedades_patologicas','paciente_enfer_patologicas.enfermedad_patologica_id','=','enfermedades_patologicas.id_enfermedad_patologica')
+                ->join('valores_listas','paciente_enfer_patologicas.circulo_familiar_id','=','valores_listas.id_valor')
+                ->where('paciente_id',$req->input('paciente'))
+                ->where('consulta_id',$req->input('consulta'))
+                ->where('enfermedades_patologicas.valor_id',$id_categorias[0])
+                ->get();
+
+       return $enfer;
+
+    }
+
+
+
+    /***************************************************************/
+
+     /*******************Transmision Sexual******************/
+
+   
+    public function InsertarEnfermedadTransmSexual(Request $req)
+    {   
+          $id_categorias = DB::table('listas')
+                        ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
+                        ->where('listas.lista', 'categorias_patologicas') 
+                        ->where('valores_listas.codigo', 'transmision_sexual') 
+                        ->pluck('valores_listas.id_valor');
+                        //dd($id_categorias);
+
+        DB::table('enfermedades_patologicas')
+        ->insert([
+            'enfermedad'=>$req->input('enfermedad'),
+            'valor_id'=>$id_categorias[0],
+            'ultimo_usuario'=> Auth::user()->id ]);
+
+         $sexual = DB::table('enfermedades_patologicas')
+         ->join('valores_listas','enfermedades_patologicas.valor_id','=','valores_listas.id_valor')
+         ->where('valores_listas.codigo','transmision_sexual')
+         ->get();
+
+
+         return $sexual;
+    }
+
+    public function EliminarTransmSexual(Request $req){
+
+        DB::table('enfermedades_patologicas')
+        ->where('id_enfermedad_patologica',$req->input('id_enfermedad'))
+        ->delete();
+
+          $sexual = DB::table('enfermedades_patologicas')
+         ->join('valores_listas','enfermedades_patologicas.valor_id','=','valores_listas.id_valor')
+         ->where('valores_listas.codigo','transmision_sexual')
+         ->get();
+         
+        return $sexual;
+    }
+
+     public function enfermedadTransmSexual(Request $req)
+    {   
+        DB::table('paciente_enfer_patologicas')
+              ->insert([
+                'paciente_id'=> $req->input('paciente'),
+                'enfermedad_patologica_id'=>$req->input('id_enfermedad'),
+                'circulo_familiar_id'=>$req->input('circulo_id'),
+                'consulta_id'=>$req->input('consulta'),
+                'ultimo_usuario'=>Auth::user()->id]);
+
+       $id_categorias = DB::table('listas')
+                ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
+                ->where('listas.lista', 'categorias_patologicas') 
+                ->where('valores_listas.codigo', 'transmision_sexual') 
+                ->pluck('valores_listas.id_valor');
+
+        $enfer = DB::table('paciente_enfer_patologicas')
+                ->join('enfermedades_patologicas','paciente_enfer_patologicas.enfermedad_patologica_id','=','enfermedades_patologicas.id_enfermedad_patologica')
+                ->join('valores_listas','paciente_enfer_patologicas.circulo_familiar_id','=','valores_listas.id_valor')
+                ->where('paciente_id',$req->input('paciente'))
+                ->where('consulta_id',$req->input('consulta'))
+                ->where('enfermedades_patologicas.valor_id',$id_categorias[0])
+                ->get();
+
+       return $enfer;
+
+    }
+
+    public function EliminarEnfermedadTransmSexual(Request $req)
+    {   
+       // dd($req);
+        DB::table('paciente_enfer_patologicas')
+        ->where('id_paciente_enfer_patologica',$req->input('id_paciente_enfer'))
+        ->delete();
+
+         $id_categorias = DB::table('listas')
+                ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
+                ->where('listas.lista', 'categorias_patologicas') 
+                ->where('valores_listas.codigo', 'transmision_sexual') 
+                ->pluck('valores_listas.id_valor');
+
+        $enfer = DB::table('paciente_enfer_patologicas')
+                ->join('enfermedades_patologicas','paciente_enfer_patologicas.enfermedad_patologica_id','=','enfermedades_patologicas.id_enfermedad_patologica')
+                ->join('valores_listas','paciente_enfer_patologicas.circulo_familiar_id','=','valores_listas.id_valor')
+                ->where('paciente_id',$req->input('paciente'))
+                ->where('consulta_id',$req->input('consulta'))
+                ->where('enfermedades_patologicas.valor_id',$id_categorias[0])
+                ->get();
+
+       return $enfer;
+
+    }
+
+    /***************************************************************/
+
+
+     /*******************Cancer******************/
+
+   
+    public function InsertarEnfermedadCancer(Request $req)
+    {   
+          $id_categorias = DB::table('listas')
+                        ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
+                        ->where('listas.lista', 'categorias_patologicas') 
+                        ->where('valores_listas.codigo', 'cancer') 
+                        ->pluck('valores_listas.id_valor');
+                        //dd($id_categorias);
+
+        DB::table('enfermedades_patologicas')
+        ->insert([
+            'enfermedad'=>$req->input('enfermedad'),
+            'valor_id'=>$id_categorias[0],
+            'ultimo_usuario'=> Auth::user()->id ]);
+
+         $cancer = DB::table('enfermedades_patologicas')
+         ->join('valores_listas','enfermedades_patologicas.valor_id','=','valores_listas.id_valor')
+         ->where('valores_listas.codigo','cancer')
+         ->get();
+
+
+         return $cancer;
+    }
+
+    public function EliminarCancer(Request $req){
+
+        DB::table('enfermedades_patologicas')
+        ->where('id_enfermedad_patologica',$req->input('id_enfermedad'))
+        ->delete();
+
+          $cancer = DB::table('enfermedades_patologicas')
+         ->join('valores_listas','enfermedades_patologicas.valor_id','=','valores_listas.id_valor')
+         ->where('valores_listas.codigo','cancer')
+         ->get();
+         
+        return $cancer;
+    }
+
+      public function enfermedadCancer(Request $req)
+    {   
+        DB::table('paciente_enfer_patologicas')
+              ->insert([
+                'paciente_id'=> $req->input('paciente'),
+                'enfermedad_patologica_id'=>$req->input('id_enfermedad'),
+                'circulo_familiar_id'=>$req->input('circulo_id'),
+                'consulta_id'=>$req->input('consulta'),
+                'ultimo_usuario'=>Auth::user()->id]);
+
+       $id_categorias = DB::table('listas')
+                ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
+                ->where('listas.lista', 'categorias_patologicas') 
+                ->where('valores_listas.codigo', 'cancer') 
+                ->pluck('valores_listas.id_valor');
+
+        $enfer = DB::table('paciente_enfer_patologicas')
+                ->join('enfermedades_patologicas','paciente_enfer_patologicas.enfermedad_patologica_id','=','enfermedades_patologicas.id_enfermedad_patologica')
+                ->join('valores_listas','paciente_enfer_patologicas.circulo_familiar_id','=','valores_listas.id_valor')
+                ->where('paciente_id',$req->input('paciente'))
+                ->where('consulta_id',$req->input('consulta'))
+                ->where('enfermedades_patologicas.valor_id',$id_categorias[0])
+                ->get();
+
+       return $enfer;
+
+    }
+
+    public function EliminarEnfermedadCancer(Request $req)
+    {   
+       // dd($req);
+        DB::table('paciente_enfer_patologicas')
+        ->where('id_paciente_enfer_patologica',$req->input('id_paciente_enfer'))
+        ->delete();
+
+         $id_categorias = DB::table('listas')
+                ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
+                ->where('listas.lista', 'categorias_patologicas') 
+                ->where('valores_listas.codigo', 'cancer') 
+                ->pluck('valores_listas.id_valor');
+
+        $enfer = DB::table('paciente_enfer_patologicas')
+                ->join('enfermedades_patologicas','paciente_enfer_patologicas.enfermedad_patologica_id','=','enfermedades_patologicas.id_enfermedad_patologica')
+                ->join('valores_listas','paciente_enfer_patologicas.circulo_familiar_id','=','valores_listas.id_valor')
+                ->where('paciente_id',$req->input('paciente'))
+                ->where('consulta_id',$req->input('consulta'))
+                ->where('enfermedades_patologicas.valor_id',$id_categorias[0])
+                ->get();
+
+       return $enfer;
+
+    }
+
+
+
+    /***************************************************************/
 
         public function antecedentepersonalIndex($paciente_id,$consulta)
     {	
@@ -477,10 +907,21 @@ class HistoriaController extends Controller
     	//$data = $req->all();
     	$consulta = intval($consulta);
         
-        $paciente = Paciente::where('id_paciente', $paciente_id)->get();
-        $condicion = DB::table('condicion_sexual')->get();
+        $persona = DB::table('paciente')
+              ->where('id_paciente',$paciente_id)
+              ->pluck('paciente.persona_id');
+
+         $paciente = DB::table('persona')
+         ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+         ->where('persona.id_persona',$persona[0])
+         ->get();
 
        
+        $condicion = DB::table('listas')
+                        ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
+                        ->where('listas.lista', 'preferencia_sexual') 
+                        ->get();
+
         return view('admin.historia_odontologica', ['consulta'=>$consulta,'id_paciente'=>$paciente_id], ['pacientes'=> $paciente,'condiciones'=>$condicion]);
        
       // return redirect('/imagen/'.$consulta.'/'.$req->input('id_paciente'));

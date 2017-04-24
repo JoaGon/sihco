@@ -2,7 +2,14 @@
   display:inline-block;
   padding:5px;
 }
+.sort-icon {
+    font-size: 9px;
+    margin-left: 5px;
+}
 
+th {
+    cursor:pointer;
+}
 .sort {
   padding:8px 30px;
   border-radius: 6px;

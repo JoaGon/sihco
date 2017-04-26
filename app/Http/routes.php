@@ -98,19 +98,6 @@ Route::post("enfermedad_cancer/",'HistoriaController@enfermedadCancer');
 Route::post("eliminar/paciente/enfermedad_cancer/",'HistoriaController@EliminarEnfermedadCancer');
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 Route::get("antecedentepersonal/{paciente_id}/{consulta_id}",'HistoriaController@antecedentepersonalIndex');
 Route::post("antecedente_personal",'HistoriaController@antecedentepersonal');
 
@@ -131,6 +118,12 @@ Route::post("historiaodontologica/",'HistoriaController@historiaodontologica');
 
 
 Route::post("resumen_medico",'HistoriaController@resumenmedico');
+
+Route::get("examen_clinico/{paciente_id}/{consulta_id}",'Historia2Controller@examenClinicoIndex');
+Route::post("examen_clinico",'Historia2Controller@examenClinico');
+
+Route::get("evaluacion_periodontal/{paciente_id}/{consulta_id}",'Historia2Controller@evaluacionperiodontalIndex');
+Route::post("evaluacion_periodontal",'Historia2Controller@evaluacionperiodontal');
 
 
 //Route::post('/auth/register', 'RegistrarController@postRegister');

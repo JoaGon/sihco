@@ -32,8 +32,8 @@
                 </li>
                 <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>VIII al XIII<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-submenu"><a tabindex="0">VIII) Examen Clinico</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">IX) Evaluacion Periodontal</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('examen_clinico', array($paciente->id_paciente, $consulta)) }}" tabindex="0">VIII) Examen Clinico</a></li>
+                        <li class="dropdown-submenu"><a  href="{{ url('evaluacion_periodontal', array($paciente->id_paciente, $consulta)) }}" tabindex="0">IX) Evaluacion Periodontal</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">X) Odontodiagrama</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">XI) Control de Placa</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">XII) Imageneologia</a></li>
@@ -63,7 +63,6 @@
                 </li>
                 <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>Tratamiento<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-submenu"><a href="{{ url('consulta/'.$paciente->nro_historia) }}" tabindex="0">I y II)Motivo de la Consulta/ Enfer. Actual</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">Plan de Tratamiento</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">Reg. de Actividades Clinicas</a></li>
                     </ul>

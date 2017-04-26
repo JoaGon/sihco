@@ -1,8 +1,8 @@
 @extends('admin-layout.sidebarAdmin') @section('content') 
-<!-- DataTables CSS -->
-<link href="{{ url('template/vendor/datatables-plugins/dataTables.bootstrap.css')}}" rel="stylesheet">
-<!-- DataTables Responsive CSS -->
-<link href="{{ url('template/vendor/datatables-responsive/dataTables.responsive.css')}}" rel="stylesheet">
+
+<script type="text/javascript" src="{{ url('js/angular.min.js') }}"></script>
+<script type="text/javascript" src="{{ url('js/AdminPersonales.js') }}"></script>
+
 <!-- Custom CSS -->
 <link href="{{ url('template/dist/css/sb-admin-2.css')}} " rel="stylesheet">
 <link href="{{ url('css/styles.css')}} " rel="stylesheet">
@@ -10,8 +10,8 @@
 <link href="{{url ('template/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 <div class="container">
 	<!-- /.row -->
-	<div class="row">
-		<div class="col-lg-12 col-md-offset-1">
+	<div class="row" ng-app="AdminPersonales" ng-controller="AdminPersonalesController">
+		<div class="col-lg-10 col-sm-8 col-sm-offset-4 col-lg-offset-2 col-md-offset-1">
 			 @if(session('status'))
 			<div class="alert alert-success text-center notification">
 				<ul style="list-style:none;">
@@ -24,8 +24,11 @@
 				<div style="font-size: 20px; text-align: center; color:#59bddd;">
 					Antecedente Personal
 				</div>
-				<form class="form-horizontal" id="form_familiares" role="form" method="POST" action="{{ url('/antecedente_personal') }}">
-					 {{ csrf_field() }} <input type="hidden" name="consulta_id" value=<?php echo $consulta; ?> > <input type="hidden" name="paciente_id" value="{{$paciente->id_paciente}}"> <input type="hidden" name="historia" value="{{$paciente->nro_historia}}">
+				<form class="form-horizontal" id="form_familiares">
+                   
+                    {{ csrf_field() }} 
+
+					 <input type="hidden" name="consulta_id" value=<?php echo $consulta; ?> > <input type="hidden" name="paciente_id" value="{{$paciente->id_paciente}}"> <input type="hidden" name="historia" value="{{$paciente->nro_historia}}">
 					<div class="form-group">
 						<div class="col-md-4">
 							<label for="motivo">Nombre</label>
@@ -37,21 +40,99 @@
 						</div>
 						<div class="col-md-4">
 							<label for="motivo" class="">Fecha Consulta</label>
-							<input class="form-control" id="fecha_consulta" type="text" class="form-control" name="fecha_consulta" value="{{ old('fecha_consulta') }}">
+							<input class="form-control" id="fecha_consulta" type="text" class="form-control" data-validation="required" data-validation-error-msg="Debe ingrear una fecha"  class="form-control" name="fecha" value="{{ old('fecha_consulta') }}">
 						</div>
 					</div>
 					<div class="row row_border ">
-						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-							<input type="checkbox" name="enfer_cardiov" id="enfer_cardiov" value="S"> 1-Enfermedades Cardiovasculares
-						</div>
-						<div class="col-lg-12">
-							<textarea name="espec_enfer_cardio" id="espec_enfer_cardi" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
-						</div>
-					</div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <input type="checkbox" name="enfer_cardiov" id="enfer_cardiov"  onchange="insertar_cardiovascular();" value="S"> 1-Enfermedades Cardiovasculares
+                        </div>
+                        <a style="color: white; cursor: pointer; float: left;" ng-hide="(!enfermedades)" onclick="insertar_cardiovascular();"><i class="fa fa-btn fa-user-plus"></i></a>
+
+                       
+                        <div ng-hide="(!enfermedades)">
+                             <table  ng-hide="(!enfermedades)" class="table">
+                                 <thead>
+                                    <tr>
+                                      <th>
+                                        Enfermedad
+                                      </th>
+                                      <th>
+                                        Circulo
+                                      </th>
+                                      <th>
+                                        Acciones
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                   <tbody>
+                                        <tr ng-repeat="(i,res) in enfermedades">
+                                          <td>
+                                            [[ res.enfermedad ]]
+                                          </td>
+                                          <td>
+                                            [[ res.valor ]]
+                                          </td>
+                                          <td>
+                                            
+                                            <a class="btn btn-danger" ng-click="eliminarEnfermedad(i,res.id_paciente_enfer_cardiovascular, {{$consulta}},{{$paciente->id_paciente}})">Eliminar</a>
+                                          </td>
+
+                                        </tr>
+                                   </tbody>
+                            </table>
+                            
+                            </div>
+                        <div class="col-lg-6">
+                           
+                       </div>
+                    </div>
+                     <div class="row row_border ">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <input type="checkbox" name="enfer_renal" id="enfer_renal" onchange="insertar_renal()" value="S"> 2-Enfermedades Renales
+                        </div>
+                         <a style="color: white; cursor: pointer; float: left;" ng-hide="(!enfer_renal)" onclick="insertar_renal();"><i class="fa fa-btn fa-user-plus"></i></a>
+
+                        <div ng-hide="(!enfer_renal)">
+                             <table  ng-hide="(!enfer_renal)" class="table">
+                                 <thead>
+                                    <tr>
+                                      <th>
+                                        Enfermedad
+                                      </th>
+                                      <th>
+                                        Circulo
+                                      </th>
+                                      <th>
+                                        Acciones
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                   <tbody>
+                                        <tr ng-repeat="(i,res) in enfer_renal">
+                                          <td>
+                                            [[ res.enfermedad ]]
+                                          </td>
+                                          <td>
+                                            [[ res.valor ]]
+                                          </td>
+                                          <td>
+                                            
+                                            <a class="btn btn-danger" ng-click="eliminarRenal(i,res.id_paciente_enfer_renal, {{$consulta}},{{$paciente->id_paciente}})">Eliminar</a>
+                                          </td>
+
+                                        </tr>
+                                   </tbody>
+                            </table>
+                            
+                            </div>
+                        <div class="col-lg-6">
+                           
+                       </div>
+                    </div>
+					
 					<div class="row row_border">
-						<div class="col-lg-4 col-md-4 col-sm-4">
-							<input type="checkbox" name="enfer_renal" id="enfer_renal" value="S"> 2-Enfermedades Renales
-						</div>
+						
 						<div class="col-lg-4 col-md-4 col-sm-4">
 							<input type="checkbox" name="enfer_meta_endocrina" id="enfer_meta_endocrina" value="S"> 3-Enfer. Metabolicas y Endocrinas
 						</div>
@@ -64,23 +145,192 @@
 						<div class="col-lg-4 col-md-4 col-sm-4">
 							<input type="checkbox" name="artritis_reumatoidea" id="artritis_reumatoidea" value="S"> 6- Artritis Reumatoidea
 						</div>
-						<div class="col-lg-4 col-md-4 col-sm-4">
-							<input type="checkbox" name="enfer_alergica" id="enfer_alergica" value="S"> 7-Enfermedades Alergicas
-						</div>
+						
 					</div>
+					 <div class="row row_border ">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <input type="checkbox" name="" id="enfer_alergica" onchange="insertar_alergica()" value="S"> 7-Enfermedades Alergicas
+                        </div>
+                         <a style="color: white; cursor: pointer; float: left;" ng-hide="(!enfer_alergica)" onclick="insertar_alergica();"><i class="fa fa-btn fa-user-plus"></i></a>
+
+                        <div ng-hide="(!enfer_alergica)">
+                             <table  ng-hide="(!enfer_alergica)" class="table">
+                                 <thead>
+                                    <tr>
+                                      <th>
+                                        Enfermedad
+                                      </th>
+                                      <th>
+                                        Circulo
+                                      </th>
+                                      <th>
+                                        Acciones
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                   <tbody>
+                                        <tr ng-repeat="(i,res) in enfer_alergica">
+                                          <td>
+                                            [[ res.enfermedad ]]
+                                          </td>
+                                          <td>
+                                            [[ res.valor ]]
+                                          </td>
+                                          <td>
+                                            
+                                            <a class="btn btn-danger" ng-click="eliminarAlergica(i,res.id_paciente_enfer_patologica, {{$consulta}},{{$paciente->id_paciente}})">Eliminar</a>
+                                          </td>
+
+                                        </tr>
+                                   </tbody>
+                            </table>
+                            
+                            </div>
+                        <div class="col-lg-6">
+                           
+                       </div>
+                    </div>
+                    <div class="row row_border ">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <input type="checkbox" name="" id="enfer_cancer" onchange="insertar_cancer()" value="S"> 8-Cancer
+                        </div>
+                           <a style="color: white; cursor: pointer; float: left;" ng-hide="(!enfer_cancer)" onclick="insertar_cancer();"><i class="fa fa-btn fa-user-plus"></i></a>
+
+                        <div ng-hide="(!enfer_cancer)">
+                             <table  ng-hide="(!enfer_cancer)" class="table">
+                                 <thead>
+                                    <tr>
+                                      <th>
+                                        Enfermedad
+                                      </th>
+                                      <th>
+                                        Circulo
+                                      </th>
+                                      <th>
+                                        Acciones
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                   <tbody>
+                                        <tr ng-repeat="(i,res) in enfer_cancer">
+                                          <td>
+                                            [[ res.enfermedad ]]
+                                          </td>
+                                          <td>
+                                            [[ res.valor ]]
+                                          </td>
+                                          <td>
+                                            
+                                            <a class="btn btn-danger" ng-click="eliminarCancer(i,res.id_paciente_enfer_patologica, {{$consulta}},{{$paciente->id_paciente}})">Eliminar</a>
+                                          </td>
+
+                                        </tr>
+                                   </tbody>
+                            </table>
+                            
+                            </div>
+                        <div class="col-lg-6">
+                           
+                       </div>
+                    </div>
+
+                    <div class="row row_border ">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <input type="checkbox" name="" id="enfer_infecciosa" onchange="insertar_infecciosa()" value="S"> 9-Enfermedades Infecciosas
+                        </div>
+                        <a style="color: white; cursor: pointer; float: left;" ng-hide="(!enfer_infecciosa)" onclick="insertar_infecciosa();"><i class="fa fa-btn fa-user-plus"></i></a>
+
+
+
+                        <div ng-hide="(!enfer_infecciosa)">
+                             <table  ng-hide="(!enfer_infecciosa)" class="table">
+                                 <thead>
+                                    <tr>
+                                      <th>
+                                        Enfermedad
+                                      </th>
+                                      <th>
+                                        Circulo
+                                      </th>
+                                      <th>
+                                        Acciones
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                   <tbody>
+                                        <tr ng-repeat="(i,res) in enfer_infecciosa">
+                                          <td>
+                                            [[ res.enfermedad ]]
+                                          </td>
+                                          <td>
+                                            [[ res.valor ]]
+                                          </td>
+                                          <td>
+                                            
+                                            <a class="btn btn-danger" ng-click="eliminarInfecciosa(i,res.id_paciente_enfer_patologica, {{$consulta}},{{$paciente->id_paciente}})">Eliminar</a>
+                                          </td>
+
+                                        </tr>
+                                   </tbody>
+                            </table>
+                            
+                            </div>
+                        <div class="col-lg-6">
+                           
+                       </div>
+                    </div>
+                    <div class="row row_border ">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                            <input type="checkbox" name="" id="enfer_trasnm_sexual" onchange="insertar_sexual()" value="S"> 10-Enfermedades de Transmision sexual
+                        </div>
+                         <a style="color: white; cursor: pointer; float: left;" ng-hide="(!enfer_trans_sexual)" onclick="insertar_sexual();"><i class="fa fa-btn fa-user-plus"></i></a>
+
+
+                        <div ng-hide="(!enfer_trans_sexual)">
+                             <table  ng-hide="(!enfer_trans_sexual)" class="table">
+                                 <thead>
+                                    <tr>
+                                      <th>
+                                        Enfermedad
+                                      </th>
+                                      <th>
+                                        Circulo
+                                      </th>
+                                      <th>
+                                        Acciones
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                   <tbody>
+                                        <tr ng-repeat="(i,res) in enfer_trans_sexual">
+                                          <td>
+                                            [[ res.enfermedad ]]
+                                          </td>
+                                          <td>
+                                            [[ res.valor ]]
+                                          </td>
+                                          <td>
+                                            
+                                            <a class="btn btn-danger" ng-click="eliminarTransmSexual(i,res.id_paciente_enfer_patologica, {{$consulta}},{{$paciente->id_paciente}})">Eliminar</a>
+                                          </td>
+
+                                        </tr>
+                                   </tbody>
+                            </table>
+                            
+                            </div>
+                        <div class="col-lg-6">
+                           
+                       </div>
+                    </div>
+                   
+
+
 					<div class="row row_border">
 						<div class="col-lg-4 col-md-4 col-sm-4">
-							<input type="checkbox" name="adenopatia" id="adenopatia" value="S"> 8-Adenopatias
+							<input type="checkbox" name="adenopatia" id="adenopatia" value="S"> 11-Adenopatias
 						</div>
-						<div class="col-lg-4 col-md-4 col-sm-4">
-							<input type="checkbox" name="cancer" id="cancer" value="S"> 9- Cancer
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-4">
-							<input type="checkbox" name="enfer_infecciosa" id="enfer_infecciosa" value="S"> 10-Enfer. Infecciosas
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-4">
-							<input type="checkbox" name="enfer_transm_sexual" id="cardiopatias_congenitas" value="S"> 11-Enfer. De trans. Sexual
-						</div>
+						
 						<div class="col-lg-4 col-md-4 col-sm-4">
 							<input type="checkbox" name="cefalea" id="cefalea" value="S"> 12- Cefalea
 						</div>
@@ -110,7 +360,7 @@
 							<input type="checkbox" name="intervencion_quirurgica" id="intervencion_quirurgica" value="S"> 19- Intervenciones Quirurgicas
 						</div>
 						<div class="col-lg-12">
-							<textarea name="espec_interv_quirurgica" id="Especifique" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
+							<textarea name="espec_interv_quirurgica" id="Especifique" placeholder="Especifique" class="form-control" data-validation="required" data-validation-depends-on="intervencion_quirurgica" data-validation-error-msg="Debe especificar la intervencion quirurgica" style="height: 100px;"></textarea>
 						</div>
 					</div>
 					<div class="row row_border ">
@@ -118,7 +368,7 @@
 							<input type="checkbox" name="trauma_accidente" id="trauma_accidente" value="S"> 20- Traumas por Accidente
 						</div>
 						<div class="col-lg-12">
-							<textarea name="espec_trauma" id="espec_trauma" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
+							<textarea name="espec_trauma_accidente" id="espec_trauma_accidente" placeholder="Especifique" class="form-control" data-validation="required" data-validation-depends-on="trauma_accidente" data-validation-error-msg="Debe especificar el trauma por accidente" style="height: 100px;"></textarea>
 						</div>
 					</div>
 					<div class="row row_border ">
@@ -126,7 +376,7 @@
 							<input type="checkbox" name="fractura" id="fractura" value="S"> 21- Fracturas
 						</div>
 						<div class="col-lg-12">
-							<textarea name="espec_fractura" id="espec_fractura" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
+							<textarea name="espec_fractura" id="espec_fractura" placeholder="Especifique" class="form-control" data-validation="required" data-validation-depends-on="fractura" data-validation-error-msg="Debe especificar la fractura" style="height: 100px;"></textarea>
 						</div>
 					</div>
 					<div class="row row_border ">
@@ -134,34 +384,791 @@
 							<input type="checkbox" name="accidente_transito" id="accidente_transito" value="S"> 22- Accidentes de Transito
 						</div>
 						<div class="col-lg-12">
-							<textarea name="espec_accidente" id="espec_accidente" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
+							<textarea name="espec_accidente_transito" id="espec_accidente_transito" placeholder="Especifique" class="form-control" data-validation="required" data-validation-depends-on="accidente_transito" data-validation-error-msg="Debe especificar el accidente" style="height: 100px;"></textarea>
 						</div>
 					</div>
 					<div class="row row_border ">
 						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-							<input type="checkbox" name="cancer" id="cancer" value="S"> 23-Otro
+							<input type="checkbox" name="otro" id="otro" value="S"> 23-Otro
 						</div>
 						<div class="col-lg-12">
-							<textarea name="espec_otro" id="Especifique" placeholder="Otros" class="form-control" style="height: 100px;"></textarea>
+							<textarea name="espec_otro" id="espec_otro" placeholder="Especifique Otros" class="form-control" data-validation="required" data-validation-depends-on="otro" data-validation-error-msg="Debe especificar" style="height: 100px;"></textarea>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-6 col-md-offset-4">
-							<button type="submit" onclick="$('#form_familiares').submit();" class="btn btn-primary">
-							<i class="fa fa-btn fa-user"></i> Registrar </button>
-							<button type="submit" href="{{ url('antecedente_personal')}}" class="btn btn-primary">
-							<i class="fa fa-btn fa-user"></i> Siguiente </button>
-							  <a href="{{ URL::previous() }}" class="btn btn-primary">
-                            <i class="fa fa-btn fa-user"></i> Volver </a>
-							<!--button type="submit" onclick="motive_submit('{{$paciente->id_paciente}}', '{{$paciente->nro_historia}}')" class="btn btn-primary">
-                  Guardar
-                </button-->
-							<!--  <a class="btn btn-link" href="{{ url('/password/reset') }}" style="color:#3c763d">Olvido su contraseña?</a>-->
+
+							<button type="submit" onclick="insertar_personales();" class="btn btn-primary">Registrar
+							</button>
+						 	
+						 	<a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
+						
 						</div>
 						 @endforeach
 					</div>
 					<!-- /.col-lg-12 -->
 				</form>
+
+				<div id="myModal"class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Insertar Enfermedad Cardiovascular</h4>
+        </div>
+        <div class="modal-body" style = "height: 530px;">
+          
+                <div ng-hide="(!cardiovasculares)">
+                 <label>Buscar Enfermedad: <input ng-model="search"></label>
+                     <table  ng-hide="(!cardiovasculares)" class="table">
+                         <thead>
+                            <tr>
+                            <th>
+                                Seleccione
+                              </th>
+                              <th>
+                                Enfermedad
+                              </th>
+                              <th>
+                                Circulo Familiar
+                              </th>
+                               <th>
+                                Accion
+                              </th>
+                            </tr>
+                          </thead>
+                           <tbody>
+                                <tr ng-repeat="(x,res) in cardiovasculares  | filter:search">
+                                  <td>
+                                    <input type="radio"  id="[[x]]" name="table_records">
+                                  </td>
+                                  <td>
+                                    [[ res.enfermedad ]]
+                                  </td>
+                                  <td>
+                                    
+                                     <select ng-model="valor" id="[[x]]" class="form-control" name="circulo_familiar"  style="width: auto;" id="circulo_familiar"  >
+                                        <option ng-repeat="(i,resp) in circulos_renal" value="[[resp.id_valor]]">[[resp.valor]]</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                      <a  name="button_agregar" id="button_agregar" ng-click="add_enfermerdad({{$consulta}},{{$paciente->id_paciente}},[[ res.id_enfermedad_cardiovascular ]], valor )" class="btn btn-success btn-xs">Agregar 
+                                      </a>
+                                  </td>
+
+
+                                </tr>
+                           </tbody>
+                    </table>
+                    
+                </div>
+
+
+        </div>
+
+        <div class="modal-footer">
+        <a class="btn" data-toggle="modal" data-target="#myModalCardiovascular">Nueva Enfermedad</a>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         
+        </div>
+
+      </div><!-- /.modal-content -->
+      {!! Form::close() !!}
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+<div id="myModalCardiovascular"class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Insertar Enfermedad Cardiovascular</h4>
+        </div>
+        <div  class="modal-body" style = "height: 530px;">
+          
+          <div class="form-group">
+            <div class="col-sm-10">
+              <input style="margin-bottom: 15px;" type="text" ng-model="nombre_enfermedad" class="form-control" id="name_edit" name="name_edit" placeholder="Introduzca nombre de la enfermedad">
+            </div>
+            <a class="btn btn-primary" ng-click="insertarEnfermedad()">Insertar</a>
+          </div>
+              
+                <div ng-hide="(!cardiovasculares)">
+                <label>Buscar Enfermedad: <input ng-model="searchText"></label>
+                     <table  ng-hide="(!cardiovasculares)" class="table">
+                         <thead>
+                            <tr>
+                              <th>
+                                Enfermedad
+                              </th>
+                              <th>
+                                Acciones
+                              </th>
+                            </tr>
+                          </thead>
+                           <tbody>
+                                <tr dir-paginate="res in cardiovasculares | filter:searchText|itemsPerPage:5">
+                                  <td>
+                                    [[ res.enfermedad ]]
+                                  </td>
+                                  <td>
+                                    
+                                    <a class="btn btn-danger" ng-click="eliminarEnfermedadCardiovascular(res.id_enfermedad_cardiovascular)">Eliminar</a>
+                                  </td>
+
+                                </tr>
+                           </tbody>
+                    </table>
+                </div>
+                <div>
+                       <dir-pagination-controls
+                         max-size="5"
+                         direction-links="true"
+                         boundary-links="true" >
+                      </dir-pagination-controls>
+                </div>
+                  
+        </div>
+
+        <div class="modal-footer">
+        
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         
+        </div>
+
+      </div><!-- /.modal-content -->
+      {!! Form::close() !!}
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+<div id="myModalRenal"class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Insertar Enfermedad Renal</h4>
+        </div>
+        <div class="modal-body" style = "height: 530px;">
+          
+            
+               
+                <div ng-hide="(!renales)">
+                   <label>Buscar Enfermedad: <input ng-model="searchRenal"></label>
+                     <table  ng-hide="(!renales)" class="table">
+                         <thead>
+                            <tr>
+                             <th>
+                                Seleccione
+                              </th>
+                              <th>
+                                Enfermedad
+                              </th>
+                              <th>
+                                Circulo Familiar
+                              </th>
+                               <th>
+                                Accion
+                              </th>
+                            </tr>
+                          </thead>
+                           <tbody>
+                                <tr ng-repeat="(i,res) in renales | filter:searchRenal">
+                                  <td>
+                                    <input type="radio"  id="[[i]]" name="table_records_renal">
+                                  </td>
+
+                                  <td>
+                                    [[ res.enfermedad ]]
+                                  </td>
+                                  <td>
+                                     <select ng-model="valor_renal" class="form-control" name="circulo_familiar"  style="width: auto;" id="circulo_familiar"  >
+                                        <option ng-repeat="(i,res) in circulos" value="[[res.id_valor]]">[[res.valor]]</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                   <a  name="button_agregar" id="button_agregar" ng-click="add_enfermerdad_renal({{$consulta}},{{$paciente->id_paciente}},[[ res.id_enfermedad_renal ]], valor_renal )" class="btn btn-success btn-xs">Agregar</a>
+                                  </td>
+
+                                </tr>
+                           </tbody>
+                    </table>
+                    
+                </div>
+
+
+        </div>
+
+        <div class="modal-footer">
+        <a class="btn" data-toggle="modal" data-target="#myModalAddRenal">Nueva Enfermedad</a>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         
+        </div>
+
+      </div><!-- /.modal-content -->
+      {!! Form::close() !!}
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+<div id="myModalAddRenal"class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Insertar Enfermedad Renal</h4>
+        </div>
+        <div class="modal-body" style = "height: 530px;">
+          
+          <div class="form-group">
+            <div class="col-sm-10">
+              <input style="margin-bottom: 15px;" type="text" ng-model="nombre_enfermedad_renal" class="form-control" id="name_edit" name="name_edit" placeholder="Introduzaca nombre de la enfermedad">
+            </div>
+            <a class="btn btn-primary" ng-click="insertarEnfermedadRenal()">Insertar</a>
+
+          </div>
+                
+                <div ng-hide="(!renales)">
+                   <label>Buscar Enfermedad: <input ng-model="searchRenal_"></label>
+
+                     <table  ng-hide="(!renales)" class="table">
+                         <thead>
+                            <tr>
+                              <th>
+                                Enfermedad
+                              </th>
+                              <th>
+                                Acciones
+                              </th>
+                            </tr>
+                          </thead>
+                           <tbody>
+                                <tr ng-repeat="(i,res) in renales | filter:searchRenal_">
+                                  <td>
+                                    [[ res.enfermedad ]]
+                                  </td>
+                                  <td>
+                                    
+                                    <a class="btn btn-danger" ng-click="eliminarEnfermedadRenal(res.id_enfermedad_renal)">Eliminar</a>
+                                  </td>
+
+                                </tr>
+                           </tbody>
+                    </table>
+                    
+                </div>
+
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         
+        </div>
+
+      </div><!-- /.modal-content -->
+      {!! Form::close() !!}
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+<div id="myModalAlergica"class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Insertar Enfermedad Alergica</h4>
+        </div>
+        <div class="modal-body" style = "height: 530px;">
+          
+        
+                <div ng-hide="(!alergicas)">
+                     <table  ng-hide="(!alergicas)" class="table">
+                         <thead>
+                            <tr>
+                             <th>
+                                Seleccione
+                              </th>
+                              <th>
+                                Enfermedad
+                              </th>
+                              <th>
+                                Circulo Familiar
+                              </th>
+                               <th>
+                                Accion
+                              </th>
+                            </tr>
+                          </thead>
+                           <tbody>
+                                <tr ng-repeat="(i,res) in alergicas">
+                                <td>
+                                    <input type="radio"  id="[[i]]" name="table_records_alergicas">
+                                  </td>
+                                  <td>
+                                    [[ res.enfermedad ]]
+                                  </td>
+                                  <td>
+                                     <select ng-model="valor_alergica" class="form-control" name="circulo_familiar"  style="width: auto;" id="circulo_familiar"  >
+                                        <option ng-repeat="(i,res) in circulos" value="[[res.id_valor]]">[[res.valor]]</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                     <a  name="button_agregar" id="button_agregar" ng-click="add_enfermerdad_alergica({{$consulta}},{{$paciente->id_paciente}}, [[ res.id_enfermedad_patologica ]], valor_alergica )" class="btn btn-success btn-xs">Agregar</a>
+                                  </td>
+
+                                </tr>
+                           </tbody>
+                    </table>
+                    
+                </div>
+
+
+        </div>
+
+        <div class="modal-footer">
+        <a class="btn" data-toggle="modal" data-target="#myModalAddAlergica">Nueva Enfermedad</a>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         
+        </div>
+
+      </div><!-- /.modal-content -->
+      {!! Form::close() !!}
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  <div id="myModalAddAlergica"class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Insertar Enfermedad Alergica</h4>
+        </div>
+        <div class="modal-body">
+          
+          <div class="form-group">
+            <div class="col-sm-10">
+              <input style="margin-bottom: 15px;" type="text" ng-model="nombre_enfermedad_alergica" class="form-control" id="name_edit" name="name_edit" placeholder="Introduzca el nombre de la enfermedad">
+            </div>
+             <a class="btn btn-primary" ng-click="insertarEnfermedadAlergica()">Insertar</a>
+          </div>
+                
+                <div ng-hide="(!alergicas)">
+                     <table  ng-hide="(!alergicas)" class="table">
+                         <thead>
+                            <tr>
+                              <th>
+                                Enfermedad
+                              </th>
+                              <th>
+                                Acciones
+                              </th>
+                            </tr>
+                          </thead>
+                           <tbody>
+                                <tr ng-repeat="(i,res) in alergicas">
+                                  <td>
+                                    [[ res.enfermedad ]]
+                                  </td>
+                                  <td>
+                                    
+                                    <a class="btn btn-danger" ng-click="eliminarEnfermedadAlergica(res.id_enfermedad_patologica)">Eliminar</a>
+                                  </td>
+
+                                </tr>
+                           </tbody>
+                    </table>
+                    
+                </div>
+
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         
+        </div>
+
+      </div><!-- /.modal-content -->
+      {!! Form::close() !!}
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+<div id="myModalInfecciosa"class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Insertar Enfermedad Infecciosa</h4>
+        </div>
+        <div class="modal-body" style = "height: 530px;">
+          
+         
+               
+                <div ng-hide="(!infecciosas)">
+                     <table  ng-hide="(!infecciosas)" class="table">
+                         <thead>
+                            <tr>
+                               <th>
+                                Seleccione
+                              </th>
+                              <th>
+                                Enfermedad
+                              </th>
+                              <th>
+                                Circulo Familiar
+                              </th>
+                               <th>
+                                Accion
+                              </th>
+                            </tr>
+                          </thead>
+                           <tbody>
+                                <tr ng-repeat="(i,res) in infecciosas">
+                                <td>
+                                    <input type="radio"  id="[[i]]" name="table_records_infecciosa">
+                                  </td>
+                                  <td>
+                                    [[ res.enfermedad ]]
+                                  </td>
+                                  <td>
+                                    <select ng-model="valor_infecciosa" class="form-control" name="circulo_familiar"  style="width: auto;" id="circulo_familiar">
+                                      <option ng-repeat="(i,res) in circulos" value="[[res.id_valor]]">[[res.valor]]</option>
+                                  </select>
+                                  </td>
+                                  <td>
+                                    
+                                   <a  name="button_agregar" id="button_agregar" ng-click="add_enfermerdad_infecciosa({{$consulta}},{{$paciente->id_paciente}},[[ res.id_enfermedad_patologica ]], valor_infecciosa )" class="btn btn-success btn-xs"> Agregar</a>
+                                  </td>
+
+                                </tr>
+                           </tbody>
+                    </table>
+                    
+                </div>
+
+
+        </div>
+
+        <div class="modal-footer">
+        <a class="btn" data-toggle="modal" data-target="#myModalAddInfecciosa">Nueva Enfermedad</a>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         
+        </div>
+
+      </div><!-- /.modal-content -->
+      {!! Form::close() !!}
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+<div id="myModalAddInfecciosa"class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Insertar Enfermedad Infecciosa</h4>
+        </div>
+        <div class="modal-body" style = "height: 530px;">
+          
+          <div class="form-group">
+            <div class="col-sm-10">
+              <input style="margin-bottom: 15px;" type="text" ng-model="nombre_enfermedad_infecciosa" class="form-control" id="name_edit" name="name_edit" placeholder="nombre de la enfermedad">
+            </div>
+             <a class="btn btn-primary" ng-click="insertarEnfermedadInfecciosa()">Insertar</a>
+          </div>
+                
+                <div ng-hide="(!infecciosas)">
+                     <table  ng-hide="(!infecciosas)" class="table">
+                         <thead>
+                            <tr>
+                              <th>
+                                Enfermedad
+                              </th>
+                              <th>
+                                Acciones
+                              </th>
+                            </tr>
+                          </thead>
+                           <tbody>
+                                <tr ng-repeat="(i,res) in infecciosas">
+                                  <td>
+                                    [[ res.enfermedad ]]
+                                  </td>
+                                  <td>
+                                    
+                                    <a class="btn btn-danger" ng-click="eliminarEnfermedadInfecciosa(res.id_enfermedad_patologica)">Eliminar</a>
+                                  </td>
+
+                                </tr>
+                           </tbody>
+                    </table>
+                    
+                </div>
+
+
+        </div>
+
+        <div class="modal-footer">
+       
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         
+        </div>
+
+      </div><!-- /.modal-content -->
+      {!! Form::close() !!}
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+<div id="myModalCancer"class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Insertar Cancer</h4>
+        </div>
+        <div class="modal-body" style = "height: 530px;">
+          
+                <div ng-hide="(!cancer)">
+                     <table  ng-hide="(!cancer)" class="table">
+                         <thead>
+                            <tr>
+                             <th>
+                                Seleccione
+                              </th>
+                              <th>
+                                Enfermedad
+                              </th>
+                              <th>
+                                Circulo Familiar
+                              </th>
+                               <th>
+                                Accion
+                              </th>
+                            </tr>
+                          </thead>
+                           <tbody>
+                                <tr ng-repeat="(i,res) in cancer">
+                                <td>
+                                    <input type="radio"  id="[[i]]" name="table_records_cancer">
+                                  </td>
+                                  <td>
+                                    [[ res.enfermedad ]]
+                                  </td>
+                                  <td>
+                                     <select ng-model="valor_cancer" class="form-control" name="circulo_familiar"  style="width: auto;" id="circulo_familiar"  >
+                                        <option ng-repeat="(i,res) in circulos" value="[[res.id_valor]]">[[res.valor]]</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    
+                                   <a  name="button_agregar" id="button_agregar" ng-click="add_enfermerdad_cancer({{$consulta}},{{$paciente->id_paciente}}, [[ res.id_enfermedad_patologica ]], valor_cancer)" class="btn btn-success btn-xs">Agregar</a>
+                                  </td>
+
+                                </tr>
+                           </tbody>
+                    </table>
+                    
+                </div>
+
+
+        </div>
+
+        <div class="modal-footer">
+        <a class="btn" data-toggle="modal" data-target="#myModalAddCancer">Nueva Enfermedad</a>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         
+        </div>
+
+      </div><!-- /.modal-content -->
+      {!! Form::close() !!}
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+<div id="myModalAddCancer"class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Insertar Cancer</h4>
+        </div>
+        <div class="modal-body" style = "height: 530px;">
+          
+          <div class="form-group">
+            <div class="col-sm-10">
+              <input style="margin-bottom: 15px;" type="text" ng-model="nombre_enfermedad_cancer" class="form-control" id="name_edit" name="name_edit" placeholder="nombre de la enfermedad">
+            </div>
+            <a class="btn btn-primary" ng-click="insertarEnfermedadCancer()">Insertar</a>
+          </div>
+                
+                <div ng-hide="(!cancer)">
+                     <table  ng-hide="(!cancer)" class="table">
+                         <thead>
+                            <tr>
+                              <th>
+                                Enfermedad
+                              </th>
+                              <th>
+                                Acciones
+                              </th>
+                            </tr>
+                          </thead>
+                           <tbody>
+                                <tr ng-repeat="(i,res) in cancer">
+                                  <td>
+                                    [[ res.enfermedad ]]
+                                  </td>
+                                  <td>
+                                    
+                                    <a class="btn btn-danger" ng-click="eliminarEnfermedadCancer(res.id_enfermedad_patologica)">Eliminar</a>
+                                  </td>
+
+                                </tr>
+                           </tbody>
+                    </table>
+                    
+                </div>
+
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         
+        </div>
+
+      </div><!-- /.modal-content -->
+      {!! Form::close() !!}
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+
+  <div id="myModalSexual"class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Insertar Enfermedad de Transmision Sexual</h4>
+        </div>
+        <div class="modal-body" style = "height: 530px;">
+          
+        
+                <div ng-hide="(!transmision_sexual)">
+                     <table  ng-hide="(!transmision_sexual)" class="table">
+                         <thead>
+                            <tr>
+                             <th>
+                                Seleccione
+                              </th>
+                              <th>
+                                Enfermedad
+                              </th>
+                              <th>
+                                Circulo Familiar
+                              </th>
+                               <th>
+                                Accion
+                              </th>
+                            </tr>
+                          </thead>
+                           <tbody>
+                                <tr ng-repeat="(i,res) in transmision_sexual">
+                                 <td>
+                                    <input type="radio"  id="[[i]]" name="table_records_cancer">
+                                  </td>
+                                  <td>
+                                    [[ res.enfermedad ]]
+                                  </td>
+                                  <td>
+                                    <select ng-model="valor_transm_sexual" class="form-control" name="circulo_familiar"  style="width: auto;" id="circulo_familiar"  >
+                                        <option ng-repeat="(i,res) in circulos" value="[[res.id_valor]]">[[res.valor]]</option>
+                                    </select>
+                                  </td>
+                                  <td>
+                                    
+                                    <a  name="button_agregar" id="button_agregar" ng-click="add_enfermerdad_transm_sexual({{$consulta}},{{$paciente->id_paciente}},[[ res.id_enfermedad_patologica ]], valor_transm_sexual)" class="btn btn-success btn-xs">Agregar</a>
+                                  </td>
+
+                                </tr>
+                           </tbody>
+                    </table>
+                    
+                </div>
+
+
+        </div>
+
+        <div class="modal-footer">
+        <a class="btn" data-toggle="modal" data-target="#myModalAddSexual">Nueva Enfermedad</a>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         
+        </div>
+
+      </div><!-- /.modal-content -->
+      {!! Form::close() !!}
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+<div id="myModalAddSexual"class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Insertar Enfermedad de Transmision Sexual</h4>
+        </div>
+        <div class="modal-body" style = "height: 530px;">
+          
+          <div class="form-group">
+            <div class="col-sm-10">
+              <input style="margin-bottom: 15px;" type="text" ng-model="nombre_enfermedad_transmision_sexual" class="form-control" id="name_edit" name="name_edit" placeholder="nombre de la enfermedad">
+            </div>
+            <a class="btn btn-primary" ng-click="insertarEnfermedadTransmSexual()">Insertar</a>
+
+          </div>
+                
+                <div ng-hide="(!transmision_sexual)">
+                     <table  ng-hide="(!transmision_sexual)" class="table">
+                         <thead>
+                            <tr>
+                              <th>
+                                Enfermedad
+                              </th>
+                              <th>
+                                Acciones
+                              </th>
+                            </tr>
+                          </thead>
+                           <tbody>
+                                <tr ng-repeat="(i,res) in transmision_sexual">
+                                  <td>
+                                    [[ res.enfermedad ]]
+                                  </td>
+                                  <td>
+                                    
+                                    <a class="btn btn-danger" ng-click="eliminarEnfermedadTransmSexual(res.id_enfermedad_patologica)">Eliminar</a>
+                                  </td>
+
+                                </tr>
+                           </tbody>
+                    </table>
+                    
+                </div>
+
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         
+        </div>
+
+      </div><!-- /.modal-content -->
+      {!! Form::close() !!}
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+
 			</div>
 		</div>
 	</div>
@@ -170,10 +1177,6 @@
 <!--<script src="{{ url('bower_components/jquery/dist/jquery.min.js') }}"></script>-->
 <!-- jQuery -->
 <script src="{{url('bower_components/jquery/dist/jquery.min.js')}}"></script>
-<script src="{{ url('template/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
-<script src="{{ url('template/vendor/datatables-plugins/dataTables.bootstrap.min.js')}}"></script>
-<script src="{{ url('template/vendor/datatables-responsive/dataTables.responsive.js')}}"></script>
-<script src="{{url('template/vendor/datatables-plugins/dataTables.bootstrap.min.js')}}"></script>
 <script src="{{ url('js/list.min.js')}}"></script>
 <script>
 $(document).ready(function () {
@@ -181,17 +1184,96 @@ $(document).ready(function () {
   $(".notification").fadeTo(3000, 500).slideUp(500, function(){
       $(".notification").slideUp(500);
   });
-  var monkeyList = new List('pacientes', {
-    valueNames: ['name'],
-    page: 3,
-    pagination: true
+	  var monkeyList = new List('pacientes', {
+	    valueNames: ['name'],
+	    page: 3,
+	    pagination: true
+	  });
+
+	var monthNames = [ "January", "February", "March", "April", "May", "June",
+	    "July", "August", "September", "October", "November", "December" ];
+	var dayNames= ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+	var newDate = new Date();
+	newDate.setDate(newDate.getDate() + 1);    
+
+	$('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
+ 	});
+
+function insertar_personales(){
+
+    var myLanguage = {              
+            errorTitle: 'El formulario fallo en enviarse',
+            requiredFields: 'No se ha introducido datos',
+            badTime: 'No ha dado una hora correcta',
+            badEmail: 'No ha dado una direccion de email correcta',
+            badTelephone: 'No ha dado un numero de telefono correcto',
+          
+       }
+          
+    $.validate({
+    modules : 'logic',
+    language: myLanguage,
+    form : '#form_familiares',
+    onError : function($form) {
+     // alert('Validation of form '+$form.attr('id')+' failed!');
+    },
+    onSuccess : function($form) {
+      //alert('The form '+$form.attr('id')+' is valid!');
+      //return false; // Will stop the submission of the form
+      console.log($("#form_familiares")[0]);
+      var formData = new FormData($("#form_familiares")[0]);
+
+          $.ajax({
+            url: "{{ url('/antecedente_personal') }}",
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(){
+                //popover_show();
+                new PNotify({
+                      title: 'Registro Exitoso',
+                      text: 'Los Antecedentes Personales han sido almacenados!',
+                      type: 'success',
+                      styling: 'bootstrap3'
+                  });
+                console.log('exito')
+            },
+            error: function(e) {
+                console.log('Error!!!', e);
+            }
+          });
+          return false;
+          },
+    
+    onElementValidate : function(valid, $el, $form, errorMess) {
+      console.log('Input ' +$el.attr('name')+ ' is ' + ( valid ? 'VALID':'NOT VALID') );
+    }
   });
-var monthNames = [ "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December" ];
-var dayNames= ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
-var newDate = new Date();
-newDate.setDate(newDate.getDate() + 1);    
-$('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
- });
+  
+                    
+}
+
+function insertar_cardiovascular(){
+      $('#myModal').modal('show');
+}
+
+function insertar_renal(){
+      $('#myModalRenal').modal('show');
+}
+function insertar_alergica(){
+      $('#myModalAlergica').modal('show');
+}
+function insertar_infecciosa(){
+      $('#myModalInfecciosa').modal('show');
+}
+function insertar_sexual(){
+      $('#myModalSexual').modal('show');
+}
+function insertar_cancer(){
+      $('#myModalCancer').modal('show');
+}
 </script>
 @endsection

@@ -13,7 +13,10 @@
 <link href="{{ url('template/dist/css/sb-admin-2.css')}} " rel="stylesheet">
 <link href="{{ url('css/styles.css')}} " rel="stylesheet">
 <link href="{{ url('css/admin.css')}} " rel="stylesheet">
-<link href="{{url ('template/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+<link href="{{ url ('template/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+
+
+
 <div class="container">
 
     <!-- /.row -->
@@ -32,7 +35,7 @@
                 <div style="font-size: 20px; text-align: center; color:#59bddd;">
                     Antecedente Familiar
                 </div>
-                <form class="form-horizontal" id="form_familiares" role="form" enctype="multipart/form-data" method="POST" action="{{ url('/antecedente_familiar') }}">
+                <form class="form-horizontal" id="form_familiares">
                     {{ csrf_field() }} 
                     <input type="hidden"  name="consulta_id" value={{$consulta}}>
                     <input type="hidden"   name="paciente_id" value="{{$paciente->id_paciente}}"> 
@@ -48,7 +51,7 @@
                         </div>
                         <div class="col-md-4">
                             <label for="motivo" class="">Fecha Consulta</label>
-                            <input ng-model="fecha_" class="form-control" id="fecha_consulta" type="text" class="form-control" name="fecha_consulta" value="{{ old('fecha_consulta') }}">
+                            <input ng-model="fecha_" class="form-control" id="fecha_consulta" type="text" data-validation="required" data-validation-error-msg="Debe ingrear una fecha"  class="form-control" name="fecha" value="{{ old('fecha_consulta') }}">
                         </div>
                     </div>
                     <div class="row row_border ">
@@ -57,19 +60,7 @@
                         </div>
                         <a style="color: white; cursor: pointer; float: left;" ng-hide="(!enfermedades)" onclick="insertar_cardiovascular();"><i class="fa fa-btn fa-user-plus"></i></a>
 
-                        <div class="col-lg-6">
-                            <select ng-model="enfer" class="form-control" name="tipo_enfermedad"  style="width: auto;" id="tipo_enfermedad"  >
-
-                               <option ng-repeat="(i,res) in cardiovasculares" value="[[res.id_enfermedad_cardiovascular]]">[[res.enfermedad]]</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-6">
-                            <select ng-model="valor" class="form-control" name="circulo_familiar"  style="width: auto;" id="circulo_familiar"  >
-                                <option ng-repeat="(i,res) in circulos" value="[[res.id_valor]]">[[res.valor]]</option>
-                            </select>
-                        </div>
-                        <a  name="button_agregar" id="button_agregar" ng-click="add_enfermerdad({{$consulta}},{{$paciente->id_paciente}})" class="btn btn-primary">
-                        <i class="fa fa-btn fa-user"></i> Agregar </a>
+                       
                         <div ng-hide="(!enfermedades)">
                              <table  ng-hide="(!enfermedades)" class="table">
                                  <thead>
@@ -358,13 +349,14 @@
                             <input type="checkbox" name="otro" id="otro" value="S"> 12- Otro
                         </div>
                         <div class="col-lg-12">
-                            <textarea name="espec_otro" id="otros" placeholder="Otros" class="form-control" style="height: 100px;"></textarea>
+                            <textarea name="espec_otro" id="otros" placeholder="Otros" class="form-control" data-validation="required" data-validation-depends-on="otro" data-validation-error-msg="Debe especificar otra enfermedad" style="height: 100px;"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
-                            <button type="submit" onclick="insertar_antecedente()" class="btn btn-primary">
-							               <i class="fa fa-btn fa-user"></i> Registrar </button>
+    
+                            <button type="submit" onclick="insertar_familiares();" class="btn btn-primary">Registrar</button>
+
                             <button type="submit" href="{{ url('antecedente_personal')}}" class="btn btn-primary">
                             <i class="fa fa-btn fa-user"></i> Siguiente </button>
                               <a type="submit" href="{{ URL::previous() }}" class="btn btn-primary">
@@ -376,10 +368,11 @@
                     </div>
                     <!-- /.col-lg-12 -->
                 </form>
+
             </div>
 
         </div>
-
+        
 <div id="myModal"class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -1153,7 +1146,6 @@
 <script src="{{ url('js/list.min.js')}}"></script>
 <script src="{{ url('js/dirPagination.js')}}"></script>
 
-
 <script>
     $(document).ready(function() {
         show_select();
@@ -1178,72 +1170,79 @@
         newDate.setDate(newDate.getDate() + 1);
         $('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
     });
-    function show_select(){
-                    if($('#enfer_cardiov:checked').length){
-                       $('#tipo_enfermedad').css('display','inline');
-                        $('#circulo_familiar').css('display','inline');
-                        $('#button_agregar').css('display','inline');
+    
+function show_select(){
+      if($('#enfer_cardiov:checked').length){
+         $('#tipo_enfermedad').css('display','inline');
+          $('#circulo_familiar').css('display','inline');
+          $('#button_agregar').css('display','inline');
 
-                    }else{
-                        $('#tipo_enfermedad').css('display','none');
-                        $('#circulo_familiar').css('display','none');
-                        $('#button_agregar').css('display','none');
+      }else{
+          $('#tipo_enfermedad').css('display','none');
+          $('#circulo_familiar').css('display','none');
+          $('#button_agregar').css('display','none');
 
 
-                    }
-                    
-                }
-       function show(nro_historia, consulta) {
-                /*var x = document.getElementById("stauts");
-                setTimeout(function(){ x.value="2 seconds" }, 2000);*/
-                console.log('entro ' + nro_historia + consulta );
-                //var url = $('#try').attr("data-link");
-                //var _token = $(this).data("data-token");
-                 $('#enfermedad_modal').modal('show');
-                /*console.log(url);
-                $.ajax({
-                    url: url,
-                    type: "POST",
-                    data: {
-                        '_token': $('input[name=_token]').val(),
-                        id: val
-                    },
-                    success: function(data) {
-                       
-                       
-                        $('#edit_modal').modal('show');
-                    },
-                    error: function() {
-                        alert("error!!!!");
-                    }
-                });*/ //end of ajax
+      }
+      
+  }
+
+
+function insertar_familiares(){
+    var myLanguage = {              
+            errorTitle: 'El formulario fallo en enviarse',
+            requiredFields: 'No se ha introducido datos',
+            badTime: 'No ha dado una hora correcta',
+            badEmail: 'No ha dado una direccion de email correcta',
+            badTelephone: 'No ha dado un numero de telefono correcto',
+          
+       }
+          
+    $.validate({
+    modules : 'logic',
+    language: myLanguage,
+    form : '#form_familiares',
+    onError : function($form) {
+     // alert('Validation of form '+$form.attr('id')+' failed!');
+    },
+    onSuccess : function($form) {
+      //alert('The form '+$form.attr('id')+' is valid!');
+      //return false; // Will stop the submission of the form
+      console.log($("#form_familiares")[0]);
+      var formData = new FormData($("#form_familiares")[0]);
+
+          $.ajax({
+            url: "{{ url('/antecedente_familiar') }}",
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(){
+                //popover_show();
+                new PNotify({
+                      title: 'Registro Exitoso',
+                      text: 'Los Antecedentes Familiares han sido almacenados!',
+                      type: 'success',
+                      styling: 'bootstrap3'
+                  });
+                console.log('exito')
+            },
+            error: function(e) {
+                console.log('Error!!!', e);
             }
-             function guardar(nro_historia, consulta) {
-                /*var x = document.getElementById("stauts");
-                setTimeout(function(){ x.value="2 seconds" }, 2000);*/
-                console.log('entraa ' + nro_historia + consulta );
-                var url = $('#try').attr("data-link");
-                console.log('url',url);
-                //var _token = $(this).data("data-token");
-                 $('#enfermedad_modal').modal('show');
-                console.log(url);
-                $.ajax({
-                    url: url,
-                    type: "POST",
-                    data: {
-                        '_token': $('input[name=_token]').val(),
-                        id: nro_historia
-                    },
-                    success: function(data) {
+          });
+          return false;
+          },
+    
+    onElementValidate : function(valid, $el, $form, errorMess) {
+      console.log('Input ' +$el.attr('name')+ ' is ' + ( valid ? 'VALID':'NOT VALID') );
+    }
+  });
+  
                     
-                        $('#enfermedad_modal').modal('show');
-                    },
-                    error: function() {
-                        alert("error!!!!");
-                    }
-                });
-                //end of ajax
-            }
+}
 function insertar_antecedente(){
     $('#form_familiares').submit();    
 }

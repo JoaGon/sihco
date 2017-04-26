@@ -23,6 +23,9 @@
     <link href="{{ url('template/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 
     <link href="{{url('jquery-ui-1.12.1.custom/jquery-ui.css')}}" rel="stylesheet">
+    <link href="{{ url('js/pnotify/dist/pnotify.css')}}" rel="stylesheet">
+    <link href="{{ url('js/pnotify/dist/pnotify.buttons.css')}}" rel="stylesheet">
+    <link href="{{ url('js/pnotify/dist/pnotify.nonblock.css')}}" rel="stylesheet">
 
 </head>
 
@@ -32,7 +35,7 @@
 
         <!-- Navigation -->
         @if( Auth::user()->rol_id == 1 )
-        <nav class="navbar navbar-default navbar-static-top" id="barra" role="navigation" style="margin-bottom: 0; background: #da6a6a">
+        <nav class="navbar navbar-default navbar-static-top" id="barra" role="navigation" style="margin-bottom: 0; background: #68ada1">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -257,20 +260,19 @@
     @yield('content')
     <!-- jQuery -->
     <script src="{{ url('template/vendor/jquery/jquery.min.js') }}"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ url('template/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-
     <!-- Metis Menu Plugin JavaScript -->
     <script src="{{ url('template/vendor/metisMenu/metisMenu.min.js')}}"></script>
-
     <!-- Custom Theme JavaScript -->
     <script src="{{ url('template/dist/js/sb-admin-2.js')}}"></script>
-
     <script src="{{ url('template/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
-
     <script src="{{ url('js/form-validator/jquery.form-validator.min.js') }}"></script>
     <script src="{{url('jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
+    <script src="{{ url('js/pnotify/dist/pnotify.js')}}"></script>
+    <script src="{{ url('js/pnotify/dist/pnotify.buttons.js')}}"></script>
+    <script src="{{ url('js/pnotify/dist/pnotify.nonblock.js')}}"></script>
+    <script src="{{ url('js/form-validator/jquery.form-validator.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             $("#nacimiento_edit").datepicker({

@@ -11,7 +11,7 @@
 <div class="container">
 	<!-- /.row -->
 	<div class="row">
-		<div class="col-lg-12 col-md-offset-1">
+		<div class="col-lg-10 col-sm-8 col-sm-offset-4 col-lg-offset-2 col-md-offset-1">
 			 @if(session('status'))
 			<div class="alert alert-success text-center notification">
 				<ul style="list-style:none;">
@@ -24,7 +24,7 @@
 				<div style="font-size: 20px; text-align: center; color:#59bddd;">
 					Historia Odontologica
 				</div>
-				<form class="form-horizontal" id="form_familiares" role="form" method="POST" action="{{ url('/historiaodontologica') }}">
+				<form class="form-horizontal" id="form_familiares">
 					 {{ csrf_field() }} <input type="hidden" name="consulta_id" value=<?php echo $consulta; ?> > <input type="hidden" name="paciente_id" value="{{$paciente->id_paciente}}"> <input type="hidden" name="historia" value="{{$paciente->nro_historia}}">
 					<div class="form-group">
 						<div class="col-md-4">
@@ -37,7 +37,7 @@
 						</div>
 						<div class="col-md-4">
 							<label for="motivo" class="">Fecha Consulta</label>
-							<input class="form-control" id="fecha_consulta" type="text" class="form-control" name="fecha" value="{{ old('fecha_consulta') }}">
+							<input class="form-control" id="fecha_consulta" type="text" class="form-control" name="fecha" data-validation="required" data-validation-error-msg="Debe ingrear una fecha"  value="{{ old('fecha_consulta') }}">
 						</div>
 					</div>
 					<div class="row row_border ">
@@ -45,7 +45,7 @@
 							<input type="checkbox" name="tratamiento_odontologico" id="tratamiento_odontologico" value="S"> 1- ¿Esta recibiendo algun tratamiento medico u odontologico actualmente?
 						</div>
 						<div class="col-lg-12">
-							<textarea name="espec_tratamiento_odon" id="espec_tratamiento_odon" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
+							<textarea name="espec_tratamiento_odon" id="espec_tratamiento_odon" placeholder="Especifique" class="form-control" data-validation="required" data-validation-depends-on="tratamiento_odontologico" data-validation-error-msg="Debe especificar el tratamiento" style="height: 100px;"></textarea>
 						</div>
 					</div>
 					<div class="row row_border">
@@ -69,19 +69,19 @@
 						</div>
 					</div>
 					<div class="row row_border ">
-						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+						<div class="col-lg-12">
 							<input type="checkbox" name="control_dental_reg" id="control_dental_reg" value="S"> 8- Sigue usted controles dentales regulares?
 						</div>
 						<div class="col-lg-12">
-							<textarea name="espec_control_dental" id="espec_control_dental" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
+							<textarea name="espec_control_dental" id="espec_control_dental" placeholder="Especifique" class="form-control" data-validation="required" data-validation-depends-on="control_dental_reg" data-validation-error-msg="Debe especificar el control dental" style="height: 100px;"></textarea>
 						</div>
 					</div>
 					<div class="row row_border ">
-						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+						<div class="col-lg-12">
 							9- ¿Cuando fue su ultima visita al odontologo?
 						</div>
 						<div class="col-lg-12">
-							<textarea name="ultima_visita_odon" id="ultima_visita_odon" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
+							<textarea name="ultima_visita_odo" id="ultima_visita_odo" data-validation="required"  data-validation-error-msg="Debe especificar" placeholder="Especifique" class="form-control"  style="height: 100px;"></textarea>
 						</div>
 					</div>
 					<div class="row row_border">
@@ -89,9 +89,11 @@
 							<input type="checkbox" name="cepillo_dental" id="cepillo_dental" value="S"> 10- ¿Usa usted cepillo dental?
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4">
+							<input type="text" style="color: black" name="frecuencia_cepillado" id="frecuencia_cepillado" placeholder="¿Con que frecuencia?" data-validation="required" data-validation-depends-on="cepillo_dental" data-validation-error-msg="Debe indicar la frecuencia">  
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-4">
 							 11- ¿Que tipo de cepillo usa?
 							<select style="color: black" name="tipo_cepillo">
-								<option value="" selected>Selecione..</option>
 								<option value="Blando">Blando</option>
 								<option value="Mediano">Mediano</option>
 								<option value="Duro">Duro</option>
@@ -101,14 +103,14 @@
 							<input type="checkbox" name="hilo_dental" id="hilo_dental" value="S"> 12- ¿Usa hilo Dental?
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4">
-							<input type="text" name="frecuencia_hilo_dental" id="frecuencia_hilo_dental" value="S">  ¿Con que frecuencia?
+							<input type="text" style="color: black" name="frecuencia_hilo_dental" id="frecuencia_hilo_dental" placeholder=" ¿Con que frecuencia?" data-validation="required" data-validation-depends-on="hilo_dental" data-validation-error-msg="Debe indicar la frecuencia" > 
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4">
 							<input type="checkbox" name="otros_medios" id="otros_medios" value="S"> 13- ¿Utiliza usted otros medios para lograr su higiene bucal?
 						</div>
 						<div class="col-lg-12">
 							<label> ¿Cuales medios utiliza y con que frecuencia?</label>
-							<textarea name="cuales_medios" id="cuales_medios" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
+							<textarea name="cuales_medios" id="cuales_medios" data-validation="required" data-validation-depends-on="otros_medios" data-validation-error-msg="Debe indicar los medios y la frecuencia"  placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
 						</div>
 					</div>
 					<div class="row row_border ">
@@ -116,7 +118,7 @@
 							14- ¿Cual es su dieta normal?
 						</div>
 						<div class="col-lg-12">
-							<textarea name="dieta_habitual" id="dieta_habitual" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
+							<textarea name="dieta_habitual" id="dieta_habitual"  data-validation="required" data-validation-error-msg="Debe especificar su dieta"  placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
 						</div>
 					</div>
 					<div class="row row_border ">
@@ -124,7 +126,7 @@
 							<input type="checkbox" name="alimento_azucar" id="alimento_azucar" value="S">15- ¿Consume usted alimentos con azucar?
 						</div>
 						<div class="col-lg-12">
-							<textarea name="frecu_aliment_azucar" id="frecu_aliment_azucar" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
+							<textarea name="frecu_aliment_azucar" data-validation="required" data-validation-depends-on="alimento_azucar" data-validation-error-msg="Debe indicar los alimentos"  id="frecu_aliment_azucar" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
 						</div>
 					</div>
 					<div class="row row_border ">
@@ -132,7 +134,7 @@
 							<input type="checkbox" name="cirugia_cavidad" id="cirugia_cavidad" value="S">16- ¿Le han realizado cirugia en la cavidad bucal?
 						</div>
 						<div class="col-lg-12">
-							<textarea name="espec_cirugia" id="espec_cirugia" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
+							<textarea name="espec_cirugia" data-validation="required" data-validation-depends-on="cirugia_cavidad" data-validation-error-msg="Debe indicar la cirugia"  id="espec_cirugia" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
 						</div>
 					</div>
 					<div class="row row_border ">
@@ -140,7 +142,7 @@
 							<input type="checkbox" name="exodoncia" id="exodoncia" value="S">17- ¿Le han realizado exodoncias?
 						</div>
 						<div class="col-lg-12">
-							<textarea name="espec_exodoncia" id="espec_exodoncia" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
+							<textarea name="espec_exodoncia" id="espec_exodoncia" data-validation="required" data-validation-depends-on="exodoncia" data-validation-error-msg="Debe indicar la exodoncia"  placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
 						</div>
 					</div>
 					<div class="row row_border">
@@ -149,7 +151,7 @@
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4">
 							 Que tipo de complicacion?
-							<select style="color: black" name="tipo_complicacion">
+							<select style="color: black" data-validation="required" data-validation-depends-on="complic_pos_exo" data-validation-error-msg="Debe indicar el tipo de complicacion"  name="tipo_complicacion">
 								<option value="" selected>Selecione..</option>
 								<option value="Hemorragica">Hemorragica</option>
 								<option value="Infeccion">Infeccion</option>
@@ -163,7 +165,7 @@
 							<input type="checkbox" name="ortodoncia" id="ortodoncia" value="S"> 19- ¿Le han realizado tratamiento de Ortodoncia?
 						</div>
 						<div class="col-lg-12">
-							<textarea name="cuando_ortodoncia" id="cuando_ortodoncia" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
+							<textarea name="cuando_ortodoncia" id="cuando_ortodoncia" placeholder="Especifique" class="form-control" data-validation="required" data-validation-depends-on="ortodoncia" data-validation-error-msg="Debe indicar la ortodoncia"  style="height: 100px;"></textarea>
 						</div>
 					</div>
 					<div class="row row_border">
@@ -172,11 +174,11 @@
 						</div>
 						<div class="col-lg-12">
 							<label>Cuando?</label>
-							<textarea name="cuando_endodoncia" id="cuando_endodoncia" class="form-control"></textarea>
+							<textarea name="cuando_endodoncia"  data-validation="required" data-validation-depends-on="endodoncia" data-validation-error-msg="Debe indicar la fecha" id="cuando_endodoncia" class="form-control"></textarea>
 						</div>
 						<div class="col-lg-12">
 							<label>En cuales Dientes?</label>
-							<textarea name="cuales_dientes_endodoncia" id="cuales_dientes_endodoncia" placeholder="Otros" class="form-control" style="height:80px;"></textarea>
+							<textarea name="cuales_dientes_endodoncia" id="cuales_dientes_endodoncia" placeholder="Otros" class="form-control"  data-validation="required" data-validation-depends-on="endodoncia" data-validation-error-msg="Debe indicar cuales dientes" style="height:80px;"></textarea>
 						</div>
 					</div>
 					<div class="row row_border ">
@@ -185,21 +187,21 @@
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4">
 							 Que tipo de tratamiento?
-							<select style="color: black" name="tipo_tratamiento">
+							<select style="color: black" name="tipo_tratamiento"  data-validation="required" data-validation-depends-on="periodoncia" data-validation-error-msg="Debe indicar que tipo">
 								<option value="" selected>Selecione..</option>
 								<option value="Cirugia">Cirugia</option>
 								<option value="Otros">Otros</option>
 							</select>
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4">
-							 Fecha del ultimo tratamiento <input type="text" name="fecha_tratamiento" id="fecha_tratamiento" value="S">
+							 Fecha del ultimo tratamiento <input type="text" style="color: black" name="fecha_tratamiento" id="fecha_tratamiento">
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4">
 							<input type="checkbox" name="protesis_dental" id="protesis_dental" value="S"> 22- ¿Usa o ha usado protesis dental?
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4">
 							 Que tipo de protesis?
-							<select style="color: black" name="tipo_protesis">
+							<select style="color: black" name="tipo_protesis"  data-validation="required" data-validation-depends-on="protesis_dental" data-validation-error-msg="Debe indicar que tipo">
 								<option value="" selected>Selecione..</option>
 								<option value="Total">Total</option>
 								<option value="Removible">Removible</option>
@@ -230,7 +232,7 @@
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4">
 							 26- Si mastica de un solo lado, la razon se debe a:
-							<select style="color: black" name="razon_matica">
+							<select style="color: black" name="razon_mastica"  data-validation="required" data-validation-depends-on="mastica_solo_lado" data-validation-error-msg="Debe indicar la razon">
 								<option value="" selected>Selecione..</option>
 								<option value="Sensibilidad Dental">Sensibilidad dental</option>
 								<option value="Dolot ATM derecha">Dolor ATM derecha</option>
@@ -253,7 +255,7 @@
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4">
 							<input type="checkbox" name="articulacion_temporomandibular" id="articulacion_temporomandibular" value="S"> 29- ¿Siente usted sonidos en una o ambas articulaciones temporomandibulares? ¿Cuando?
-							<select style="color: black" name="cuando_articulacion">
+							<select style="color: black" name="cuando_articulacion" data-validation="required" data-validation-depends-on="articulacion_temporomandibular" data-validation-error-msg="Debe especificar">
 								<option value="" selected>Selecione..</option>
 								<option value="Abrir boca">Al abrir la boca</option>
 								<option value="Cerrar Boca">Al cerrar la boca</option>
@@ -268,11 +270,11 @@
 							<input type="checkbox" name="dolor_cabeza" id="dolor_cabeza" value="S">30- ¿Sufre usted de dolores de cabeza?
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-							<input type="text" name="frecuencia_dolor_cabeza" id="frecuencia_dolor_cabeza" value="S"> ¿Frecuencias?
+							<input type="text" name="frecuencia_dolor_cabeza" style="color: black" placeholder="¿Con que Frecuencias?" id="frecuencia_dolor_cabeza" data-validation="required" data-validation-depends-on="dolor_cabeza" data-validation-error-msg="Debe indicar la frecuencia" > 
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4">
 							 Especifique ciclo de dolor:
-							<select style="color: black" name="ciclo_dolor_cabeza">
+							<select style="color: black" name="ciclo_dolor_cabeza" data-validation="required" data-validation-depends-on="dolor_cabeza" data-validation-error-msg="Debe indicar el ciclo de dolor">
 								<option value="" selected>Selecione..</option>
 								<option value="Persistente">Persistente</option>
 								<option value="Recurrente">Recurrente</option>
@@ -314,7 +316,6 @@
 						<div class="col-lg-4 col-md-4 col-sm-4">
 							 35- Preferencias Sexuales
 							 	<select style="color: black" name="condicion_sexual_id">
-									<option value="" selected>Selecione..</option>
 							  		@foreach ($condiciones as $cond)
                                       <option value="{{$cond->id_valor}}">
                                           {{$cond->valor}}
@@ -325,14 +326,11 @@
 					</div>
 					<div class="form-group">
 						<div class="col-md-6 col-md-offset-4">
-							<button type="button" onclick="insertar_odontologica()" class="btn btn-primary">
-							<i class="fa fa-btn fa-user"></i> Registrar </button>
-							<button type="submit" href="{{ url('antecedente_personal')}}" class="btn btn-primary">
-							<i class="fa fa-btn fa-user"></i> Siguiente </button>
-							<!--button type="submit" onclick="motive_submit('{{$paciente->id_paciente}}', '{{$paciente->nro_historia}}')" class="btn btn-primary">
-                  Guardar
-                </button-->
-							<!--  <a class="btn btn-link" href="{{ url('/password/reset') }}" style="color:#3c763d">Olvido su contraseña?</a>-->
+							<button type="submit" onclick="insertar_odontologica();" class="btn btn-primary">Registrar
+							</button>
+
+						 	<a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
+							
 						</div>
 						 @endforeach
 					</div>
@@ -354,14 +352,12 @@
 <script>
 $(document).ready(function () {
   $("#fecha_consulta").datepicker({dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true});
+  $("#fecha_tratamiento").datepicker({dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true});
+
   $(".notification").fadeTo(3000, 500).slideUp(500, function(){
       $(".notification").slideUp(500);
   });
-  var monkeyList = new List('pacientes', {
-    valueNames: ['name'],
-    page: 3,
-    pagination: true
-  });
+
 var monthNames = [ "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December" ];
 var dayNames= ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
@@ -369,8 +365,62 @@ var newDate = new Date();
 newDate.setDate(newDate.getDate() + 1);    
 $('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
  });
-insertar_odontologica(){
-	$('#form_familiares').submit();
+
+
+
+
+function insertar_odontologica(){
+	var myLanguage = {              
+            errorTitle: 'El formulario fallo en enviarse',
+            requiredFields: 'No se ha introducido datos',
+            badTime: 'No ha dado una hora correcta',
+            badEmail: 'No ha dado una direccion de email correcta',
+            badTelephone: 'No ha dado un numero de telefono correcto',
+          
+       }
+          
+    $.validate({
+    modules : 'logic',
+    language: myLanguage,
+    form : '#form_familiares',
+    onError : function($form) {
+     // alert('Validation of form '+$form.attr('id')+' failed!');
+    },
+    onSuccess : function($form) {
+      //alert('The form '+$form.attr('id')+' is valid!');
+      //return false; // Will stop the submission of the form
+      console.log($("#form_familiares")[0]);
+      var formData = new FormData($("#form_familiares")[0]);
+
+          $.ajax({
+            url: "{{ url('/historiaodontologica') }}",
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(){
+                //popover_show();
+                new PNotify({
+                      title: 'Registro Exitoso',
+                      text: 'La Historia Odontologica ha sido almacenada!',
+                      type: 'success',
+                      styling: 'bootstrap3'
+                  });
+                console.log('exito')
+            },
+            error: function(e) {
+                console.log('Error!!!', e);
+            }
+          });
+          return false;
+          },
+    
+    onElementValidate : function(valid, $el, $form, errorMess) {
+      console.log('Input ' +$el.attr('name')+ ' is ' + ( valid ? 'VALID':'NOT VALID') );
+    }
+  });
 }
 </script>
 @endsection

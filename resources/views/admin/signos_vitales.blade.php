@@ -23,7 +23,7 @@
      
   <!-- /.row -->
   <div class="row">
-      <div class="col-lg-12 col-md-offset-1">
+      <div class="col-lg-10 col-sm-8 col-sm-offset-4 col-lg-offset-2 col-md-offset-1">
 
       @if(session('status'))
         <div class="alert alert-success text-center notification">
@@ -42,7 +42,7 @@
                 
                 <div style="font-size: 20px; text-align: center; color:#59bddd;"> Signos Vitales</div>
                     
-               <form class="form-horizontal" id="form_familiares" role="form" method="POST" action="{{ url('/signos_vitales') }}">
+               <form class="form-horizontal" id="form_familiares">
                 {{ csrf_field() }}
                 <input type="hidden" name="consulta_id" value=<?php echo $consulta; ?> >
                 <input type="hidden" name="paciente_id" value="{{$paciente->id_paciente}}">
@@ -60,23 +60,23 @@
                     </div>
                     <div class="col-md-4">
                     <label for="motivo" class="">Fecha Consulta</label>            
-                                    <input class="form-control" id="fecha_consulta" type="text" class="form-control" name="fecha_consulta" value="{{ old('fecha_consulta') }}">
+                                    <input class="form-control" id="fecha_consulta" type="text" class="form-control" name="fecha"  data-validation="required" data-validation-error-msg="Debe ingrear una fecha" value="{{ old('fecha_consulta') }}">
                      </div>       
                 </div>
                 <div class="row row_border ">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Presion Sanguinea                           
-                                <input type="text" style="color: black; margin: 15px" name="presion_sanguinea" id="enfer_cardiov" >mm/Hg
+                                <input type="text" style="color: black; margin: 15px"  data-validation="number" data-validation-error-msg="Debe indicar un valor numerico"  name="presion_sanguinea" id="enfer_cardiov" >mm/Hg
                                 </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Pulso
-                                <input type="text" style="color: black; margin: 15px" name="pulso" id="enfer_renal" >p/min
+                                <input type="text" style="color: black; margin: 15px" data-validation="number" data-validation-error-msg="Debe indicar un valor numerico" name="pulso" id="enfer_renal" >p/min
                             </div>
                             </div>
                 <div class="row row_border ">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Temperatura
-                                <input type="text" style="color: black; margin: 15px" name="temperatura" id="enfer_cardiov" >C                       
+                                <input type="text" style="color: black; margin: 15px"  data-validation="number" data-validation-error-msg="Debe indicar un valor numerico" name="temperatura" id="enfer_cardiov" >C                       
                                 </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Frecuencia Respiratoria
-                                <input type="text" style="color: black; margin: 15px" name="frecuencia_respiratoria" id="enfer_renal" ">ppm
+                                <input type="text" style="color: black; margin: 15px"  data-validation="number" data-validation-error-msg="Debe indicar un valor numerico" name="frecuencia_respiratoria" id="enfer_renal" ">ppm
                             </div>
                            
                   </div>
@@ -86,17 +86,11 @@
             <div class="form-group">
 
               <div class="col-md-6 col-md-offset-4">
-              <button type="submit" onclick="$('#form_familiares').submit();" class="btn btn-primary">
-                <i class="fa fa-btn fa-user"></i> Registrar
-            </button>
-             <button type="submit" href="{{ url('antecedente_personal')}}" class="btn btn-primary">
-                <i class="fa fa-btn fa-user"></i> Siguiente
-            </button>
-                <!--button type="submit" onclick="motive_submit('{{$paciente->id_paciente}}', '{{$paciente->nro_historia}}')" class="btn btn-primary">
-                  Guardar
-                </button-->
-
-                <!--  <a class="btn btn-link" href="{{ url('/password/reset') }}" style="color:#3c763d">Olvido su contraseña?</a>-->
+                <button type="submit" onclick="insertar_historia();" class="btn btn-primary">Registrar
+              </button>
+              
+              <a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
+               
               </div>
                 @endforeach
             </div>
@@ -148,6 +142,62 @@ $('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + mon
 
  });
   
+  function insertar_historia(){
+
+   var myLanguage = {              
+            errorTitle: 'El formulario fallo en enviarse',
+            requiredFields: 'No se ha introducido datos',
+            badTime: 'No ha dado una hora correcta',
+            badEmail: 'No ha dado una direccion de email correcta',
+            badTelephone: 'No ha dado un numero de telefono correcto',
+          
+       }
+          
+    $.validate({
+    modules : 'logic',
+    language: myLanguage,
+    form : '#form_familiares',
+    onError : function($form) {
+     // alert('Validation of form '+$form.attr('id')+' failed!');
+    },
+    onSuccess : function($form) {
+      //alert('The form '+$form.attr('id')+' is valid!');
+      //return false; // Will stop the submission of the form
+      console.log($("#form_familiares")[0]);
+      var formData = new FormData($("#form_familiares")[0]);
+
+          $.ajax({
+            url: "{{ url('/signos_vitales') }}",
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(){
+                //popover_show();
+                new PNotify({
+                      title: 'Registro Exitoso',
+                      text: 'Los signos vitales han sido almacenados!',
+                      type: 'success',
+                      styling: 'bootstrap3'
+                  });
+                console.log('exito')
+            },
+            error: function(e) {
+                console.log('Error!!!', e);
+            }
+          });
+          return false;
+          },
+    
+    onElementValidate : function(valid, $el, $form, errorMess) {
+      console.log('Input ' +$el.attr('name')+ ' is ' + ( valid ? 'VALID':'NOT VALID') );
+    }
+  });
+  
+                
+}
 </script>
 
 @endsection

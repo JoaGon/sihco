@@ -34,14 +34,14 @@
                     <ul class="dropdown-menu">
                         <li class="dropdown-submenu"><a href="{{ url('examen_clinico', array($paciente->id_paciente, $consulta)) }}" tabindex="0">VIII) Examen Clinico</a></li>
                         <li class="dropdown-submenu"><a  href="{{ url('evaluacion_periodontal', array($paciente->id_paciente, $consulta)) }}" tabindex="0">IX) Evaluacion Periodontal</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">X) Odontodiagrama</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">XI) Control de Placa</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('odontograma', array($paciente->id_paciente, $consulta)) }}" tabindex="0">X) Odontodiagrama</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('control_placa', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XI) Control de Placa</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">XII) Imageneologia</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">XIII) Examen de la Oclusion</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">XIV) Examen Muscular y Articular</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">XV) Modelos de Diagnosticos</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('examen_muscular', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XIV) Examen Muscular y Articular</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('modelo_diagnostico', array($paciente->id_paciente, $consulta)) }}"  tabindex="0">XV) Modelos de Diagnosticos</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">XVI) Examenes Complementarios</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">XVII) Coronas y Puentes Fijos</a></li>
+                        <li class="dropdown-submenu"><a  href="{{ url('corona_puente', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XVII) Coronas y Puentes Fijos</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>XIII al XXIV<span class="caret"></span></a>

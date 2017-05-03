@@ -166,4 +166,186 @@ class Historia2Controller extends Controller
 
         
     }
+
+    public function controlplacaIndex($paciente_id,$consulta)
+    {   
+        $consulta = intval($consulta);
+
+        $persona = DB::table('paciente')
+              ->where('id_paciente',$paciente_id)
+              ->pluck('paciente.persona_id');
+
+         $paciente = DB::table('persona')
+         ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+         ->where('persona.id_persona',$persona[0])
+         ->get();
+
+        return view('admin.control_placa', ['consulta'=>$consulta,'id_paciente'=>$paciente_id], ['pacientes'=> $paciente]);
+       
+
+    }
+
+    public function odonto($paciente_id,$consulta){
+
+          return view('verOdonto');
+
+    }
+
+    public function coronapuenteIndex($paciente_id,$consulta)
+    {   
+        $consulta = intval($consulta);
+
+        $persona = DB::table('paciente')
+              ->where('id_paciente',$paciente_id)
+              ->pluck('paciente.persona_id');
+
+         $paciente = DB::table('persona')
+         ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+         ->where('persona.id_persona',$persona[0])
+         ->get();
+
+        return view('admin.corona_puente_fijo', ['consulta'=>$consulta,'id_paciente'=>$paciente_id], ['pacientes'=> $paciente]);
+       
+
+    }
+    public function coronapuente(Request $req)
+    {   
+
+        $data = $req->all();
+         DB::beginTransaction();
+
+        try {
+
+            $consulta = intval($req->input('consulta_id'));
+
+            $data['ultimo_usuario'] = Auth::user()->id;
+            $data['profesor'] = Auth::user()->id;
+            $data['validar'] = '';
+
+            unset($data['_token']);
+            unset($data['historia']);
+           
+            $verificar = DB::table('coronas_puentes')
+                ->where('paciente_id',$data['paciente_id'])
+                ->where('consulta_id',$data['consulta_id'])
+                ->where('fecha',$data['fecha'])
+                ->count();
+
+            if($verificar > 0){
+
+                $id = DB::table('coronas_puentes')
+                        ->where('paciente_id',$data['paciente_id'])
+                        ->where('consulta_id',$data['consulta_id'])
+                        ->where('fecha',$data['fecha'])
+                        ->pluck('coronas_puentes.id_coronas');
+
+                        $data['id_coronas'] = $id[0];
+
+                        DB::table('coronas_puentes')
+                            ->where('paciente_id',$data['paciente_id'])
+                            ->where('consulta_id',$data['consulta_id'])
+                            ->where('fecha',$data['fecha'])
+                            ->delete();
+
+            }
+            $consulta2 = DB::table('coronas_puentes')->insert($data);
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+        
+        DB::commit();
+
+        
+    }
+    public function examenmuscularIndex($paciente_id,$consulta)
+    {   
+        $consulta = intval($consulta);
+
+        $persona = DB::table('paciente')
+              ->where('id_paciente',$paciente_id)
+              ->pluck('paciente.persona_id');
+
+         $paciente = DB::table('persona')
+         ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+         ->where('persona.id_persona',$persona[0])
+         ->get();
+
+        return view('admin.examen_muscular', ['consulta'=>$consulta,'id_paciente'=>$paciente_id], ['pacientes'=> $paciente]);
+       
+
+    }
+    public function examenmuscular(Request $req)
+    {   
+
+        $data = $req->all();
+         DB::beginTransaction();
+
+        try {
+
+            $consulta = intval($req->input('consulta_id'));
+
+            $data['ultimo_usuario'] = Auth::user()->id;
+            $data['profesor'] = Auth::user()->id;
+            $data['validar'] = '';
+
+            unset($data['_token']);
+            unset($data['historia']);
+           
+            $verificar = DB::table('examen_muscular')
+                ->where('paciente_id',$data['paciente_id'])
+                ->where('consulta_id',$data['consulta_id'])
+                ->where('fecha',$data['fecha'])
+                ->count();
+
+            if($verificar > 0){
+
+                $id = DB::table('examen_muscular')
+                        ->where('paciente_id',$data['paciente_id'])
+                        ->where('consulta_id',$data['consulta_id'])
+                        ->where('fecha',$data['fecha'])
+                        ->pluck('examen_muscular.id_examen_muscular');
+
+                        $data['id_examen_muscular'] = $id[0];
+
+                        DB::table('examen_muscular')
+                            ->where('paciente_id',$data['paciente_id'])
+                            ->where('consulta_id',$data['consulta_id'])
+                            ->where('fecha',$data['fecha'])
+                            ->delete();
+
+            }
+            $consulta2 = DB::table('examen_muscular')->insert($data);
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+        
+        DB::commit();
+
+        
+    }
+
+     public function modelodiagnosticoIndex($paciente_id,$consulta)
+    {   
+        $consulta = intval($consulta);
+
+        $persona = DB::table('paciente')
+              ->where('id_paciente',$paciente_id)
+              ->pluck('paciente.persona_id');
+
+         $paciente = DB::table('persona')
+         ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+         ->where('persona.id_persona',$persona[0])
+         ->get();
+
+        return view('admin.modelo_diagnostico', ['consulta'=>$consulta,'id_paciente'=>$paciente_id], ['pacientes'=> $paciente]);
+       
+
+    }
+
 }

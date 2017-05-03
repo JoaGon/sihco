@@ -125,6 +125,21 @@ Route::post("examen_clinico",'Historia2Controller@examenClinico');
 Route::get("evaluacion_periodontal/{paciente_id}/{consulta_id}",'Historia2Controller@evaluacionperiodontalIndex');
 Route::post("evaluacion_periodontal",'Historia2Controller@evaluacionperiodontal');
 
+Route::get("control_placa/{paciente_id}/{consulta_id}",'Historia2Controller@controlplacaIndex');
+//Route::post("control_placa",'Historia2Controller@control_placa');
+
+Route::get("odontograma/{paciente_id}/{consulta_id}",'Historia2Controller@odonto');
+//Route::post("odontograma",'Historia2Controller@odontograma');
+
+Route::get("corona_puente/{paciente_id}/{consulta_id}",'Historia2Controller@coronapuenteIndex');
+Route::post("corona_puente",'Historia2Controller@coronapuente');
+
+Route::get("examen_muscular/{paciente_id}/{consulta_id}",'Historia2Controller@examenmuscularIndex');
+Route::post("examen_muscular",'Historia2Controller@examenmuscular');
+
+Route::get("modelo_diagnostico/{paciente_id}/{consulta_id}",'Historia2Controller@modelodiagnosticoIndex');
+//Route::post("modelo_diagnostico",'Historia2Controller@modelodiagnostico');
+
 
 //Route::post('/auth/register', 'RegistrarController@postRegister');
 Route::post('/auth/registrar', 'RegistrarController@postRegister');

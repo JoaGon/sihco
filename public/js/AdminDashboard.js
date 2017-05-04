@@ -130,7 +130,7 @@ var config = {
       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
     }
   }
-$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ});
+$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ, antecedente: 'familiar'});
 //$http.post("http://localhost:8088/sihco/public/enfermedad_cardiovascular",  $scope.data, config)
 
 var url = "http://localhost:8088/sihco/public/enfermedad_cardiovascular";
@@ -138,7 +138,7 @@ var url = "http://localhost:8088/sihco/public/enfermedad_cardiovascular";
     method: "POST",
     url: url,
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
-    params: {consulta: consulta, paciente: paciente, id_enfermedad: enfer_id, circulo_id: circ}
+    params: {consulta: consulta, paciente: paciente, id_enfermedad: enfer_id, circulo_id: circ, antecedente: 'familiar'}
   })
   .then(function successCallback(resp){
     $scope.enfermedades = resp.data;
@@ -158,7 +158,7 @@ $scope.eliminarEnfermedad = function(i,id_enfermedad, consulta, paciente){
     method: "POST",
     url: url_card,
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
-    params: {consulta: consulta, paciente: paciente, id_paciente_enfer_cardiovascular: id_enfermedad}
+    params: {consulta: consulta, paciente: paciente, id_paciente_enfer_cardiovascular: id_enfermedad, antecedente: 'familiar'}
   })
   .then(function successCallback(resp){
     $scope.enfermedades = resp.data;
@@ -229,7 +229,7 @@ var config = {
       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
     }
   }
-$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ});
+$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ, antecedente: 'familiar'});
 //$http.post("http://localhost:8088/sihco/public/enfermedad_cardiovascular",  $scope.data, config)
 
 var url = "http://localhost:8088/sihco/public/enfermedad_renal";
@@ -237,7 +237,7 @@ var url = "http://localhost:8088/sihco/public/enfermedad_renal";
     method: "POST",
     url: url,
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
-    params: {consulta: consulta, paciente: paciente, id_enfermedad: enfer_id, circulo_id: circ}
+    params: {consulta: consulta, paciente: paciente, id_enfermedad: enfer_id, circulo_id: circ, antecedente: 'familiar'}
   })
   .then(function successCallback(resp){
     $scope.enfer_renal = resp.data;
@@ -257,7 +257,7 @@ $scope.eliminarRenal= function(i,id_enfermedad, consulta, paciente){
     method: "POST",
     url: url,
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
-    params: {consulta: consulta, paciente: paciente, id_paciente_enfer_renal: id_enfermedad}
+    params: {consulta: consulta, paciente: paciente, id_paciente_enfer_renal: id_enfermedad, antecedente: 'familiar'}
   })
   .then(function successCallback(resp){
     $scope.enfer_renal = resp.data;
@@ -336,7 +336,7 @@ var config = {
       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
     }
   }
-$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ});
+$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ, antecedente: 'familiar'});
 //$http.post("http://localhost:8088/sihco/public/enfermedad_cardiovascular",  $scope.data, config)
 
 var url = "http://localhost:8088/sihco/public/enfermedad_alergica";
@@ -344,7 +344,7 @@ var url = "http://localhost:8088/sihco/public/enfermedad_alergica";
     method: "POST",
     url: url,
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
-    params: {consulta: consulta, paciente: paciente, id_enfermedad: enfer_id, circulo_id: circ}
+    params: {consulta: consulta, paciente: paciente, id_enfermedad: enfer_id, circulo_id: circ, antecedente: 'familiar'}
   })
   .then(function successCallback(resp){
     $scope.enfer_alergica = resp.data;
@@ -365,7 +365,7 @@ $scope.eliminarAlergica = function(i,id_enfermedad, consulta, paciente){
     method: "POST",
     url: url_card,
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
-    params: {consulta: consulta, paciente: paciente, id_paciente_enfer: id_enfermedad}
+    params: {consulta: consulta, paciente: paciente, id_paciente_enfer: id_enfermedad, antecedente: 'familiar'}
   })
   .then(function successCallback(resp){
     $scope.enfer_alergica = resp.data;
@@ -488,7 +488,7 @@ var config = {
       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
     }
   }
-$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ});
+$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ, antecedente: 'familiar'});
 //$http.post("http://localhost:8088/sihco/public/enfermedad_cardiovascular",  $scope.data, config)
 
 var url = "http://localhost:8088/sihco/public/enfermedad_infecciosa";
@@ -496,7 +496,7 @@ var url = "http://localhost:8088/sihco/public/enfermedad_infecciosa";
     method: "POST",
     url: url,
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
-    params: {consulta: consulta, paciente: paciente, id_enfermedad: enfer_id, circulo_id: circ}
+    params: {consulta: consulta, paciente: paciente, id_enfermedad: enfer_id, circulo_id: circ, antecedente: 'familiar'}
   })
   .then(function successCallback(resp){
     $scope.enfer_infecciosa = resp.data;
@@ -517,7 +517,7 @@ $scope.eliminarInfecciosa = function(i,id_enfermedad, consulta, paciente){
     method: "POST",
     url: url_card,
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
-    params: {consulta: consulta, paciente: paciente, id_paciente_enfer: id_enfermedad}
+    params: {consulta: consulta, paciente: paciente, id_paciente_enfer: id_enfermedad, antecedente: 'familiar'}
   })
   .then(function successCallback(resp){
     $scope.enfer_infecciosa = resp.data;
@@ -590,7 +590,7 @@ var config = {
       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
     }
   }
-$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ});
+$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ, antecedente: 'familiar'});
 //$http.post("http://localhost:8088/sihco/public/enfermedad_cardiovascular",  $scope.data, config)
 
 var url = "http://localhost:8088/sihco/public/enfermedad_transmision_sexual";
@@ -598,7 +598,7 @@ var url = "http://localhost:8088/sihco/public/enfermedad_transmision_sexual";
     method: "POST",
     url: url,
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
-    params: {consulta: consulta, paciente: paciente, id_enfermedad: enfer_id, circulo_id: circ}
+    params: {consulta: consulta, paciente: paciente, id_enfermedad: enfer_id, circulo_id: circ, antecedente: 'familiar'}
   })
   .then(function successCallback(resp){
     $scope.enfer_trans_sexual = resp.data;
@@ -619,7 +619,7 @@ $scope.eliminarTransmSexual = function(i,id_enfermedad, consulta, paciente){
     method: "POST",
     url: url_card,
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
-    params: {consulta: consulta, paciente: paciente, id_paciente_enfer: id_enfermedad}
+    params: {consulta: consulta, paciente: paciente, id_paciente_enfer: id_enfermedad, antecedente: 'familiar'}
   })
   .then(function successCallback(resp){
     $scope.enfer_trans_sexual = resp.data;
@@ -694,7 +694,7 @@ var config = {
       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
     }
   }
-$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ});
+$scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ, antecedente: 'familiar'});
 //$http.post("http://localhost:8088/sihco/public/enfermedad_cardiovascular",  $scope.data, config)
 
 var url = "http://localhost:8088/sihco/public/enfermedad_cancer";
@@ -702,7 +702,7 @@ var url = "http://localhost:8088/sihco/public/enfermedad_cancer";
     method: "POST",
     url: url,
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
-    params: {consulta: consulta, paciente: paciente, id_enfermedad: enfer_id, circulo_id: circ}
+    params: {consulta: consulta, paciente: paciente, id_enfermedad: enfer_id, circulo_id: circ, antecedente: 'familiar'}
   })
   .then(function successCallback(resp){
     $scope.enfer_cancer = resp.data;
@@ -723,7 +723,7 @@ $scope.eliminarCancer = function(i,id_enfermedad, consulta, paciente){
     method: "POST",
     url: url_card,
     headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'},
-    params: {consulta: consulta, paciente: paciente, id_paciente_enfer: id_enfermedad}
+    params: {consulta: consulta, paciente: paciente, id_paciente_enfer: id_enfermedad, antecedente: 'familiar'}
   })
   .then(function successCallback(resp){
     $scope.enfer_cancer = resp.data;

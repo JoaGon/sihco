@@ -46,9 +46,9 @@ body { /*background-color: #E3E0F9;*/
 
 .elemSeleccionado { /
 	*background: #E3E0F9;
-	height: 20px;
+	height: 100%;
 	position: absolute;
-	width: 30px;
+	width: 80%;
 	left: 15px;
 	top: 3px;
 }
@@ -59,12 +59,22 @@ function test(idMover){
 	x.ready(inicio);
 	function inicio(){
 	    var x=jQuery("#"+idMover);
-	    x.draggable();
+	    x.draggable({
+            containment: 'parent',
+            drag: function(event, ui){
+               jQuery("#posx").text(ui.position.left);
+               jQuery("#posy").text(ui.position.top);
+               
+               jQuery("#offsetx").text(ui.offset.left);
+               jQuery("#offsety").text(ui.offset.top);
+            }
+         });
+
 	}	
 }
 function dibujar(){
 	elementos = jQuery("#imagenesSel").val();
-//	alert('con: '+elementos);
+	//alert('con: '+elementos);
 	arrayElementos = elementos.split(';');
 	for (var i in arrayElementos) {
 //	    document.write(ss[i]);
@@ -74,8 +84,8 @@ function dibujar(){
 	    if(arrayElementos2[1]!=undefined){
 		    posLeft = arrayElementos1[1];
 		    posTop = arrayElementos1[2];
-	    	cad = '<div ondblclick="eliminar(this.id)" id="'+arrayElementos1[0]+'" class="dialogletra" title="Pulsado" style="position:relative;left:'+posLeft+';top:'+posTop+'"><img src="imgOdont/' + arrayElementos2[1] + '.gif"></div>';
-//	    	document.write(cad);
+	    	cad = '<div ondblclick="eliminar(this.id)" id="'+arrayElementos1[0]+'" class="dialogletra" title="Pulsado" style="position:relative;left:'+posLeft+';top:'+posTop+'"><img src="{{URL::to('/')}}/imgOdont/' + arrayElementos2[1] + '.gif"></div>';
+//\	    	document.write(cad);
 	    	jQuery("#elementoSeleccionado").append(cad);
 	    }
 	}	
@@ -100,14 +110,14 @@ function eliminar(valDiv){
 	n1 = parseInt(n/2);
    	for(i=0; i<n1; i++){
 //      	letraActual = jQuery('<span class="botonletra"><img src="imgOdont/' + letras[i] + '.gif"></span>');
-      	letraActual = jQuery('<button type="button" class="botonletra btn btn-warning"><img src="imgOdont/' + letras[i] + '.gif"></button>');
+      	letraActual = jQuery('<button type="button" class="botonletra btn btn-warning"><img src="{{URL::to('/')}}/imgOdont/' + letras[i] + '.gif"></button>');
       	letraActual.data("letra",letras[i]);
       	letraActual.button();
     	jQuery("#botonesletras1").append(letraActual);
    	}
 	for(i=n1; i<n; i++){
 //	    letraActual = jQuery('<span class="botonletra"><img src="imgOdont/' + letras[i] + '.gif"></span>');
-	    letraActual = jQuery('<button type="button" class="botonletra btn btn-warning"><img src="imgOdont/' + letras[i] + '.gif"></button>');
+	    letraActual = jQuery('<button type="button" class="botonletra btn btn-warning"><img src="{{URL::to('/')}}/imgOdont/' + letras[i] + '.gif"></button>');
 	    letraActual.data("letra",letras[i]);
 	    letraActual.button();
 		jQuery("#botonesletras2").append(letraActual);
@@ -115,7 +125,7 @@ function eliminar(valDiv){
    	jQuery(".botonletra").click(function(){
 	  	valElemento = jQuery("#numElemento").val();
       	var caja = jQuery('<div id="arrastrable'+valElemento+'_'+jQuery(this).data("letra")+
-    	      '" ondblclick="eliminar(this.id)" class="dialogletra" title="Pulsado"><img src="imgOdont/' + 
+    	      '" ondblclick="eliminar(this.id)" class="dialogletra" title="Pulsado"><img src="{{URL::to('/')}}/imgOdont/' + 
     	      jQuery(this).data("letra") + '.gif"></div>').prependTo('#elementoSeleccionado');
       	test("arrastrable"+valElemento+'_'+jQuery(this).data("letra"));
 	  	valElemento = parseInt(valElemento) + 1;
@@ -137,7 +147,20 @@ function eliminar(valDiv){
 </script>
 </head>
 <body>
+Coordenadas del elemento relativas al contenedor:
+      <br>
+      X: <span id="posx"></span>
+      <br>
+      Y: <span id="posy"></span>
+      <br>
+      <br>
+      Coordenadas del elemento absolutas a la página:
+      <br>
+      X: <span id="offsetx"></span>
+      <br>
+      Y: <span id="offsety"></span>
 <input size="200px" id="imagenesSel" value=';arrastrable2_abrasion:165.00001525878906:171;arrastrable1_abfraccion:120:169;arrastrable0_abajo:80:169' type="text" readonly>
+
 <input id="numElemento" value='0' type="hidden" readonly>
 <input id="btnGuardar" value='Guardar' type="button" readonly>
 <div class="row">
@@ -145,8 +168,9 @@ function eliminar(valDiv){
 <div id="botonesletras1" class="botonesletras"></div>
 </div>
 <div class="col-xs-9 col-md-9">
-<div id="elementoSeleccionado" class="elemSeleccionado"></div>
-<div id="imagenOdontodiagrama"><img src='imgOdont/CLAVES1.GIF'></div>
+<div id="elementoSeleccionado" class="elemSeleccionado">
+</div>
+<div id="imagenOdontodiagrama"><img src="{{url('imgOdont/CLAVES1.GIF')}}"></div>
 </div>
 <div class="col-xs-1 col-sm-1 col-md-1">
 <div id="botonesletras2" class="botonesletras"></div>

@@ -338,9 +338,7 @@
     <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
          
-          <button type="submit" onclick="$('#edit_patient_form').submit(); console.log("lo hace")"  class="btn btn-primary">
-                                    <i class="fa fa-btn fa-user"></i> Guardar
-          </button>
+          <button type="submit" onclick="$('#edit_patient_form').submit(); console.log("lo hace")"  class="btn btn-primary">Guardar</button>
     </div>
 
   </div><!-- /.modal-content -->

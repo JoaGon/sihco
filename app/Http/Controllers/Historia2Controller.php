@@ -347,5 +347,57 @@ class Historia2Controller extends Controller
        
 
     }
+    public function modelodiagnostico(Request $req)
+    {   
+
+        $data = $req->all();
+         DB::beginTransaction();
+
+        try {
+
+            $consulta = intval($req->input('consulta_id'));
+
+            $data['ultimo_usuario'] = Auth::user()->id;
+            $data['profesor'] = Auth::user()->id;
+            $data['validar'] = '';
+
+            unset($data['_token']);
+            unset($data['historia']);
+           
+            $verificar = DB::table('modelo_diagnostico')
+                ->where('paciente_id',$data['paciente_id'])
+                ->where('consulta_id',$data['consulta_id'])
+                ->where('fecha',$data['fecha'])
+                ->count();
+
+            if($verificar > 0){
+
+                $id = DB::table('modelo_diagnostico')
+                        ->where('paciente_id',$data['paciente_id'])
+                        ->where('consulta_id',$data['consulta_id'])
+                        ->where('fecha',$data['fecha'])
+                        ->pluck('modelo_diagnostico.id_modelo_diagnostico');
+
+                        $data['id_modelo_diagnostico'] = $id[0];
+
+                        DB::table('modelo_diagnostico')
+                            ->where('paciente_id',$data['paciente_id'])
+                            ->where('consulta_id',$data['consulta_id'])
+                            ->where('fecha',$data['fecha'])
+                            ->delete();
+
+            }
+            $consulta2 = DB::table('modelo_diagnostico')->insert($data);
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+        
+        DB::commit();
+
+        
+    }
 
 }

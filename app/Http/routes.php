@@ -138,7 +138,7 @@ Route::get("examen_muscular/{paciente_id}/{consulta_id}",'Historia2Controller@ex
 Route::post("examen_muscular",'Historia2Controller@examenmuscular');
 
 Route::get("modelo_diagnostico/{paciente_id}/{consulta_id}",'Historia2Controller@modelodiagnosticoIndex');
-//Route::post("modelo_diagnostico",'Historia2Controller@modelodiagnostico');
+Route::post("modelo_diagnostico",'Historia2Controller@modelodiagnostico');
 
 
 //Route::post('/auth/register', 'RegistrarController@postRegister');

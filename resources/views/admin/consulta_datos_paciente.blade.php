@@ -34,23 +34,26 @@
                     <ul class="dropdown-menu">
                         <li class="dropdown-submenu"><a href="{{ url('examen_clinico', array($paciente->id_paciente, $consulta)) }}" tabindex="0">VIII) Examen Clinico</a></li>
                         <li class="dropdown-submenu"><a  href="{{ url('evaluacion_periodontal', array($paciente->id_paciente, $consulta)) }}" tabindex="0">IX) Evaluacion Periodontal</a></li>
-                        <li class="dropdown-submenu"><a href="{{ url('odontograma', array($paciente->id_paciente, $consulta)) }}" tabindex="0">X) Odontodiagrama</a></li>
+                        <li class="dropdown-submenu"><a  href="{{ url('evaluacion_periodontal', array($paciente->id_paciente, $consulta)) }}" tabindex="0"> Test de Fagerström</a></li>
+                        <li class="dropdown-submenu"><a  href="" tabindex="0"> Diagrama de Riesgo</a></li>  
+                        <li class="dropdown-submenu"><a href="" tabindex="0">X) Odontodiagrama</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('control_placa', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XI) Control de Placa</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">XII) Imageneologia</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">XIII) Examen de la Oclusion</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('examen_muscular', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XIV) Examen Muscular y Articular</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('modelo_diagnostico', array($paciente->id_paciente, $consulta)) }}"  tabindex="0">XV) Modelos de Diagnosticos</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">XVI) Examenes Complementarios</a></li>
-                        <li class="dropdown-submenu"><a  href="{{ url('corona_puente', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XVII) Coronas y Puentes Fijos</a></li>
+                       
                     </ul>
                 </li>
                 <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>XIII al XXIV<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-submenu"><a tabindex="0">VIII) Dentaduras Totales</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">IV) Protesis Parcial Removible</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">V) Endodoncia</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">Operatoria</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">VI) Anestesiologia y Cidugia Estomatologica</a></li>
+                        <li class="dropdown-submenu"><a  href="{{ url('corona_puente', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XVII) Coronas y Puentes Fijos</a></li>
+                        <li class="dropdown-submenu"><a tabindex="0">XVIII) Dentaduras Totales</a></li>
+                        <li class="dropdown-submenu"><a tabindex="0">XIX) Protesis Parcial Removible</a></li>
+                        <li class="dropdown-submenu"><a tabindex="0">XX) Endodoncia</a></li>
+                        <li class="dropdown-submenu"><a tabindex="0">XXI) Operatoria</a></li>
+                        <li class="dropdown-submenu"><a tabindex="0">XII) Anestesiologia y Cidugia Estomatologica</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>Diagnostico/Pronostico<span class="caret"></span></a>

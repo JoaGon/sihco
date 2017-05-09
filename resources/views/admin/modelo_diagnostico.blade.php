@@ -64,54 +64,193 @@
                      </div>       
                 </div>
                 <div class="row row_border ">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <div class="col-lg-12">
+                <div class="col-lg-12">
                             <label>
-                              Superior    
+                              1. Arcos    
                             </label>
                             </div>
-                            <div class="col-lg-2">Forma</div>
-                            <div class="col-lg-4">
-                               <input type="text" style="color: black; margin: 15px"  data-validation="number" data-validation-error-msg="Debe indicar un valor numerico"  name="presion_sanguinea" id="enfer_cardiov" >
-                            </div>
-                               
-
-                            <div class="col-lg-12">
-                              Simetria
-                                <input type="text" style="color: black; margin: 15px"  data-validation="number" data-validation-error-msg="Debe indicar un valor numerico"  name="presion_sanguinea" id="enfer_cardiov" >
-                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                              <div class="col-lg-12">
+                                <label>
+                                  Superior    
+                                </label>
+                              </div>
+                              <div class="col-lg-2">Forma</div>
+                              
+                              <div class="col-lg-4">
+                                <select style="color: black" name="forma_su">
+                                  <option value="triangular">Triangular</option>
+                                  <option value="ovalado">Ovalado</option>
+                                  <option value="cuadrado">Cuadrado</option>
+                                </select>
+                             
+                              </div>
+                                 
+                              <div class="col-lg-12">
+                                Simetria
+                                   <select style="color: black" name="simetria_su">
+                                    <option value="si">Si</option>
+                                    <option value="no">No</option>
+                                  </select>
+                              </div>
                                 
                               </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                               <div class="col-lg-12">
-                              <label>
-                                Inferior    
-                              </label>
+                                <label>
+                                  Inferior    
+                                </label>
                               </div>
-                              <div class="col-lg-12">
-                              Forma
-                                  <input type="text" style="color: black; margin: 15px"  data-validation="number" data-validation-error-msg="Debe indicar un valor numerico"  name="presion_sanguinea" id="enfer_cardiov" >
+                              <div class="col-lg-2">Forma</div>
+                              
+                              <div class="col-lg-4">
+                                <select style="color: black" name="forma_inf">
+                                  <option value="triangular">Triangular</option>
+                                  <option value="ovalado">Ovalado</option>
+                                  <option value="cuadrado">Cuadrado</option>
+                                </select>
+                             
                               </div>
-
+                                 
                               <div class="col-lg-12">
                                 Simetria
-                                  <input type="text" style="color: black; margin: 15px"  data-validation="number" data-validation-error-msg="Debe indicar un valor numerico"  name="presion_sanguinea" id="enfer_cardiov" >
+                                   <select style="color: black" name="simetria_inf">
+                                        <option value="si">Si</option>
+                                        <option value="no">No</option>
+                                    </select>
                               </div>
+                                
                               </div>
                             </div>
+                              
                 <div class="row row_border ">
                 <div class="col-lg-12">
                   <label>Espacios Edentulos</label>
                 </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Temperatura
-                                <input type="text" style="color: black; margin: 15px"  data-validation="number" data-validation-error-msg="Debe indicar un valor numerico" name="temperatura" id="enfer_cardiov" >C                       
-                                </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Frecuencia Respiratoria
-                                <input type="text" style="color: black; margin: 15px"  data-validation="number" data-validation-error-msg="Debe indicar un valor numerico" name="frecuencia_respiratoria" id="enfer_renal" ">ppm
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Dientes Ausentes
+                                <input type="text" style="color: black; margin: 15px"  data-validation="required" data-validation-error-msg="Requerido" name="dientes_ausentes" id="dientes_ausentes" >           
+                            </div>
+                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Grado de Reabsorcion del Reborde
+                                <select style="color: black" name="grado">
+                                  <option value="claseI">Clase I</option>
+                                  <option value="claseII">Clase II</option>
+                                  <option value="claseIII">Clase III</option>
+                                </select>          
+                            </div>
+
+                             <div class="col-lg-12">Clasificacion de Kennedy:
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <label class="col-lg-2">
+                            Superior:
+                            </label>
+                            <div  class="col-lg-3">
+                                <select style="color: black" name="kennedy_su">
+                                 <option value="claseI">Clase I</option>
+                                  <option value="claseII">Clase II</option>
+                                  <option value="claseIII">Clase III</option>
+                                </select>     
+                            </div>
+                             <div  class="col-lg-3">
+                                <select style="color: black" name="modif_su">
+                                  <option value="modif1">Modif. 1</option>
+                                  <option value="modif2">Modif. 2</option>
+                                  <option value="modif3">Modif. 3</option>
+                                  <option value="modif4">Modif. 4</option>
+
+                                </select>     
+                            </div>
+
+                                         
+                            </div>
+                             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <label class="col-lg-2">
+                            Inferior:
+                            </label>
+                            <div  class="col-lg-3">
+                                <select style="color: black" name="kennedy_inf">
+                                 <option value="claseI">Clase I</option>
+                                  <option value="claseII">Clase II</option>
+                                  <option value="claseIII">Clase III</option>
+                                </select>     
+                            </div>
+                             <div  class="col-lg-3">
+                                <select style="color: black" name="modif_inf">
+                                  <option value="modif1">Modif. 1</option>
+                                  <option value="modif2">Modif. 2</option>
+                                  <option value="modif3">Modif. 3</option>
+                                  <option value="modif4">Modif. 4</option>
+                                </select>     
                             </div>
                            
+                           
                   </div>
-              
+                  </div>
+                   <div class="row row_border ">
+                   <div class="col-lg-12">
+                            <label>
+                              3. Evaluacion de los Dientes    
+                            </label>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Tama;o de las coronas                         
+                                 <select style="color: black" name="corona_tam" >
+                                  <option>Grande</option>
+                                  <option>Mediana</option>
+                                  <option>Peque;a</option>
+                                </select>    
+                                </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Forma de las coronas
+                                <select style="color: black" name="corona_forma">
+                                  <option>Globulosa</option>
+                                  <option>Cilindricas</option>
+                                  <option>Triangulares</option>
+                                </select>
+                            </div>
+                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Giroversiones                     
+                                <input type="text" style="color: black; margin: 15px"  data-validation="required" data-validation-error-msg="Requerido"  name="giroversiones" id="giroversiones" >
+                                </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Migraciones
+                                <input type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="migraciones" id="migraciones" >
+                            </div>
+                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Extrusiones                        
+                                <input type="text" style="color: black; margin: 15px"  data-validation="required" data-validation-error-msg="Requerido"  name="extrusiones" id="extrusiones" >
+                                </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Inclinados
+                                <input type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="inclinados" id="inclinados" >
+                            </div>
+                            <div class="col-lg-12">Facetas de Desgaste
+                                <input type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="faceta_desgaste" id="faceta_desgaste" >
+                            </div>
+                             <div class="col-lg-12">Rebordes marginales desiguales
+                                <input type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="rebordes" id="rebordes" >
+                            </div>
+                             <div class="col-lg-12">Cuspide del Embolo
+                                <input type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="cuspide" id="cuspide" >
+                            </div>
+                             <div class="col-lg-12">Contactos prematuros permanentes
+                                <input type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="contacto_prematuro" id="contacto_prematuro" >
+                            </div>
+                            </div>
+
+                 <div class="row row_border ">
+                   <div class="col-lg-12">
+                            <label>
+                              4. Relaciones Intermaxilares
+                            </label>
+                            </div>
+                           
+                            <div class="col-lg-12">Relaciones de los bordes
+                                <input type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="relaciones_bordes" id="relaciones_bordes" >
+                            </div>
+                             <div class="col-lg-12">Espacio disponible para los dientes
+                                <input type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="espacio_disponible" id="espacio_disponible" >
+                            </div>
+                             <div class="col-lg-12">Espacio disponible para los apoyos
+                                <input type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="espacio_apoyo" id="espacio_apoyo" >
+                            </div>
+                             
+                            </div>
+
             
 
             <div class="form-group">
@@ -198,7 +337,7 @@ $('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + mon
       var formData = new FormData($("#form_familiares")[0]);
 
           $.ajax({
-            url: "{{ url('/signos_vitales') }}",
+            url: "{{ url('/modelo_diagnostico') }}",
             type: 'POST',
             data: formData,
             async: false,
@@ -209,7 +348,7 @@ $('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + mon
                 //popover_show();
                 new PNotify({
                       title: 'Registro Exitoso',
-                      text: 'Los signos vitales han sido almacenados!',
+                      text: 'El modelo de diagnostico ha sido almacenados!',
                       type: 'success',
                       styling: 'bootstrap3'
                   });

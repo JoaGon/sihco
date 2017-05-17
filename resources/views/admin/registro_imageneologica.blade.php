@@ -7,10 +7,12 @@
 <link href="{{ url('template/dist/css/sb-admin-2.css')}} " rel="stylesheet">
 <link href="{{ url('css/styles.css')}} " rel="stylesheet">
 <link href="{{url ('template/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+<meta name="csrf-token" content="<?php echo csrf_token() ?>">
 <div class="container">
 	<!-- /.row -->
 	<div class="row">
-		<div class="col-lg-12 col-md-offset-1">
+		<form  class="form-horizontal" role="form" id="form_delete" enctype="multipart/form-data">
+		<div class="col-lg-10 col-sm-8 col-sm-offset-4 col-lg-offset-2 col-md-offset-2">
 			 @if(session('status'))
 			<div class="alert alert-success text-center notification">
 				<ul style="list-style:none;">
@@ -18,7 +20,7 @@
 				</ul>
 			</div>
 			 @endif
-			<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 col-sm-offset-2 col-lg-offset-2 col-md-offset-4" style=" background-color:white;padding-left:0; margin-top: 25px">
+			<div class="col-lg-10 col-sm-8 col-sm-offset-2 col-lg-offset-2 col-md-offset-4" style=" background-color:white;padding-left:0; margin-top: 25px">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="background-color:white;padding-left:0">
 					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="background-color:white;padding-left:0">
 						<section>
@@ -51,28 +53,29 @@
 					<br>
 					<br>
 					<br>
-					<input type="hidden" name="consulta_id" value="{!!$consulta_id!!}">
-					<input type="hidden" name="paciente_id" value="{!!$paciente_id!!}">
+					<input type="hidden" name="consulta_id" value="{!!$consulta!!}">
+					<input type="hidden" name="paciente_id" value="{!!$id_paciente!!}">
 					<input type="hidden" name="_token" value="{!! csrf_token() !!}">
 					<input type="hidden" name="ruta" id="ruta_imaging">
 					<div style="width: 100%">
 						<button class="btn btn-primary" data-toggle="modal" data-target="#modal_imaging">Agregar imagen</button>
-						<!--button class="btn btn-primary" >Eliminar imagen</button-->
+						<button class="btn btn-primary" onclick="eliminar()" >Eliminar imagen</button>
 						<!--button class="btn btn-primary" onclick="validar_imag();">Agregar estudio</button-->
 					</div>
 				</div>
 			</div>
 		</div>
+		</form>
 		<form class="form-horizontal" role="form" id="form_imaging" enctype="multipart/form-data" action="{{url('/register/imaging')}}" method="POST">
 			<div id="modal_imaging" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabelI" aria-hidden="true">
 				<div class="modal-dialog modal-lg">
 					<div class="modal-content" id="modal_content" style="padding: 30px;">
 						<div class="form-group">
-							<input type="file" name="imagen_" id="imagen_" class="filestyle" style="width: 50% ;" placeholder="Buscar">
+							<input type="file" value="perio" name="imagen_" id="imagen_" class="filestyle" style="width: 50% ;" placeholder="Buscar">
 						</div>
 						<input type="hidden" name="_token" value="{!! csrf_token() !!}">
-						<input type="hidden" name="consulta_id" value="{!!$consulta_id!!}">
-						<input type="hidden" name="paciente_id" value="{!!$paciente_id!!}">
+						<input type="hidden" name="consulta_id" value="{!!$consulta!!}">
+						<input type="hidden" name="paciente_id" value="{!!$id_paciente!!}">
 						<div class="modal-footer">
 							<button type="submit" class="btn btn-default">Guardar</button>
 							<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -111,6 +114,28 @@
             event.preventDefault();
         }
      }    
+     function eliminar(){
 
+
+      var formData = new FormData($("#form_delete")[0]);
+      
+     	  $.ajax({
+            url: "{{ url('/delete_image') }}",
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(){
+                //popover_show();
+              //  location.reload();
+                console.log('exito')
+            },
+            error: function(e) {
+                console.log('Error!!!', e);
+            }
+          });
+     }
 </script>
 @endsection

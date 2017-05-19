@@ -17,6 +17,9 @@
 Route::get('/', function(){
   return view('home');
 });
+Route::get('canvas', function(){
+  return view('admin.canvas');
+});
 Route::get('/', 'HomeController@index');
 
 
@@ -47,8 +50,10 @@ Route::get('datos/consulta/{nro_historia}','ConsultaController@consulta_paciente
 Route::get('consulta', 'ConsultaController@index');
 Route::post('motivo_consulta','ConsultaController@save');
 Route::get('consulta/{nro_historia}','ConsultaController@show_details');
-Route::get('imagen/{consulta}/{id_paciente}','ImagenController@index');
+
+Route::get('registro_imageneologico/{paciente_id}/{consulta_id}','ImagenController@index');
 Route::post('/register/imaging','ImagenController@safeImaging');
+Route::post('delete_image', 'ImagenController@deleteImaging');  
 Route::post('/register/imaging/study','ImagenController@safeStudy');
 
 Route::get('datos/paciente/{paciente_id}/{consulta_id}','ConsultaController@datos_principal');

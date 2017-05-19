@@ -14,18 +14,26 @@ use App\Http\Requests;
 
 class ImagenController extends Controller
 {
-    public function index($consulta,$paciente){
+    public function index($paciente_id,$consulta){
         
-        $imagen = DB::table('registros_imageneologicos')
-                ->where('paciente_id',$paciente)
+       $consulta = intval($consulta);
+
+        $persona = DB::table('paciente')
+              ->where('id_paciente',$paciente_id)
+              ->pluck('paciente.persona_id');
+
+         $paciente = DB::table('persona')
+         ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+         ->where('persona.id_persona',$persona[0])
+         ->get();
+
+         $imagen = DB::table('registros_imageneologicos')
+                ->where('paciente_id',$paciente_id)
                 ->where('consulta_id',$consulta)
                 ->get();
-        $nombre = DB::table('paciente')
-                ->where('id_paciente',$paciente)
-                ->first();
 
-        return view('admin.imagen_paciente',['consulta_id'=>$consulta,'paciente_id'=>$paciente,
-            'imagen'=>$imagen,'nombre'=>$nombre->nombre,'apellido'=>$nombre->apellido]);
+        return view('admin.registro_imageneologica', ['consulta'=>$consulta,'id_paciente'=>$paciente_id], ['pacientes'=> $paciente, 'imagen'=>$imagen]);
+       
     }
 
     public function safeImaging(Request $req){
@@ -37,17 +45,7 @@ class ImagenController extends Controller
 
 	    //echo "<pre>"; print_r($req->input('title')); echo "</pre>"; die();
        
-       
-            /*$imagenologia = new RegistroImageneologia;
-            $imagenologia->ruta = $dir_upload. $new_name;
-            $imagenologia->fecha = date('Y-m-d',time());
-            $imagenologia->usuario_id = Auth::user()->id;
-            $imagenologia->paciente_id = $req->input('paciente_id');
-            $imagenologia->consulta_id = $req->input('consulta_id');
-            $imagenologia->titulo_imagen = '';
-            $imagenologia->save();*/
-             DB::beginTransaction();
-             try{
+             
             DB::table('registros_imageneologicos')->insert(
 		    	['ruta' => $dir_upload. $new_name,
 		    	 'fecha' => date('Y-m-d',time()),
@@ -57,12 +55,18 @@ class ImagenController extends Controller
 		    	 'titulo_imagen' => $req->input('title')
 		    	 ]
 			);
-			 } catch (\Exception $ex) {
-            DB::rollback();
-        }
-        DB::commit();
+			
+        return redirect('/registro_imageneologico/'.$req->input('paciente_id').'/'.$req->input('consulta_id'));
+    }
+    public function deleteImaging(Request $req){
         
-        return redirect('/imagen/'.$req->input('consulta_id').'/'.$req->input('paciente_id'));
+             dd($req);
+            DB::table('registros_imageneologicos')
+                ->where('ruta',$req->input('ruta'))
+                ->delete();
+                unlink($req->input('ruta'));
+
+        return redirect('/registro_imageneologico/'.$req->input('paciente_id').'/'.$req->input('consulta_id'));
     }
     public function safeStudy(){
         $data = Input::all();

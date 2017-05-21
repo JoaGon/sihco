@@ -145,6 +145,12 @@ Route::post("examen_muscular",'Historia2Controller@examenmuscular');
 Route::get("modelo_diagnostico/{paciente_id}/{consulta_id}",'Historia2Controller@modelodiagnosticoIndex');
 Route::post("modelo_diagnostico",'Historia2Controller@modelodiagnostico');
 
+Route::get("test_fagerstrom/{paciente_id}/{consulta_id}",'Historia2Controller@testfagerstromIndex');
+Route::post("test_fagerstrom",'Historia2Controller@testfagerstrom');
+
+Route::get("diagrama_riesgo/{paciente_id}/{consulta_id}",'Historia2Controller@diagramariesgoIndex');
+Route::post("diagrama_riesgo",'Historia2Controller@diagramariesgo');
+
 
 //Route::post('/auth/register', 'RegistrarController@postRegister');
 Route::post('/auth/registrar', 'RegistrarController@postRegister');

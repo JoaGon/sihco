@@ -34,8 +34,8 @@
                     <ul class="dropdown-menu">
                         <li class="dropdown-submenu"><a href="{{ url('examen_clinico', array($paciente->id_paciente, $consulta)) }}" tabindex="0">VIII) Examen Clinico</a></li>
                         <li class="dropdown-submenu"><a  href="{{ url('evaluacion_periodontal', array($paciente->id_paciente, $consulta)) }}" tabindex="0">IX) Evaluacion Periodontal</a></li>
-                        <li class="dropdown-submenu"><a  href="{{ url('evaluacion_periodontal', array($paciente->id_paciente, $consulta)) }}" tabindex="0"> Test de Fagerström</a></li>
-                        <li class="dropdown-submenu"><a  href="" tabindex="0"> Diagrama de Riesgo</a></li>  
+                        <li class="dropdown-submenu"><a  href="{{ url('test_fagerstrom', array($paciente->id_paciente, $consulta)) }}" tabindex="0"> Test de Fagerström</a></li>
+                        <li class="dropdown-submenu"><a  href="{{url('diagrama_riesgo', array($paciente->id_paciente, $consulta))}}" tabindex="0"> Diagrama de Riesgo</a></li>  
                         <li class="dropdown-submenu"><a href="{{ url('odontograma', array($paciente->id_paciente, $consulta)) }}" tabindex="0">X) Odontograma</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('control_placa', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XI) Control de Placa</a></li>
                         <li class="dropdown-submenu"><a  href="{{ url('registro_imageneologico', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XII) Imageneologia</a></li>
@@ -53,12 +53,11 @@
                         <li class="dropdown-submenu"><a tabindex="0">XIX) Protesis Parcial Removible</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">XX) Endodoncia</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">XXI) Operatoria</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">XII) Anestesiologia y Cidugia Estomatologica</a></li>
+                        <li class="dropdown-submenu"><a tabindex="0">XII) Anestesiologia y Cirugia Estomatologica</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>Diagnostico/Pronostico<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-submenu"><a href="{{ url('consulta/'.$paciente->nro_historia) }}" tabindex="0">I y II)Motivo de la Consulta/ Enfer. Actual</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">Diagnostico Clinico</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">Diagnostico Definivo</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">Pronostico</a></li>

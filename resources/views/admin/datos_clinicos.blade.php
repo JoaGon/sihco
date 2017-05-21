@@ -44,19 +44,19 @@
 					</div>
 					<div class="row row_border">
 						<div class="col-lg-4 col-md-4 col-sm-4">
-							<input type="checkbox" name="examinado_ultimo_ayo" id="examinado_ultimo_ayo" value="S"> 1-¿Ha sido usted examinado por su medico durante el ultimo AÑO?
+							<input type="checkbox" name="check[]" id="examinado_ultimo_ayo" value="S"> 1-¿Ha sido usted examinado por su medico durante el ultimo AÑO?
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4">
-							<input type="checkbox" name="cambio_salud_ultimo_ayo" id="cambio_salud_ultimo_ayo" value="S"> 2- ¿Ha habido algun cambio en su salud durante el ultimo AÑO?
+							<input type="checkbox" name="check[]" id="cambio_salud_ultimo_ayo" value="S"> 2- ¿Ha habido algun cambio en su salud durante el ultimo AÑO?
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4">
-							<input type="checkbox" name="sangra_largo_tiempo" id="sangra_largo_tiempo" value="S"> 3- ¿Sangre usted por largo tiempo cuando se corta?
+							<input type="checkbox" name="check[]" id="sangra_largo_tiempo" value="S"> 3- ¿Sangre usted por largo tiempo cuando se corta?
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4">
-							<input type="checkbox" name="cicatrizacion_lenta" id="cicatrizacion_lenta" value="S"> 4- ¿Su proceso de cicatrizacion es lento?
+							<input type="checkbox" name="check[]" id="cicatrizacion_lenta" value="S"> 4- ¿Su proceso de cicatrizacion es lento?
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-4">
-							<input type="checkbox" name="perdida_peso" id="perdida_peso" value="S"> 5-¿Ha perdido usted peso sin hacer dieta durante los ultimos meses?
+							<input type="checkbox" name="check[]" id="perdida_peso" value="S"> 5-¿Ha perdido usted peso sin hacer dieta durante los ultimos meses?
 						</div>
 					</div>
 					<div class="row row_border ">

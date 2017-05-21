@@ -401,5 +401,146 @@ class Historia2Controller extends Controller
         
     }
 
+
+     public function testfagerstromIndex($paciente_id,$consulta)
+    {   
+        $consulta = intval($consulta);
+
+        $persona = DB::table('paciente')
+              ->where('id_paciente',$paciente_id)
+              ->pluck('paciente.persona_id');
+
+         $paciente = DB::table('persona')
+         ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+         ->where('persona.id_persona',$persona[0])
+         ->get();
+
+        return view('admin.testfargestrom', ['consulta'=>$consulta,'id_paciente'=>$paciente_id], ['pacientes'=> $paciente]);
+       
+
+    }
+
+    public function testfagerstrom(Request $req)
+    {   
+
+        $data = $req->all();
+         DB::beginTransaction();
+
+        try {
+
+            $consulta = intval($req->input('consulta_id'));
+
+            $data['ultimo_usuario'] = Auth::user()->id;
+            $data['profesor'] = Auth::user()->id;
+            $data['validar'] = '';
+
+            unset($data['_token']);
+            unset($data['historia']);
+           
+            $verificar = DB::table('test_fagerstrom')
+                ->where('paciente_id',$data['paciente_id'])
+                ->where('consulta_id',$data['consulta_id'])
+                ->where('fecha',$data['fecha'])
+                ->count();
+
+            if($verificar > 0){
+
+                $id = DB::table('test_fagerstrom')
+                        ->where('paciente_id',$data['paciente_id'])
+                        ->where('consulta_id',$data['consulta_id'])
+                        ->where('fecha',$data['fecha'])
+                        ->pluck('test_fagerstrom.id_test');
+
+                        $data['id_test'] = $id[0];
+
+                        DB::table('test_fagerstrom')
+                            ->where('paciente_id',$data['paciente_id'])
+                            ->where('consulta_id',$data['consulta_id'])
+                            ->where('fecha',$data['fecha'])
+                            ->delete();
+
+            }
+            $consulta2 = DB::table('test_fagerstrom')->insert($data);
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+        
+        DB::commit();
+
+        
+    }
+
+    public function diagramariesgoIndex($paciente_id,$consulta)
+    {   
+        $consulta = intval($consulta);
+
+        $persona = DB::table('paciente')
+              ->where('id_paciente',$paciente_id)
+              ->pluck('paciente.persona_id');
+
+         $paciente = DB::table('persona')
+         ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+         ->where('persona.id_persona',$persona[0])
+         ->get();
+
+        return view('admin.diagramariesgo', ['consulta'=>$consulta,'id_paciente'=>$paciente_id], ['pacientes'=> $paciente]);
+       
+
+    }
+    public function diagramariesgo(Request $req)
+    {   
+
+        $data = $req->all();
+         DB::beginTransaction();
+
+        try {
+
+            $consulta = intval($req->input('consulta_id'));
+
+            $data['ultimo_usuario'] = Auth::user()->id;
+            $data['profesor'] = Auth::user()->id;
+            $data['validar'] = '';
+
+            unset($data['_token']);
+            unset($data['historia']);
+           
+            $verificar = DB::table('diagrama_riesgo')
+                ->where('paciente_id',$data['paciente_id'])
+                ->where('consulta_id',$data['consulta_id'])
+                ->where('fecha',$data['fecha'])
+                ->count();
+
+            if($verificar > 0){
+
+                $id = DB::table('diagrama_riesgo')
+                        ->where('paciente_id',$data['paciente_id'])
+                        ->where('consulta_id',$data['consulta_id'])
+                        ->where('fecha',$data['fecha'])
+                        ->pluck('diagrama_riesgo.id_diagrama_riesgo');
+
+                        $data['id_test'] = $id[0];
+
+                        DB::table('diagrama_riesgo')
+                            ->where('paciente_id',$data['paciente_id'])
+                            ->where('consulta_id',$data['consulta_id'])
+                            ->where('fecha',$data['fecha'])
+                            ->delete();
+
+            }
+            $consulta2 = DB::table('diagrama_riesgo')->insert($data);
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+        
+        DB::commit();
+
+        
+    }
   
 }

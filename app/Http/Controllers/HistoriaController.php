@@ -1045,10 +1045,12 @@ class HistoriaController extends Controller
     public function datosclinicos(Request $req)
     {   
 
-        $data = $req->all();
+ 
          DB::beginTransaction();
 
         try {
+
+           
 
             $consulta = intval($req->input('consulta_id'));
 
@@ -1083,7 +1085,10 @@ class HistoriaController extends Controller
                             ->delete();
 
             }
-            $consulta2 = DB::table('datos_clinicos')->insert($data);
+
+
+
+            //$consulta2 = DB::table('datos_clinicos')->insert($data);
 
         } catch (Exception $ex) {
             DB::rollback();

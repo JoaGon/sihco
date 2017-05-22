@@ -12,7 +12,22 @@
 <link href="{{url ('template/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 <link href="{{ url('css/file-input/fileinput.min.css')}}" media="all" rel="stylesheet" type="text/css" />
 <link href="{{ url('js/file-upload/themes/explorer/theme.css')}}" media="all" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+	
+.file-preview-image {
+	width: 100% !important;
+	height: 130px !important;
+}
 
+.file-zoom-detail {
+
+	width: auto !important;
+    height: auto !important;
+    max-width: 100 !important%;
+    max-height: 100 !important%;
+}
+
+</style>
 
 <meta name="csrf-token" content="<?php echo csrf_token() ?>">
 <div class="container">
@@ -50,17 +65,15 @@
 							<input class="form-control" id="fecha" type="text" class="form-control" name="fecha" data-validation="required" data-validation-error-msg="Debe ingrear una fecha" value="{{ old('fecha') }}">
 						</div>
 					</div>
-					<div class="row row_border ">
+					<div class="row">
 						<div class="col-lg-12">
 							<form enctype="multipart/form-data">
 						      
-						        <div class="form-group">
-						            <input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
+						        <div class="form-group col-lg-4" style="margin: 30px" >
+						            <input id="file-1" name="imagen_" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1">
 						        </div>
 						        <hr>
-						        <div class="form-group">
-						            <input id="file-2" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
-						        </div>
+						       
 						      
 						       
 						    </form>
@@ -86,7 +99,7 @@
 	</div>
 	<!-- /.row -->
 </div>
-	
+
 </div>
 <!--<script src="{{ url('bower_components/jquery/dist/jquery.min.js') }}"></script>-->
 <!-- jQuery -->
@@ -109,15 +122,20 @@
 
 <script>
 $("#file-1").fileinput({
-        uploadUrl: '#', // you must set a valid URL here else you will get an error
+        uploadUrl: "{{url('/register_imaging')}}", // you must set a valid URL here else you will get an error
         allowedFileExtensions: ['jpg', 'png', 'gif'],
         overwriteInitial: false,
         maxFileSize: 1000,
-        maxFilesNum: 10,
+        maxFilesNum: 1,
+      	uploadExtraData: function(previewId, index) {
+        	return {key: index};
+    	},
+		overwriteInitial: false,
+		initialPreviewAsData: true // identify if you are sending preview data only and not the markup
         //allowedFileTypes: ['image', 'video', 'flash'],
-        slugCallback: function (filename) {
+        /*slugCallback: function (filename) {
             return filename.replace('(', '_').replace(']', '_');
-        }
+        }*/
     });
 $("#file-2").fileinput({
         uploadUrl: '#', // you must set a valid URL here else you will get an error
@@ -141,11 +159,19 @@ $("#file-2").fileinput({
             return filename.replace('(', '_').replace(']', '_');
         }
     });
-$("#input-700").fileinput({
-    uploadUrl: "http://localhost/file-upload-single/1", // server upload action
-    uploadAsync: true,
-    maxFileCount: 5
-});
+    $("#file-3").fileinput({
+        uploadUrl: '#', // you must set a valid URL here else you will get an error
+        allowedFileExtensions: ['jpg', 'png', 'gif'],
+        overwriteInitial: false,
+        maxFileSize: 1000,
+        maxFilesNum: 10,
+        //allowedFileTypes: ['image', 'video', 'flash'],
+        slugCallback: function (filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+    });
+
+
     function big_imaging(ruta, id) {
     	console.log(id);
         var direccion_img = '{!!url("/")!!}' + '/' + ruta;

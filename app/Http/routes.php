@@ -46,6 +46,11 @@ Route::get('/auth/registrar/paciente', 'RegistrarController@getRegisterPatient')
 /*Route::get('/auth/register', function(){
   return "llega";
 });*/
+
+Route::post('/register_imaging','ImagenController@safeRadio');
+Route::post('/delete/avatar','ImagenController@deleteAvatar');
+
+
 Route::get('datos/consulta/{nro_historia}','ConsultaController@consulta_paciente');
 Route::get('consulta', 'ConsultaController@index');
 Route::post('motivo_consulta','ConsultaController@save');

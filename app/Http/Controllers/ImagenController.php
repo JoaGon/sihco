@@ -81,4 +81,41 @@ class ImagenController extends Controller
         DB::commit();
         return redirect('/imaging/'.$data['consulta_id'].'/'.$data['paciente_id']);
     }
+
+     public function safeRadio(Request $req){
+
+        $file = $_FILES['imagen_'];
+        $dir_upload = 'images/';
+        $new_name = time() . '-' .$file['name'];
+        $copied = copy($file['tmp_name'], $dir_upload . $new_name);
+
+        $key = $dir_upload. $new_name;
+
+        $url = 'http://localhost:8080/sihco/public/delete/avatar';
+        $respuesta =  json_encode([
+            'initialPreview' => [
+                "http://localhost:8080/sihco/public/{$key}"
+            ],
+            'initialPreviewConfig' => [
+                ['caption' => "Sports-{$key}", 'size' => 627392, 'width' => '40px', 'url' => $url, 'key' => $key,],
+            ],
+            'append' => true // whether to append these configurations to initialPreview.
+                             // if set to false it will overwrite initial preview
+                             // if set to true it will append to initial preview
+                             // if this propery not set or passed, it will default to true.
+        ]);
+      
+        return $respuesta;
+
+    }
+
+    public function deleteAvatar(Request $req){
+        
+           
+                unlink($req->input('key'));
+                return response()->json(1);
+
+    }
+   
+
 }

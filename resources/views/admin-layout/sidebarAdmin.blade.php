@@ -259,6 +259,7 @@
 
     @yield('content')
     <!-- jQuery -->
+    
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ url('template/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
     <!-- Metis Menu Plugin JavaScript -->
@@ -268,10 +269,11 @@
     <script src="{{ url('template/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{ url('js/form-validator/jquery.form-validator.min.js') }}"></script>
     <script src="{{url('jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
-    <script src="{{ url('js/pnotify/dist/pnotify.js')}}"></script>
+    <script src="{{ url('js/pnotify/dist/pnotify.js')}}"></script>/
     <script src="{{ url('js/pnotify/dist/pnotify.buttons.js')}}"></script>
     <script src="{{ url('js/pnotify/dist/pnotify.nonblock.js')}}"></script>
     <script src="{{ url('js/form-validator/jquery.form-validator.min.js') }}"></script>
+
     <script>
         $(document).ready(function() {
             $("#nacimiento_edit").datepicker({

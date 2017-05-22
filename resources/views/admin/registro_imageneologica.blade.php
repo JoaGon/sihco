@@ -17,7 +17,8 @@
 <meta name="csrf-token" content="<?php echo csrf_token() ?>">
 <div class="container">
 	<!-- /.row -->
-	<div class="row">
+	<div class="row ">
+	<div class="container kv-main">
 		<div class="col-lg-10 col-sm-8 col-sm-offset-4 col-lg-offset-2 col-md-offset-4">
 			 @if(session('status'))
 			<div class="alert alert-success text-center notification">
@@ -85,6 +86,7 @@
 	</div>
 	<!-- /.row -->
 </div>
+	
 </div>
 <!--<script src="{{ url('bower_components/jquery/dist/jquery.min.js') }}"></script>-->
 <!-- jQuery -->

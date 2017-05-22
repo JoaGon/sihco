@@ -7,87 +7,86 @@
 <link href="{{ url('template/dist/css/sb-admin-2.css')}} " rel="stylesheet">
 <link href="{{ url('css/styles.css')}} " rel="stylesheet">
 <link href="{{url ('template/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+
+<link href="{{ url('css/admin.css')}} " rel="stylesheet">
+<link href="{{url ('template/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+<link href="{{ url('css/file-input/fileinput.min.css')}}" media="all" rel="stylesheet" type="text/css" />
+<link href="{{ url('js/file-upload/themes/explorer/theme.css')}}" media="all" rel="stylesheet" type="text/css"/>
+
+
 <meta name="csrf-token" content="<?php echo csrf_token() ?>">
 <div class="container">
 	<!-- /.row -->
-	<div class="row">
-		<form  class="form-horizontal" role="form" id="form_delete" enctype="multipart/form-data">
-		<div class="col-lg-10 col-sm-8 col-sm-offset-4 col-lg-offset-2 col-md-offset-2">
+	<div class="row ">
+	<div class="container kv-main">
+		<div class="col-lg-10 col-sm-8 col-sm-offset-4 col-lg-offset-2 col-md-offset-4">
 			 @if(session('status'))
 			<div class="alert alert-success text-center notification">
 				<ul style="list-style:none;">
 					<li style="font-size:16px;">{{ session('status') }}</li>
 				</ul>
 			</div>
-			 @endif
-			<div class="col-lg-10 col-sm-8 col-sm-offset-2 col-lg-offset-2 col-md-offset-4" style=" background-color:white;padding-left:0; margin-top: 25px">
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="background-color:white;padding-left:0">
-					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="background-color:white;padding-left:0">
-						<section>
-						<?php
-                    foreach ($imagen as $im) {
-                        $ruta_temp = url('/') . '/' . $im->
-						ruta; ?>
-						<div style="clear:both;" onclick="big_imaging('{!!$im->
-							ruta!!}');"> <img src="{!!url('/').'/'.$im->ruta!!}" class="btn" style="float: left; width: 70px; higth: 70px;"> <label style="margin-left: 20%;">
-							<?php
-                                if ($im->
-							titulo_imagen) { echo $im->titulo_imagen; } else { echo 'Sin titulo'; } ?> </label>
+			 @endif @foreach ($pacientes as $paciente)
+			
+			<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12" style=" background-color:white;padding-left:0; margin-top: 25px">
+				<div style="font-size: 20px; text-align: center; color:#59bddd;">
+					 Resumen Historia Medica
+				</div>
+				 <fieldset>
+				<form class="form-horizontal" id="form_familiares">
+					 {{ csrf_field() }} <input type="hidden" name="consulta_id" value={{$consulta}}>
+					<input type="hidden" name="paciente_id" value="{{$paciente->id_paciente}}"> <input type="hidden" name="historia" value="{{$paciente->nro_historia}}">
+					<div class="form-group">
+						<div class="col-md-4">
+							<label for="motivo">Nombre</label>
+							<textarea class="form-control" disabled cols="25" autofocus="true" rows="1" name="nombre">{{$paciente->nombre }} {{ $paciente->apellido }}</textarea>
 						</div>
-						<br>
-						<?php } ?>
-						</section>
+						<div class="col-md-4">
+							<label for="motivo" class="">C.I:</label>
+							<textarea class="form-control" disabled cols="75" autofocus="true" rows="1" name="ci">{{ $paciente->ci }}</textarea>
+						</div>
+						<div class="col-md-4">
+							<label for="motivo" class="">Fecha Consulta</label>
+							<input class="form-control" id="fecha" type="text" class="form-control" name="fecha" data-validation="required" data-validation-error-msg="Debe ingrear una fecha" value="{{ old('fecha') }}">
+						</div>
 					</div>
-					<div id="imagenologico" class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="background-color:white;padding-left:0; text-align: center;">
-						<img id="img_imagenologico" src='' style="display:block;margin:0 auto 0 auto; width: auto; higth: auto; max-height: 720px; max-width: 480px;">
+					<div class="row row_border ">
+						<div class="col-lg-12">
+							<form enctype="multipart/form-data">
+						      
+						        <div class="form-group">
+						            <input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
+						        </div>
+						        <hr>
+						        <div class="form-group">
+						            <input id="file-2" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
+						        </div>
+						      
+						       
+						    </form>
+						</div>
 					</div>
-				</div>
-				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="background-color:white;padding-left:0">
-					<div style="color:#59bddd;">
-						<p>
-							T&iacute;tulo de la imagen
-						</p>
-						<input type="text" name="title" id="title" class="form-control" placeholder="">
+					
+			       
+					<div class="form-group">
+						<div class="col-md-6 col-md-offset-4">
+							<button type="submit" onclick="insertar_historia();" class="btn btn-primary">Registrar
+							</button>
+						 	
+						 	<a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
+							
+						</div>
+						 @endforeach
 					</div>
-					<br>
-					<br>
-					<br>
-					<br>
-					<input type="hidden" name="consulta_id" value="{!!$consulta!!}">
-					<input type="hidden" name="paciente_id" value="{!!$id_paciente!!}">
-					<input type="hidden" name="_token" value="{!! csrf_token() !!}">
-					<input type="hidden" name="ruta" id="ruta_imaging">
-					<div style="width: 100%">
-						<button class="btn btn-primary" data-toggle="modal" data-target="#modal_imaging">Agregar imagen</button>
-						<button class="btn btn-primary" onclick="eliminar()" >Eliminar imagen</button>
-						<!--button class="btn btn-primary" onclick="validar_imag();">Agregar estudio</button-->
-					</div>
-				</div>
+					<!-- /.col-lg-12 -->
+				</form>
+				 </fieldset>
 			</div>
 		</div>
-		</form>
-		<form class="form-horizontal" role="form" id="form_imaging" enctype="multipart/form-data" action="{{url('/register/imaging')}}" method="POST">
-			<div id="modal_imaging" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabelI" aria-hidden="true">
-				<div class="modal-dialog modal-lg">
-					<div class="modal-content" id="modal_content" style="padding: 30px;">
-						<div class="form-group">
-							<input type="file" value="perio" name="imagen_" id="imagen_" class="filestyle" style="width: 50% ;" placeholder="Buscar">
-						</div>
-						<input type="hidden" name="_token" value="{!! csrf_token() !!}">
-						<input type="hidden" name="consulta_id" value="{!!$consulta!!}">
-						<input type="hidden" name="paciente_id" value="{!!$id_paciente!!}">
-						<div class="modal-footer">
-							<button type="submit" class="btn btn-default">Guardar</button>
-							<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</form>
-		<!-- /.col-lg-12 -->
 	</div>
 	<!-- /.row -->
 </div>
+	
 </div>
 <!--<script src="{{ url('bower_components/jquery/dist/jquery.min.js') }}"></script>-->
 <!-- jQuery -->
@@ -99,11 +98,59 @@
 <script src="{{ url('js/list.min.js')}}"></script>
 <script type="text/javascript" src="{!!url('bootstrap-filestyle/src/bootstrap-filestyle.min.js')!!}"></script>
 
+<script src="{{ url('js/file-upload/plugins/canvas-to-blob.min.js')}}" type="text/javascript"></script>
+<script src="{{ url('js/file-upload/plugins/sortable.min.js')}}" type="text/javascript"></script>
+<script src="{{ url('js/file-upload/plugins/purify.min.js')}}" type="text/javascript"></script>
+<script src="{{ url('js/file-upload/fileinput.min.js')}}"></script>
+<script src="{{ url('js/file-upload/themes/fa/theme.js')}}"></script>
+<script src="{{ url('js/file-upload/locales/es.js')}}"></script>
+<script src="{{ url('js/file-upload/locales/fr.js')}}"></script>
+
+
 <script>
-    function big_imaging(ruta) {
+$("#file-1").fileinput({
+        uploadUrl: '#', // you must set a valid URL here else you will get an error
+        allowedFileExtensions: ['jpg', 'png', 'gif'],
+        overwriteInitial: false,
+        maxFileSize: 1000,
+        maxFilesNum: 10,
+        //allowedFileTypes: ['image', 'video', 'flash'],
+        slugCallback: function (filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+    });
+$("#file-2").fileinput({
+        uploadUrl: '#', // you must set a valid URL here else you will get an error
+        allowedFileExtensions: ['jpg', 'png', 'gif'],
+        overwriteInitial: false,
+        maxFileSize: 1000,
+        maxFilesNum: 10,
+        //allowedFileTypes: ['image', 'video', 'flash'],
+        slugCallback: function (filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+    });
+    $("#file-1").fileinput({
+        uploadUrl: '#', // you must set a valid URL here else you will get an error
+        allowedFileExtensions: ['jpg', 'png', 'gif'],
+        overwriteInitial: false,
+        maxFileSize: 1000,
+        maxFilesNum: 10,
+        //allowedFileTypes: ['image', 'video', 'flash'],
+        slugCallback: function (filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+    });
+$("#input-700").fileinput({
+    uploadUrl: "http://localhost/file-upload-single/1", // server upload action
+    uploadAsync: true,
+    maxFileCount: 5
+});
+    function big_imaging(ruta, id) {
+    	console.log(id);
         var direccion_img = '{!!url("/")!!}' + '/' + ruta;
         $('#img_imagenologico').remove();
-        $("#imagenologico").append("<img id='img_imagenologico' src='" + direccion_img + "' style=\"display:block;margin:0 auto 0 auto; width: auto; higth: auto; max-height: 720px; max-width: 480px; \"/>");
+        $("#imagenologico").append("<img id='img_imagenologico' name='"+id+"' src='" + direccion_img + "' style=\"display:block;margin:0 auto 0 auto; width: auto; higth: auto; max-height: 720px; max-width: 480px; \"/>");
         $('#ruta_imaging').val(ruta);
     }
     function validar_imag() {
@@ -116,10 +163,7 @@
      }    
      function eliminar(){
 
-
-      var formData = new FormData($("#form_delete")[0]);
-      
-     	  $.ajax({
+     	  /*$.ajax({
             url: "{{ url('/delete_image') }}",
             type: 'POST',
             data: formData,
@@ -135,7 +179,17 @@
             error: function(e) {
                 console.log('Error!!!', e);
             }
-          });
+          });*/
+          var value = $('#ruta_imaging').val();
+          $.post("{{ url('/delete_image') }}",
+          		{
+        			ruta: value
+
+          		},function(){
+               location.reload();
+            }
+          	
+          	);
      }
 </script>
 @endsection

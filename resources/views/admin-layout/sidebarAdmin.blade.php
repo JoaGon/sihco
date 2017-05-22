@@ -259,7 +259,6 @@
 
     @yield('content')
     <!-- jQuery -->
-    <script src="{{ url('template/vendor/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ url('template/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
     <!-- Metis Menu Plugin JavaScript -->

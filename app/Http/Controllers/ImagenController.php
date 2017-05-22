@@ -60,13 +60,13 @@ class ImagenController extends Controller
     }
     public function deleteImaging(Request $req){
         
-             dd($req);
+             //dd($req->input('ruta'));
             DB::table('registros_imageneologicos')
                 ->where('ruta',$req->input('ruta'))
                 ->delete();
                 unlink($req->input('ruta'));
 
-        return redirect('/registro_imageneologico/'.$req->input('paciente_id').'/'.$req->input('consulta_id'));
+        return 1;
     }
     public function safeStudy(){
         $data = Input::all();

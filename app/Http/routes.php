@@ -18,7 +18,7 @@ Route::get('/', function(){
   return view('home');
 });
 Route::get('canvas', function(){
-  return view('admin.canvas');
+  return view('admin.canvas2');
 });
 Route::get('/', 'HomeController@index');
 

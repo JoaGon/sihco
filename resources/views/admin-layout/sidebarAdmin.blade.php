@@ -9,7 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>SIHCO</title>
-
+    <script src="{{url('bower_components/jquery/dist/jquery.min.js')}}"></script>
+    
     <!-- Bootstrap Core CSS -->
     <link href="{{ url('template/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 

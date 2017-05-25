@@ -235,7 +235,6 @@
 </div>
 <!--<script src="{{ url('bower_components/jquery/dist/jquery.min.js') }}"></script>-->
 <!-- jQuery -->
-<script src="{{url('bower_components/jquery/dist/jquery.min.js')}}"></script>
 <script src="{{ url('template/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{ url('template/vendor/datatables-plugins/dataTables.bootstrap.min.js')}}"></script>
 <script src="{{ url('template/vendor/datatables-responsive/dataTables.responsive.js')}}"></script>

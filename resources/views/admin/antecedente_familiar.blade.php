@@ -342,7 +342,7 @@
                             </tr>
                           </thead>
                            <tbody>
-                                <tr ng-repeat="(x,res) in cardiovasculares  | filter:search">
+                                <tr dir-paginate="(x,res) in cardiovasculares | filter:search|itemsPerPage:5">
                                   <td>
                                     <input type="radio"  id="[[x]]" name="table_records">
                                   </td>
@@ -363,6 +363,11 @@
                     </table>
                 </div>
         </div>
+        <dir-pagination-controls
+                         max-size="5"
+                         direction-links="true"
+                         boundary-links="true" >
+        </dir-pagination-controls>
         <div class="modal-footer">
         <a class="btn" data-toggle="modal" data-target="#myModalCardiovascular">Nueva Enfermedad</a>
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

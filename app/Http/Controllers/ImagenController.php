@@ -91,10 +91,10 @@ class ImagenController extends Controller
 
         $key = $dir_upload. $new_name;
 
-        $url = 'http://localhost:8080/sihco/public/delete/avatar';
+        $url = 'http://localhost:8088/sihco/public/delete/avatar';
         $respuesta =  json_encode([
             'initialPreview' => [
-                "http://localhost:8080/sihco/public/{$key}"
+                "http://localhost:8088/sihco/public/{$key}"
             ],
             'initialPreviewConfig' => [
                 ['caption' => "Sports-{$key}", 'size' => 627392, 'width' => '40px', 'url' => $url, 'key' => $key,],

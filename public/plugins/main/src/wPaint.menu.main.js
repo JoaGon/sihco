@@ -2,7 +2,7 @@
 
   // setup menu
   $.fn.wPaint.menus.main = {
-    img: 'sihco/public/plugins/main/img/icons-menu-main.png',
+    img: "{{url('/plugins/main/img/icons-menu-main.png')}}",
     items: {
       undo: {
         icon: 'generic',

@@ -14,9 +14,12 @@
 <link href="{{ url('js/file-upload/themes/explorer/theme.css')}}" media="all" rel="stylesheet" type="text/css"/>
 <style type="text/css">
 	
+
+
 .file-preview-image {
-    width: 60% !important;
+    width: 50% !important;
     height: 80px !important;
+    float: left;
 }
 
 .file-zoom-detail {
@@ -50,6 +53,7 @@
 
 .krajee-default.file-preview-frame .file-thumbnail-footer {
     top: -100px;
+    float: left;
 }
 .krajee-default.file-preview-frame:not(.file-preview-error):hover {
     box-shadow: 3px 3px 5px 0 #fff;
@@ -168,6 +172,43 @@
 							<input class="form-control" id="fecha" type="text" class="form-control" name="fecha" data-validation="required" data-validation-error-msg="Debe ingrear una fecha" value="{{ old('fecha') }}">
 						</div>
 					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12">
+					
+					</div>
+					<div class="row row_border">
+						<div class="col-lg-6 col-md-6 col-sm-6">
+							<div class="col-lg-3 col-md-3 col-sm-3">
+								Ordenado Por:
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-3">
+								<input type="input" name="ordenado_por" id="ordenado_por" style="color:black ">	
+							</div>
+								
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6">
+							<div class="col-lg-2 col-md-2 col-sm-2">
+								Servicio:
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-4">
+								<input type="input" name="servicio" id="servicio" style="color:black ">	
+							</div>
+								
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6">
+							<div class="col-lg-2 col-md-2 col-sm-2">
+								Motivo del Examen:
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-4">
+								<input type="input" name="motivo_examen" id="motivo_examen" style="color:black ">	
+							</div>
+								
+						</div>
+
+						
+					</div>
+						
+
+					</div>
 					<div class="row">
 						<div class="col-lg-12">
 
@@ -212,7 +253,78 @@
 						
 					</div>
 					
-			       
+			       <div class="row row_border ">						
+			       		1. Calidad de la Imagen
+						<div class="col-lg-12">
+							<textarea name="calidad_imagen" id="calidad_imagen" placeholder="" data-validation="required" data-validation-error-msg="Debe especificar" class="form-control" style="height: 100px;"></textarea>
+						</div>
+					</div>
+					<div class="row row_border ">
+					2. Hallazgos radiográficos en estructuras óseas:
+						<div class="col-lg-12">
+							<textarea name="oseas" id="oseas" placeholder="Introduzca el Resumen" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
+						</div>
+					</div>
+					
+					<div class="row row_border ">
+					3.Hallazgos radiográficos en senos, fosas nasales, atm, arco zigomático, espacio  aéreo y sombra de tejido blando:
+						<div class="col-lg-12">
+							<textarea name="senos" id="senos" placeholder="" data-validation="required" data-validation-error-msg="Debe especificar" class="form-control" style="height: 100px;"></textarea>
+						</div>
+					</div>
+					<div class="row row_border ">
+					4. Características generales:
+						<div class="col-lg-12">
+							<textarea name="generales" id="generales" placeholder="Introduzca el Resumen" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
+						</div>
+					</div>
+					<div class="row row_border ">
+					5. Radiolucides coronal:
+						<div class="col-lg-12">
+							<textarea name="coronal" id="coronal" placeholder="Introduzca el Resumen" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
+						</div>
+					</div>
+					<div class="row row_border ">
+					6. Cresta alveolar
+						<div class="col-lg-12">
+							<textarea name="cresta" id="cresta" placeholder="Introduzca el Resumen" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
+						</div>
+					</div>
+					<div class="row row_border ">
+					7. Región apical
+						<div class="col-lg-12">
+							<textarea name="apical" id="apical" placeholder="Introduzca el Resumen" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
+						</div>
+					</div>
+					<div class="row row_border ">
+					8. Hallazgos adicionales
+						<div class="col-lg-12">
+							<textarea name="adicionales" id="adicionales" placeholder="Introduzca el Resumen" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
+						</div>
+					</div>
+					<div class="row row_border ">
+						9. Interpretación
+						<div class="col-lg-12">
+							<textarea name="interpretacion" id="interpretacion" placeholder="Introduzca el Resumen" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
+						</div>
+					</div>
+					<div class="row row_border ">
+					10. Recomendaciones
+						<div class="col-lg-12">
+							<textarea name="recomendaciones" id="recomendaciones" placeholder="Introduzca el Resumen" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
+						</div>
+					</div>
+					<section>
+						 <div id="wPaint-demo2" class="col-lg-10" style="position:relative; width:500px; height:200px; background-color:#7a7a7a; margin:70px auto 20px auto;"></div>
+
+						  <center style="margin-bottom: 50px;">
+						    <input type="button" value="toggle menu" onclick="console.log($('#wPaint-demo2').wPaint('menuOrientation')); $('#wPaint-demo2').wPaint('menuOrientation', $('#wPaint-demo2').wPaint('menuOrientation') === 'vertical' ? 'horizontal' : 'vertical');"/>
+						  </center>
+
+						  <center id="wPaint-img"></center>
+					</section>
+					
+
 					<div class="form-group">
 						<div class="col-md-6 col-md-offset-4">
 							<button type="submit" onclick="insertar_historia();" class="btn btn-primary">Registrar
@@ -437,10 +549,10 @@ $("#file-2").fileinput({
 
     function saveImg(image) {
       var _this = this;
-
+      console.log(image)
       $.ajax({
         type: 'POST',
-        url: '/test/upload.php',
+        url: "{{url('/register_imaging')}}",
         data: {image: image},
         success: function (resp) {
 
@@ -451,8 +563,8 @@ $("#file-2").fileinput({
           // returned from server after upload as long
           // as it contains the path to the image url
           // or a base64 encoded png, either will work
-          resp = $.parseJSON(resp);
-
+          resp = resp;
+	console.log(resp)
           // update images array / object or whatever
           // is being used to keep track of the images
           // can store path or base64 here (but path is better since it's much smaller)
@@ -490,6 +602,16 @@ $("#file-2").fileinput({
 
     // init wPaint
     $('#wPaint-demo1').wPaint({
+      menuOffsetLeft: -35,
+      menuOffsetTop: -50,
+      saveImg: saveImg,
+      loadImgBg: loadImgBg,
+      loadImgFg: loadImgFg,
+      onShapeDown: createCallback('onShapeDown'),
+      onShapeUp: createCallback('onShapeUp'),
+      onShapeMove: createCallback('onShapeDMove')
+    });
+    $('#wPaint-demo2').wPaint({
       menuOffsetLeft: -35,
       menuOffsetTop: -50,
       saveImg: saveImg,

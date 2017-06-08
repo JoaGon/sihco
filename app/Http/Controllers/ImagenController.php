@@ -38,6 +38,7 @@ class ImagenController extends Controller
 
     public function safeImaging(Request $req){
 
+
     	$file = $_FILES['imagen_'];
 	    $dir_upload = 'images/';
 	    $new_name = time() . '-' .$file['name'];
@@ -69,6 +70,7 @@ class ImagenController extends Controller
         return 1;
     }
     public function safeStudy(){
+
         $data = Input::all();
         DB::beginTransaction();
         try{
@@ -84,7 +86,9 @@ class ImagenController extends Controller
 
      public function safeRadio(Request $req){
 
-        $file = $_FILES['imagen_'];
+      //dd($req->input('image'));
+
+        /*$file = $_FILES['imagen_'];
         $dir_upload = 'images/';
         $new_name = time() . '-' .$file['name'];
         $copied = copy($file['tmp_name'], $dir_upload . $new_name);
@@ -103,9 +107,9 @@ class ImagenController extends Controller
                              // if set to false it will overwrite initial preview
                              // if set to true it will append to initial preview
                              // if this propery not set or passed, it will default to true.
-        ]);
+        ]);*/
       
-        return $respuesta;
+        return $req->input('image');
 
     }
 

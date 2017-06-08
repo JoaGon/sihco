@@ -77,8 +77,8 @@
                               </div>
                               <div class="col-lg-2">Forma</div>
                               
-                              <div class="col-lg-4">
-                                <select style="color: black" name="forma_su">
+                              <div class="col-lg-12">
+                                <select class="form-control" style="color: black" name="forma_su">
                                   <option value="triangular">Triangular</option>
                                   <option value="ovalado">Ovalado</option>
                                   <option value="cuadrado">Cuadrado</option>
@@ -88,7 +88,7 @@
                                  
                               <div class="col-lg-12">
                                 Simetria
-                                   <select style="color: black" name="simetria_su">
+                                   <select class="form-control" style="color: black" name="simetria_su">
                                     <option value="si">Si</option>
                                     <option value="no">No</option>
                                   </select>
@@ -103,8 +103,8 @@
                               </div>
                               <div class="col-lg-2">Forma</div>
                               
-                              <div class="col-lg-4">
-                                <select style="color: black" name="forma_inf">
+                              <div class="col-lg-12">
+                                <select class="form-control" style="color: black" name="forma_inf">
                                   <option value="triangular">Triangular</option>
                                   <option value="ovalado">Ovalado</option>
                                   <option value="cuadrado">Cuadrado</option>
@@ -114,7 +114,7 @@
                                  
                               <div class="col-lg-12">
                                 Simetria
-                                   <select style="color: black" name="simetria_inf">
+                                   <select class="form-control" style="color: black" name="simetria_inf">
                                         <option value="si">Si</option>
                                         <option value="no">No</option>
                                     </select>
@@ -128,10 +128,10 @@
                   <label>Espacios Edentulos</label>
                 </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Dientes Ausentes
-                                <input type="text" style="color: black; margin: 15px"  data-validation="required" data-validation-error-msg="Requerido" name="dientes_ausentes" id="dientes_ausentes" >           
+                                <input class="form-control" type="text" style="color: black; margin: 15px"  data-validation="required" data-validation-error-msg="Requerido" name="dientes_ausentes" id="dientes_ausentes" >           
                             </div>
                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Grado de Reabsorcion del Reborde
-                                <select style="color: black" name="grado">
+                                <select class="form-control" style="color: black; margin: 15px;" name="grado">
                                   <option value="claseI">Clase I</option>
                                   <option value="claseII">Clase II</option>
                                   <option value="claseIII">Clase III</option>
@@ -145,7 +145,7 @@
                             Superior:
                             </label>
                             <div  class="col-lg-3">
-                                <select style="color: black" name="kennedy_su">
+                                <select class="form-control" style="color: black" name="kennedy_su">
                                  <option value="claseI">Clase I</option>
                                   <option value="claseII">Clase II</option>
                                   <option value="claseIII">Clase III</option>

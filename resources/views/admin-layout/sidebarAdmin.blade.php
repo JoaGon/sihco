@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <title>SIHCO</title>
     <script src="{{url('bower_components/jquery/dist/jquery.min.js')}}"></script>
-    
+
     <!-- Bootstrap Core CSS -->
     <link href="{{ url('template/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
@@ -163,6 +163,9 @@
                     <!--/li-->
                     <li>
                         <a href="{{ url('/consulta') }}"><i class="fa fa-dashboard fa-fw"></i> Anexar a la Historia</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/consulta_historia_paciente') }}"><i class="fa fa-dashboard fa-fw"></i>Consultar Historia</a>
                     </li>
                     <li>
                         <a href="{{ url('/index') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>

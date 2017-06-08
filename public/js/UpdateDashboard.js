@@ -1,8 +1,8 @@
-angular.module("AdminDashboard",['angularUtils.directives.dirPagination'], function($interpolateProvider){
+angular.module("UpdateDashboard",['angularUtils.directives.dirPagination'], function($interpolateProvider){
   $interpolateProvider.startSymbol('[[');
   $interpolateProvider.endSymbol(']]');
 })
-.controller("AdminController",function($scope,$http,$timeout){
+.controller("UpdateController",function($scope,$http,$timeout){
 
   $scope.data = $.param({});
   var url1 = "http://localhost:8088/sihco/public/cardiovasculares";
@@ -13,9 +13,26 @@ angular.module("AdminDashboard",['angularUtils.directives.dirPagination'], funct
   var url_transmision_sexual = "http://localhost:8088/sihco/public/transmision_sexual";
   var url_cancer = "http://localhost:8088/sihco/public/cancer";
 
-  
+  console.log('enferrrr',valido)
+  if(valido[0].validar == ''){
+    console.log('vacio')
+    new PNotify({
+        title: 'Historia No Validada',
+        text: 'Esta Historia no ha sido validada',
+        hide: false,
+        styling: 'bootstrap3'
+    });
+  }
   test = [];
   
+  $scope.enfermedades = enfer_cardiovascular;
+  $scope.enfer_renal = enfer_renal;
+  $scope.enfer_alergica = enfermedades_alergicas;
+  $scope.enfer_infecciosa = enfermedades_infecciosas;
+  $scope.enfer_cancer = enfermedades_cancer;
+  $scope.enfer_trans_sexual = enfermedades_sexuales;
+
+
  /*Obtienes las enfermedades cardiovasculares registradas en BD*/
   $http({
     method: "POST",

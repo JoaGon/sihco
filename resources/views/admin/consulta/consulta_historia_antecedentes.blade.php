@@ -8,6 +8,7 @@
 <link href="{{ url('css/styles.css')}} " rel="stylesheet">
 <link href="{{url ('template/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="{{ url('bootstrap-submenu-2.0.4/dist/css/bootstrap-submenu.min.css') }}">
+
 <div class="container">
 	<!-- /.row -->
 	<div class="row">
@@ -19,49 +20,61 @@
 				</ul>
 			</div>
 			 @endif
-			<div class="panel panel-default" style="margin-top: 15px;">
-				<div class="panel-heading">
-					 Seleccione el Paciente
-				</div>
-				<!-- /.panel-heading -->
-				<div class="panel-body" id="pacientes">
-					<input type="text" placeholder="Buscar Paciente" style="margin: 10px;" class="search"/>
-					<button class="sort" data-sort="name">
-					Ordenar por Nombre </button>
+			 @foreach ($pacientes as $paciente)
+        
+             
+            <div class="form-group">
+                        <div class="col-md-4">
+                            <label for="motivo">Nombre</label>
+                            <textarea class="form-control" disabled cols="25" autofocus="true" rows="1" name="nombre">{{$paciente->nombre }} {{ $paciente->apellido }}</textarea>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="motivo" class="">C.I:</label>
+                            <textarea class="form-control" disabled cols="75" autofocus="true" rows="1" name="ci">{{ $paciente->ci }}</textarea>
+                        </div>
+                       
+                    </div>
+                    @endforeach
+			<div class="col-lg-12">
+			  <div style="font-size: 20px; text-align: center; color:#59bddd;">
+                    Antecedentes Familiares
+                </div>
+					<div class="panel-body" id="consultas">
 					<div class="table-responsive">
 						<table class="table table-striped table-bordered table-hover" id="dataTables-example">
 						<thead>
 						<tr>
 							<th>
-								Nro Historia
+								ID antecedente
 							</th>
 							<th>
-								Nombre
+								Nro Consulta
 							</th>
 							<th>
-								Apellido
+								Atendido Por
 							</th>
 							<th>
-								C.I
+								Fecha
 							</th>
+							
 						</tr>
 						</thead>
 						<tbody class="list">
-						 @foreach($pacientes as $paciente)
+						 @foreach($antecedentes as $ante)
 						<tr>
 							<td>
 								<strong>
-								<a href="{{ url('consulta/'.$paciente->nro_historia) }}" class="btn btn-link" style="font-weight: bold" data-toggle="tooltip" title="Cita"> {{$paciente->nro_historia}} </a>
+								<a href="{{ url('consulta_ante_familiar/'.$ante->id_antecedente_familiar.'/'.$ante->paciente_id) }}" class="btn btn-link" style="font-weight: bold" data-toggle="tooltip" title="Cita"> {{$ante->id_antecedente_familiar}} </a>
 								</strong>
 							</td>
 							<td class="name">
-								{{$paciente->nombre}}
+								{{$ante->consulta_id}}
 							</td>
 							<td>
-								{{$paciente->apellido}}
+								{{$ante->nombre}} {{$ante->apellido}}
 							</td>
 							<td>
-								{{$paciente->ci}}
+								{{$ante->fecha}}
 							</td>
 						</tr>
 						 @endforeach
@@ -73,8 +86,17 @@
 					<ul class="pagination">
 					</ul>
 				</div>
+				 <div class="form-group">
+                        <div class="col-md-6 col-md-offset-4">
+                            <button type="submit" onclick="insertar_familiares();" class="btn btn-primary">Registrar</button>
+                            <button type="submit" href="{{ url('antecedente_personal')}}" class="btn btn-primary">
+                            <i class="fa fa-btn fa-user"></i> Siguiente </button>
+                              <a type="submit" href="{{ URL::previous() }}" class="btn btn-primary">
+                            <i class="fa fa-btn fa-user"></i> Volver </a>
+                        </div>
+                    </div>
 				<!-- /.panel-body -->
-			</div>
+					</div>
 			<!-- /.panel -->
 		</div>
 		<!-- /.col-lg-12 -->

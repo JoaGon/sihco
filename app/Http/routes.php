@@ -166,6 +166,24 @@ Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
 Route::post('password/reset', 'Auth\PasswordController@reset');
 
 
+Route::get('consulta_historia_paciente','ConsultaHistoriaController@index');
+Route::get('consulta_paciente/{nro_historia}','ConsultaHistoriaController@showPaciente');
+Route::get('consulta_paciente_/{consulta}','ConsultaHistoriaController@showAntecedenteFamiliar');
+
+Route::get('consulta_antecedentefamiliar/{nro_historia}','ConsultaHistoriaController@showAntecedenteFamiliar');
+Route::get('consulta_ante_familiar/{id}/{paciente_id}','ConsultaHistoriaController@getAntecedenteFamiliar');
+
+Route::post('update_antecedente_familiar','ConsultaHistoriaController@updateAntecedenteFamiliar');
+Route::post('validar_antecedente_familiar','ConsultaHistoriaController@validarAntecedenteFamiliar');
+
+
+
+
+
+Route::get('datos_paciente/{paciente_id}/{consulta_id}','ConsultaHistoriaController@datos_principal');
+
+Route::get('consulta_historia','ConsultaHistoria@index');
+
 Route::get('/test/', function () {
   $pdf = PDF::loadView('pruebaparapdf');
   return $pdf->stream('pruebapdf.pdf');

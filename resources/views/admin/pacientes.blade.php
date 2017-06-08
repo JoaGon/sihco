@@ -41,7 +41,7 @@
                 <div class="table-responsive">
                 <input type="text" placeholder="Buscar Paciente" style="margin: 10px;" class="search" />
                   <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                   <button class="sort" data-sort="name">
+                   <button class="sort" data-sort="name, ci">
                     Ordenar Por Nombre
                   </button>
                       <thead>
@@ -66,7 +66,7 @@
                                         <td class="name">{{$paciente->nombre}}</td>
                                         <td>{{$paciente->apellido}}</td>
                                         <td>{{$paciente->genero}}</td>
-                                        <td>{{$paciente->ci}}</td>
+                                        <td class="ci">{{$paciente->ci}}</td>
                                         <td>{{$paciente->celular}}</td>
                                         <td>{{$paciente->fecha_nacimiento}}</td>
                                         <td>{{$paciente->direccion}}</td>
@@ -372,7 +372,7 @@ $(document).ready(function () {
   });
 
   var monkeyList = new List('paciente_table', {
-    valueNames: ['name'],
+    valueNames: ['name', 'ci'],
     page: 5,
     pagination: true
   });

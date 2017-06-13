@@ -22,6 +22,14 @@ angular.module("UpdateDashboard",['angularUtils.directives.dirPagination'], func
         hide: false,
         styling: 'bootstrap3'
     });
+  }else {
+    new PNotify({
+        title: 'Historia Validada',
+        text: 'Esta Historia ha sido validada',
+        hide: false,
+        type: 'success',
+        styling: 'bootstrap3'
+    });
   }
   test = [];
   

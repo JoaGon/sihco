@@ -246,7 +246,7 @@ class ConsultaHistoriaController extends Controller
 
       public function validarAntecedenteFamiliar(Request $req)
     {
-           dd($req);
+          // dd($req->id_enfermedad);
             $data = $req->all();
 
              try {
@@ -254,36 +254,12 @@ class ConsultaHistoriaController extends Controller
    
                 $verificar = DB::table('antecedentes_familiares')
                 ->where('id_antecedente_familiar',$req->input('id_enfermedad'))
-                ->select('consulta_id','paciente_id','fecha','validar')
-                ->get();
+                  ->update([
+                    'validar' => 'validado',
+                    'profesor'=> Auth::user()->id
+                    ]);
 
-                $data['ultimo_usuario'] = Auth::user()->id;
-                $data['profesor'] = Auth::user()->id;
-                $data['validar'] = '';
-                $data['consulta_id'] =  $verificar[0]->consulta_id;
-                $data['paciente_id'] =  $verificar[0]->paciente_id;
-                $data['fecha'] =  $verificar[0]->fecha;
-                $data['validar'] =  $verificar[0]->validar;
-                $data['id_antecedente_familiar'] =  $req->input('id_enfermedad');
-
-
-
-                unset($data['_token']);
-                unset($data['historia']);
-                unset($data['tipo_enfermedad']);
-                unset($data['circulo_familiar']);
-                unset($data['enfer_cardiov']);
-                unset($data['enfer_renal']);
-                unset($data['enfer_alergica']);
-                unset($data['id_enfermedad']);
-
-                 DB::table('antecedentes_familiares')
-                            ->where('paciente_id',$data['paciente_id'])
-                            ->where('consulta_id',$data['consulta_id'])
-                            ->where('fecha',$data['fecha'])
-                            ->delete();
-
-                $consulta2 = DB::table('antecedentes_familiares')->insert($data);
+               return 'validado';
               
         } catch (Exception $ex) {
             DB::rollback();

@@ -978,6 +978,10 @@
           if(enfermedades_cancer.length > 0){
               $('#enfer_cancer').prop('checked',true)
           }
+          if (enfermedades_alergicas.length > 0) {
+              $('#enfer_alergica').prop('checked',true)
+
+          }
         var antecendetes =  <?php echo json_encode($ante); ?>; 
         console.log(antecendetes);
         
@@ -1086,29 +1090,29 @@ function insertar_familiares(){
 function validar(){
    var id_enfermedad = $('#id_enfermedad').val()
    console.log(id_enfermedad, "<?php echo csrf_token(); ?>")
-   
-          $.ajax({
-            url: "{{ url('/validar_antecedente_familiar') }}",
-            type: 'POST',
-            data: {id_enfermedad:id_enfermedad, _token: "<?php echo csrf_token(); ?>"},
-            async: false,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function(){
-                //popover_show();
-                new PNotify({
+    $.ajax({
+
+    url: "{{ url('/validar_antecedente_familiar') }}",
+    type:"POST",
+    data: {  '_token': $('input[name=_token]').val(), id_enfermedad : id_enfermedad },
+    success:function(data)
+    {
+      PNotify.removeAll();
+      new PNotify({
                       title: 'Validacion Exitosa',
                       text: 'Los Antecedentes Familiares han sido validados!',
                       type: 'success',
                       styling: 'bootstrap3'
                   });
                 console.log('exito')
-            },
-            error: function(e) {
-                console.log('Error!!!', e);
-            }
-          });
+
+
+    },
+    error:function(){
+      alert("error!!!!");
+    }
+
+  });
           
    
   }

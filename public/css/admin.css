@@ -11,3 +11,9 @@
     width: 90% !important;
 
 }
+
+@media (min-width: 992px) {
+  .modal-lg {
+    width: 900px;
+  }
+}

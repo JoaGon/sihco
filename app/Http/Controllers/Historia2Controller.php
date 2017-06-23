@@ -186,12 +186,12 @@ class Historia2Controller extends Controller
 
     }
 
-    public function odonto($paciente_id,$consulta){
+   /* public function odonto($paciente_id,$consulta){
 
           return view('verOdonto');
 
     }
-
+*/
     public function coronapuenteIndex($paciente_id,$consulta)
     {   
         $consulta = intval($consulta);
@@ -541,6 +541,101 @@ class Historia2Controller extends Controller
         DB::commit();
 
         
+    }
+       public function odontoIndex($paciente_id,$consulta)
+    
+    {   
+        //$data = $req->all();
+        $consulta = intval($consulta);
+       // dd($consulta);
+      //  $paciente = Paciente::where('id_paciente', $paciente_id)->get();
+
+        $persona = DB::table('paciente')
+              ->where('id_paciente',$paciente_id)
+              ->pluck('paciente.persona_id');
+
+         $paciente = DB::table('persona')
+         ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+         ->where('persona.id_persona',$persona[0])
+         ->get();
+
+
+
+        return view('verOdonto', [
+            'consulta'=>$consulta,
+            'id_paciente'=>$paciente_id,
+             'pacientes'=> $paciente,
+             
+             ]);
+
+
+    }
+     public function odonto(Request $req)
+    
+    {   
+       // dd($data);
+          $data = $req->all();
+          //dd();
+         DB::beginTransaction();
+
+        try {
+
+            $consulta = intval($data['consulta_id']);
+
+            $data['ultimo_usuario'] = Auth::user()->id;
+            //$data['profesor'] = Auth::user()->id;
+           // $data['validar'] = '';
+            $data['nro_historia'] = $data['historia'];
+
+            unset($data['_token']);
+            unset($data['historia']);
+           foreach (json_decode($data['elementos']) as $key => $value) {
+
+              $consulta2 = DB::table('odontograma')->insert([
+                'paciente_id'=>$data['paciente_id'],
+                'nro_historia'=>$data['nro_historia'],
+                'consulta_id'=>$data['consulta_id'],
+                'elemento'=>$value->elemento,
+                'posicion_x'=>$value->left,
+                'posicion_y'=>$value->top,
+                'ultimo_usuario'=>Auth::user()->id
+
+                ]);
+           }
+           /* $verificar = DB::table('odontograma')
+                ->where('paciente_id',$data['paciente_id'])
+                ->where('consulta_id',$data['consulta_id'])
+                //->where('fecha',$data['fecha'])
+                ->count();
+
+            if($verificar > 0){
+
+                $id = DB::table('odontograma')
+                        ->where('paciente_id',$data['paciente_id'])
+                        ->where('consulta_id',$data['consulta_id'])
+                        //->where('fecha',$data['fecha'])
+                        ->pluck('odontograma.id');
+
+                        $data['id_test'] = $id[0];
+
+                        DB::table('diagrama_riesgo')
+                            ->where('paciente_id',$data['paciente_id'])
+                            ->where('consulta_id',$data['consulta_id'])
+                            ->where('fecha',$data['fecha'])
+                            ->delete();
+
+            }*/
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+        
+        DB::commit();
+
+
+
     }
   
 }

@@ -27,7 +27,10 @@ Route::get('login', 'Auth\AuthController@showLoginForm');
 Route::post('login', 'Auth\AuthController@login');
 Route::get('logout', 'Auth\AuthController@logout');
 
-Route::get('odontodiagrama','ConsultaController@odonto');
+Route::get('odontodiagrama_/{paciente_id}/{consulta_id}','Historia2Controller@odontoIndex');
+Route::post('save_odonto','Historia2Controller@odonto');
+
+
 
 //Route::get('/auth/register', 'RegistrarController@getRegister');
 Route::post('edit','UsuarioController@edit');

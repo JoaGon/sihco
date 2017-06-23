@@ -54,6 +54,7 @@ body { /*background-color: #E3E0F9;*/
 }
 </style>
 <script>
+var array = [];
 function test(idMover){
 	var x=jQuery(document);
 	x.ready(inicio);
@@ -80,7 +81,8 @@ function dibujar(){
 //	    document.write(ss[i]);
 //	    document.write("<br/>");
 		arrayElementos1 = arrayElementos[i].split(':');
-		arrayElementos2 = arrayElementos1[0].split('_');	    
+		arrayElementos2 = arrayElementos1[0].split('_');
+		console.log(arrayElementos1,arrayElementos2)	    
 	    if(arrayElementos2[1]!=undefined){
 		    posLeft = arrayElementos1[1];
 		    posTop = arrayElementos1[2];
@@ -135,18 +137,53 @@ function eliminar(valDiv){
 		numElemento = jQuery("#numElemento").val()-1;
 	   	alert("aca estoy con "+ numElemento);
 		valor = '';
+		array = []
 	   	jQuery(".dialogletra").each(function() {
         	var elemento= this;
            	var posicion = jQuery(this).position();
     		valor = valor+';'+elemento.id+':'+posicion.left+':'+posicion.top;
            	alert("elemento.id="+ elemento.id + "left: " + posicion.left + ", top: " + posicion.top); 
+           	var obj = {
+           		'elemento': elemento.id,
+           		'left':posicion.left,
+           		'top': posicion.top
+           	}
+           	array.push(obj);
 		});
 		jQuery("#imagenesSel").val(valor);
+		console.log(jQuery("#imagenesSel").val(), array);
+		var formData = new FormData(jQuery("#form_familiares")[0]);
+		formData.append('elementos', JSON.stringify(array));
+
+          jQuery.ajax({
+            url: "{{ url('/save_odonto') }}",
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(){
+                //popover_show();
+                new PNotify({
+                      title: 'Registro Exitoso',
+                      text: 'El Odontodiageama ha sido almacenado!',
+                      type: 'success',
+                      styling: 'bootstrap3'
+                  });
+                console.log('exito')
+            },
+            error: function(e) {
+                console.log('Error!!!', e);
+            }
+          });
+         
 	})
 });
 </script>
 </head>
 <body>
+<form class="form-horizontal" id="form_familiares">
 Coordenadas del elemento relativas al contenedor:
       <br>
       X: <span id="posx"></span>
@@ -159,7 +196,12 @@ Coordenadas del elemento relativas al contenedor:
       X: <span id="offsetx"></span>
       <br>
       Y: <span id="offsety"></span>
-<input size="200px" id="imagenesSel" value=';arrastrable2_abrasion:165.00001525878906:171;arrastrable1_abfraccion:120:169;arrastrable0_abajo:80:169' type="text" readonly>
+@foreach ($pacientes as $paciente)
+<input type="hidden"  name="consulta_id" value={{$consulta}}>
+<input type="hidden"   name="paciente_id" value="{{$paciente->id_paciente}}"> 
+<input type="hidden" name="historia" value="{{$paciente->nro_historia}}">
+<input size="200px" id="imagenesSel" value='
+;arrastrable2_abrasion:165.00001525878906:171;arrastrable1_abfraccion:120:169;arrastrable0_abajo:80:169' type="text" readonly>
 
 <input id="numElemento" value='0' type="hidden" readonly>
 <input id="btnGuardar" value='Guardar' type="button" readonly>
@@ -177,6 +219,8 @@ Coordenadas del elemento relativas al contenedor:
 </div>
 </div>
 <div class=''></div>
+@endforeach
+</form>
 </body>
 </html>
 <!--     Bootstrap core JavaScript-->

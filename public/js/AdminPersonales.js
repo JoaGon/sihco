@@ -5,13 +5,13 @@ angular.module("AdminPersonales",[], function($interpolateProvider){
 .controller("AdminPersonalesController",function($scope,$http,$timeout){
 
   $scope.data = $.param({});
-  var url1 = "http://localhost:8088/sihco/public/cardiovasculares";
-  var url2 = "http://localhost:8088/sihco/public/circulos";
-  var url3 = "http://localhost:8088/sihco/public/renales";
-  var url_alergica = "http://localhost:8088/sihco/public/alergicas";
-  var url_infecciosas = "http://localhost:8088/sihco/public/infecciosas";
-  var url_transmision_sexual = "http://localhost:8088/sihco/public/transmision_sexual";
-  var url_cancer = "http://localhost:8088/sihco/public/cancer";
+  var url1 = "../../cardiovasculares";
+  var url2 = "../../circulos";
+  var url3 = "../../renales";
+  var url_alergica = "../../alergicas";
+  var url_infecciosas = "../../infecciosas";
+  var url_transmision_sexual = "../../transmision_sexual";
+  var url_cancer = "../../cancer";
 
 
 
@@ -133,7 +133,7 @@ var config = {
 $scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ, antecedente: 'personal'});
 //$http.post("http://localhost:8088/sihco/public/enfermedad_cardiovascular",  $scope.data, config)
 
-var url = "http://localhost:8088/sihco/public/enfermedad_cardiovascular";
+var url = "../../enfermedad_cardiovascular";
   $http({
     method: "POST",
     url: url,
@@ -152,7 +152,7 @@ var url = "http://localhost:8088/sihco/public/enfermedad_cardiovascular";
 /*Elimina la enfermedad que esta asociada al paciente y a la consulta*/
 
 $scope.eliminarEnfermedad = function(i,id_enfermedad, consulta, paciente){
-  var url_card = "http://localhost:8088/sihco/public/eliminar/paciente/enfermedad_cardiovascular";
+  var url_card = "../../eliminar/paciente/enfermedad_cardiovascular";
 
   $http({
     method: "POST",
@@ -173,7 +173,7 @@ $scope.eliminarEnfermedad = function(i,id_enfermedad, consulta, paciente){
 /*Inserta una efermedad cardiovascular en BD*/
 $scope.insertarEnfermedad = function(){
 
-  var url_inser = "http://localhost:8088/sihco/public/insertar/enfermedad_cardiovascular";
+  var url_inser = "../../insertar/enfermedad_cardiovascular";
   var enfermedad_cardio = $scope.nombre_enfermedad;
 
   var config = {
@@ -200,7 +200,7 @@ $scope.data = $.param({enfermedad: enfermedad_cardio});
 }
 
 $scope.eliminarEnfermedadCardiovascular = function(id_enfermedad){
-    var url = "http://localhost:8088/sihco/public/eliminar/enfermedad_cardiovascular";
+    var url = "../../eliminar/enfermedad_cardiovascular";
 
   $http({
     method: "POST",
@@ -232,7 +232,7 @@ var config = {
 $scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ, antecedente: 'personal'});
 //$http.post("http://localhost:8088/sihco/public/enfermedad_cardiovascular",  $scope.data, config)
 
-var url = "http://localhost:8088/sihco/public/enfermedad_renal";
+var url = "../../enfermedad_renal";
   $http({
     method: "POST",
     url: url,
@@ -250,7 +250,7 @@ var url = "http://localhost:8088/sihco/public/enfermedad_renal";
 }
 
 $scope.eliminarRenal= function(i,id_enfermedad, consulta, paciente){
-  var url = "http://localhost:8088/sihco/public/eliminar/paciente/enfermedad_renal";
+  var url = "../../eliminar/paciente/enfermedad_renal";
   console.log(id_enfermedad);
 
   $http({
@@ -271,7 +271,7 @@ $scope.eliminarRenal= function(i,id_enfermedad, consulta, paciente){
 
 $scope.eliminarEnfermedadRenal = function(id_enfermedad){
 
-    var url_del= "http://localhost:8088/sihco/public/eliminar/enfermedad_renal";
+    var url_del= "../../eliminar/enfermedad_renal";
 
 console.log(id_enfermedad);
 $scope.data = $.param({id_enfermedad: id_enfermedad});
@@ -294,7 +294,7 @@ $scope.data = $.param({id_enfermedad: id_enfermedad});
 
 $scope.insertarEnfermedadRenal = function(){
 
-  var url_inser = "http://localhost:8088/sihco/public/insertar_renal";
+  var url_inser = "../../insertar_renal";
   var enfermedad_renal = $scope.nombre_enfermedad_renal;
 
   var config = {
@@ -339,7 +339,7 @@ var config = {
 $scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ, antecedente: 'personal'});
 //$http.post("http://localhost:8088/sihco/public/enfermedad_cardiovascular",  $scope.data, config)
 
-var url = "http://localhost:8088/sihco/public/enfermedad_alergica";
+var url = "../../enfermedad_alergica";
   $http({
     method: "POST",
     url: url,
@@ -359,7 +359,7 @@ var url = "http://localhost:8088/sihco/public/enfermedad_alergica";
 /*Elimina la enfermedad que esta asociada al paciente y a la consulta*/
 
 $scope.eliminarAlergica = function(i,id_enfermedad, consulta, paciente){
-  var url_card = "http://localhost:8088/sihco/public/eliminar/paciente/enfermedad_alergica";
+  var url_card = "../../eliminar/paciente/enfermedad_alergica";
 
   $http({
     method: "POST",
@@ -380,7 +380,7 @@ $scope.eliminarAlergica = function(i,id_enfermedad, consulta, paciente){
 /*Inserta una efermedad alergica en BD*/
 $scope.insertarEnfermedadAlergica = function(){
 
-  var url_inser = "http://localhost:8088/sihco/public/insertar/enfermedad_alergica";
+  var url_inser = "../../insertar/enfermedad_alergica";
   var enfermedad_alergica = $scope.nombre_enfermedad_alergica;
 
   var config = {
@@ -407,7 +407,7 @@ $scope.data = $.param({enfermedad: enfermedad_alergica});
 
 /*Elimina una efermedad alergica en BD*/
 $scope.eliminarEnfermedadAlergica = function(id_enfermedad){
-    var url = "http://localhost:8088/sihco/public/eliminar/enfermedad_alergica";
+    var url = "../../eliminar/enfermedad_alergica";
 
   $http({
     method: "POST",
@@ -431,7 +431,7 @@ $scope.eliminarEnfermedadAlergica = function(id_enfermedad){
 /*Inserta una efermedad infecciosa en BD*/
 $scope.insertarEnfermedadInfecciosa = function(){
 
-  var url_inser = "http://localhost:8088/sihco/public/insertar/enfermedad_infecciosa";
+  var url_inser = "../../insertar/enfermedad_infecciosa";
   var enfermedad_infecciosa = $scope.nombre_enfermedad_infecciosa;
 
   var config = {
@@ -458,7 +458,7 @@ $scope.data = $.param({enfermedad: enfermedad_infecciosa});
 
 /*Elimina una efermedad infecciosa en BD*/
 $scope.eliminarEnfermedadInfecciosa = function(id_enfermedad){
-    var url = "http://localhost:8088/sihco/public/eliminar/enfermedad_infecciosa";
+    var url = "../../eliminar/enfermedad_infecciosa";
 
   $http({
     method: "POST",
@@ -491,7 +491,7 @@ var config = {
 $scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ, antecedente: 'personal'});
 //$http.post("http://localhost:8088/sihco/public/enfermedad_cardiovascular",  $scope.data, config)
 
-var url = "http://localhost:8088/sihco/public/enfermedad_infecciosa";
+var url = "../../enfermedad_infecciosa";
   $http({
     method: "POST",
     url: url,
@@ -511,7 +511,7 @@ var url = "http://localhost:8088/sihco/public/enfermedad_infecciosa";
 /*Elimina la enfermedad que esta asociada al paciente y a la consulta*/
 
 $scope.eliminarInfecciosa = function(i,id_enfermedad, consulta, paciente){
-  var url_card = "http://localhost:8088/sihco/public/eliminar/paciente/enfermedad_infecciosa";
+  var url_card = "../../eliminar/paciente/enfermedad_infecciosa";
 
   $http({
     method: "POST",
@@ -534,7 +534,7 @@ $scope.eliminarInfecciosa = function(i,id_enfermedad, consulta, paciente){
 /*Inserta una efermedad transimision sexual en BD*/
 $scope.insertarEnfermedadTransmSexual= function(){
 
-  var url_inser = "http://localhost:8088/sihco/public/insertar/enfermedad_transmision_sexual";
+  var url_inser = "../../insertar/enfermedad_transmision_sexual";
   var enfermedad_trasm_sexual = $scope.nombre_enfermedad_transmision_sexual;
 
   var config = {
@@ -561,7 +561,7 @@ $scope.data = $.param({enfermedad: enfermedad_trasm_sexual});
 
 /*Elimina una efermedad transmision sexual en BD*/
 $scope.eliminarEnfermedadTransmSexual = function(id_enfermedad){
-    var url = "http://localhost:8088/sihco/public/eliminar/enfermedad_transmision_sexual";
+    var url = "../../eliminar/enfermedad_transmision_sexual";
 
   $http({
     method: "POST",
@@ -593,7 +593,7 @@ var config = {
 $scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ, antecedente: 'personal'});
 //$http.post("http://localhost:8088/sihco/public/enfermedad_cardiovascular",  $scope.data, config)
 
-var url = "http://localhost:8088/sihco/public/enfermedad_transmision_sexual";
+var url = "../../enfermedad_transmision_sexual";
   $http({
     method: "POST",
     url: url,
@@ -613,7 +613,7 @@ var url = "http://localhost:8088/sihco/public/enfermedad_transmision_sexual";
 /*Elimina la enfermedad que esta asociada al paciente y a la consulta*/
 
 $scope.eliminarTransmSexual = function(i,id_enfermedad, consulta, paciente){
-  var url_card = "http://localhost:8088/sihco/public/eliminar/paciente/enfermedad_transmision_sexual";
+  var url_card = "../../eliminar/paciente/enfermedad_transmision_sexual";
 
   $http({
     method: "POST",
@@ -637,7 +637,7 @@ $scope.eliminarTransmSexual = function(i,id_enfermedad, consulta, paciente){
 /*Inserta cancer en BD*/
 $scope.insertarEnfermedadCancer= function(){
 
-  var url_inser = "http://localhost:8088/sihco/public/insertar/enfermedad_cancer";
+  var url_inser = "../../insertar/enfermedad_cancer";
   var enfermedad_cancer = $scope.nombre_enfermedad_cancer;
 
   var config = {
@@ -664,7 +664,7 @@ $scope.data = $.param({enfermedad: enfermedad_cancer});
 
 /*Elimina una efermedad transmision sexual en BD*/
 $scope.eliminarEnfermedadCancer = function(id_enfermedad){
-    var url = "http://localhost:8088/sihco/public/eliminar/enfermedad_cancer";
+    var url = "../../eliminar/enfermedad_cancer";
 
   $http({
     method: "POST",
@@ -697,7 +697,7 @@ var config = {
 $scope.data = $.param({consulta: consulta, paciente: paciente, id_enfermedad: enfer_id[0], circulo_id: circ, antecedente: 'personal'});
 //$http.post("http://localhost:8088/sihco/public/enfermedad_cardiovascular",  $scope.data, config)
 
-var url = "http://localhost:8088/sihco/public/enfermedad_cancer";
+var url = "../../enfermedad_cancer";
   $http({
     method: "POST",
     url: url,
@@ -717,7 +717,7 @@ var url = "http://localhost:8088/sihco/public/enfermedad_cancer";
 /*Elimina la enfermedad que esta asociada al paciente y a la consulta*/
 
 $scope.eliminarCancer = function(i,id_enfermedad, consulta, paciente){
-  var url_card = "http://localhost:8088/sihco/public/eliminar/paciente/enfermedad_cancer";
+  var url_card = "../../eliminar/paciente/enfermedad_cancer";
 
   $http({
     method: "POST",

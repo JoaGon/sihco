@@ -2,7 +2,7 @@
 
   // setup menu
   $.fn.wPaint.menus.main = {
-    img: "{{url('/plugins/main/img/icons-menu-main.png')}}",
+    img: "sihco/public/plugins/main/img/icons-menu-main.png",
     items: {
       undo: {
         icon: 'generic',
@@ -81,7 +81,7 @@
   // extend cursors
   $.extend($.fn.wPaint.cursors, {
     'default': {path: 'sihco/public/plugins/main/img/cursor-crosshair.png', left: 7, top: 7},
-    dropper:   {path: 'sihco/public/plugins/main/img/cursor-dropper.png', left: 0, top: 12},
+    dropper:   {path: 'sihco/public/main/img/cursor-dropper.png', left: 0, top: 12},
     pencil:    {path: 'sihco/public/plugins/main/img/cursor-pencil.png', left: 0, top: 11.99},
     bucket:    {path: 'sihco/public/plugins/main/img/cursor-bucket.png', left: 0, top: 10},
     eraser1:   {path: 'sihco/public/plugins/main/img/cursor-eraser1.png', left: 1, top: 1},
@@ -101,7 +101,7 @@
     mode:        'pencil',  // set mode
     lineWidth:   '3',       // starting line width
     fillStyle:   '#FFFFFF', // starting fill style
-    strokeStyle: '#FFFF00'  // start stroke style
+    strokeStyle: '#f00'  // start stroke style
   });
 
   // extend functions

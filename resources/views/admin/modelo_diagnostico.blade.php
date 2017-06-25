@@ -152,7 +152,7 @@
                                 </select>     
                             </div>
                              <div  class="col-lg-3">
-                                <select style="color: black" name="modif_su">
+                                <select class="form-control" style="color: black" name="modif_su">
                                   <option value="modif1">Modif. 1</option>
                                   <option value="modif2">Modif. 2</option>
                                   <option value="modif3">Modif. 3</option>
@@ -168,14 +168,14 @@
                             Inferior:
                             </label>
                             <div  class="col-lg-3">
-                                <select style="color: black" name="kennedy_inf">
+                                <select class="form-control" style="color: black" name="kennedy_inf">
                                  <option value="claseI">Clase I</option>
                                   <option value="claseII">Clase II</option>
                                   <option value="claseIII">Clase III</option>
                                 </select>     
                             </div>
                              <div  class="col-lg-3">
-                                <select style="color: black" name="modif_inf">
+                                <select class="form-control" style="color: black" name="modif_inf">
                                   <option value="modif1">Modif. 1</option>
                                   <option value="modif2">Modif. 2</option>
                                   <option value="modif3">Modif. 3</option>
@@ -193,42 +193,42 @@
                             </label>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Tama;o de las coronas                         
-                                 <select style="color: black" name="corona_tam" >
+                                 <select class="form-control" style="color: black" name="corona_tam" >
                                   <option>Grande</option>
                                   <option>Mediana</option>
                                   <option>Peque;a</option>
                                 </select>    
                                 </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Forma de las coronas
-                                <select style="color: black" name="corona_forma">
+                                <select class="form-control" style="color: black" name="corona_forma">
                                   <option>Globulosa</option>
                                   <option>Cilindricas</option>
                                   <option>Triangulares</option>
                                 </select>
                             </div>
                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Giroversiones                     
-                                <input type="text" style="color: black; margin: 15px"  data-validation="required" data-validation-error-msg="Requerido"  name="giroversiones" id="giroversiones" >
+                                <input class="form-control" type="text" style="color: black; margin: 15px"  data-validation="required" data-validation-error-msg="Requerido"  name="giroversiones" id="giroversiones" >
                                 </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Migraciones
-                                <input type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="migraciones" id="migraciones" >
+                                <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="migraciones" id="migraciones" >
                             </div>
                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Extrusiones                        
-                                <input type="text" style="color: black; margin: 15px"  data-validation="required" data-validation-error-msg="Requerido"  name="extrusiones" id="extrusiones" >
+                                <input class="form-control" type="text" style="color: black; margin: 15px"  data-validation="required" data-validation-error-msg="Requerido"  name="extrusiones" id="extrusiones" >
                                 </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Inclinados
-                                <input type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="inclinados" id="inclinados" >
+                                <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="inclinados" id="inclinados" >
                             </div>
                             <div class="col-lg-12">Facetas de Desgaste
-                                <input type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="faceta_desgaste" id="faceta_desgaste" >
+                                <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="faceta_desgaste" id="faceta_desgaste" >
                             </div>
                              <div class="col-lg-12">Rebordes marginales desiguales
-                                <input type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="rebordes" id="rebordes" >
+                                <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="rebordes" id="rebordes" >
                             </div>
                              <div class="col-lg-12">Cuspide del Embolo
-                                <input type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="cuspide" id="cuspide" >
+                                <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="cuspide" id="cuspide" >
                             </div>
                              <div class="col-lg-12">Contactos prematuros permanentes
-                                <input type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="contacto_prematuro" id="contacto_prematuro" >
+                                <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="contacto_prematuro" id="contacto_prematuro" >
                             </div>
                             </div>
 
@@ -240,13 +240,13 @@
                             </div>
                            
                             <div class="col-lg-12">Relaciones de los bordes
-                                <input type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="relaciones_bordes" id="relaciones_bordes" >
+                                <input class="form-control"  type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="relaciones_bordes" id="relaciones_bordes" >
                             </div>
                              <div class="col-lg-12">Espacio disponible para los dientes
-                                <input type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="espacio_disponible" id="espacio_disponible" >
+                                <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="espacio_disponible" id="espacio_disponible" >
                             </div>
                              <div class="col-lg-12">Espacio disponible para los apoyos
-                                <input type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="espacio_apoyo" id="espacio_apoyo" >
+                                <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="espacio_apoyo" id="espacio_apoyo" >
                             </div>
                              
                             </div>

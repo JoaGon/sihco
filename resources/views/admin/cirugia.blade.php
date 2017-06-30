@@ -67,22 +67,21 @@
                  <div class="col-lg-12 col-md-12 col-sm-12">
                       <h5>A-GENERALES</h5>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                      <input type="checkbox" name="afectando_salud" id="afectando_salud" value="S"> Frio
+                    <div class="col-lg-12 col-md-12 col-sm-12"><input type="checkbox" name="afectando_salud" id="afectando_salud" value="S">
+                     1.-Infecciosas: Sufre usted de enfermedades como sifilis, HIV, Infecciones en rinon, corazon, pulmones, otros  
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                      <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">Calor
+                      <div class="col-lg-12">
+                         <input type="text" placeholder="Especifique" class="form-control" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value=""> 
                       </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                      <input type="checkbox" name="nervios_tratamiento" id="nervios_tratamiento" value="S"> Masticacion
+                    <div class="col-lg-12 col-md-12 col-sm-12"><input type="checkbox" name="afectando_salud" id="afectando_salud" value="S">
+                     2.-Patologicos: Sufre usted de enfermedades:
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                      <input type="checkbox" name="reaccion_anestesico" id="reaccion_anestesico" value="S"> Palpacion
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                      <input type="checkbox" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="S"> Percusion Vertical
-                    </div>
-                   
+                      <div class="col-lg-4">
+                         <input type="text" placeholder="Metabolicas" class="form-control" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value=""> 
+                      </div>
+                        <div class="col-lg-4">
+                         <input type="text" placeholder="Cardiovasculares" class="form-control" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value=""> 
+                      </div>
                   </div>
                    <div class="row row_border">
                  <div class="col-lg-12 col-md-12 col-sm-12">

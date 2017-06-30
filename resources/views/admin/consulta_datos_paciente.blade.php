@@ -51,9 +51,9 @@
                         <li class="dropdown-submenu"><a  href="{{ url('corona_puente', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XVII) Coronas y Puentes Fijos</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">XVIII) Dentaduras Totales</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">XIX) Protesis Parcial Removible</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">XX) Endodoncia</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('endodoncia', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XX) Endodoncia</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">XXI) Operatoria</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">XII) Anestesiologia y Cirugia Estomatologica</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('cirugia', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XII) Anestesiologia y Cirugia Estomatologica</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>Diagnostico/Pronostico<span class="caret"></span></a>

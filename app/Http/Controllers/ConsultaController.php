@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\DB;
 
 use App\Http\Controllers\Controller;
 
 use App\Paciente as Paciente;
 use App\Valores_listas as Valores_listas;
+use Auth;
+use DB;
 
 class ConsultaController extends Controller
 {
@@ -61,6 +62,7 @@ class ConsultaController extends Controller
                 'motivo_consulta'=>$req->input('motivo'),
                 'enfermedad_actual'=>$req->input('enfermedad'),
                 'fecha_consulta'=>$req->input('fecha_consulta'),
+                'ultimo_usuario'=>Auth::user()->id
                 ]);
                 $consulta2 = $id[0];
             }else{
@@ -71,6 +73,8 @@ class ConsultaController extends Controller
                 'motivo_consulta'=>$req->input('motivo'),
                 'enfermedad_actual'=>$req->input('enfermedad'),
                 'fecha_consulta'=>$req->input('fecha_consulta'),
+                'ultimo_usuario'=>Auth::user()->id,
+
 
                 ]);
             }

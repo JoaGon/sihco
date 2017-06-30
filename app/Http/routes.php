@@ -160,6 +160,13 @@ Route::get("diagrama_riesgo/{paciente_id}/{consulta_id}",'Historia2Controller@di
 Route::post("diagrama_riesgo",'Historia2Controller@diagramariesgo');
 
 
+
+Route::get("endodoncia/{paciente_id}/{consulta_id}",'Historia3Controller@endodonciaIndex');
+Route::post("endodoncia",'Historia3Controller@endodoncia');
+
+Route::get("cirugia/{paciente_id}/{consulta_id}",'Historia3Controller@cirugiaIndex');
+Route::post("cirugia",'Historia3Controller@cirgugia');
+
 //Route::post('/auth/register', 'RegistrarController@postRegister');
 Route::post('/auth/registrar', 'RegistrarController@postRegister');
 Route::post('/auth/paciente/registrado', 'RegistrarController@postRegisterPatient');

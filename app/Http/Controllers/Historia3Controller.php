@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 //use Illuminate\Support\Facades\DB;
 
-use App\Http\Controllers\Controller;
+use Auth;
 
 use App\Paciente as Paciente;
 use App\ResumenMedica;
@@ -21,69 +21,66 @@ use App\CondicionSexual;
 use App\HistoriaOdontologica;
 use App\AntecedentesFamiliares;
 use App\Valores_listas as Valores_listas;
-use Auth;
 use DB;
-
+use Illuminate\Http\Request;
 
 class Historia3Controller extends Controller
 {
-   	public function endodonciaIndex($paciente_id,$consulta)
-    {	
-    	//$data = $req->all();
-    	 $consulta = intval($consulta);
-        
+    public function endodonciaIndex($paciente_id, $consulta)
+    {
+        //$data = $req->all();
+        $consulta = intval($consulta);
 
         $persona = DB::table('paciente')
-              ->where('id_paciente',$paciente_id)
-              ->pluck('paciente.persona_id');
+            ->where('id_paciente', $paciente_id)
+            ->pluck('paciente.persona_id');
 
-         $paciente = DB::table('persona')
-         ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
-         ->where('persona.id_persona',$persona[0])
-         ->get();
+        $paciente = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
 
-        return view('admin.endodoncia', ['consulta'=>$consulta,'id_paciente'=>$paciente_id], ['pacientes'=> $paciente]);
-       
+        return view('admin.parte3Historia.endodoncia', ['consulta' => $consulta, 'id_paciente' => $paciente_id], ['pacientes' => $paciente]);
 
     }
-     public function examenClinico(Request $req)
-    {   
+    public function examenClinico(Request $req)
+    {
 
         $data = $req->all();
-         DB::beginTransaction();
+        DB::beginTransaction();
 
         try {
 
             $consulta = intval($req->input('consulta_id'));
 
             $data['ultimo_usuario'] = Auth::user()->id;
-            $data['profesor'] = Auth::user()->id;
-            $data['validar'] = '';
+            $data['profesor']       = Auth::user()->id;
+            $data['validar']        = '';
 
             unset($data['_token']);
             unset($data['historia']);
-           
+
             $verificar = DB::table('examen_clinico')
-                ->where('paciente_id',$data['paciente_id'])
-                ->where('consulta_id',$data['consulta_id'])
-                ->where('fecha',$data['fecha'])
+                ->where('paciente_id', $data['paciente_id'])
+                ->where('consulta_id', $data['consulta_id'])
+                ->where('fecha', $data['fecha'])
                 ->count();
 
-            if($verificar > 0){
+            if ($verificar > 0) {
 
                 $id = DB::table('examen_clinico')
-                        ->where('paciente_id',$data['paciente_id'])
-                        ->where('consulta_id',$data['consulta_id'])
-                        ->where('fecha',$data['fecha'])
-                        ->pluck('examen_clinico.id_examen_clinico');
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->pluck('examen_clinico.id_examen_clinico');
 
-                        $data['id_examen_clinico'] = $id[0];
+                $data['id_examen_clinico'] = $id[0];
 
-                        DB::table('examen_clinico')
-                            ->where('paciente_id',$data['paciente_id'])
-                            ->where('consulta_id',$data['consulta_id'])
-                            ->where('fecha',$data['fecha'])
-                            ->delete();
+                DB::table('examen_clinico')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->delete();
 
             }
             $consulta2 = DB::table('examen_clinico')->insert($data);
@@ -93,30 +90,77 @@ class Historia3Controller extends Controller
             echo $ex;
             die();
         }
-        
+
         DB::commit();
 
-        
     }
-    public function cirugiaIndex($paciente_id,$consulta)
-    {	
-    	//$data = $req->all();
-    	 $consulta = intval($consulta);
-        
+    public function cirugiaIndex($paciente_id, $consulta)
+    {
+        //$data = $req->all();
+        $consulta = intval($consulta);
 
         $persona = DB::table('paciente')
-              ->where('id_paciente',$paciente_id)
-              ->pluck('paciente.persona_id');
+            ->where('id_paciente', $paciente_id)
+            ->pluck('paciente.persona_id');
 
-         $paciente = DB::table('persona')
-         ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
-         ->where('persona.id_persona',$persona[0])
-         ->get();
+        $paciente = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
 
-        return view('admin.cirugia', ['consulta'=>$consulta,'id_paciente'=>$paciente_id], ['pacientes'=> $paciente]);
-       
+        return view('admin.parte3Historia.cirugia', ['consulta' => $consulta, 'id_paciente' => $paciente_id], ['pacientes' => $paciente]);
 
     }
-   
-  
+    public function operatoriaIndex($paciente_id, $consulta)
+    {
+        //$data = $req->all();
+        $consulta = intval($consulta);
+
+        $persona = DB::table('paciente')
+            ->where('id_paciente', $paciente_id)
+            ->pluck('paciente.persona_id');
+
+        $paciente = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
+
+        return view('admin.parte3Historia.operatoria', ['consulta' => $consulta, 'id_paciente' => $paciente_id], ['pacientes' => $paciente]);
+
+    }
+    public function totalesIndex($paciente_id, $consulta)
+    {
+        //$data = $req->all();
+        $consulta = intval($consulta);
+
+        $persona = DB::table('paciente')
+            ->where('id_paciente', $paciente_id)
+            ->pluck('paciente.persona_id');
+
+        $paciente = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
+
+        return view('admin.parte3Historia.totales', ['consulta' => $consulta, 'id_paciente' => $paciente_id], ['pacientes' => $paciente]);
+
+    }
+    public function diagnosticoIndex($paciente_id, $consulta)
+    {
+        //$data = $req->all();
+        $consulta = intval($consulta);
+
+        $persona = DB::table('paciente')
+            ->where('id_paciente', $paciente_id)
+            ->pluck('paciente.persona_id');
+
+        $paciente = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
+
+        return view('admin.diagnostico_clinico', ['consulta' => $consulta, 'id_paciente' => $paciente_id], ['pacientes' => $paciente]);
+
+    }
+
 }

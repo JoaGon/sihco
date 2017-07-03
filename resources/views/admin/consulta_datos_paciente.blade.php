@@ -33,32 +33,31 @@
                 <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>VIII al XIII<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li class="dropdown-submenu"><a href="{{ url('examen_clinico', array($paciente->id_paciente, $consulta)) }}" tabindex="0">VIII) Examen Clinico</a></li>
-                        <li class="dropdown-submenu"><a  href="{{ url('evaluacion_periodontal', array($paciente->id_paciente, $consulta)) }}" tabindex="0">IX) Evaluacion Periodontal</a></li>
-                        <li class="dropdown-submenu"><a  href="{{ url('test_fagerstrom', array($paciente->id_paciente, $consulta)) }}" tabindex="0"> Test de Fagerström</a></li>
-                        <li class="dropdown-submenu"><a  href="{{url('diagrama_riesgo', array($paciente->id_paciente, $consulta))}}" tabindex="0"> Diagrama de Riesgo</a></li>  
+                        <li class="dropdown-submenu"><a href="{{ url('evaluacion_periodontal', array($paciente->id_paciente, $consulta)) }}" tabindex="0">IX) Evaluacion Periodontal</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('test_fagerstrom', array($paciente->id_paciente, $consulta)) }}" tabindex="0"> Test de Fagerström</a></li>
+                        <li class="dropdown-submenu"><a href="{{url('diagrama_riesgo', array($paciente->id_paciente, $consulta))}}" tabindex="0"> Diagrama de Riesgo</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('odontograma', array($paciente->id_paciente, $consulta)) }}" tabindex="0">X) Odontograma</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('control_placa', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XI) Control de Placa</a></li>
-                        <li class="dropdown-submenu"><a  href="{{ url('registro_imageneologico', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XII) Imageneologia</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('registro_imageneologico', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XII) Imageneologia</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">XIII) Examen de la Oclusion</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('examen_muscular', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XIV) Examen Muscular y Articular</a></li>
-                        <li class="dropdown-submenu"><a href="{{ url('modelo_diagnostico', array($paciente->id_paciente, $consulta)) }}"  tabindex="0">XV) Modelos de Diagnosticos</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('modelo_diagnostico', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XV) Modelos de Diagnosticos</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">XVI) Examenes Complementarios</a></li>
-                       
                     </ul>
                 </li>
                 <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>XIII al XXIV<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-submenu"><a  href="{{ url('corona_puente', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XVII) Coronas y Puentes Fijos</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">XVIII) Dentaduras Totales</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('corona_puente', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XVII) Coronas y Puentes Fijos</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('totales', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XVIII) Dentaduras Totales</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">XIX) Protesis Parcial Removible</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('endodoncia', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XX) Endodoncia</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">XXI) Operatoria</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('operatoria', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XXI) Operatoria</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('cirugia', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XII) Anestesiologia y Cirugia Estomatologica</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>Diagnostico/Pronostico<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-submenu"><a tabindex="0">Diagnostico Clinico</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('diagnostico', array($paciente->id_paciente, $consulta)) }}" tabindex="0">Diagnostico Clinico</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">Diagnostico Definivo</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">Pronostico</a></li>
                     </ul>
@@ -69,7 +68,6 @@
                         <li class="dropdown-submenu"><a tabindex="0">Reg. de Actividades Clinicas</a></li>
                     </ul>
             </ul>
-         
             </ul>
             <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12" style=" background-color:white;padding-left:0; margin-top: 25px; padding-bottom: 25px;">
                 <div style="font-size: 20px; text-align: center; color:#59bddd; padding-bottom: 25px; padding-top: 15px">
@@ -135,14 +133,13 @@
             </div>
             <!--div class="col-md-6 col-md-offset-4">
                 <a href="{{ url('consulta/'.$paciente->nro_historia) }}" " class="btn btn-primary "> <i class="fa fa-btn fa-user "></i> Registrar </a>
-			</div-->
-		</div>
-			<!-- /.col-lg-12 -->
-			 @endforeach
-		</div>
-		<!-- /.row -->
-	</div>
-
+            </div-->
+        </div>
+        <!-- /.col-lg-12 -->
+        @endforeach
+    </div>
+    <!-- /.row -->
+</div>
 <!--<script src="{{ url( 'bower_components/jquery/dist/jquery.min.js') }} "></script>-->
 <!-- jQuery -->
 <script src="{{url( 'bower_components/jquery/dist/jquery.min.js')}} "></script>
@@ -152,48 +149,49 @@
 <script src="{{url( 'template/vendor/datatables-plugins/dataTables.bootstrap.min.js')}} "></script>
 <script src="{{ url( 'js/list.min.js')}} "></script>
 <script>
-$(document).ready(function () {
-  $("#fecha_consulta ").datepicker({dateFormat: "yy-mm-dd ", changeYear: true, changeMonth: true});
-  $(".notification ").fadeTo(3000, 500).slideUp(500, function(){
-      $(".notification ").slideUp(500);
-  });
-  var monkeyList = new List('pacientes', {
-    valueNames: ['name'],
-    page: 3,
-    pagination: true
-  });
-var monthNames = [ "January ", "February ", "March ", "April ", "May ", "June ",
-    "July ", "August ", "September ", "October ", "November ", "December " ];
-var dayNames= ["Sunday ","Monday ","Tuesday ","Wednesday ","Thursday ","Friday ","Saturday "]
-var newDate = new Date();
-newDate.setDate(newDate.getDate() + 1);    
-$('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
-var myLanguage = {              
-            errorTitle: 'El formulario fallo en enviarse',
-            requiredFields: 'No se ha introducido datos',
-            badTime: 'No ha dado una hora correcta',
-            badEmail: 'No ha dado una direccion de email correcta',
-            badTelephone: 'No ha dado un numero de telefono correcto',
-       }
-            $.validate({
-               language: myLanguage,
-        });
- });
-// #myInput is a <input type="text "> element
-function register_imagen(id_consulta)
-    {
-      $.ajax({
-                data: {},
-                type: 'get',
-                url: "{{ url( 'imagen') }} ",
-                success:function(data)
-                {
-                },
-                error: function(e) {
-                    console.log('Error!!!',e);
-                }
-            });    
+$(document).ready(function() {
+    $("#fecha_consulta ").datepicker({
+        dateFormat: "yy-mm-dd ",
+        changeYear: true,
+        changeMonth: true
+    });
+    $(".notification ").fadeTo(3000, 500).slideUp(500, function() {
+        $(".notification ").slideUp(500);
+    });
+    var monkeyList = new List('pacientes', {
+        valueNames: ['name'],
+        page: 3,
+        pagination: true
+    });
+    var monthNames = ["January ", "February ", "March ", "April ", "May ", "June ",
+        "July ", "August ", "September ", "October ", "November ", "December "
+    ];
+    var dayNames = ["Sunday ", "Monday ", "Tuesday ", "Wednesday ", "Thursday ", "Friday ", "Saturday "]
+    var newDate = new Date();
+    newDate.setDate(newDate.getDate() + 1);
+    $('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
+    var myLanguage = {
+        errorTitle: 'El formulario fallo en enviarse',
+        requiredFields: 'No se ha introducido datos',
+        badTime: 'No ha dado una hora correcta',
+        badEmail: 'No ha dado una direccion de email correcta',
+        badTelephone: 'No ha dado un numero de telefono correcto',
     }
- 
+    $.validate({
+        language: myLanguage,
+    });
+});
+// #myInput is a <input type="text "> element
+function register_imagen(id_consulta) {
+    $.ajax({
+        data: {},
+        type: 'get',
+        url: "{{ url( 'imagen') }} ",
+        success: function(data) {},
+        error: function(e) {
+            console.log('Error!!!', e);
+        }
+    });
+}
 </script>
 @endsection

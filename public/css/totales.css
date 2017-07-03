@@ -1,0 +1,18 @@
+.td-totales{
+    border-left-style: none; 
+    border-left-width: medium; 
+    border-right-style: none; 
+    border-right-width: medium; 
+    border-top-style: solid; 
+    border-top-width: 1; 
+    border-bottom-style: solid; 
+    border-bottom-width: 1;
+    width: "90px";
+}
+
+.td2{
+    border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: solid; border-top-width: 1; border-bottom-style: solid; border-bottom-width: 1
+}
+select{
+    color: #000;
+}

@@ -2,11 +2,12 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class RegistroImageneologia extends Model {
+class RegistroImageneologia extends Model
+{
 
-    protected $table='registros_imageneologicos';
-    protected $primaryKey='id_registro_imageneologico';
-    protected $fillable=[
+    protected $table      = 'registros_imageneologicos';
+    protected $primaryKey = 'id_registro_imageneologico';
+    protected $fillable   = [
         'id_registro_imageneologico',
         'titulo_imagen',
         'ruta',
@@ -15,6 +16,6 @@ class RegistroImageneologia extends Model {
         'fecha',
         'usuario_id',
     ];
-    public $timestamps=false;
+    public $timestamps = false;
 
 }

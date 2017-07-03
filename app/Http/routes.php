@@ -167,6 +167,15 @@ Route::post("endodoncia",'Historia3Controller@endodoncia');
 Route::get("cirugia/{paciente_id}/{consulta_id}",'Historia3Controller@cirugiaIndex');
 Route::post("cirugia",'Historia3Controller@cirgugia');
 
+Route::get("operatoria/{paciente_id}/{consulta_id}",'Historia3Controller@operatoriaIndex');
+Route::post("operatoria",'Historia3Controller@operatoria');
+
+Route::get("totales/{paciente_id}/{consulta_id}",'Historia3Controller@totalesIndex');
+Route::post("totales",'Historia3Controller@totales');
+
+Route::get("diagnostico/{paciente_id}/{consulta_id}",'Historia3Controller@diagnosticoIndex');
+Route::post("diagnostico",'Historia3Controller@totales');
+
 //Route::post('/auth/register', 'RegistrarController@postRegister');
 Route::post('/auth/registrar', 'RegistrarController@postRegister');
 Route::post('/auth/paciente/registrado', 'RegistrarController@postRegisterPatient');

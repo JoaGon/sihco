@@ -12,24 +12,22 @@ class Persona extends Authenticatable
      * @var array
      */
 
-     protected $fillable = [
-         'ci',
-         'ultimo_usuario',
-         'nombre',
-         'apellido',
-         'fecha_nacimiento',
-         'lugar_nacimiento',
-         'genero',
-         'telefono',
-         'celular',
-         'direccion',
-         'id_persona'
-     ];
+    protected $fillable = [
+        'ci',
+        'ultimo_usuario',
+        'nombre',
+        'apellido',
+        'fecha_nacimiento',
+        'lugar_nacimiento',
+        'genero',
+        'telefono',
+        'celular',
+        'direccion',
+        'id_persona',
+    ];
 
-     protected $primaryKey='ci';
-     protected $table='persona';
-
-
+    protected $primaryKey = 'ci';
+    protected $table      = 'persona';
 
     /**
      * The attributes that should be hidden for arrays.

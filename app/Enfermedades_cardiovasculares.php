@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Enfermedades_cardiovasculares extends Model
 {
-     protected $fillable = [
+    protected $fillable = [
         'id_enfermedad_cardiovascular',
         'enfermedad',
-        'ultimo_usuario'
-       
+        'ultimo_usuario',
+
     ];
-    protected $primaryKey='id_enfermedad_cardiovascular';
-    protected $table='enfermedades_cardiovasculares';
+    protected $primaryKey = 'id_enfermedad_cardiovascular';
+    protected $table      = 'enfermedades_cardiovasculares';
 }

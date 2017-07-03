@@ -2,7 +2,6 @@
 <html>
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,30 +9,22 @@
     <meta name="author" content="">
     <title>SIHCO</title>
     <script src="{{url('bower_components/jquery/dist/jquery.min.js')}}"></script>
-
     <!-- Bootstrap Core CSS -->
     <link href="{{ url('template/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-
     <!-- MetisMenu CSS -->
     <link href="{{ url('template/vendor/metisMenu/metisMenu.min.css') }} " rel="stylesheet">
-
     <!-- Custom CSS -->
     <link href="{{ url('template/dist/css/sb-admin-2.css') }}" rel="stylesheet">
-
     <!-- Custom Fonts -->
     <link href="{{ url('template/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-
     <link href="{{url('jquery-ui-1.12.1.custom/jquery-ui.css')}}" rel="stylesheet">
     <link href="{{ url('js/pnotify/dist/pnotify.css')}}" rel="stylesheet">
     <link href="{{ url('js/pnotify/dist/pnotify.buttons.css')}}" rel="stylesheet">
     <link href="{{ url('js/pnotify/dist/pnotify.nonblock.css')}}" rel="stylesheet">
-
 </head>
 
 <body id="app-layout">
-
     <div id="wrapper">
-
         <!-- Navigation -->
         @if( Auth::user()->rol_id == 1 )
         <nav class="navbar navbar-default navbar-static-top" id="barra" role="navigation" style="margin-bottom: 0; background: #68ada1">
@@ -47,9 +38,7 @@
                 <a class="navbar-brand" href="{{ url ('/')}}">SIHCO v2.0</a>
             </div>
             <!-- /.navbar-header -->
-
             <ul class="nav navbar-top-links navbar-right">
-
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -69,9 +58,7 @@
             </ul>
         </nav>
         @endif
-
         <!-- /.navbar-top-links -->
-
         <div class="navbar-default sidebar" style=" margin-top: -0.5px;" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
@@ -260,10 +247,8 @@
         </div>
     </div>
     <!-- /.navbar-static-side -->
-
     @yield('content')
     <!-- jQuery -->
-    
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ url('template/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
     <!-- Metis Menu Plugin JavaScript -->
@@ -277,24 +262,23 @@
     <script src="{{ url('js/pnotify/dist/pnotify.buttons.js')}}"></script>
     <script src="{{ url('js/pnotify/dist/pnotify.nonblock.js')}}"></script>
     <script src="{{ url('js/form-validator/jquery.form-validator.min.js') }}"></script>
-
     <script>
-        $(document).ready(function() {
-            $("#nacimiento_edit").datepicker({
-                dateFormat: "yy-mm-dd",
-                changeYear: true,
-                changeMonth: true
-            });
-            $("#ingreso_edit").datepicker({
-                dateFormat: "yy-mm-dd",
-                changeYear: true,
-                changeMonth: true
-            });
-            $(".notification").fadeTo(3000, 500).slideUp(500, function() {
-                $(".notification").slideUp(500);
-            });
-
+    $(document).ready(function() {
+        $("#nacimiento_edit").datepicker({
+            dateFormat: "yy-mm-dd",
+            changeYear: true,
+            changeMonth: true
         });
+        $("#ingreso_edit").datepicker({
+            dateFormat: "yy-mm-dd",
+            changeYear: true,
+            changeMonth: true
+        });
+        $(".notification").fadeTo(3000, 500).slideUp(500, function() {
+            $(".notification").slideUp(500);
+        });
+
+    });
     </script>
 </body>
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Auth;
 use DB;
+use App\Consulta as Consulta;
+
 use Illuminate\Http\Request;
 
 class ConsultaController extends Controller
@@ -49,7 +51,7 @@ class ConsultaController extends Controller
                 ->pluck('consulta.id');
             //    dd($id);
 
-            DB::table('consulta')->where('id', $id[0])
+            Consulta::where('id', $id[0])
                 ->update(['id'      => $id[0],
                     'paciente_id'       => $req->input('paciente_id'),
                     'nro_historia'      => $req->input('historia'),
@@ -61,7 +63,7 @@ class ConsultaController extends Controller
             $consulta2 = $id[0];
         } else {
 
-            $consulta2 = DB::table('consulta')->insertGetId(
+            $consulta = Consulta::create(
                 ['paciente_id'      => $req->input('paciente_id'),
                     'nro_historia'      => $req->input('historia'),
                     'motivo_consulta'   => $req->input('motivo'),
@@ -70,6 +72,8 @@ class ConsultaController extends Controller
                     'ultimo_usuario'    => Auth::user()->id,
 
                 ]);
+            $consulta2 = $consulta->id;
+            //dd($consulta2->id);
         }
 
         $persona = DB::table('paciente')
@@ -123,13 +127,6 @@ class ConsultaController extends Controller
             'cardiovasculares' => $cardiovascular,
             'circulos'         => $circulo,
         ]);
-    }
-
-    public function odonto()
-    {
-
-        return view('verOdonto');
-
     }
 
     public function consulta_paciente($nro_historia)

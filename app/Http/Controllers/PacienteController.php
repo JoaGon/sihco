@@ -7,7 +7,8 @@ use Auth;
 use Illuminate\Http\Request;
 
 use App\Paciente as Paciente;
-use App\Persona;
+use App\Persona as Persona;
+use App\Usuario as Usuario;
 
 use App\Valores_listas as Valores_listas;
 use Illuminate\Support\Facades\DB;
@@ -74,7 +75,7 @@ class PacienteController extends Controller
     public function update(Request $request)
     {
         // echo '<pre>';print_r($request->input('rol_edit')); echo '</pre>'; die();
-        DB::table('persona')->where('id_persona', '=', $request->input('persona_id'))->update([
+        Persona::where('id_persona', '=', $request->input('persona_id'))->update([
             'nombre'           => $request->input('name_edit'),
             'apellido'         => $request->input('apellido_edit'),
             'telefono'         => $request->input('telefono_edit'),
@@ -85,7 +86,7 @@ class PacienteController extends Controller
             'ci'               => $request->input('cedula_edit'),
         ]);
 
-        DB::table('paciente')->where('id_paciente', '=', $request->input('id_edit'))
+        Paciente::where('id_paciente', '=', $request->input('id_edit'))
             ->update([
                 'grupo_sanguineo'    => $request->input('grupo_sanguineo'),
                 'familiar_cercano'   => $request->input('familiar_cercano'),
@@ -110,8 +111,8 @@ class PacienteController extends Controller
     public function destroy($id)
     {
         $paciente = DB::table('paciente')->where('id_paciente', $id)->pluck('paciente.persona_id');
-        DB::table('paciente')->where('id_paciente', $id)->delete();
-        DB::table('persona')->where('id_persona', $paciente[0])->delete();
+        Paciente::where('id_paciente', $id)->delete();
+        Persona::where('id_persona', $paciente[0])->delete();
 
         return redirect('/pacientes')->with('status', 'El Paciente ha sido eliminado');
     }

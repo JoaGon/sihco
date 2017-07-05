@@ -538,7 +538,7 @@ $scope.insertarEnfermedadTransmSexual= function(){
 
   var url_inser = "../../insertar/enfermedad_transmision_sexual";
   var enfermedad_trasm_sexual = $scope.nombre_enfermedad_transmision_sexual;
-
+  console.log('lleg',enfermedad_trasm_sexual)
   var config = {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
@@ -585,7 +585,7 @@ $scope.add_enfermerdad_transm_sexual = function(consulta,paciente, enfermedad, v
 
 var enfer_id = enfermedad[0];
 var circ = valor;
-//console.log('locagio',window.location);
+console.log('locagio',enfer_id, circ);
   
 var config = {
     headers: {

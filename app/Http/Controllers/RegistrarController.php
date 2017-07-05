@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Paciente;
 use App\Persona;
-use App\User;
 use App\Usuario;
 use Auth;
 use DB;
@@ -33,31 +32,6 @@ class RegistrarController extends Controller
     protected function create(array $data, $persona)
     {
 
-        /*return User::create([
-        'name' => $data['name'],
-        'email' => $data['email'],
-        'password' => bcrypt($data['password']),
-        'rol_id' => $data['role'],
-        ]);*/
-        //  echo'<pre>';print_r($data);echo'</pre>';
-        /*
-        $status=DB::table('valores_listas')
-        ->where('codigo','activo')
-        ->pluck('id_valor');
-
-         */
-        /* $rol_id=DB::table('roles')
-        ->where('id_rol',$data['role'])
-        ->pluck('id_rol');
-
-        $status=DB::table('valores_listas')
-        ->where('codigo',$data['valor_id'])
-        ->pluck('id_valor');
-
-        $persona_id=DB::table('persona')
-        ->where('ci',$data['ci'])
-        ->pluck('ci');
-         */
         return Usuario::create([
             'email'          => $data['email'],
             'password'       => bcrypt($data['password']),

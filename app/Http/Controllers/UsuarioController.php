@@ -5,17 +5,16 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Paciente as Paciente;
+use App\Persona as Persona;
+use App\Usuario as Usuario;
 
 class UsuarioController extends Controller
 {
 
     public function index()
     {
-        /*DB::beginTransaction();
-
-        $usuario = DB::table("users")
-        ->get();
-        DB::commit();*/
+       
         $usuario = DB::table('persona')
             ->join('usuarios', 'persona.ci', '=', 'usuarios.ci')
             ->get();
@@ -40,7 +39,7 @@ class UsuarioController extends Controller
     public function update(Request $request)
     {
         // echo '<pre>';print_r($request->input('rol_edit')); echo '</pre>'; die();
-        DB::table('persona')->where('id_persona', '=', $request->input('persona_id'))->update([
+        Persona::where('id_persona', '=', $request->input('persona_id'))->update([
             'nombre'           => $request->input('name_edit'),
             'ci'               => $request->input('cedula_edit'),
             'apellido'         => $request->input('apellido_edit'),
@@ -51,7 +50,7 @@ class UsuarioController extends Controller
             'direccion'        => $request->input('direccion_edit'),
         ]);
 
-        DB::table('usuarios')->where('id', '=', $request->input('id_edit'))
+        Usuario::where('id', '=', $request->input('id_edit'))
             ->update([
                 'email'    => $request->input('email_edit'),
                 'valor_id' => $request->input('estatus_edit'),
@@ -67,8 +66,8 @@ class UsuarioController extends Controller
     {
 
         $usuario = DB::table('usuarios')->where('id', $id)->pluck('usuarios.persona_id');
-        DB::table('usuarios')->where('id', $id)->delete();
-        DB::table('persona')->where('id_persona', $usuario[0])->delete();
+        Usuario::where('id', $id)->delete();
+        Persona::where('id_persona', $usuario[0])->delete();
 
         return redirect('/usuarios')->with('status', 'El Usuario ha sido eliminado');
     }

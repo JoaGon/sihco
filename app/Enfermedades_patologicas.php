@@ -15,4 +15,6 @@ class Enfermedades_patologicas extends Model
     ];
     protected $primaryKey = 'id_enfermedad_patologica';
     protected $table      = 'enfermedades_patologicas';
+    public $timestamps    = true;
+    
 }

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class ResumenOdontologico extends Authenticatable
+class Odontograma extends Authenticatable
 {
     /**
      * The attributes that are mass assignable.
@@ -12,18 +12,22 @@ class ResumenOdontologico extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id_resumen_historia_odontologica',
-        'fecha',
-        'consulta_id',
+        'id_odontograma',
         'paciente_id',
+        'nro_historia',
+        'consulta_id',
+        'elemento',
+        'posicion_y',
+        'posicion_x',
         'ultimo_usuario',
+        'fecha_validacion',
         'validar',
         'profesor',
-        'rho_1',
-        'fecha_validacion' 
+        'fecha',
+
     ];
-    protected $primaryKey = 'id_resumen_historia_odontologica';
-    protected $table      = 'resumen_historia_odontologica';
+    protected $primaryKey = 'id_odontograma';
+    protected $table      = 'odontograma';
     public $timestamps    = true;
 
     /**

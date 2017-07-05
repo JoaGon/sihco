@@ -7,18 +7,24 @@ use Auth;
 use Illuminate\Http\Request;
 
 use App\Paciente as Paciente;
-use App\ResumenMedica;
+use App\Persona as Persona;
+use App\Paciente_enfer_cardiovascular as Paciente_enfer_cardiovascular;
+use App\Paciente_enfer_patologica as Paciente_Enfer_Patologica;
+use App\Paciente_enfer_renal as Paciente_Enfer_renal;
+use App\ResumenMedica as ResumenMedica;
+use App\ResumenOdontologico as ResumenOdontologico;
 use App\Enfermedades_renales as Enfer_Renal;
 use App\Enfermedades_cardiovasculares as Enfer_Cardiovascular;
 use App\Enfermedades_patologicas as Enfer_Patologica;
 use App\Lista as Lista;
-use App\Paciente_enfer_patologica as Paciente_Enfer_Patologica;
-use App\ResumenOdontologico;
-use App\DatosClinicos;
-use App\CondicionSexual;
-use App\HistoriaOdontologica;
-use App\AntecedentesFamiliares;
+use App\DatosClinicos as DatosClinicos;
+use App\CondicionSexual as CondicionSexual;
+use App\HistoriaOdontologica as HistoriaOdontologica;
+use App\AntecedenteFamiliar as AntecedentesFamiliares;
+use App\AntecedentePersonal as AntecedentePersonal;
 use App\Valores_listas as Valores_listas;
+use App\SignosVitales as SignosVitales;
+
 use Illuminate\Support\Facades\DB;
 
 class ConsultaHistoriaController extends Controller

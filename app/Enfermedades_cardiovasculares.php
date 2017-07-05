@@ -14,4 +14,6 @@ class Enfermedades_cardiovasculares extends Model
     ];
     protected $primaryKey = 'id_enfermedad_cardiovascular';
     protected $table      = 'enfermedades_cardiovasculares';
+    public $timestamps    = true;
+    
 }

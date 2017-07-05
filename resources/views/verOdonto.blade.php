@@ -95,7 +95,7 @@
             if (arrayElementos2[1] != undefined) {
                 posLeft = arrayElementos1[1];
                 posTop = arrayElementos1[2];
-                cad = '<div ondblclick="eliminar(this.id)" id="' + arrayElementos1[0] + '" class="dialogletra" title="Pulsado" style="position:relative;left:' + posLeft + ';top:' + posTop + '"><img src="{{URL::to(' / ')}}/imgOdont/' + arrayElementos2[1] + '.gif"></div>';
+                cad = '<div ondblclick="eliminar(this.id)" id="' + arrayElementos1[0] + '" class="dialogletra" title="Pulsado" style="position:relative;left:' + posLeft + ';top:' + posTop + '"><img src="../../imgOdont/' + arrayElementos2[1] + '.gif"></div>';
                 //\       document.write(cad);
                 jQuery("#elementoSeleccionado").append(cad);
             }
@@ -122,14 +122,14 @@
         n1 = parseInt(n / 2);
         for (i = 0; i < n1; i++) {
             //        letraActual = jQuery('<span class="botonletra"><img src="imgOdont/' + letras[i] + '.gif"></span>');
-            letraActual = jQuery('<button type="button" class="botonletra btn btn-warning"><img src="{{URL::to(' / ')}}/imgOdont/' + letras[i] + '.gif"></button>');
+            letraActual = jQuery('<button type="button" class="botonletra btn btn-warning"><img src="../../imgOdont/' + letras[i] + '.gif"></button>');
             letraActual.data("letra", letras[i]);
             letraActual.button();
             jQuery("#botonesletras1").append(letraActual);
         }
         for (i = n1; i < n; i++) {
             //      letraActual = jQuery('<span class="botonletra"><img src="imgOdont/' + letras[i] + '.gif"></span>');
-            letraActual = jQuery('<button type="button" class="botonletra btn btn-warning"><img src="{{URL::to(' / ')}}/imgOdont/' + letras[i] + '.gif"></button>');
+            letraActual = jQuery('<button type="button" class="botonletra btn btn-warning"><img src="../../imgOdont/' + letras[i] + '.gif"></button>');
             letraActual.data("letra", letras[i]);
             letraActual.button();
             jQuery("#botonesletras2").append(letraActual);
@@ -137,7 +137,7 @@
         jQuery(".botonletra").click(function() {
             valElemento = jQuery("#numElemento").val();
             var caja = jQuery('<div id="arrastrable' + valElemento + '_' + jQuery(this).data("letra") +
-                '" ondblclick="eliminar(this.id)" class="dialogletra" title="Pulsado"><img src="{{URL::to(' / ')}}/imgOdont/' +
+                '" ondblclick="eliminar(this.id)" class="dialogletra" title="Pulsado"><img src="../../imgOdont/' +
                 jQuery(this).data("letra") + '.gif"></div>').prependTo('#elementoSeleccionado');
             test("arrastrable" + valElemento + '_' + jQuery(this).data("letra"));
             valElemento = parseInt(valElemento) + 1;
@@ -165,7 +165,7 @@
             var formData = new FormData(jQuery("#form_familiares")[0]);
             formData.append('elementos', JSON.stringify(array));
 
-            jQuery.ajax({
+           jQuery.ajax({
                 url: "{{ url('/save_odonto') }}",
                 type: 'POST',
                 data: formData,

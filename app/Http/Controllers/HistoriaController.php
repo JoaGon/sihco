@@ -7,18 +7,24 @@ use Auth;
 use Illuminate\Http\Request;
 
 use App\Paciente as Paciente;
-use App\ResumenMedica;
+use App\Persona as Persona;
+use App\Paciente_enfer_cardiovascular as Paciente_enfer_cardiovascular;
+use App\Paciente_enfer_patologica as Paciente_Enfer_Patologica;
+use App\Paciente_enfer_renal as Paciente_Enfer_renal;
+use App\ResumenMedica as ResumenMedica;
+use App\ResumenOdontologico as ResumenOdontologico;
 use App\Enfermedades_renales as Enfer_Renal;
 use App\Enfermedades_cardiovasculares as Enfer_Cardiovascular;
 use App\Enfermedades_patologicas as Enfer_Patologica;
 use App\Lista as Lista;
-use App\Paciente_enfer_patologica as Paciente_Enfer_Patologica;
-use App\ResumenOdontologico;
-use App\DatosClinicos;
-use App\CondicionSexual;
-use App\HistoriaOdontologica;
-use App\AntecedentesFamiliares;
+use App\DatosClinicos as DatosClinicos;
+use App\CondicionSexual as CondicionSexual;
+use App\HistoriaOdontologica as HistoriaOdontologica;
+use App\AntecedenteFamiliar as AntecedentesFamiliares;
+use App\AntecedentePersonal as AntecedentePersonal;
 use App\Valores_listas as Valores_listas;
+use App\SignosVitales as SignosVitales;
+
 use Illuminate\Support\Facades\DB;
 
 class HistoriaController extends Controller
@@ -69,7 +75,7 @@ class HistoriaController extends Controller
                     ->delete();
             }
 
-            $consulta2 = DB::table('antecedentes_familiares')->insert($data);
+            $consulta2 = AntecedentesFamiliares::create($data);
 
         } catch (Exception $ex) {
             DB::rollback();
@@ -125,7 +131,8 @@ class HistoriaController extends Controller
                     ->delete();
 
             }
-            $consulta2 = DB::table('antecedentes_personales')->insert($data);
+
+            $consulta2 = AntecedentePersonal::create($data);
 
         } catch (Exception $ex) {
             DB::rollback();
@@ -219,8 +226,7 @@ class HistoriaController extends Controller
             ->where('persona.id_persona', $persona[0])
             ->get();
 
-        $cardiovascular = DB::table('enfermedades_cardiovasculares')
-            ->get();
+        $cardiovascular = Enfer_Cardiovascular::all();
 
         $circulo = DB::table('listas')
             ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
@@ -241,8 +247,7 @@ class HistoriaController extends Controller
     public function enfermedadCardiovascular(Request $req)
     {
         // dd($req);
-        DB::table('paciente_enfer_cardiovascular')
-            ->insert([
+        Paciente_enfer_cardiovascular::create([
                 'paciente_id'                  => $req->input('paciente'),
                 'enfermedad_cardiovascular_id' => $req->input('id_enfermedad'),
                 'circulo_hereditario'          => $req->input('circulo_id'),
@@ -264,8 +269,7 @@ class HistoriaController extends Controller
     public function EliminarEnfermedadCardiovascular(Request $req)
     {
         // dd($req);
-        DB::table('paciente_enfer_cardiovascular')
-            ->where('id_paciente_enfer_cardiovascular', $req->input('id_paciente_enfer_cardiovascular'))
+       Paciente_enfer_cardiovascular::where('id_paciente_enfer_cardiovascular', $req->input('id_paciente_enfer_cardiovascular'))
             ->delete();
 
         $enfer = DB::table('paciente_enfer_cardiovascular')
@@ -284,12 +288,10 @@ class HistoriaController extends Controller
 
     public function EliminarCardiovascular(Request $req)
     {
-
-        DB::table('enfermedades_cardiovasculares')
-            ->where('id_enfermedad_cardiovascular', $req->input('id_enfermedad'))
+        Enfer_Cardiovascular::where('id_enfermedad_cardiovascular', $req->input('id_enfermedad'))
             ->delete();
-        $enfer = DB::table('enfermedades_cardiovasculares')
-            ->get();
+
+        $enfer = Enfer_Cardiovascular::all();
 
         return $enfer;
 
@@ -303,15 +305,13 @@ class HistoriaController extends Controller
 
         $enfer = Enfer_Cardiovascular::all();
 
-        //dd($enfer);
         return $enfer;
 
     }
     public function enfermedadRenal(Request $req)
     {
         // dd($req);
-        DB::table('paciente_enfer_renal')
-            ->insert([
+        Paciente_Enfer_renal::create([
                 'paciente_id'         => $req->input('paciente'),
                 'enfermedad_renal_id' => $req->input('id_enfermedad'),
                 'circulo_hereditario' => $req->input('circulo_id'),
@@ -333,8 +333,7 @@ class HistoriaController extends Controller
     public function EliminarEnfermedadRenal(Request $req)
     {
         // dd($req);
-        DB::table('paciente_enfer_renal')
-            ->where('id_paciente_enfer_renal', $req->input('id_paciente_enfer_renal'))
+        Paciente_Enfer_renal::where('id_paciente_enfer_renal', $req->input('id_paciente_enfer_renal'))
             ->delete();
 
         $enfer = DB::table('paciente_enfer_renal')
@@ -362,11 +361,10 @@ class HistoriaController extends Controller
     }
     public function Eliminar_enfermedad_renal(Request $req)
     {
-        DB::table('enfermedades_renales')
-            ->where('id_enfermedad_renal', $req->input('id_enfermedad'))
+         Enfer_Renal::where('id_enfermedad_renal', $req->input('id_enfermedad'))
             ->delete();
-        $enfer = DB::table('enfermedades_renales')
-            ->get();
+
+        $enfer =  Enfer_Renal::all();
 
         return $enfer;
 
@@ -381,8 +379,7 @@ class HistoriaController extends Controller
             ->where('valores_listas.codigo', 'alergicas')
             ->pluck('valores_listas.id_valor');
 
-        DB::table('enfermedades_patologicas')
-            ->insert([
+       Enfer_Patologica::create([
                 'enfermedad'     => $req->input('enfermedad'),
                 'valor_id'       => $id_categorias[0],
                 'ultimo_usuario' => Auth::user()->id]);
@@ -398,8 +395,7 @@ class HistoriaController extends Controller
     public function EliminarAlergica(Request $req)
     {
 
-        DB::table('enfermedades_patologicas')
-            ->where('id_enfermedad_patologica', $req->input('id_enfermedad'))
+       Enfer_Patologica::where('id_enfermedad_patologica', $req->input('id_enfermedad'))
             ->delete();
 
         $alergica = DB::table('enfermedades_patologicas')
@@ -411,8 +407,7 @@ class HistoriaController extends Controller
 
     public function enfermedadAlergica(Request $req)
     {
-        DB::table('paciente_enfer_patologicas')
-            ->insert([
+        Paciente_Enfer_Patologica::create([
                 'paciente_id'              => $req->input('paciente'),
                 'enfermedad_patologica_id' => $req->input('id_enfermedad'),
                 'circulo_familiar_id'      => $req->input('circulo_id'),
@@ -442,9 +437,7 @@ class HistoriaController extends Controller
 
     public function EliminarEnfermedadAlergica(Request $req)
     {
-        // dd($req);
-        DB::table('paciente_enfer_patologicas')
-            ->where('id_paciente_enfer_patologica', $req->input('id_paciente_enfer'))
+       Paciente_Enfer_Patologica::where('id_paciente_enfer_patologica', $req->input('id_paciente_enfer'))
             ->delete();
 
         $id_categorias = DB::table('listas')
@@ -479,8 +472,7 @@ class HistoriaController extends Controller
             ->pluck('valores_listas.id_valor');
         //dd($id_categorias);
 
-        DB::table('enfermedades_patologicas')
-            ->insert([
+        Enfer_Patologica::create([
                 'enfermedad'     => $req->input('enfermedad'),
                 'valor_id'       => $id_categorias[0],
                 'ultimo_usuario' => Auth::user()->id]);
@@ -495,9 +487,7 @@ class HistoriaController extends Controller
 
     public function EliminarInfecciosa(Request $req)
     {
-
-        DB::table('enfermedades_patologicas')
-            ->where('id_enfermedad_patologica', $req->input('id_enfermedad'))
+            Enfer_Patologica::where('id_enfermedad_patologica', $req->input('id_enfermedad'))
             ->delete();
 
         $infecciosas = DB::table('enfermedades_patologicas')
@@ -510,8 +500,7 @@ class HistoriaController extends Controller
 
     public function enfermedadInfecciosa(Request $req)
     {
-        DB::table('paciente_enfer_patologicas')
-            ->insert([
+       Paciente_Enfer_Patologica::create([
                 'paciente_id'              => $req->input('paciente'),
                 'enfermedad_patologica_id' => $req->input('id_enfermedad'),
                 'circulo_familiar_id'      => $req->input('circulo_id'),
@@ -541,8 +530,7 @@ class HistoriaController extends Controller
     public function EliminarEnfermedadInfecciosa(Request $req)
     {
         // dd($req);
-        DB::table('paciente_enfer_patologicas')
-            ->where('id_paciente_enfer_patologica', $req->input('id_paciente_enfer'))
+        Paciente_Enfer_Patologica::where('id_paciente_enfer_patologica', $req->input('id_paciente_enfer'))
             ->delete();
 
         $id_categorias = DB::table('listas')
@@ -575,10 +563,9 @@ class HistoriaController extends Controller
             ->where('listas.lista', 'categorias_patologicas')
             ->where('valores_listas.codigo', 'transmision_sexual')
             ->pluck('valores_listas.id_valor');
-        //dd($id_categorias);
+        ///dd($req);
 
-        DB::table('enfermedades_patologicas')
-            ->insert([
+        Enfer_Patologica::create([
                 'enfermedad'     => $req->input('enfermedad'),
                 'valor_id'       => $id_categorias[0],
                 'ultimo_usuario' => Auth::user()->id]);
@@ -594,8 +581,7 @@ class HistoriaController extends Controller
     public function EliminarTransmSexual(Request $req)
     {
 
-        DB::table('enfermedades_patologicas')
-            ->where('id_enfermedad_patologica', $req->input('id_enfermedad'))
+        Enfer_Patologica::where('id_enfermedad_patologica', $req->input('id_enfermedad'))
             ->delete();
 
         $sexual = DB::table('enfermedades_patologicas')
@@ -608,8 +594,8 @@ class HistoriaController extends Controller
 
     public function enfermedadTransmSexual(Request $req)
     {
-        DB::table('paciente_enfer_patologicas')
-            ->insert([
+        //dd($req->input('paciente'));
+       Paciente_Enfer_Patologica::create([
                 'paciente_id'              => $req->input('paciente'),
                 'enfermedad_patologica_id' => $req->input('id_enfermedad'),
                 'circulo_familiar_id'      => $req->input('circulo_id'),
@@ -639,8 +625,7 @@ class HistoriaController extends Controller
     public function EliminarEnfermedadTransmSexual(Request $req)
     {
         // dd($req);
-        DB::table('paciente_enfer_patologicas')
-            ->where('id_paciente_enfer_patologica', $req->input('id_paciente_enfer'))
+       Paciente_Enfer_Patologica::where('id_paciente_enfer_patologica', $req->input('id_paciente_enfer'))
             ->delete();
 
         $id_categorias = DB::table('listas')
@@ -674,9 +659,7 @@ class HistoriaController extends Controller
             ->where('valores_listas.codigo', 'cancer')
             ->pluck('valores_listas.id_valor');
         //dd($id_categorias);
-
-        DB::table('enfermedades_patologicas')
-            ->insert([
+            Enfer_Patologica::create([
                 'enfermedad'     => $req->input('enfermedad'),
                 'valor_id'       => $id_categorias[0],
                 'ultimo_usuario' => Auth::user()->id]);
@@ -706,8 +689,7 @@ class HistoriaController extends Controller
 
     public function enfermedadCancer(Request $req)
     {
-        DB::table('paciente_enfer_patologicas')
-            ->insert([
+        Paciente_Enfer_Patologica::create([
                 'paciente_id'              => $req->input('paciente'),
                 'enfermedad_patologica_id' => $req->input('id_enfermedad'),
                 'circulo_familiar_id'      => $req->input('circulo_id'),
@@ -737,8 +719,7 @@ class HistoriaController extends Controller
     public function EliminarEnfermedadCancer(Request $req)
     {
         // dd($req);
-        DB::table('paciente_enfer_patologicas')
-            ->where('id_paciente_enfer_patologica', $req->input('id_paciente_enfer'))
+       Paciente_Enfer_Patologica::where('id_paciente_enfer_patologica', $req->input('id_paciente_enfer'))
             ->delete();
 
         $id_categorias = DB::table('listas')
@@ -869,7 +850,7 @@ class HistoriaController extends Controller
                     ->delete();
 
             }
-            $consulta2 = DB::table('resumen_historia_medica')->insert($data);
+            $consulta2 = ResumenMedica::create($data);
 
         } catch (Exception $ex) {
             DB::rollback();
@@ -895,6 +876,7 @@ class HistoriaController extends Controller
             ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
             ->where('persona.id_persona', $persona[0])
             ->get();
+
         return view('admin.parte1Historia.resumen_historia_odontologica', ['consulta' => $consulta, 'id_paciente' => $paciente_id], ['pacientes' => $paciente]);
 
         // return redirect('/imagen/'.$consulta.'/'.$req->input('id_paciente'));
@@ -940,7 +922,7 @@ class HistoriaController extends Controller
                     ->delete();
 
             }
-            $consulta2 = DB::table('resumen_historia_odontologica')->insert($data);
+            $consulta2 = ResumenOdontologico::create($data);
 
         } catch (Exception $ex) {
             DB::rollback();
@@ -986,7 +968,8 @@ class HistoriaController extends Controller
     }
     public function datosclinicos(Request $req)
     {
-
+        $data = $req->all();
+       // dd($data);
         DB::beginTransaction();
 
         try {
@@ -1025,7 +1008,7 @@ class HistoriaController extends Controller
 
             }
 
-            //$consulta2 = DB::table('datos_clinicos')->insert($data);
+            $consulta2 = DatosClinicos::create($data);
 
         } catch (Exception $ex) {
             DB::rollback();
@@ -1110,7 +1093,7 @@ class HistoriaController extends Controller
                     ->delete();
 
             }
-            $consulta2 = DB::table('historia_odontologica')->insert($data);
+            $consulta2 = HistoriaOdontologica::create($data);
 
         } catch (Exception $ex) {
             DB::rollback();
@@ -1163,7 +1146,7 @@ class HistoriaController extends Controller
                     ->delete();
 
             }
-            $consulta2 = DB::table('signos_vitales')->insert($data);
+            $consulta2 = SignosVitales::create($data);
 
         } catch (Exception $ex) {
             DB::rollback();

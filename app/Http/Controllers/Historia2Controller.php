@@ -9,18 +9,15 @@ use App\Http\Controllers\Controller;
 use Auth;
 
 use App\Paciente as Paciente;
-use App\ResumenMedica;
-use App\Enfermedades_renales as Enfer_Renal;
-use App\Enfermedades_cardiovasculares as Enfer_Cardiovascular;
-use App\Enfermedades_patologicas as Enfer_Patologica;
 use App\Lista as Lista;
-use App\Paciente_enfer_patologica as Paciente_Enfer_Patologica;
-use App\ResumenOdontologico;
-use App\DatosClinicos;
-use App\CondicionSexual;
-use App\HistoriaOdontologica;
-use App\AntecedentesFamiliares;
 use App\Valores_listas as Valores_listas;
+use App\ExamenClinico as ExamenClinico;
+use App\EvaluacionPeriodontal as EvaluacionPeriodontal;
+use App\ExamenMuscular as ExamenMuscular;
+use App\ModeloDiagnostico as ModeloDiagnostico;
+use App\TestFagerston as TestFagerston;
+use App\DiagramaRiesgo as DiagramaRiesgo;
+use App\Odontograma as Odontograma;
 use DB;
 use Illuminate\Http\Request;
 
@@ -83,7 +80,7 @@ class Historia2Controller extends Controller
                     ->delete();
 
             }
-            $consulta2 = DB::table('examen_clinico')->insert($data);
+            $consulta2 = ExamenClinico::create($data);
 
         } catch (Exception $ex) {
             DB::rollback();
@@ -150,7 +147,7 @@ class Historia2Controller extends Controller
                     ->delete();
 
             }
-            $consulta2 = DB::table('evaluacion_periodontal')->insert($data);
+            $consulta2 = EvaluacionPeriodontal::create($data);
 
         } catch (Exception $ex) {
             DB::rollback();
@@ -185,73 +182,7 @@ class Historia2Controller extends Controller
 
     }
      */
-    public function coronapuenteIndex($paciente_id, $consulta)
-    {
-        $consulta = intval($consulta);
-
-        $persona = DB::table('paciente')
-            ->where('id_paciente', $paciente_id)
-            ->pluck('paciente.persona_id');
-
-        $paciente = DB::table('persona')
-            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
-            ->where('persona.id_persona', $persona[0])
-            ->get();
-
-        return view('admin.parte2Historia.corona_puente_fijo', ['consulta' => $consulta, 'id_paciente' => $paciente_id], ['pacientes' => $paciente]);
-
-    }
-    public function coronapuente(Request $req)
-    {
-
-        $data = $req->all();
-        DB::beginTransaction();
-
-        try {
-
-            $consulta = intval($req->input('consulta_id'));
-
-            $data['ultimo_usuario'] = Auth::user()->id;
-            $data['profesor']       = Auth::user()->id;
-            $data['validar']        = '';
-
-            unset($data['_token']);
-            unset($data['historia']);
-
-            $verificar = DB::table('coronas_puentes')
-                ->where('paciente_id', $data['paciente_id'])
-                ->where('consulta_id', $data['consulta_id'])
-                ->where('fecha', $data['fecha'])
-                ->count();
-
-            if ($verificar > 0) {
-
-                $id = DB::table('coronas_puentes')
-                    ->where('paciente_id', $data['paciente_id'])
-                    ->where('consulta_id', $data['consulta_id'])
-                    ->where('fecha', $data['fecha'])
-                    ->pluck('coronas_puentes.id_coronas');
-
-                $data['id_coronas'] = $id[0];
-
-                DB::table('coronas_puentes')
-                    ->where('paciente_id', $data['paciente_id'])
-                    ->where('consulta_id', $data['consulta_id'])
-                    ->where('fecha', $data['fecha'])
-                    ->delete();
-
-            }
-            $consulta2 = DB::table('coronas_puentes')->insert($data);
-
-        } catch (Exception $ex) {
-            DB::rollback();
-            echo $ex;
-            die();
-        }
-
-        DB::commit();
-
-    }
+ 
     public function examenmuscularIndex($paciente_id, $consulta)
     {
         $consulta = intval($consulta);
@@ -308,7 +239,7 @@ class Historia2Controller extends Controller
                     ->delete();
 
             }
-            $consulta2 = DB::table('examen_muscular')->insert($data);
+            $consulta2 = ExamenMuscular::create($data);
 
         } catch (Exception $ex) {
             DB::rollback();
@@ -376,7 +307,7 @@ class Historia2Controller extends Controller
                     ->delete();
 
             }
-            $consulta2 = DB::table('modelo_diagnostico')->insert($data);
+            $consulta2 = ModeloDiagnostico::create($data);
 
         } catch (Exception $ex) {
             DB::rollback();
@@ -445,7 +376,7 @@ class Historia2Controller extends Controller
                     ->delete();
 
             }
-            $consulta2 = DB::table('test_fagerstrom')->insert($data);
+            $consulta2 = TestFagerston::create($data);
 
         } catch (Exception $ex) {
             DB::rollback();
@@ -513,7 +444,7 @@ class Historia2Controller extends Controller
                     ->delete();
 
             }
-            $consulta2 = DB::table('diagrama_riesgo')->insert($data);
+            $consulta2 = DiagramaRiesgo::create($data);
 
         } catch (Exception $ex) {
             DB::rollback();
@@ -568,7 +499,7 @@ class Historia2Controller extends Controller
             unset($data['historia']);
             foreach (json_decode($data['elementos']) as $key => $value) {
 
-                $consulta2 = DB::table('odontograma')->insert([
+                $consulta2 = Odontograma::create([
                     'paciente_id'    => $data['paciente_id'],
                     'nro_historia'   => $data['nro_historia'],
                     'consulta_id'    => $data['consulta_id'],

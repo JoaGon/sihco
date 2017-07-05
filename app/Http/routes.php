@@ -27,8 +27,8 @@ Route::get('login', 'Auth\AuthController@showLoginForm');
 Route::post('login', 'Auth\AuthController@login');
 Route::get('logout', 'Auth\AuthController@logout');
 
-Route::get('odontodiagrama_/{paciente_id}/{consulta_id}','Historia2Controller@odontoIndex');
-Route::post('save_odonto','Historia2Controller@odonto');
+//Route::get('od/{paciente_id}/{consulta_id}','Historia2Controller@odontoIndex');
+//Route::post('save_odonto','Historia2Controller@odonto');
 
 
 
@@ -141,11 +141,11 @@ Route::post("evaluacion_periodontal",'Historia2Controller@evaluacionperiodontal'
 Route::get("control_placa/{paciente_id}/{consulta_id}",'Historia2Controller@controlplacaIndex');
 //Route::post("control_placa",'Historia2Controller@control_placa');
 
-Route::get("odontograma/{paciente_id}/{consulta_id}",'Historia2Controller@odonto');
-//Route::post("odontograma",'Historia2Controller@odontograma');
+Route::get("odontograma/{paciente_id}/{consulta_id}",'Historia2Controller@odontoIndex');
+Route::post("save_odonto",'Historia2Controller@odonto');
 
-Route::get("corona_puente/{paciente_id}/{consulta_id}",'Historia2Controller@coronapuenteIndex');
-Route::post("corona_puente",'Historia2Controller@coronapuente');
+Route::get("corona_puente/{paciente_id}/{consulta_id}",'Historia3Controller@coronapuenteIndex');
+Route::post("corona_puente",'Historia3Controller@coronapuente');
 
 Route::get("examen_muscular/{paciente_id}/{consulta_id}",'Historia2Controller@examenmuscularIndex');
 Route::post("examen_muscular",'Historia2Controller@examenmuscular');

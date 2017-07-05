@@ -14,4 +14,6 @@ class Enfermedades_renales extends Model
     ];
     protected $primaryKey = 'id_enfermedad_renal';
     protected $table      = 'enfermedades_renales';
+    public $timestamps    = true;
+    
 }

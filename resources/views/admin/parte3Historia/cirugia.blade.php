@@ -42,69 +42,160 @@
                     </div>
                     <div class="row row_border">
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                            <h5>A-GENERALES</h5>
+                            <h5><label>A-GENERALES</label></h5>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                            <input type="checkbox" name="afectando_salud" id="afectando_salud" value="S"> 1.-Infecciosas: Sufre usted de enfermedades como sifilis, HIV, Infecciones en rinon, corazon, pulmones, otros
+                            <input type="checkbox" name="afectando_salud" id="afectando_salud" value="S"> <labe1>1.-Infecciosas:</labe1> Sufre usted de enfermedades como sifilis, HIV, Infecciones en rinon, corazon, pulmones, otros
                         </div>
-                        <div class="col-lg-12">
-                            <input type="text" placeholder="Especifique" class="form-control" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="">
+                         <div class="col-lg-12">
+                            <textarea name="rho_1" id="rho_1" placeholder="Especifique" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
                         </div>
+                      
+                    </div>
+                    <div class="row row_border">
+                      <div class="col-lg-12 col-md-12 col-sm-12">
+                            <input type="checkbox" name="afectando_salud" id="afectando_salud" value="S"> <label>2.-Patologicos:</label> Sufre usted de enfermedades:
+                        </div>
+                         <div class="col-lg-4 col-md-4 col-sm-4">
+                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">Metabolicas
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <input type="checkbox" name="nervios_tratamiento" id="nervios_tratamiento" value="S"> Cardiovasculares
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <input type="checkbox" name="reaccion_anestesico" id="reaccion_anestesico" value="S"> Gastrointestinales
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <input type="checkbox" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="S"> Genito Urinarias
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <input type="checkbox" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="S"> Neurologicas
+                        </div>
+                         <div class="col-lg-12">
+                            <textarea name="rho_1" id="rho_1" placeholder="Especifique" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
+                        </div>
+                        
+                    </div>
+                     <div class="row row_border">
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                            <input type="checkbox" name="afectando_salud" id="afectando_salud" value="S"> 2.-Patologicos: Sufre usted de enfermedades:
+                            <input type="checkbox" name="afectando_salud" id="afectando_salud" value="S"> <label>3.-Hospitalarios:</label> Alguna vez lo han hospitalizado?
                         </div>
-                        <div class="col-lg-4">
-                            <input type="text" placeholder="Metabolicas" class="form-control" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="">
+                        <div class="col-md-4">
+                           Fecha Hospitalizacion <input class="form-control" id="fecha_hospitalizacion" type="text" class="form-control" name="fecha" data-validation="required" data-validation-error-msg="Debe ingrear una fecha" value="{{ old('fecha') }}">
                         </div>
-                        <div class="col-lg-4">
-                            <input type="text" placeholder="Cardiovasculares" class="form-control" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="">
+                        
+                        <div class="col-lg-8">
+                           Causa <input type="text" class="form-control" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="">
+                        </div>
+                       
+                       
+                    </div>
+                    <div class="row row_border">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <input type="checkbox" name="afectando_salud" id="afectando_salud" value="S"> <label>4.-Quirurgicos:</label> Alguna vez lo han operado?
+                        </div>
+                        <div class="col-md-4">
+                           Fecha Hospitalizacion <input class="form-control" id="fecha_operacion" type="text" class="form-control" name="fecha" data-validation="required" data-validation-error-msg="Debe ingrear una fecha" value="{{ old('fecha') }}">
+                        </div>
+                        
+                        <div class="col-lg-8">
+                           Causa <input type="text" class="form-control" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="">
+                        </div>
+                          <div class="col-lg-12">
+                            Hubo Complicaciones?<textarea name="rho_1" id="rho_1" placeholder="Observaciones" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
+                        </div>
+                       
+                    </div>
+                    <div class="row row_border">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <input type="checkbox" name="afectando_salud" id="afectando_salud" value="S"> <label>5.-Toxico Alergicos:</label> Tiene alergia a algun medicamento, alimento o sustancia?
+                        </div>
+                      
+                        <div class="col-lg-6">
+                           Cual? <input type="text" class="form-control" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="">
+                        </div>
+                        <div class="col-lg-6">
+                           Dosis: <input type="text" class="form-control" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="">
                         </div>
                     </div>
                     <div class="row row_border">
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                            Dolor
+                            <input type="checkbox" name="afectando_salud" id="afectando_salud" value="S"> <label>6.-Medicamentos:</label> Ha tomado algun medicamento en los ultimos tres meses?
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="afectando_salud" id="afectando_salud" value="S"> Localizado
+                      
+                        <div class="col-lg-12">
+                           Cual? <input type="text" class="form-control" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="">
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">Difuso
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="nervios_tratamiento" id="nervios_tratamiento" value="S"> Provocado
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="reaccion_anestesico" id="reaccion_anestesico" value="S"> Espontaneo
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="S"> Constante
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="S"> Intermitente
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="S"> Palpitante
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="S"> Referido
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="S"> Ausencia de Dolor
-                        </div>
+                       
                     </div>
-                    <div class="row row_border ">
+                     <div class="row row_border">
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                            Diente a Tratar
+                            <input type="checkbox" name="afectando_salud" id="afectando_salud" value="S"> <label>7.-Hematologicos:</label> Sufre usted de esquimosis, sangrados abundantes, retarda cicatrizacion?
+                        </div>
+                      
+                        <div class="col-lg-12">
+                           Sabe usted la causa? <input type="text" class="form-control" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="">
+                        </div>
+                       
+                    </div>
+                     <div class="row row_border">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <input type="checkbox" name="afectando_salud" id="afectando_salud" value="S"> <label>8.-Transfusionales:</label> Alguna vez le han tenido que transfundir sangre?
+                        </div>
+                      
+                        <div class="col-lg-12">
+                           Causa <input type="text" class="form-control" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="">
+                        </div>
+                       
+                    </div>
+                     <div class="row row_border">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <label>9.-En caso de ser mujer:</label>
+                        </div>
+                      
+                        <div class="col-lg-12">
+                           <div class="col-lg-4 col-md-4 col-sm-4">
+                                <input type="checkbox" name="reaccion_anestesico" id="reaccion_anestesico" value="S"> Esta embarazada?
+                            </div>
+                        </div>
+                         <div class="col-lg-12 col-md-12 col-sm-12">
+                           Otros no especificados
                         </div>
                         <div class="col-lg-12">
                             <input type="text" class="form-control" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="">
                         </div>
+                       
                     </div>
-                    <div class="row row_border ">
-                        <div class="col-lg-12">
-                            <textarea name="rho_1" id="rho_1" placeholder="Observaciones" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
+                    <div class="row row_border">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h5><label>B.- ODONTOLOGICOS (QUIRURGICOS)</label></h5>
                         </div>
+                        <div class="col-lg-6">
+                           <div class="col-lg-12 col-md-12 col-sm-12">
+                                <input type="checkbox" name="reaccion_anestesico" id="reaccion_anestesico" value="S"> Le han realizado cirugias en su cavidad bucal?
+                            </div>
+                        </div>
+                         <div class="col-lg-4">
+                           Tipo <input type="text" class="form-control" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="">
+                        </div>
+                        <div class="col-lg-6">
+                           <div class="col-lg-12 col-md-12 col-sm-12">
+                                <input type="checkbox" name="reaccion_anestesico" id="reaccion_anestesico" value="S"> Hubo complicaciones?
+                            </div>
+                        </div>
+                         <div class="col-lg-4">
+                           Especifique de que tipo (infecciosas, hemorragicas, cicatrizacion, etc) <input type="text" class="form-control" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="">
+                        </div>
+                      
                     </div>
+                     <div class="row row_border">
+                        
+                         <div class="col-lg-12">
+                          Examenes complementarios indicados <input type="text" class="form-control" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="">
+                        </div>
+                      
+                    </div>
+                   
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
                             <button type="submit" onclick="insertar_historia();" class="btn btn-primary">Registrar
@@ -131,6 +222,16 @@
 <script>
 $(document).ready(function() {
     $("#fecha").datepicker({
+        dateFormat: "yy-mm-dd",
+        changeYear: true,
+        changeMonth: true
+    });
+    $("#fecha_hospitalizacion").datepicker({
+        dateFormat: "yy-mm-dd",
+        changeYear: true,
+        changeMonth: true
+    });
+    $("#fecha_operacion").datepicker({
         dateFormat: "yy-mm-dd",
         changeYear: true,
         changeMonth: true

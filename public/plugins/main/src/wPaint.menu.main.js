@@ -1,6 +1,7 @@
 (function ($) {
 
   // setup menu
+ 
   $.fn.wPaint.menus.main = {
     img: "sihco/public/plugins/main/img/icons-menu-main.png",
     items: {

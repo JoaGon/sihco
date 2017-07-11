@@ -173,6 +173,9 @@ Route::post("operatoria",'Historia3Controller@operatoria');
 Route::get("totales/{paciente_id}/{consulta_id}",'Historia3Controller@totalesIndex');
 Route::post("totales",'Historia3Controller@totales');
 
+Route::get("parciales/{paciente_id}/{consulta_id}",'ImagenController@parcialesIndex');
+Route::post("parciales",'Historia3Controller@parciales');
+
 Route::get("diagnostico/{paciente_id}/{consulta_id}",'Historia3Controller@diagnosticoIndex');
 Route::post("diagnostico",'Historia3Controller@totales');
 

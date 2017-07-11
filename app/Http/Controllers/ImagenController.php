@@ -30,7 +30,7 @@ class ImagenController extends Controller
             ->where('consulta_id', $consulta)
             ->get();
 
-        return view('admin.registro_imageneologica', ['consulta' => $consulta, 'id_paciente' => $paciente_id], ['pacientes' => $paciente, 'imagen' => $imagen]);
+        return view('admin.parte2Historia.registro_imageneologica', ['consulta' => $consulta, 'id_paciente' => $paciente_id], ['pacientes' => $paciente, 'imagen' => $imagen]);
 
     }
 
@@ -118,6 +118,23 @@ class ImagenController extends Controller
 
         unlink($req->input('key'));
         return response()->json(1);
+
+    }
+     public function parcialesIndex($paciente_id, $consulta)
+    {
+        //$data = $req->all();
+        $consulta = intval($consulta);
+
+        $persona = DB::table('paciente')
+            ->where('id_paciente', $paciente_id)
+            ->pluck('paciente.persona_id');
+
+        $paciente = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
+
+        return view('admin.parte3Historia.parciales', ['consulta' => $consulta, 'id_paciente' => $paciente_id], ['pacientes' => $paciente]);
 
     }
 

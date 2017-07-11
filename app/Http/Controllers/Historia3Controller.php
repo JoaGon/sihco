@@ -171,5 +171,22 @@ class Historia3Controller extends Controller
         return view('admin.diagnostico_clinico', ['consulta' => $consulta, 'id_paciente' => $paciente_id], ['pacientes' => $paciente]);
 
     }
+     public function parcialesIndex($paciente_id, $consulta)
+    {
+        //$data = $req->all();
+        $consulta = intval($consulta);
+
+        $persona = DB::table('paciente')
+            ->where('id_paciente', $paciente_id)
+            ->pluck('paciente.persona_id');
+
+        $paciente = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
+
+        return view('admin.parte3Historia.parciales', ['consulta' => $consulta, 'id_paciente' => $paciente_id], ['pacientes' => $paciente]);
+
+    }
 
 }

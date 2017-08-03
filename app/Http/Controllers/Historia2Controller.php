@@ -18,6 +18,7 @@ use App\ModeloDiagnostico as ModeloDiagnostico;
 use App\TestFagerston as TestFagerston;
 use App\DiagramaRiesgo as DiagramaRiesgo;
 use App\Odontograma as Odontograma;
+use App\ControlPlaca as ControlPlaca;
 use DB;
 use Illuminate\Http\Request;
 
@@ -176,12 +177,80 @@ class Historia2Controller extends Controller
 
     }
 
-    /* public function odonto($paciente_id,$consulta){
+     public function control_placa(Request $req){
 
-    return view('verOdonto');
+        $data = $req->all();
+       //dd(json_decode($data['dientes']),'leedasada');
+        DB::beginTransaction();
 
+        try {
+
+            $consulta = intval($req->input('consulta_id'));
+
+            $data['ultimo_usuario'] = Auth::user()->id;
+            $data['profesor']       = Auth::user()->id;
+            $data['validar']        = '';
+
+            unset($data['_token']);
+            unset($data['historia']);
+
+            $verificar = DB::table('control_placa')
+                ->where('paciente_id', $data['paciente_id'])
+                ->where('consulta_id', $data['consulta_id'])
+                ->where('fecha', $data['fecha'])
+                ->count();
+               // dd($verificar);
+            if ($verificar > 0) {
+
+                $id = DB::table('control_placa')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->pluck('control_placa.id_control_placa');
+
+                $data['id_control_placa'] = $id[0];
+                DB::table('dientes_con_placa')
+                    ->where('control_placa_id', $id[0])
+                    ->delete();
+
+                DB::table('control_placa')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->delete();
+
+            }
+            $consulta2 = ControlPlaca::create($data);
+            //dd($consulta2->id_control_placa);
+            if($data['dientes']){
+            //dd($data['dientes']);
+            $array = [];
+            $array = json_decode($data['dientes']);
+            //dd($array);
+
+                foreach ($array as $key => $value) {
+                    DB::table('dientes_con_placa')
+                    ->insert([
+                        'valor_diente'=>$value->diente,
+                        'cara_diente'=>$value->cara,
+                        'estado_diente'=>$value->estado,
+                        'tipo_diente'=>$value->tipo,
+                        'control_placa_id'=>$consulta2->id_control_placa,
+                        ]);
+                    
+                }
+                 
+            }
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
     }
-     */
+     
  
     public function examenmuscularIndex($paciente_id, $consulta)
     {

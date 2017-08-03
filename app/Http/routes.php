@@ -139,7 +139,7 @@ Route::get("evaluacion_periodontal/{paciente_id}/{consulta_id}",'Historia2Contro
 Route::post("evaluacion_periodontal",'Historia2Controller@evaluacionperiodontal');
 
 Route::get("control_placa/{paciente_id}/{consulta_id}",'Historia2Controller@controlplacaIndex');
-//Route::post("control_placa",'Historia2Controller@control_placa');
+Route::post("control_placa",'Historia2Controller@control_placa');
 
 Route::get("odontograma/{paciente_id}/{consulta_id}",'Historia2Controller@odontoIndex');
 Route::post("save_odonto",'Historia2Controller@odonto');
@@ -176,8 +176,10 @@ Route::post("totales",'Historia3Controller@totales');
 Route::get("parciales/{paciente_id}/{consulta_id}",'ImagenController@parcialesIndex');
 Route::post("parciales",'Historia3Controller@parciales');
 
-Route::get("diagnostico/{paciente_id}/{consulta_id}",'Historia3Controller@diagnosticoIndex');
-Route::post("diagnostico",'Historia3Controller@totales');
+Route::get("diagnostico/{paciente_id}/{consulta_id}",'DiagnosticoController@diagnosticoIndex');
+Route::post("diagnostico",'DiagnosticoController@totales');
+
+
 
 //Route::post('/auth/register', 'RegistrarController@postRegister');
 Route::post('/auth/registrar', 'RegistrarController@postRegister');

@@ -9,8 +9,12 @@
 <link href="{{ url('css/styles.css')}} " rel="stylesheet">
 <link href="{{ url('css/admin.css')}} " rel="stylesheet">
 <link href="{{url ('template/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{{url('css/estilosOdontograma.css')}}">
 
-<div class="container">
+<script type="text/javascript" src="{{ url('js/angular.min.js') }}"></script>
+<script src="{{url('js/ControlPlaca.js')}}"></script>
+
+<div class="container" ng-app="ControlPlaca" ng-controller="ControlPlacaController">
 	<!-- /.row -->
 	<div class="row">
 		<div class="col-lg-10 col-sm-8 col-sm-offset-4 col-lg-offset-2 col-md-offset-4">
@@ -47,8 +51,8 @@
 					<div class="row row_border ">
 							<div class="col-lg-12 col-md-6 col-sm-6">
 							Indique la cantidad de dientes presentes:
-							<input type="input" name="sr" id="sr" style="color:black ">	
-							<a href="#" onclick="contar()">Calcular</a>	
+							<input type="input" name="diente_presentes" id="sr" style="color:black ">	
+							
 							</div>
 					</div>
 					<div class="row row_border ">
@@ -79,496 +83,50 @@
 						  </table>		
 							</div>
 					</div>
-					<div align="center">
-					<table border="1" cellpadding="0" cellspacing="0" style="width: 105%; margin-left: 15px; margin-bottom: 15px" id="AutoNumber2" background="{{url('images/CIRCULO3.gif')}}">
-					    <tbody>
-					    <tr>
-					      <td align="center" colspan="3" style="border-left:1px solid #800080; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" >
-					      <b><font>18</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>17</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>16</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>15</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>14</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>13</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>12</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>11</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>21</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>22</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>23</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>24</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>25</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>26</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>27</font></b></td>
-					      <td align="center" colspan="3" style="border-right:1px solid #800080; border-left-style: solid; border-left-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>28</font></b></td>
-					    </tr>
-					    <tr>
-					      <td align="center" style="border-left:1px solid #800080; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      <input type="checkbox" name="a0" value="checked"></td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      <input type="checkbox" name="a1" value="checked"></td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-style: none; border-width: medium; padding-left: 5px;" border="">
-					      <input type="checkbox" name="a2" value="checked"></td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      <input type="checkbox" name="a3" value="checked"></td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      <input type="checkbox" name="a4" value="checked"></td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      <input type="checkbox" name="a5" value="checked"></td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      <input type="checkbox" name="a6" value="checked"></td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-style: none; border-width: medium; padding-left: 5px;" border="">
-					      <input type="checkbox" name="a7" value="checked"></td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      <input type="checkbox" name="a8" value="checked"></td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-style: none; border-width: medium; padding-left: 5px;" border="">
-					      <input type="checkbox" name="a9" value="checked"></td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      <input type="checkbox" name="a10" value="checked"></td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      <input type="checkbox" name="a11" value="checked"></td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      <input type="checkbox" name="a12" value="checked"></td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      <input type="checkbox" name="a13" value="checked"></td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      <input type="checkbox" name="a14" value="checked"></td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      <input type="checkbox" name="a15" value="checked"></td>
-					      <td align="center" style="border-right:1px solid #800080; border-left-style: none; border-left-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      &nbsp;</td>
-					      </tr>
-					    <tr>
-					      <td align="center" style="border-left:1px solid #800080; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a16" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a17" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a18" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a19" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a20" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a21" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a22" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a23" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a24" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a25" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a26" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a27" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a28" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a29" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a30" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a31" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a32" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a33" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a34" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a35" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a36" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a37" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a38" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a39" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a40" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a41" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a42" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a43" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a44" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a45" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a46" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-right:1px solid #800080; border-left-style: none; border-left-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a47" value="checked"></td>
-					      </tr>
-					    <tr>
-					      <td align="center" colspan="3" style="border-left:1px solid #800080; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; " border="">
-					      <input type="checkbox" name="a48" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; " border="">
-					      <input type="checkbox" name="a49" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; " border="">
-					      <input type="checkbox" name="a50" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; " border="">
-					      <input type="checkbox" name="a51" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; " border="">
-					      <input type="checkbox" name="a52" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; " border="">
-					      <input type="checkbox" name="a53" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; " border="">
-					      <input type="checkbox" name="a54" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; " border="">
-					      <input type="checkbox" name="a55" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; " border="">
-					      <input type="checkbox" name="a56" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; " border="">
-					      <input type="checkbox" name="a57" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; " border="">
-					      <input type="checkbox" name="a58" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; " border="">
-					      <input type="checkbox" name="a59" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; " border="">
-					      <input type="checkbox" name="a60" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; " border="">
-					      <input type="checkbox" name="a61" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; " border="">
-					      <input type="checkbox" name="a62" value="checked"></td>
-					      <td align="center" colspan="3" style="border-right:1px solid #800080; border-left-style: solid; border-left-width: 1; border-top-style: none; border-top-width: medium; " border="">
-					      <input type="checkbox" name="a63" value="checked"></td>
-					      </tr>
-					    <tr>
-					      <td align="center" colspan="3" style="border-right-style: none; border-right-width: medium; border-top-style: solid; border-top-width: 1px; border-bottom-style: solid; border-bottom-width: 1px" border="">&nbsp;</td>
-					      <td align="center" colspan="3" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: solid; border-top-width: 1px; border-bottom-style: solid; border-bottom-width: 1px" border="">&nbsp;</td>
-					      <td align="center" colspan="3" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: solid; border-top-width: 1px; border-bottom-style: solid; border-bottom-width: 1px" border="">&nbsp;</td>
-					      <td align="center" colspan="3" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: solid; border-top-width: 1px; border-bottom-style: solid; border-bottom-width: 1px" border="">&nbsp;</td>
-					      <td align="center" colspan="3" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: solid; border-top-width: 1px; border-bottom-style: solid; border-bottom-width: 1px" border="">&nbsp;</td>
-					      <td align="center" colspan="3" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: solid; border-top-width: 1px; border-bottom-style: solid; border-bottom-width: 1px" border="">&nbsp;</td>
-					      <td align="center" colspan="3" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: solid; border-top-width: 1px; border-bottom-style: solid; border-bottom-width: 1px" border="">&nbsp;</td>
-					      <td align="center" colspan="3" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: solid; border-top-width: 1px; border-bottom-style: solid; border-bottom-width: 1px" border="">&nbsp;</td>
-					      <td align="center" colspan="3" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: solid; border-top-width: 1px border-bottom-style: solid; border-bottom-width: 1px" border="">&nbsp;</td>
-					      <td align="center" colspan="3" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: solid; border-top-width: 1px ; border-bottom-style: solid; border-bottom-width: 1" border="">&nbsp;</td>
-					      <td align="center" colspan="3" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: solid; border-top-width: 1px; border-bottom-style: solid; border-bottom-width: 1px" border="">&nbsp;</td>
-					      <td align="center" colspan="3" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: solid; border-top-width: 1px; border-bottom-style: solid; border-bottom-width: 1px" border="">&nbsp;</td>
-					      <td align="center" colspan="3" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: solid; border-top-width: 1px; border-bottom-style: solid; border-bottom-width: 1px" border="">&nbsp;</td>
-					      <td align="center" colspan="3" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: solid; border-top-width: 1px; border-bottom-style: solid; border-bottom-width: 1px" border="">&nbsp;</td>
-					      <td align="center" colspan="3" style="border-left-style: none; border-left-width: medium; border-right-style: none; border-right-width: medium; border-top-style: solid; border-top-width: 1px; border-bottom-style: solid; border-bottom-width: 1px" border="">&nbsp;</td>
-					      <td align="center" colspan="3" style="border-left-style: none; border-left-width: medium; border-top-style: solid; border-top-width: 1px; border-bottom-style: solid; border-bottom-width: 1px" border="">&nbsp;</td>
-					    </tr>
-					    <tr>
-					      <td align="center" colspan="3" style="border-left:1px solid #800080; border-right-style: solid; border-right-width: 1; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a64" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a65" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a66" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a67" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a68" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a69" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a70" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a71" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a72" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a73" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a74" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a75" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a76" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a77" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a78" value="checked"></td>
-					      <td align="center" colspan="3" style="border-right:1px solid #800080; border-left-style: solid; border-left-width: 1; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a79" value="checked"></td>
-					    </tr>
-					    <tr>
-					      <td align="center" style="border-left:1px solid #800080; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a80" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a81" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a82" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a83" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a84" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a85" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a86" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a87" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a88" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a89" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a90" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a91" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a92" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a93" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a94" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a95" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a96" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a97" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a98" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a99" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a100" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a101" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a102" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a103" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a104" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a105" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a106" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a107" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a108" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a109" value="checked"></td>
-					      <td align="center" style="border-left-style: solid; border-left-width: 1; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a110" value="checked"></td>
-					      <td align="center" style="border-style: none; border-width: medium" border="">
-					      &nbsp;</td>
-					      <td align="center" style="border-right:1px solid #800080; border-left-style: none; border-left-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a111" value="checked"></td>
-					    </tr>
-					    <tr>
-					      <td align="center" colspan="3" style="border-left:1px solid #800080; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a112" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a113" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a114" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a115" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a116" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a117" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a118" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a119" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a120" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a121" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a122" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a123" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a124" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a125" value="checked"></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a126" value="checked"></td>
-					      <td align="center" colspan="3" style="border-right:1px solid #800080; border-left-style: solid; border-left-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <input type="checkbox" name="a127" value="checked"></td>
-					    </tr>
-					    <tr>
-					      <td align="center" colspan="3" style="border-left:1px solid #800080; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>48</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>47</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>46</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>45</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>44</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>43</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>42</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>41</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>31</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>32</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>33</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>34</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>35</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>36</font></b></td>
-					      <td align="center" colspan="3" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>37</font></b></td>
-					      <td align="center" colspan="3" style="border-right:1px solid #800080; border-left-style: solid; border-left-width: 1; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" border="">
-					      <b><font>38</font></b></td>
-					    </tr>
-					  </tbody>
-					  </table>
- 				 </div>
+					<center>
+	<div>
+		<svg height="50" class="[[i.tipoDiente]]" width="50"  ng-repeat="i in adultoArriva" id="[[i.id]]">
+			
+		  	<polygon points="10,15 15,10 50,45 45,50" estado="4" value="6" class="ausente" />
+  			<polygon points="45,10 50,15 15,50 10,45" estado="4" value="7" class="ausente" />
+  			<circle cx="30" cy="30" r="16" estado="8" value="8" class="corona"/>
+  			<circle cx="30" cy="30" r="20" estado="3" value="9" class="endodoncia"/>
+  			<polygon points="50,10 40,10 10,26 10,32 46,32 10,50 20,50 50,36 50,28 14,28" estado="6" value="10" class="implante"/>
+  			<polygon points="10,10 50,10 40,20 20,20" estado="0" value="1" class="diente" />
+  			<polygon points="50,10 50,50 40,40 40,20" estado="0" value="2" class="diente" />
+  			<polygon points="50,50 10,50 20,40 40,40" estado="0" value="3" class="diente" />
+  			<polygon points="10,50 20,40 20,20 10,10" estado="0" value="4" class="diente" />
+  			<polygon points="20,20 40,20 40,40 20,40" estado="0" value="5" class="diente" />
+  			<text x="20" y="8" fill="navy" stroke="navy" stroke-width="0.1" style="font-size: 10pt;font-weight:normal">[[i.value]]</text>
+		
+  		</svg>
+	</div>
+	
+	
+	<div>
+		<svg height="50" class="[[i.tipoDiente]]" width="50"  ng-repeat="i in adultoAbajo" id="[[i.id]]">
+   			<polygon points="10,15 15,10 50,45 45,50" estado="4" value="6" class="ausente" />
+  			<polygon points="45,10 50,15 15,50 10,45" estado="4" value="7" class="ausente" />
+  			<circle cx="30" cy="30" r="16" estado="8" value="8" class="corona"/> 
+  			<circle cx="30" cy="30" r="20" estado="3" value="9" class="endodoncia"/>
+  			<polygon points="50,10 40,10 10,26 10,32 46,32 10,50 20,50 50,36 50,28 14,28" estado="6" value="10" class="implante"/>	
+  			<polygon points="10,10 50,10 40,20 20,20" estado="0" value="1" class="diente" />
+  			<polygon points="50,10 50,50 40,40 40,20" estado="0" value="2" class="diente" />
+  			<polygon points="50,50 10,50 20,40 40,40" estado="0" value="3" class="diente" />
+  			<polygon points="10,50 20,40 20,20 10,10" estado="0" value="4" class="diente" />
+  			<polygon points="20,20 40,20 40,40 20,40" estado="0" value="5" class="diente" />
+  			<text x="20" y="8" fill="navy" stroke="navy" value="[[i.value]]" stroke-width="0.1" style="font-size: 10pt;font-weight:normal">[[i.value]]</text>
+			
+		</svg>
+	</div>			
+</center>
+
+<input type="radio" id="Decidua" name="tipo" value="1" style="display: none;" checked / >
+					
 					<div class="form-group">
 						<div class="col-md-6 col-md-offset-4">
+							<a class="btn btn-primary" onclick="contar()">Calcular</a>	
+						 	<a class="btn btn-primary" id="limpiar" class="btn btn-primary">Limpiar</a>
 							<button type="submit" onclick="insertar_historia();" class="btn btn-primary">Registrar
 							</button>
 						 	
@@ -592,6 +150,8 @@
 <script src="{{ url('template/vendor/datatables-responsive/dataTables.responsive.js')}}"></script>
 <script src="{{url('template/vendor/datatables-plugins/dataTables.bootstrap.min.js')}}"></script>
 <script src="{{ url('js/list.min.js')}}"></script>
+
+<script type="text/javascript" src="{{url('js/jquery-odontograma.js')}}"></script>
 <script>
 $(document).ready(function () {
   $("#fecha").datepicker({dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true});
@@ -603,14 +163,19 @@ $(document).ready(function () {
     page: 3,
     pagination: true
   });
+
 var monthNames = [ "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December" ];
+
 var dayNames= ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
 var newDate = new Date();
+
 newDate.setDate(newDate.getDate() + 1);    
 $('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
  });
 function insertar_historia(){
+
+	
 
 	 var myLanguage = {              
             errorTitle: 'El formulario fallo en enviarse',
@@ -629,13 +194,20 @@ function insertar_historia(){
      // alert('Validation of form '+$form.attr('id')+' failed!');
     },
     onSuccess : function($form) {
+    	var cantidad = $('#sr').val();
+		console.log(cantidad, datos)
+		 console.log($("#form_familiares")[0]);
+      		var formData = new FormData($("#form_familiares")[0]);
+      		formData.append('dientes',JSON.stringify(datos));
+      		formData.append('cantidad_dientes_placa',datos.length);
+
       //alert('The form '+$form.attr('id')+' is valid!');
       //return false; // Will stop the submission of the form
-      console.log($("#form_familiares")[0]);
-      var formData = new FormData($("#form_familiares")[0]);
+     
+    console.log( "<?php echo csrf_token(); ?>")
 
           $.ajax({
-            url: "{{ url('/resumen_medico') }}",
+            url: "{{ url('/control_placa') }}",
             type: 'POST',
             data: formData,
             async: false,
@@ -646,7 +218,7 @@ function insertar_historia(){
                 //popover_show();
                 new PNotify({
                       title: 'Registro Exitoso',
-                      text: 'El resumen han sido almacenado!',
+                      text: 'El control de placa ha sido almacenado!',
                       type: 'success',
                       styling: 'bootstrap3'
                   });
@@ -666,21 +238,11 @@ function insertar_historia(){
 	
                 
 }
-function calcular(){
-		console.log($("#form_familiares")[0]);
-      var formData = new FormData($("#form_familiares")[0]);
-}
-
 
 function contar() 
 {	
 		var formulario = $("#form_familiares")[0];
-		var cont = 0; //Variable que lleva la cuenta de los checkbox pulsados
-		for (var x=0; x < 137; x++)
-		{
-		  if (formulario.elements[x].checked) 
-		  {   cont = cont + 1;  }
-		}
+		
   if (formulario.sr.value == "")
   {
     alert("Debe ingresar primero un valor en el campo Número de dientes presentes");
@@ -689,10 +251,33 @@ function contar()
   }
   else
   {		
-		formulario.elements.sp.value=cont;		
+  	datos = []
+  	$('svg').each(function(){
+			var dienteD = $(this).attr('id');
+			entrarEach = false;
+			$(this).find('.marcado').each(function(){
+					console.log('todoa',datos)
+				var caraD = $(this).attr('value');
+				var estadoD = $(this).attr('estado');
+				var tipoD = $('input:radio[name=tipo]:checked').val();
+				if ((estadoD == 3 || estadoD == 4 || estadoD == 6 || estadoD == 8)) {
+					datos.push({diente:dienteD,cara:caraD,estado:estadoD,tipo:tipoD});
+					return false;
+				}
+				else 
+				{
+					datos.push({diente:dienteD,cara:caraD,estado:estadoD,tipo:tipoD});
+				}
+					console.log('todoa',datos)
+				
+			});
+		});	
+		console.log('todoa',datos)
+
+		formulario.elements.sp.value=datos.length;		
 		var sreg=formulario.elements.sr.value*4;
 		formulario.elements.ns.value=sreg;
-		formulario.elements.indice.value=(cont*100)/sreg;
+		formulario.elements.indice.value=(datos.length*100)/sreg;
   }
 }
 

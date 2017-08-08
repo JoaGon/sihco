@@ -52,7 +52,7 @@
                     Maxilares Enfermedad periodontal:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                      <input type="checkbox" name="afectando_salud" id="afectando_salud" value="S"> Caries
+                      <input type="checkbox" name="afectando_salud" id="caries" value="S"> Caries
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
                       <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">Ambas 
@@ -140,25 +140,7 @@
                        <option>Nunca</option>
                      </select>
                     </div>
-                     <div class="col-lg-6 col-md-6 col-sm-6">
-                    h.Forma de los dientes:
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Con cuspide</option>
-                       <option>Sin cuspide</option>
-                     </select>
-                    </div>
-                       <div class="col-lg-6 col-md-6 col-sm-4">
-                    i.Material de base de la dentadura:
-                    </div>
-                    <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Acrilicos</option>
-                       <option>Porcelana</option>
-                       <option>Otros</option>
-                     </select>
-                    </div>
+                 
                      <div class="col-lg-6 col-md-6 col-sm-6">
                     g.Material de los dientes:
                     </div>

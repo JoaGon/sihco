@@ -51,25 +51,25 @@
                             Cavidades visibles o penetracion radiografica de la dentina
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="cavidades" id="cavidades" value="S">
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">
                             Lesiones radiograficas interproximales es esmalte (no en dentina)
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="lesiones_radiograficas" id="lesiones_radiograficas" value="S">
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">
                             Lesiones de mancha blanca en en superficies lisas
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="lesiones_mancha" id="lesiones_mancha" value="S">
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">
                             Restauraciones en los ultimos 3 a&ntilde;os
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="restauraciones" id="restauraciones" value="S">
                         </div>
                     </div>
                     <div class="row row_border">
@@ -80,55 +80,55 @@
                             Recuento de streptococcus y lactobacilos moderado o alto (ambos)
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="recuento" id="recuento" value="S">
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">
                             Abundante biopelicula visible sobre los dientes
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="abundante" id="abundante" value="S">
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">
                             Bocadillos frecuentes (3 veces al dia, durante comidas)
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="bocadillos" id="bocadillos" value="S">
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">
                             Fosas y fisuras profundas
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="fosas" id="fosas" value="S">
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">
                             Drogas de Uso recreacional
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="drogas" id="drogas" value="S">
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">
                             Flujo salival inadecuado por observacion o medicion (** si es medico, anote abajp el nivel de flujo)
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="flujo_salival" id="flujo_salival" value="S">
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">
                             Factores de reduccion de saliva (medicacions, radiacion, sistemicos)
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="factores_reduccion" id="factores_reduccion" value="S">
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">
                             Raices Expuestas
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="raices_expuestas" id="raices_expuestas" value="S">
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">
                             Aparatologia Ortodontica
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="aparatologia" id="aparatologia" value="S">
                         </div>
                     </div>
                     <div class="row row_border">
@@ -139,61 +139,61 @@
                             Vive / Trabaja / Estudia en comunidad fluorada
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="vive_trabaja" id="vive_trabaja" value="S">
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">
                             Dentrifrico Fluorado al menos 1 vez diaria
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="dentrifrico_una" id="dentrifrico_una" value="S">
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">
                             Dentrifrico Fluorado al menos 2 veces diaria
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="dentrifrico_dos" id="dentrifrico_dos" value="S">
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">
                             Enjuegue Bucal fluorado diariao(0,05% NaF)
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="enjuague_bucal" id="enjuague_bucal" value="S">
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">
                             Dentrifico Fluorado diario (5000 ppm)
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="dentrifico_fluorado" id="dentrifico_fluorado" value="S">
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">
                             Barniz del fluorado en los ultimos 6 meses
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="barniz" id="barniz" value="S">
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">
                             Clorhexidina Preescrita / usada 1 vez a la semana cada 6 meses
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="clorhexidina" id="clorhexidina" value="S">
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">
                             Goma de mascar / pastillas de xilitos 4 veces al dia, los ultimos 6 meses
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="goma_mascar" id="goma_mascar" value="S">
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">
-                            Dentifrico de Clacio / Fosfato durante los ultimos 6 meses
+                            Dentifrico de Calcio / Fosfato durante los ultimos 6 meses
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="dentrifrico_de_calcio" id="dentrifrico_de_calcio" value="S">
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8">
                             Adecuado Flujo salival ( > 1 ml/min Estimulado)
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">
+                            <input type="checkbox" name="adecuado_flujo" id="adecuado_flujo" value="S">
                         </div>
                     </div>
                     <div class="row row_border ">
@@ -201,7 +201,7 @@
                             Flujo Salival (ml/min)
                         </div>
                         <div class="col-lg-12">
-                            <input type="text" class="form-control" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="">
+                            <input type="text" class="form-control" name="flujo_salival_ml" id="flujo_salival_ml" value="">
                         </div>
                     </div>
                     <div class="row row_border ">
@@ -209,7 +209,7 @@
                             RIESGO A CARIES
                         </div>
                         <div class="col-lg-12">
-                            <input type="text" class="form-control" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="">
+                            <input type="text" class="form-control" name="riesgo_caries" id="riesgo_caries" value="">
                         </div>
                     </div>
                     <div class="form-group">

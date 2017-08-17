@@ -12,7 +12,6 @@ class Cirugia extends Authenticatable
      * @var array
      */
     protected $fillable = [
-
         'infecciosas',
         'espec_infecciosa',
         'metabolicas',
@@ -27,7 +26,7 @@ class Cirugia extends Authenticatable
         'causa_quirurgico',
         'hubo_complicacion',
         'obser_quirurgico',
-        'alegia'
+        'alegia',
         'cual_alergia',
         'dosis',
         'medicamento',
@@ -50,7 +49,9 @@ class Cirugia extends Authenticatable
         'paciente_id',
         'fecha',
         'id_cirugia',
-        'fecha_validacion'
+        'fecha_validacion',
+        'hospitalizado',
+        'operado'
 
     ];
     protected $primaryKey = 'id_cirugia';

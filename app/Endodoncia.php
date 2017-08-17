@@ -87,7 +87,7 @@ class Endodoncia extends Authenticatable
           'consulta_id',
           'profesor',
     ];
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id_endodoncia';
     protected $table      = 'endodoncia';
     public $timestamps    = true;
 

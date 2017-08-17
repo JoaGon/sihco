@@ -288,7 +288,7 @@ function insertar_historia() {
             var formData = new FormData($("#form_familiares")[0]);
 
             $.ajax({
-                url: "{{ url('/resumen_odontologico') }}",
+                url: "{{ url('/operatoria') }}",
                 type: 'POST',
                 data: formData,
                 async: false,
@@ -299,7 +299,7 @@ function insertar_historia() {
                     //popover_show();
                     new PNotify({
                         title: 'Registro Exitoso',
-                        text: 'El resumen han sido almacenado!',
+                        text: 'La historia ha sido almacenada!',
                         type: 'success',
                         styling: 'bootstrap3'
                     });

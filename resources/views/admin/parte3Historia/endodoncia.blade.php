@@ -407,7 +407,7 @@ $('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + mon
       var formData = new FormData($("#form_familiares")[0]);
 
           $.ajax({
-            url: "{{ url('/resumen_odontologico') }}",
+            url: "{{ url('/endodoncia') }}",
             type: 'POST',
             data: formData,
             async: false,
@@ -418,7 +418,7 @@ $('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + mon
                 //popover_show();
                 new PNotify({
                       title: 'Registro Exitoso',
-                      text: 'El resumen han sido almacenado!',
+                      text: 'La historia ha sido almacenada!',
                       type: 'success',
                       styling: 'bootstrap3'
                   });

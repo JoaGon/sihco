@@ -12,6 +12,11 @@ use App\Paciente as Paciente;
 use App\Lista as Lista;
 use App\Valores_listas as Valores_listas;
 use App\CoronasPuentes as CoronasPuentes;
+use App\DentadurasTotales as DentadurasTotales;
+use App\Cirugia as Cirugia;
+use App\Endodoncia as Endodoncia;
+use App\Parciales as Parciales;
+use App\Operatoria as Operatoria;
 
 use DB;
 use Illuminate\Http\Request;
@@ -47,7 +52,6 @@ class Historia3Controller extends Controller
             $data['ultimo_usuario'] = Auth::user()->id;
             $data['profesor']       = Auth::user()->id;
             $data['validar']        = '';
-
             unset($data['_token']);
             unset($data['historia']);
 
@@ -102,6 +106,63 @@ class Historia3Controller extends Controller
         return view('admin.parte3Historia.endodoncia', ['consulta' => $consulta, 'id_paciente' => $paciente_id], ['pacientes' => $paciente]);
 
     }
+       public function endodoncia(Request $req)
+    {
+
+        $data = $req->all();
+      //  dd($data);
+
+            //$consulta2 = Endodoncia::all();
+           // dd($consulta2);
+        DB::beginTransaction();
+
+
+        try {
+
+            $consulta = intval($req->input('consulta_id'));
+
+            $data['ultimo_usuario'] = Auth::user()->id;
+            $data['profesor']       = Auth::user()->id;
+            $data['validar']        = '';
+      
+            unset($data['_token']);
+            unset($data['historia']);
+
+            $verificar = DB::table('endodoncia')
+                ->where('paciente_id', $data['paciente_id'])
+                ->where('consulta_id', $data['consulta_id'])
+                ->where('fecha', $data['fecha'])
+                ->count();
+
+            if ($verificar > 0) {
+
+                $id = DB::table('endodoncia')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->pluck('endodoncia.id_endodoncia');
+
+                $data['id_endodoncia'] = $id[0];
+
+                DB::table('endodoncia')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->delete();
+
+            }
+           // dd($data);
+            $consulta2 = Endodoncia::create($data);
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
+
+    }
    
     public function cirugiaIndex($paciente_id, $consulta)
     {
@@ -118,6 +179,65 @@ class Historia3Controller extends Controller
             ->get();
 
         return view('admin.parte3Historia.cirugia', ['consulta' => $consulta, 'id_paciente' => $paciente_id], ['pacientes' => $paciente]);
+
+    }
+     public function cirugia(Request $req)
+    {
+
+        $data = $req->all();
+       // dd($data);
+
+            //$consulta2 = Cirugia::all();
+            //dd($consulta2);
+        DB::beginTransaction();
+
+
+        try {
+
+            $consulta = intval($req->input('consulta_id'));
+
+            $data['ultimo_usuario'] = Auth::user()->id;
+            $data['profesor']       = Auth::user()->id;
+            $data['validar']        = '';
+            $data['fecha_validacion']        = '';
+
+      
+            unset($data['_token']);
+            unset($data['historia']);
+
+            $verificar = DB::table('cirugia')
+                ->where('paciente_id', $data['paciente_id'])
+                ->where('consulta_id', $data['consulta_id'])
+                ->where('fecha', $data['fecha'])
+                ->count();
+
+            if ($verificar > 0) {
+
+                $id = DB::table('cirugia')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->pluck('cirugia.id_cirugia');
+
+                $data['id_cirugia'] = $id[0];
+
+                DB::table('cirugia')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->delete();
+
+            }
+         //  dd($data);
+            $consulta2 = Cirugia::create($data);
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
 
     }
     public function operatoriaIndex($paciente_id, $consulta)
@@ -137,6 +257,66 @@ class Historia3Controller extends Controller
         return view('admin.parte3Historia.operatoria', ['consulta' => $consulta, 'id_paciente' => $paciente_id], ['pacientes' => $paciente]);
 
     }
+          public function operatoria(Request $req)
+    {
+
+        $data = $req->all();
+      //  dd($data);
+
+            //$consulta2 = Endodoncia::all();
+           // dd($consulta2);
+        DB::beginTransaction();
+
+
+        try {
+
+            $consulta = intval($req->input('consulta_id'));
+
+            $data['ultimo_usuario'] = Auth::user()->id;
+            $data['profesor']       = Auth::user()->id;
+            $data['validar']        = '';
+            $data['fecha_validacion']        = '';
+      
+      
+            unset($data['_token']);
+            unset($data['historia']);
+
+            $verificar = DB::table('operatoria')
+                ->where('paciente_id', $data['paciente_id'])
+                ->where('consulta_id', $data['consulta_id'])
+                ->where('fecha', $data['fecha'])
+                ->count();
+
+            if ($verificar > 0) {
+
+                $id = DB::table('operatoria')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->pluck('operatoria.id_operatoria');
+
+                $data['id_operatoria'] = $id[0];
+
+                DB::table('operatoria')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->delete();
+
+            }
+           // dd($data);
+            $consulta2 = Operatoria::create($data);
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
+
+    }
+   
     public function totalesIndex($paciente_id, $consulta)
     {
         //$data = $req->all();
@@ -152,6 +332,64 @@ class Historia3Controller extends Controller
             ->get();
 
         return view('admin.parte3Historia.totales', ['consulta' => $consulta, 'id_paciente' => $paciente_id], ['pacientes' => $paciente]);
+
+    }
+      public function totales(Request $req)
+    {
+
+        $data = $req->all();
+      //  dd($data);
+
+            //$consulta2 = DentadurasTotales::all();
+            //dd($consulta2);
+        DB::beginTransaction();
+
+
+        try {
+
+            $consulta = intval($req->input('consulta_id'));
+
+            $data['ultimo_usuario'] = Auth::user()->id;
+            $data['profesor']       = Auth::user()->id;
+            $data['validar']        = '';
+            $data['fecha_validacion']        = '';
+
+            unset($data['_token']);
+            unset($data['historia']);
+
+            $verificar = DB::table('dentaduras_totales')
+                ->where('paciente_id', $data['paciente_id'])
+                ->where('consulta_id', $data['consulta_id'])
+                ->where('fecha', $data['fecha'])
+                ->count();
+
+            if ($verificar > 0) {
+
+                $id = DB::table('dentaduras_totales')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->pluck('dentaduras_totales.id_dentadura_total');
+
+                $data['id_dentadura_total'] = $id[0];
+
+                DB::table('dentaduras_totales')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->delete();
+
+            }
+           // dd($data);
+            $consulta2 = DentadurasTotales::create($data);
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
 
     }
     public function diagnosticoIndex($paciente_id, $consulta)

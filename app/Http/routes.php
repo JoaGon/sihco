@@ -165,7 +165,7 @@ Route::get("endodoncia/{paciente_id}/{consulta_id}",'Historia3Controller@endodon
 Route::post("endodoncia",'Historia3Controller@endodoncia');
 
 Route::get("cirugia/{paciente_id}/{consulta_id}",'Historia3Controller@cirugiaIndex');
-Route::post("cirugia",'Historia3Controller@cirgugia');
+Route::post("cirugia",'Historia3Controller@cirugia');
 
 Route::get("operatoria/{paciente_id}/{consulta_id}",'Historia3Controller@operatoriaIndex');
 Route::post("operatoria",'Historia3Controller@operatoria');

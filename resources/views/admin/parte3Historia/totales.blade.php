@@ -52,32 +52,32 @@
                     Maxilares Enfermedad periodontal:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                      <input type="checkbox" name="afectando_salud" id="afectando_salud" value="S"> Caries
+                      <input type="checkbox" name="maxilar_caries" id="maxilar_caries" value="S"> Caries
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                      <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">Ambas 
+                      <input type="checkbox" name="maxilar_ambas" id="maxilar_ambas" value="S">Ambas 
                       </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                      <input type="checkbox" name="nervios_tratamiento" id="nervios_tratamiento" value="S"> Accidente
+                      <input type="checkbox" name="maxilar_accidente" id="maxilar_accidente" value="S"> Accidente
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                      <input type="checkbox" name="reaccion_anestesico" id="reaccion_anestesico" value="S"> A&ntilde;os
+                      <input type="checkbox" name="maxilar_anos" id="mandibular_anos" value="S"> A&ntilde;os
                     </div>
 
                      <div class="col-lg-12 col-md-12 col-sm-12">
                     Mandibulares Enfermedad periodontal:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                      <input type="checkbox" name="afectando_salud" id="afectando_salud" value="S"> Caries
+                      <input type="checkbox" name="mandibular_caries" id="mandibular_caries" value="S"> Caries
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                      <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">Ambas 
+                      <input type="checkbox" name="mandibular_ambas" id="mandibular_ambas" value="S">Ambas 
                       </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                      <input type="checkbox" name="nervios_tratamiento" id="nervios_tratamiento" value="S"> Accidente
+                      <input type="checkbox" name="mandibular_accidente" id="mandibular_accidente" value="S"> Accidente
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                      <input type="checkbox" name="reaccion_anestesico" id="reaccion_anestesico" value="S"> A&ntilde;os
+                      <input type="checkbox" name="mandibular_anos" id="mandibular_anos" value="S"> A&ntilde;os
                     </div>
                    
                    
@@ -89,102 +89,84 @@
                     </div>
                     
                     <div class="col-lg-12 col-md-12 col-sm-12">
-                      <input type="checkbox" name="afectando_salud" id="afectando_salud" value="S"> a. Ninguna
+                      <input type="checkbox" name="dentadura_ninguna" id="dentadura_ninguna" value="S"> a. Ninguna
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-2">
-                      <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S"> b. Si ha usado 
+                      <input type="checkbox" name="dentadura_si_usuado" id="dentadura_si_usuado" value="S"> b. Si ha usado 
                       </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
                     Cuantas
-                      <input type="text" name="nervios_tratamiento" id="nervios_tratamiento" value="S"> 
+                      <input type="text" name="dentadura_cuanta" id="dentadura_cuanta" value="S"> 
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-2">
-                      <input type="checkbox" name="reaccion_anestesico" id="reaccion_anestesico" value="S"> Buena
+                      <input type="checkbox" name="dentadura_buena" id="dentadura_buena" value="S"> Buena
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-2">
-                      <input type="checkbox" name="reaccion_anestesico" id="reaccion_anestesico" value="S"> Mala
+                      <input type="checkbox" name="dentadura_mala" id="dentadura_mala" value="S"> Mala
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-2">
-                      <input type="checkbox" name="reaccion_anestesico" id="reaccion_anestesico" value="S"> A&ntilde;os de uso
+                      <input type="checkbox" name="dentadura_uso" id="dentadura_uso" value="S"> A&ntilde;os de uso
                     </div>
 
                      <div class="col-lg-12 col-md-12 col-sm-12">
-                    c. Razon para el reemplazo: <input type="text" name="afectando_salud" class="form-control" id="afectando_salud" value="">
+                    c. Razon para el reemplazo: <input type="text" name="razon_reemplazo" class="form-control" id="razon_reemplazo" value="">
                     </div>
                      <div class="col-lg-12 col-md-12 col-sm-12">
-                    d. Tiempo de uso e la ultima dentadura <input type="text" name="afectando_salud" class="form-control" id="afectando_salud" value="">
+                    d. Tiempo de uso e la ultima dentadura <input type="text" name="tiempo_uso" class="form-control" id="tiempo_uso" value="">
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12">
                     e.Tipo de dentadura:
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3">
-                      <input type="checkbox" name="afectando_salud" id="afectando_salud" value="">Superior
+                      <input type="checkbox" name="tipo_detadura_sup" id="tipo_detadura_sup" value="">Superior
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3">
-                      <input type="checkbox" name="apariencia_dientes" id="apariencia_dientes" value="S">Inferior 
+                      <input type="checkbox" name="tipo_detadura_inf" id="tipo_detadura_inf" value="S">Inferior 
                       </div>
                     <div class="col-lg-3 col-md-3 col-sm-3">
-                      <input type="checkbox" name="nervios_tratamiento" id="nervios_tratamiento" value="S"> Ambas
+                      <input type="checkbox" name="tipo_detadura_ambas" id="tipo_detadura_ambas" value="S"> Ambas
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3">
-                      <input type="checkbox" name="reaccion_anestesico" id="reaccion_anestesico" value="S"> Ninguna
+                      <input type="checkbox" name="tipo_detadura_nunguna" id="tipo_detadura_nunguna" value="S"> Ninguna
                     </div>
                      <div class="col-lg-6 col-md-6 col-sm-4">
                     f.Uso de la dentadura:
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Constante</option>
-                       <option>Solo de dia</option>
-                       <option>Raramente</option>
-                       <option>Nunca</option>
+                     <select class="form-control" name="uso_dentadura" id="uso_dentadura">
+                       <option value="constante">Constante</option>
+                       <option value="solo_dia">Solo de dia</option>
+                       <option value="raramente">Raramente</option>
+                       <option value="nunca">Nunca</option>
                      </select>
                     </div>
-                     <div class="col-lg-6 col-md-6 col-sm-6">
-                    h.Forma de los dientes:
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Con cuspide</option>
-                       <option>Sin cuspide</option>
-                     </select>
-                    </div>
-                       <div class="col-lg-6 col-md-6 col-sm-4">
-                    i.Material de base de la dentadura:
-                    </div>
-                    <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Acrilicos</option>
-                       <option>Porcelana</option>
-                       <option>Otros</option>
-                     </select>
-                    </div>
+                 
                      <div class="col-lg-6 col-md-6 col-sm-6">
                     g.Material de los dientes:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Resina</option>
-                       <option>Otra</option>
+                     <select class="form-control" name="material_diente" id="material_diente">
+                       <option value="resina">Resina</option>
+                       <option value="otra">Otra</option>
                      </select>
                     </div>
                      <div class="col-lg-6 col-md-6 col-sm-6">
                     h.Forma de los dientes:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Con cuspide</option>
-                       <option>Sin cuspide</option>
+                     <select class="form-control" name="forma_diente" id="forma_diente">
+                       <option value="con_cuspide">Con cuspide</option>
+                       <option value="sin_cuspide">Sin cuspide</option>
                      </select>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6">
                     i.Material de la base de la Dentadura:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Acrilico</option>
-                       <option>Porcelana</option>
-                       <option>Otros</option>
+                     <select class="form-control" name="material_base" id="material_base">
+                       <option value="acrilico">Acrilico</option>
+                       <option value="porcelana">Porcelana</option>
+                       <option value="otros">Otros</option>
 
                      </select>
                     </div>                  
@@ -201,50 +183,50 @@
                     a.Comodidad:
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Buena</option>
-                       <option>Regular</option>
-                       <option>Mala</option>
+                     <select class="form-control" name="eval_comodidad" id="eval_comodidad">
+                       <option value="buena">Buena</option>
+                       <option value="regular">Regular</option>
+                       <option value="mala">Mala</option>
                      </select>
                     </div>
                      <div class="col-lg-6 col-md-6 col-sm-4">
                     b.Eficiencia masticatoria:
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Buena</option>
-                       <option>Regular</option>
-                       <option>Mala</option>
+                     <select class="form-control" name="eval_efic_masticatoria" id="eval_efic_masticatoria">
+                      <option value="buena">Buena</option>
+                       <option value="regular">Regular</option>
+                       <option value="mala">Mala</option>
                      </select>
                     </div>
                       <div class="col-lg-6 col-md-6 col-sm-4">
                     c.Estetica:
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Buena</option>
-                       <option>Regular</option>
-                       <option>Mala</option>
+                     <select class="form-control" name="eval_estetica" id="eval_estetica">
+                       <option value="buena">Buena</option>
+                       <option value="regular">Regular</option>
+                       <option value="mala">Mala</option>
                      </select>
                     </div>
                       <div class="col-lg-6 col-md-6 col-sm-4">
                     d.Pronunciacion:
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Buena</option>
-                       <option>Regular</option>
-                       <option>Mala</option>
+                     <select class="form-control" name="eval_pronunciacion" id="eval_pronunciacion">
+                      <option value="buena">Buena</option>
+                       <option value="regular">Regular</option>
+                       <option value="mala">Mala</option>
                      </select>
                     </div>
                       <div class="col-lg-6 col-md-6 col-sm-4">
                     e.Dolor:
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Intenso</option>
-                       <option>Moderado</option>
-                       <option>Leve</option>
+                     <select class="form-control" name="eval_dolor" id="eval_dolor">
+                       <option value="intenso">Intenso</option>
+                       <option value="moderado">Moderado</option>
+                       <option value="leve">Leve</option>
                      </select>
                     </div>
                   </div>
@@ -258,91 +240,90 @@
                        a. Distancia Interoclusal:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                      <input type="text" name="apariencia_dientes" placeholder="Adecuada" id="apariencia_dientes" value="">  
+                      <input type="text" name="eval_dist_adecuada" placeholder="Adecuada" id="eval_dist_adecuada" value="">  
                       </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
                     (+)
-                      <input type="text" name="nervios_tratamiento" id="nervios_tratamiento" value="S"> 
+                      <input type="text" name="eval_mas" id="eval_mas" value="S"> 
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
                     (-)
-                      <input type="text" name="nervios_tratamiento" id="nervios_tratamiento" value="S"> 
+                      <input type="text" name="eval_menos" id="eval_menos" value="S"> 
                     </div>
                    
                      <div class="col-lg-6 col-md-6 col-sm-4">
                     b.Estabilidad:
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Satisfactoria</option>
-                       <option>Defectuosa</option>
+                     <select class="form-control" name="eval_estabilidad" id="eval_estabilidad">
+                       <option value="satisfactoria">Satisfactoria</option>
+                       <option value="defectuosa">Defectuosa</option>
                      </select>
                     </div>
                       <div class="col-lg-6 col-md-6 col-sm-4">
                     c.Oclusion:
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Correcta</option>
-                       <option>Incorrecta</option>
+                     <select class="form-control" name="eval_oclusion" id="eval_oclusion">
+                       <option value="correcta">Correcta</option>
+                       <option value="incorrecta">Incorrecta</option>
                      </select>
                     </div>
                       <div class="col-lg-6 col-md-6 col-sm-4">
                     d.Retencion:
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Satisfactoria</option>
-                       <option>Defectuosa</option>
+                     <select class="form-control" name="eval_retencion" id="eval_retencion">
+                       <option value="satisfactoria">Satisfactoria</option>
+                       <option value="defectuosa">Defectuosa</option>
                      </select>
                     </div>
                       <div class="col-lg-6 col-md-6 col-sm-4">
                     e.Extension:
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Correcta</option>
-                       <option>Incorrecta</option>
+                     <select class="form-control" name="eval_extension" id="eval_extension">
+                       <option value="correcta">Correcta</option>
+                       <option value="incorrecta">Incorrecta</option>
                      </select>
                     </div>
                      <div class="col-lg-6 col-md-6 col-sm-4">
                     f.Estetica:
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Adecuada</option>
-                       <option>Inadecuada</option>
+                     <select class="form-control" name="eval_estetica_dent" id="eval_estetica_dent">
+                       <option value="adecuada">Adecuada</option>
+                       <option value="inadecuada">Inadecuada</option>
                      </select>
                     </div>
                      <div class="col-lg-6 col-md-6 col-sm-4">
                     g.Dimension vertical:
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Correcta</option>
-                       <option>Alta</option>
-                       <option>Baja</option>
+                     <select class="form-control" name="eval_dimension_vertical" id="eval_dimension_vertical">
+                       <option value="correcta">Correcta</option>
+                       <option value="alta">Alta</option>
+                       <option value="baja">Baja</option>
                      </select>
                     </div>
                      <div class="col-lg-2 col-md-2 col-sm-2" style="width: 10% !important">
-                      <input style="width: 150% !important" type="text" name="apariencia_dientes" placeholder="m.m" id="apariencia_dientes" value="">  
+                      <input style="width: 150% !important" type="text" name="mm_vertical" placeholder="m.m" id="mm_vertical" value="">  
                       </div>
                     <div class="col-lg-6 col-md-6 col-sm-4">
-                    h.Presentacion camara succion:
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Si</option>
-                       <option>No</option>
+                     <select class="form-control" name="eval_prese_cam" id="eval_prese_cam">
+                       <option value="si">Si</option>
+                       <option value="no">No</option>
                      </select>
                     </div>
                      <div class="col-lg-6 col-md-6 col-sm-4">
                     i. Higiene:
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Superior</option>
-                       <option>Inferior</option>
+                     <select class="form-control" name="eval_higiene" id="eval_higiene">
+                       <option value="superior">Superior</option>
+                       <option value="inferior">Inferior</option>
                      </select>
                     </div>
 
@@ -374,12 +355,12 @@
                                             <tr>
                                                 <td align="center" style="border-left:medium none #FFFF00; border-right-style: none; border-right-width: medium; " width="300" colspan="7">
                                                     <font>
-                                                        <select size="1" name="dtotales42">
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
+                                                        <select size="1" name="dentadura_maxilar">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
                                                         </select>
                                                     </font>
                                                 </td>
@@ -388,12 +369,12 @@
                                                 </td>
                                                 <td align="center" style="border-right:medium none #FFFF00; border-left-style: none; border-left-width: medium; " width="275" colspan="6">
                                                     <font>
-                                                        <select size="1" name="dtotales43">
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
+                                                        <select size="1" name="dentadura_mandibular">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
                                                         </select>
                                                     </font>
                                                 </td>
@@ -478,32 +459,32 @@
                     a.Expresion Facial:
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Sin alteraciones</option>
-                       <option>Alterada</option>
+                     <select class="form-control" name="expresion_facial">
+                       <option value="sin_alteraciones">Sin alteraciones</option>
+                       <option value="alterada">Alterada</option>
                      </select>
                     </div>
                      <div class="col-lg-6 col-md-6 col-sm-6">
                     b.Labios
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Delgados</option>
-                       <option>Gruesos</option>
-                       <option>Cortos</option>
-                       <option>Largos</option>
-                       <option>Tensos</option>
-                       <option>Activos</option>
+                     <select class="form-control" name="labios">
+                       <option value="delgados">Delgados</option>
+                       <option value="gruesos">Gruesos</option>
+                       <option value="cortos">Cortos</option>
+                       <option value="largos">Largos</option>
+                       <option value="tensos">Tensos</option>
+                       <option value="activos">Activos</option>
                      </select>
                     </div>
                        <div class="col-lg-6 col-md-6 col-sm-4">
                    Relacion labio alveolar
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Buena</option>
-                       <option>Regular</option>
-                       <option>Mala</option>
+                     <select class="form-control" name="relacion_labio_alveolar" id="relacion_labio_alveolar">
+                       <option value="buena">Buena</option>
+                       <option value="regular">Regular</option>
+                       <option value="mala">Mala</option>
                      </select>
                     </div>
                      <div class="col-lg-12 col-md-12 col-sm-12">
@@ -513,34 +494,34 @@
                     Maxilar Superior:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Ligera</option>
-                       <option>Desigual</option>
-                       <option>Extensa</option>
-                       <option>Marcada</option>
-                       <option>Regular</option>
+                     <select class="form-control" name="reabsorcion_sup" id="reabsorcion_sup">
+                       <option value="ligera">Ligera</option>
+                       <option value="desigual">Desigual</option>
+                       <option value="extensa">Extensa</option>
+                       <option value="marcada">Marcada</option>
+                       <option value="regular">Regular</option>
                      </select>
                     </div>  
                      <div class="col-lg-6 col-md-6 col-sm-6">
                     Maxilar Inferior:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                      <select class="form-control">
-                       <option>Ligera</option>
-                       <option>Desigual</option>
-                       <option>Extensa</option>
-                       <option>Marcada</option>
-                       <option>Regular</option>
+                      <select class="form-control" name="reabsorcion_inf" id="reabsorcion_inf">
+                       <option value="ligera">Ligera</option>
+                       <option value="desigual">Desigual</option>
+                       <option value="extensa">Extensa</option>
+                       <option value="marcada">Marcada</option>
+                       <option value="regular">Regular</option>
                      </select>
                     </div>  
                     <div class="col-lg-6 col-md-6 col-sm-6">
                     d.Relacion de reborde:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Normal</option>
-                       <option>Protruida</option>
-                       <option>Retruida</option>
+                     <select class="form-control" name="relacion_reborde" id="relacion_reborde">
+                       <option value="normal">Normal</option>
+                       <option value="protruida">Protruida</option>
+                       <option value="retruida">Retruida</option>
 
                      </select>
                     </div>                  
@@ -548,10 +529,10 @@
                     e.Piso de la boca:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Alto</option>
-                       <option>Medio</option>
-                       <option>Bajo</option>
+                     <select class="form-control" name="piso_boca" id="piso_boca">
+                       <option value="alto">Alto</option>
+                       <option value="medio">Medio</option>
+                       <option value="bajo">Bajo</option>
 
                      </select>
                     </div> 
@@ -562,12 +543,12 @@
                     Maxilar Superior:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>1</option>
-                       <option>2</option>
-                       <option>3</option>
-                       <option>4</option>
-                       <option>5</option>
+                     <select class="form-control" name="resilencia_sup" id="resilencia_sup">
+                       <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
 
                      </select>
                     </div>  
@@ -575,12 +556,12 @@
                     Maxilar Inferior:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                      <select class="form-control">
-                       <option>1</option>
-                       <option>2</option>
-                       <option>3</option>
-                       <option>4</option>
-                       <option>5</option>
+                      <select class="form-control" name="resilencia_inf" id="resilencia_inf">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
                      </select>
                     </div>   
                         <div class="col-lg-12 col-md-12 col-sm-12">
@@ -590,30 +571,30 @@
                     Maxilar Superior:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Altas</option>
-                       <option>Medias</option>
-                       <option>Baja</option>
+                     <select class="form-control" name="insercion_sup" id="insercion_sup">
+                       <option value="altas">Altas</option>
+                       <option value="medias">Medias</option>
+                       <option value="baja">Baja</option>
                      </select>
                     </div>  
                      <div class="col-lg-6 col-md-6 col-sm-6">
                     Maxilar Inferior:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                      <select class="form-control">
-                       <option>Altas</option>
-                       <option>Medias</option>
-                       <option>Baja</option>
+                      <select class="form-control" name="insercion_inf" id="insercion_inf">
+                       <option value="altas">Altas</option>
+                       <option value="medias">Medias</option>
+                       <option value="baja">Baja</option>
                      </select>
                     </div>  
                    <div class="col-lg-6 col-md-6 col-sm-6">
                     i.Abertura de la boca
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Grande</option>
-                       <option>Mediana</option>
-                       <option>Pequena</option>
+                     <select class="form-control" name="abertura_boca" id="abertura_boca">
+                       <option value="grande">Grande</option>
+                       <option value="mediana">Mediana</option>
+                       <option value="pequena">Peque&ntilde;a</option>
                      </select>
                     </div>      
                          <div class="col-lg-12 col-md-12 col-sm-12">
@@ -623,30 +604,30 @@
                     Maxilar Superior:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Grande</option>
-                       <option>Mediano</option>
-                       <option>Pequeno</option>
+                     <select class="form-control" name="tam_sup" id="tam_sup">
+                       <option value="grande">Grande</option>
+                       <option value="mediano">Mediano</option>
+                       <option value="pequeno">Pequeno</option>
                      </select>
                     </div>  
                      <div class="col-lg-6 col-md-6 col-sm-6">
                     Maxilar Inferior:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                      <select class="form-control">
-                       <option>Grande</option>
-                       <option>Mediano</option>
-                       <option>Pequeno</option>
+                      <select class="form-control" name="tam_inf" id="tam_inf">
+                       <option value="grande">Grande</option>
+                       <option value="mediano">Mediano</option>
+                       <option value="pequeno">Pequeno</option>
                      </select>
                     </div>  
                     <div class="col-lg-6 col-md-6 col-sm-6">
                     k.Contorno de la boveda palatina:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Plana</option>
-                       <option>Ojival</option>
-                       <option>Ovalada</option>
+                     <select class="form-control" name="contorno_boveda" id="contorno_boveda">
+                       <option value="plana">Plana</option>
+                       <option value="ojival">Ojival</option>
+                       <option value="ovalada">Ovalada</option>
 
                      </select>
                     </div> 
@@ -654,7 +635,7 @@
                     l.Contorno del paladar blando en sentido antero-posterior:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                      <input class="form-control" style="width: 100% !important" type="text" name="apariencia_dientes" placeholder="" id="apariencia_dientes" value=""> 
+                      <input class="form-control" style="width: 100% !important" type="text" name="contorno_paladar" placeholder="" id="contorno_paladar" value=""> 
                     </div>
                    <div class="col-lg-12 col-md-12 col-sm-12">
                     m. Area del sellado palatino posterior:
@@ -663,20 +644,20 @@
                     Anchura:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Amplio</option>
-                       <option>Estrecho</option>
-                       <option>Promedio</option>
+                     <select class="form-control" name="anchura" id="anchura">
+                       <option value="amplio">Amplio</option>
+                       <option value="estrecho">Estrecho</option>
+                       <option value="promedio">Promedio</option>
                      </select>
                     </div>  
                      <div class="col-lg-6 col-md-6 col-sm-6">
                     Depresibilidad:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                      <select class="form-control">
-                        <option>Amplio</option>
-                       <option>Estrecho</option>
-                       <option>Promedio</option>
+                      <select class="form-control" name="depresibilidad" id="depresibilidad">
+                        <option value="amplio">Amplio</option>
+                       <option value="estrecho">Estrecho</option>
+                       <option value="promedio">Promedio</option>
                      </select>
                     </div> 
                      <div class="col-lg-12 col-md-12 col-sm-12">
@@ -686,17 +667,17 @@
                     Palatino:
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-2">
-                   <input class="form-control" style="width: 100% !important" type="text" name="apariencia_dientes" placeholder="Ausente" id="apariencia_dientes" value=""> 
+                   <input class="form-control" style="width: 100% !important" type="text" name="palatino_ausente" placeholder="Ausente" id="palatino_ausente" value=""> 
                     </div>
                      <div class="col-lg-2 col-md-2 col-sm-2">
-                   <input class="form-control" style="width: 100% !important" type="text" name="apariencia_dientes" placeholder="Presente" id="apariencia_dientes" value=""> 
+                   <input class="form-control" style="width: 100% !important" type="text" name="palatino_presente" placeholder="Presente" id="palatino_presente" value=""> 
                     </div>  
                      <div class="col-lg-6 col-md-6 col-sm-6">
                      Tamano
-                       <select class="form-control">
-                            <option>Grande</option>
-                           <option>Mediano</option>
-                           <option>Pequeno</option>
+                       <select class="form-control" name="palatino_tam" id="palatino_tam">
+                            <option value="grande">Grande</option>
+                           <option value="mediano">Mediano</option>
+                           <option value="pequeno">Pequeno</option>
                        </select>
                     </div> 
 
@@ -704,30 +685,30 @@
                     Mandibular:
                     </div>
                    <div class="col-lg-2 col-md-2 col-sm-2">
-                   <input class="form-control" style="width: 100% !important" type="text" name="apariencia_dientes" placeholder="Ausente" id="apariencia_dientes" value=""> 
+                   <input class="form-control" style="width: 100% !important" type="text" name="mandibular_ausente" placeholder="Ausente" id="mandibular_ausente" value=""> 
                     </div>
                      <div class="col-lg-2 col-md-2 col-sm-2">
-                   <input class="form-control" style="width: 100% !important" type="text" name="apariencia_dientes" placeholder="Presente" id="apariencia_dientes" value=""> 
+                   <input class="form-control" style="width: 100% !important" type="text" name="mandibular_presente" placeholder="Presente" id="mandibular_presente" value=""> 
                     </div>  
                      <div class="col-lg-6 col-md-6 col-sm-6">
                      Tamano
-                       <select class="form-control">
-                            <option>Grande</option>
-                           <option>Mediano</option>
-                           <option>Pequeno</option>
+                       <select class="form-control" name="mandibular_tam" id="mandibular_tam">
+                           <option value="grande">Grande</option>
+                           <option value="mediano">Mediano</option>
+                           <option value="pequeno">Pequeno</option>
                        </select>
                     </div> 
                       <div class="col-lg-6 col-md-6 col-sm-4">
                     o.Espacio Intercadas:
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Adecuado</option>
-                       <option>Inadecuado</option>
+                     <select class="form-control" name="espacio" id="espacio">
+                       <option value="adecuado">Adecuado</option>
+                       <option value="inadecuado">Inadecuado</option>
                      </select>
                     </div>
                      <div class="col-lg-2 col-md-2 col-sm-2" style="width: 10% !important">
-                      <input style="width: 150% !important" type="text" name="apariencia_dientes" placeholder="m.m" id="apariencia_dientes" value="">  
+                      <input style="width: 150% !important" type="text" name="mm" placeholder="m.m" id="mm" value="">  
                       </div>
                        <div class="col-lg-12 col-md-12 col-sm-12">
                     p. Posicion de la lengua:
@@ -735,9 +716,9 @@
                    <div class="col-lg-6 col-md-6 col-sm-6">
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Favorable</option>
-                       <option>Desfavorable</option>
+                     <select class="form-control" name="posicion" id="posicion">
+                       <option value="favorable">Favorable</option>
+                       <option value="desfavorable">Desfavorable</option>
                      </select>
                     </div>  
                   </div>
@@ -749,18 +730,18 @@
                     Seleccion de la cubeta superior
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-46">
-                      <input type="text" name="afectando_salud" id="afectando_salud" value="" class="form-control">
+                      <input type="text" name="seleccion_sup" id="seleccion_sup" value="" class="form-control">
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6">
                     Seleccion de la cubeta inferior
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-46">
-                      <input type="text" name="afectando_salud" id="afectando_salud" value="" class="form-control">
+                      <input type="text" name="seleccion_inf" id="seleccion_inf" value="" class="form-control">
                     </div><div class="col-lg-6 col-md-6 col-sm-6">
                     Material de impresion utilizado
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-46">
-                      <input type="text" name="afectando_salud" id="afectando_salud" value="" class="form-control">
+                      <input type="text" name="material" id="material" value="" class="form-control">
                     </div>
                   
                    
@@ -776,59 +757,59 @@
                      Superior:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                       <input type="text" name="afectando_salud" id="afectando_salud" value="" class="form-control">
+                       <input type="text" name="diente_sup" id="diente_sup" value="" class="form-control">
                     </div>  
                      <div class="col-lg-6 col-md-6 col-sm-6">
                      Inferior:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                       <input type="text" name="afectando_salud" id="afectando_salud" value="" class="form-control">
+                       <input type="text" name="diente_inf" id="diente_inf" value="" class="form-control">
                     </div> 
                    
                      <div class="col-lg-6 col-md-6 col-sm-6">
                      Relacion Intermaxilares:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                       <input type="text" name="afectando_salud" id="afectando_salud" value="" class="form-control">
+                       <input type="text" name="relacion_inter" id="relacion_inter" value="" class="form-control">
                     </div> 
                      <div class="col-lg-6 col-md-6 col-sm-6">
                      Relacion de los bordes:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                       <input type="text" name="afectando_salud" id="afectando_salud" value="" class="form-control">
+                       <input type="text" name="relacion_borde" id="relacion_borde" value="" class="form-control">
                     </div> 
                      <div class="col-lg-6 col-md-6 col-sm-6">
                     Espacio disponibles para los dientes:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                       <input type="text" name="afectando_salud" id="afectando_salud" value="" class="form-control">
+                       <input type="text" name="espacio_disp" id="espacio_disp" value="" class="form-control">
                     </div> 
                      <div class="col-lg-6 col-md-6 col-sm-6">
                      Espacio disponible para el apoyo oclusal:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                       <input type="text" name="afectando_salud" id="afectando_salud" value="" class="form-control">
+                       <input type="text" name="espacion_disp_oclusal" id="espacion_disp_oclusal" value="" class="form-control">
                     </div> 
                      <div class="col-lg-4 col-md-4 col-sm-4">
                      Seleccion dientes artificiales:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                       Color<input type="text" name="afectando_salud" id="afectando_salud" value="" class="form-control">
+                       Color<input type="text" name="seleccion_arti_color" id="seleccion_arti_color" value="" class="form-control">
                     </div> 
                      <div class="col-lg-4 col-md-4 col-sm-4">
-                       Marca<input type="text" name="afectando_salud" id="afectando_salud" value="" class="form-control">
+                       Marca<input type="text" name="seleccion_arti_marca" id="seleccion_arti_marca" value="" class="form-control">
                     </div>
                      <div class="col-lg-3 col-md-3 col-sm-3">
                      Formula:
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3">
-                       Anteriores<input type="text" name="afectando_salud" id="afectando_salud" value="" class="form-control">
+                       Anteriores<input type="text" name="formula_anterior" id="formula_anterior" value="" class="form-control">
                     </div> 
                      <div class="col-lg-3 col-md-3 col-sm-3">
-                       Posteriores<input type="text" name="afectando_salud" id="afectando_salud" value="" class="form-control">
+                       Posteriores<input type="text" name="formula_posterior" id="formula_posterior" value="" class="form-control">
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3">
-                       Marca<input type="text" name="afectando_salud" id="afectando_salud" value="" class="form-control">
+                       Marca<input type="text" name="formula_marca" id="formula_marca" value="" class="form-control">
                     </div>
                    
                   </div>
@@ -841,7 +822,7 @@
                       Numero de citas en la que se realizara el tratamiento
                     </div>
                       <div class="col-lg-4 col-md-4 col-sm-4">
-                       <input type="text" name="afectando_salud" id="afectando_salud" value="" class="form-control">
+                       <input type="text" name="numero_cita" id="numero_cita" value="" class="form-control">
                     </div> 
                     </div>
                        <div class="row row_border">
@@ -853,40 +834,40 @@
                     a.Comodidad:
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Buena</option>
-                       <option>Regular</option>
-                       <option>Mala</option>
+                     <select class="form-control" name="comodidad" id="comodidad">
+                       <option value="buena">Buena</option>
+                       <option value="regular">Regular</option>
+                       <option value="mala">Mala</option>
                      </select>
                     </div>
                      <div class="col-lg-6 col-md-6 col-sm-4">
                     b.Eficiencia masticatoria:
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Buena</option>
-                       <option>Regular</option>
-                       <option>Mala</option>
+                     <select class="form-control" name="eficiencia_masticatoria" id="eficiencia_masticatoria">
+                       <option value="buena">Buena</option>
+                       <option value="regular">Regular</option>
+                       <option value="mala">Mala</option>
                      </select>
                     </div>
                       <div class="col-lg-6 col-md-6 col-sm-4">
                     c.Estetica:
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Buena</option>
-                       <option>Regular</option>
-                       <option>Mala</option>
+                     <select class="form-control" name="post_estetica" id="post_estetica">
+                       <option value="buena">Buena</option>
+                       <option value="regular">Regular</option>
+                       <option value="mala">Mala</option>
                      </select>
                     </div>
                       <div class="col-lg-6 col-md-6 col-sm-4">
                     d.Pronunciacion:
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
-                     <select class="form-control">
-                       <option>Buena</option>
-                       <option>Regular</option>
-                       <option>Mala</option>
+                     <select class="form-control" name="pronunciacion" id="pronunciacion">
+                        <option value="buena">Buena</option>
+                       <option value="regular">Regular</option>
+                       <option value="mala">Mala</option>
                      </select>
                     </div>
                    
@@ -971,7 +952,7 @@ function insertar_historia() {
             var formData = new FormData($("#form_familiares")[0]);
 
             $.ajax({
-                url: "{{ url('/resumen_odontologico') }}",
+                url: "{{ url('/totales') }}",
                 type: 'POST',
                 data: formData,
                 async: false,
@@ -982,7 +963,7 @@ function insertar_historia() {
                     //popover_show();
                     new PNotify({
                         title: 'Registro Exitoso',
-                        text: 'El resumen han sido almacenado!',
+                        text: 'La historia ha sido almacenada!',
                         type: 'success',
                         styling: 'bootstrap3'
                     });

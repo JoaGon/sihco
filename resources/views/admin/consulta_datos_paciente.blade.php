@@ -58,13 +58,13 @@
                 <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>Diagnostico/Pronostico<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li class="dropdown-submenu"><a href="{{ url('diagnostico', array($paciente->id_paciente, $consulta)) }}" tabindex="0">Diagnostico Clinico</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">Diagnostico Definivo</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">Pronostico</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('diagnostico_clinico', array($paciente->id_paciente, $consulta)) }}" tabindex="0">Diagnostico Definivo</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('pronostico', array($paciente->id_paciente, $consulta)) }}" tabindex="0">Pronostico</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>Tratamiento<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-submenu"><a tabindex="0">Plan de Tratamiento</a></li>
+                        <li class="dropdown-submenu"><a  href="{{ url('tratamiento', array($paciente->id_paciente, $consulta)) }}"  tabindex="0">Plan de Tratamiento</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">Reg. de Actividades Clinicas</a></li>
                     </ul>
             </ul>

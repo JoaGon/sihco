@@ -177,7 +177,19 @@ Route::get("parciales/{paciente_id}/{consulta_id}",'ImagenController@parcialesIn
 Route::post("parciales",'Historia3Controller@parciales');
 
 Route::get("diagnostico/{paciente_id}/{consulta_id}",'DiagnosticoController@diagnosticoIndex');
-Route::post("diagnostico",'DiagnosticoController@totales');
+Route::post("diagnostico",'DiagnosticoController@diagnostico');
+
+Route::get("diagnostico_clinico/{paciente_id}/{consulta_id}",'DiagnosticoController@diagnosticoDefIndex');
+Route::post("diagnostico_clinico",'DiagnosticoController@diagnosticoDef');
+
+Route::get("pronostico/{paciente_id}/{consulta_id}",'DiagnosticoController@pronosticoIndex');
+Route::post("pronostico",'DiagnosticoController@pronostico');
+
+Route::get("tratamiento/{paciente_id}/{consulta_id}",'DiagnosticoController@tratamientoIndex');
+Route::post("tratamiento",'DiagnosticoController@totales');
+
+Route::get("tratamiento/{paciente_id}/{consulta_id}",'DiagnosticoController@tratamientoIndex');
+Route::post("tratamiento",'DiagnosticoController@tratamiento');
 
 
 

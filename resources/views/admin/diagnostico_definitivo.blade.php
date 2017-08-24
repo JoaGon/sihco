@@ -23,7 +23,7 @@
 			
 			<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12" style=" background-color:white;padding-left:0; margin-top: 25px">
 				<div style="font-size: 20px; text-align: center; color:#59bddd;">
-					 Diagnostico Clinico
+					 Diagnostico Definitivo
 				</div>
 				 <fieldset>
 				<form class="form-horizontal" id="form_familiares">
@@ -49,7 +49,17 @@
                         </textarea>
 						</div>
 					</divp-->
+          <div class="row row_border ">
 
+            <label>Inserte la especialidad</label>
+            <div class="col-lg-12">
+               <select name="especialidad" class="form-control">
+                  <option value="1">Periodoncia</option>       
+                  <option  value="2">Estomatologia</option>
+                  <option  value="3">Endodoncia</option>              
+               </select>
+            </div>
+          </div>
           <div id="diagnostico" class="col-lg-12" style="margin-bottom: 15px">
             <div class="col-md-4">
               <label for="motivo" class="">Fecha diagnostico</label>

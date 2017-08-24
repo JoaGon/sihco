@@ -23,7 +23,7 @@
 			
 			<div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12" style=" background-color:white;padding-left:0; margin-top: 25px">
 				<div style="font-size: 20px; text-align: center; color:#59bddd;">
-					 Diagnostico Clinico
+					 Tramiento Realizado
 				</div>
 				 <fieldset>
 				<form class="form-horizontal" id="form_familiares">
@@ -43,20 +43,25 @@
 							<input class="form-control" id="fecha" type="text" class="form-control" name="fecha" data-validation="required" data-validation-error-msg="Debe ingrear una fecha" value="{{ old('fecha') }}">
 						</div>
 					</div>
-					<!--div class="row row_border ">
+					<div class="row row_border ">
+
+            <label>Inserte la especialidad</label>
 						<div class="col-lg-12">
-							 <textarea  name="editor1"  id="editor1" rows="10" cols="80">
-                        </textarea>
+							 <select name="especialidad" class="form-control">
+                  <option value="1">Periodoncia</option>       
+                  <option  value="2">Estomatologia</option>
+                  <option  value="3">Endodoncia</option>              
+               </select>
 						</div>
-					</divp-->
+					</div>
 
           <div id="diagnostico" class="col-lg-12" style="margin-bottom: 15px">
             <div class="col-md-4">
-              <label for="motivo" class="">Fecha diagnostico</label>
-              <input class="form-control" id="fecha_diagnostico" type="date" class="form-control" name="fecha_diagnostico" data-validation="required" data-validation-error-msg="Debe ingrear una fecha" value="{{ old('fecha') }}">
+              <label for="motivo" class="">Fecha tratamiento</label>
+              <input class="form-control" id="fecha_diagnostico" type="date" class="form-control" name="fechas[]" data-validation="required" data-validation-error-msg="Debe ingrear una fecha" value="{{ old('fecha') }}">
             </div>
              <div class="col-md-8 ">
-                      <textarea name="diagnostico_" id="diagnostico_" placeholder="Introduzca el diagnostico" data-validation="required" data-validation-error-msg="Debe especificar el diagnostico" class="form-control" style="height: 100px;"></textarea>
+                      <textarea name="diagnosticos[]" id="diagnostico_" placeholder="Introduzca el tratamiento" data-validation="required" data-validation-error-msg="Debe especificar el diagnostico" class="form-control" style="height: 100px;"></textarea>
                 
               </div>
               </div>
@@ -67,8 +72,8 @@
 							<button type="submit" onclick="insertar_historia();" class="btn btn-primary">Registrar
 							</button>    
 						 	<a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
-              <input type="button" id="btAdd" value="Añadir Diagnostico" class="btn btn-primary bt" />
-              <input type="button" id="btRemove" value="Eliminar Diagnostico" class="btn btn-primary bt" />
+              <input type="button" id="btAdd" value="Añadir Tratamiento" class="btn btn-primary bt" />
+              <input type="button" id="btRemove" value="Eliminar Tratamiento" class="btn btn-primary bt" />
               <input type="button" id="btRemoveAll" value="Eliminar Todo" class=" btn btn-primary bt" />
 							
 						</div>
@@ -107,7 +112,7 @@ if (iCnt <= 19) {
 iCnt = iCnt + 1;
  
 // Añadir caja de texto.
-$(container).append('<div class="col-md-12 elementos" id=tb' + iCnt+' style="margin-bottom:15px" ><div class="col-md-4">  <label for="motivo" class="">Fecha diagnostico</label><input class="form-control" id="fecha_diagnostico ' + iCnt+'" type="date" class="form-control" /></div><div class="col-md-8"><textarea  name="diagnostico_' + iCnt+'" id="diagnostico_' + iCnt+'" placeholder="Introduzca el diagnostico" data-validation="required" data-validation-error-msg="Debe especificar el diagnostico" class="form-control" style="height: 100px;"></textarea></div></div>');
+$(container).append('<div class="col-md-12 elementos" id=tb' + iCnt+' style="margin-bottom:15px" ><div class="col-md-4">  <label for="motivo" class="">Fecha diagnostico</label><input class="form-control" name="fechas[]" id="fecha_diagnostico ' + iCnt+'" type="date" class="form-control" /></div><div class="col-md-8"><textarea  name="diagnosticos[]" id="diagnostico_' + iCnt+'" placeholder="Introduzca el diagnostico" data-validation="required" data-validation-error-msg="Debe especificar el diagnostico" class="form-control" style="height: 100px;"></textarea></div></div>');
 
  
 if (iCnt == 1) {
@@ -187,7 +192,7 @@ function insertar_historia(){
           
           var ele = $('.elementos').val();
           console.log(ele);
-   /* $.validate({
+    $.validate({
     modules : 'logic',
     language: myLanguage,
     form : '#form_familiares',
@@ -205,7 +210,7 @@ function insertar_historia(){
 		    }
 		});
           $.ajax({
-            url: "{{ url('/resumen_medico') }}",
+            url: "{{ url('/tratamiento') }}",
             type: 'POST',
             data: formData,
             async: false,
@@ -216,7 +221,7 @@ function insertar_historia(){
                 //popover_show();
                 new PNotify({
                       title: 'Registro Exitoso',
-                      text: 'El resumen han sido almacenado!',
+                      text: 'El tratamiento ha sido almacenado!',
                       type: 'success',
                       styling: 'bootstrap3'
                   });
@@ -232,7 +237,7 @@ function insertar_historia(){
     onElementValidate : function(valid, $el, $form, errorMess) {
       console.log('Input ' +$el.attr('name')+ ' is ' + ( valid ? 'VALID':'NOT VALID') );
     }
-  });*/
+  });
 	
                 
 }

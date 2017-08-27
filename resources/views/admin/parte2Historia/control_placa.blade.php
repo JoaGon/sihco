@@ -48,6 +48,52 @@
 							<input class="form-control" id="fecha" type="text" class="form-control" name="fecha" data-validation="required" data-validation-error-msg="Debe ingrear una fecha" value="{{ old('fecha') }}">
 						</div>
 					</div>
+<div class="row row_border ">
+					<div class="col-lg-12 col-md-6 col-sm-6">
+					Marque la zona afectada por placa
+				
+					</div>
+</div>		
+
+	<center>	
+	<div>
+		<svg height="50" class="[[i.tipoDiente]]" width="50"  ng-repeat="i in adultoArriva" id="[[i.id]]">
+			
+		  	<polygon points="10,15 15,10 50,45 45,50" estado="4" value="6" class="ausente" />
+  			<polygon points="45,10 50,15 15,50 10,45" estado="4" value="7" class="ausente" />
+  			<circle cx="30" cy="30" r="16" estado="8" value="8" class="corona"/>
+  			<circle cx="30" cy="30" r="20" estado="3" value="9" class="endodoncia"/>
+  			<polygon points="50,10 40,10 10,26 10,32 46,32 10,50 20,50 50,36 50,28 14,28" estado="6" value="10" class="implante"/>
+  			<polygon points="10,10 50,10 40,20 20,20" estado="0" value="1" class="diente" />
+  			<polygon points="50,10 50,50 40,40 40,20" estado="0" value="2" class="diente" />
+  			<polygon points="50,50 10,50 20,40 40,40" estado="0" value="3" class="diente" />
+  			<polygon points="10,50 20,40 20,20 10,10" estado="0" value="4" class="diente" />
+  			<polygon points="20,20 40,20 40,40 20,40" estado="0" value="5" class="diente" />
+  			<text x="20" y="8" fill="navy" stroke="navy" stroke-width="0.1" style="font-size: 10pt;font-weight:normal">[[i.value]]</text>
+		
+  		</svg>
+	</div>
+
+	
+	
+	<div>
+		<svg height="50" class="[[i.tipoDiente]]" width="50"  ng-repeat="i in adultoAbajo" id="[[i.id]]">
+   			<polygon points="10,15 15,10 50,45 45,50" estado="4" value="6" class="ausente" />
+  			<polygon points="45,10 50,15 15,50 10,45" estado="4" value="7" class="ausente" />
+  			<circle cx="30" cy="30" r="16" estado="8" value="8" class="corona"/> 
+  			<circle cx="30" cy="30" r="20" estado="3" value="9" class="endodoncia"/>
+  			<polygon points="50,10 40,10 10,26 10,32 46,32 10,50 20,50 50,36 50,28 14,28" estado="6" value="10" class="implante"/>	
+  			<polygon points="10,10 50,10 40,20 20,20" estado="0" value="1" class="diente" />
+  			<polygon points="50,10 50,50 40,40 40,20" estado="0" value="2" class="diente" />
+  			<polygon points="50,50 10,50 20,40 40,40" estado="0" value="3" class="diente" />
+  			<polygon points="10,50 20,40 20,20 10,10" estado="0" value="4" class="diente" />
+  			<polygon points="20,20 40,20 40,40 20,40" estado="0" value="5" class="diente" />
+  			<text x="20" y="8" fill="navy" stroke="navy" value="[[i.value]]" stroke-width="0.1" style="font-size: 10pt;font-weight:normal">[[i.value]]</text>
+			
+		</svg>
+	</div>			
+</center>
+
 					<div class="row row_border ">
 							<div class="col-lg-12 col-md-6 col-sm-6">
 							Indique la cantidad de dientes presentes:
@@ -83,43 +129,7 @@
 						  </table>		
 							</div>
 					</div>
-					<center>
-	<div>
-		<svg height="50" class="[[i.tipoDiente]]" width="50"  ng-repeat="i in adultoArriva" id="[[i.id]]">
-			
-		  	<polygon points="10,15 15,10 50,45 45,50" estado="4" value="6" class="ausente" />
-  			<polygon points="45,10 50,15 15,50 10,45" estado="4" value="7" class="ausente" />
-  			<circle cx="30" cy="30" r="16" estado="8" value="8" class="corona"/>
-  			<circle cx="30" cy="30" r="20" estado="3" value="9" class="endodoncia"/>
-  			<polygon points="50,10 40,10 10,26 10,32 46,32 10,50 20,50 50,36 50,28 14,28" estado="6" value="10" class="implante"/>
-  			<polygon points="10,10 50,10 40,20 20,20" estado="0" value="1" class="diente" />
-  			<polygon points="50,10 50,50 40,40 40,20" estado="0" value="2" class="diente" />
-  			<polygon points="50,50 10,50 20,40 40,40" estado="0" value="3" class="diente" />
-  			<polygon points="10,50 20,40 20,20 10,10" estado="0" value="4" class="diente" />
-  			<polygon points="20,20 40,20 40,40 20,40" estado="0" value="5" class="diente" />
-  			<text x="20" y="8" fill="navy" stroke="navy" stroke-width="0.1" style="font-size: 10pt;font-weight:normal">[[i.value]]</text>
-		
-  		</svg>
-	</div>
-	
-	
-	<div>
-		<svg height="50" class="[[i.tipoDiente]]" width="50"  ng-repeat="i in adultoAbajo" id="[[i.id]]">
-   			<polygon points="10,15 15,10 50,45 45,50" estado="4" value="6" class="ausente" />
-  			<polygon points="45,10 50,15 15,50 10,45" estado="4" value="7" class="ausente" />
-  			<circle cx="30" cy="30" r="16" estado="8" value="8" class="corona"/> 
-  			<circle cx="30" cy="30" r="20" estado="3" value="9" class="endodoncia"/>
-  			<polygon points="50,10 40,10 10,26 10,32 46,32 10,50 20,50 50,36 50,28 14,28" estado="6" value="10" class="implante"/>	
-  			<polygon points="10,10 50,10 40,20 20,20" estado="0" value="1" class="diente" />
-  			<polygon points="50,10 50,50 40,40 40,20" estado="0" value="2" class="diente" />
-  			<polygon points="50,50 10,50 20,40 40,40" estado="0" value="3" class="diente" />
-  			<polygon points="10,50 20,40 20,20 10,10" estado="0" value="4" class="diente" />
-  			<polygon points="20,20 40,20 40,40 20,40" estado="0" value="5" class="diente" />
-  			<text x="20" y="8" fill="navy" stroke="navy" value="[[i.value]]" stroke-width="0.1" style="font-size: 10pt;font-weight:normal">[[i.value]]</text>
-			
-		</svg>
-	</div>			
-</center>
+					
 
 <input type="radio" id="Decidua" name="tipo" value="1" style="display: none;" checked / >
 					

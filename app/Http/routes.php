@@ -206,14 +206,66 @@ Route::get('consulta_historia_paciente','ConsultaHistoriaController@index');
 Route::get('consulta_paciente/{nro_historia}','ConsultaHistoriaController@showPaciente');
 Route::get('consulta_paciente_/{consulta}','ConsultaHistoriaController@showAntecedenteFamiliar');
 
+
+Route::get('consulta_antecedentepersonal/{nro_historia}','ConsultaHistoriaController@showAntecedentePersonal');
+Route::get('consulta_ante_personal/{id}/{paciente_id}','ConsultaHistoriaController@getAntecedentePersonal');
+
+Route::post('update_antecedente_personal','ConsultaHistoriaController@updateAntecedentePersonal');
+Route::post('validar_antecedente_personal','ConsultaHistoriaController@validarAntecedentePersonal');
+
 Route::get('consulta_antecedentefamiliar/{nro_historia}','ConsultaHistoriaController@showAntecedenteFamiliar');
 Route::get('consulta_ante_familiar/{id}/{paciente_id}','ConsultaHistoriaController@getAntecedenteFamiliar');
 
 Route::post('update_antecedente_familiar','ConsultaHistoriaController@updateAntecedenteFamiliar');
 Route::post('validar_antecedente_familiar','ConsultaHistoriaController@validarAntecedenteFamiliar');
 
+Route::get('consulta_datosclinicos/{nro_historia}','ConsultaHistoriaController@showDatosClinicos');
+Route::get('consulta_datosclinicos/{id}/{paciente_id}','ConsultaHistoriaController@getDatosClinicos');
 
+Route::post('update_dato_clinico','ConsultaHistoriaController@updateDatosClinicos');
+Route::post('validar_dato_clinico','ConsultaHistoriaController@validarDatosClinicos');
 
+Route::get('consulta_resumenmedico/{nro_historia}','ConsultaHistoriaController@showResumenMedico');
+Route::get('consulta_resumenmedico/{id}/{paciente_id}','ConsultaHistoriaController@getResumenMedico');
+
+Route::post('update_resumenMedico','ConsultaHistoriaController@updateResumenMedico');
+Route::post('validar_resumen_medico','ConsultaHistoriaController@validarResumenMedico');
+
+Route::get('consulta_resumenodontologico/{nro_historia}','ConsultaHistoriaController@showResumenOdontologico');
+Route::get('consulta_resumenodontologico/{id}/{paciente_id}','ConsultaHistoriaController@getResumenOdontologico');
+
+Route::post('update_resumenOdontologico','ConsultaHistoriaController@updateResumenOdontologico');
+Route::post('validar_resumen_odontologico','ConsultaHistoriaController@validarResumenOdontologico');
+
+Route::get('consulta_signosvitales/{nro_historia}','ConsultaHistoriaController@showSignosVitales');
+Route::get('consulta_signosvitales/{id}/{paciente_id}','ConsultaHistoriaController@getSignosVitales');
+
+Route::post('update_signosvitales','ConsultaHistoriaController@updateSignosVitales');
+Route::post('validar_signos_vitales','ConsultaHistoriaController@validarSignosVitales');
+
+Route::get('consulta_historiaOdontologica/{nro_historia}','ConsultaHistoriaController@showHistoriaOdontologica');
+Route::get('consulta_historiaOdontologica/{id}/{paciente_id}','ConsultaHistoriaController@getHistoriaOdontologica');
+
+Route::post('update_historiaOdontologica','ConsultaHistoriaController@updateHistoriaOdontologica');
+Route::post('validar_historia_odontologica','ConsultaHistoriaController@validarHistoriaOdontologica');
+
+Route::get('consulta_examenClinico/{nro_historia}','ConsultaHistoria2Controller@showExamenClinico');
+Route::get('consulta_examenClinico/{id}/{paciente_id}','ConsultaHistoria2Controller@getExamenClinico');
+
+Route::post('update_examenClinico','ConsultaHistoria2Controller@updateExamenClinico');
+Route::post('validar_examen_clinico','ConsultaHistoria2Controller@validarExamenClinico');
+
+Route::get('consulta_evaluacionPeriodontal/{nro_historia}','ConsultaHistoria2Controller@showEvaluacionPeriodontal');
+Route::get('consulta_evaluacionPeriodontal/{id}/{paciente_id}','ConsultaHistoria2Controller@getEvaluacionPeriodontal');
+
+Route::post('update_examenClinico','ConsultaHistoria2Controller@updateEvaluacionPeriodontal');
+Route::post('validar_examen_clinico','ConsultaHistoria2Controller@validarEvaluacionPeriodontal');
+
+Route::get('consulta_examenMuscular/{nro_historia}','ConsultaHistoria2Controller@showExamenMuscular');
+Route::get('consulta_examenMuscular/{id}/{paciente_id}','ConsultaHistoria2Controller@getExamenMuscular');
+
+Route::post('update_examenMuscular','ConsultaHistoria2Controller@updateExamenMuscular');
+Route::post('validar_examen_muscular','ConsultaHistoria2Controller@validarExamenMuscular');
 
 
 Route::get('datos_paciente/{paciente_id}/{consulta_id}','ConsultaHistoriaController@datos_principal');

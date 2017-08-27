@@ -32,7 +32,7 @@
             @endforeach
             <div class="col-lg-12">
                 <div style="font-size: 20px; text-align: center; color:#59bddd;">
-                    Antecedentes Familiares
+                    Antecedentes Personales
                 </div>
                 <div class="panel-body" id="consultas">
                     <div class="table-responsive">
@@ -58,7 +58,7 @@
                                 <tr>
                                     <td>
                                         <strong>
-								<a href="{{ url('consulta_ante_familiar/'.$ante->id_antecedente_familiar.'/'.$ante->paciente_id) }}" class="btn btn-link" style="font-weight: bold" data-toggle="tooltip" title="Cita"> {{$ante->id_antecedente_familiar}} </a>
+								<a href="{{ url('consulta_ante_personal/'.$ante->id_antecedente_personal.'/'.$ante->paciente_id) }}" class="btn btn-link" style="font-weight: bold" data-toggle="tooltip" title="Cita"> {{$ante->id_antecedente_personal}} </a>
 								</strong>
                                     </td>
                                     <td class="name">

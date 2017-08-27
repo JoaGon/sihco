@@ -1,8 +1,8 @@
-angular.module("AdminPersonales",[], function($interpolateProvider){
+angular.module("UpdatePersonal",['angularUtils.directives.dirPagination'], function($interpolateProvider){
   $interpolateProvider.startSymbol('[[');
   $interpolateProvider.endSymbol(']]');
 })
-.controller("AdminPersonalesController",function($scope,$http,$timeout){
+.controller("UpdatePersonalController",function($scope,$http,$timeout){
 
   $scope.data = $.param({});
   var url1 = "../../cardiovasculares";
@@ -13,8 +13,16 @@ angular.module("AdminPersonales",[], function($interpolateProvider){
   var url_transmision_sexual = "../../transmision_sexual";
   var url_cancer = "../../cancer";
 
-  console.log('enferrrr',valido)
-  if(valido[0].validar == ''){
+  
+  $scope.enfermedades = enfer_cardiovascular;
+  $scope.enfer_renal = enfer_renal;
+  $scope.enfer_alergica = enfermedades_alergicas;
+  $scope.enfer_infecciosa = enfermedades_infecciosas;
+  $scope.enfer_cancer = enfermedades_cancer;
+  $scope.enfer_trans_sexual = enfermedades_sexuales;
+
+  console.log("card222222222",valido[0]);
+ if(valido[0].validar == ''){
     console.log('vacio')
     new PNotify({
         title: 'Historia No Validada',
@@ -31,15 +39,6 @@ angular.module("AdminPersonales",[], function($interpolateProvider){
         styling: 'bootstrap3'
     });
   }
-  test = [];
-  
-  $scope.enfermedades = enfer_cardiovascular;
-  $scope.enfer_renal = enfer_renal;
-  $scope.enfer_alergica = enfermedades_alergicas;
-  $scope.enfer_infecciosa = enfermedades_infecciosas;
-  $scope.enfer_cancer = enfermedades_cancer;
-  $scope.enfer_trans_sexual = enfermedades_sexuales;
-
  /*Obtienes las enfermedades cardiovasculares registradas en BD*/
   $http({
     method: "POST",

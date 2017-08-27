@@ -40,7 +40,7 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        ID antecedente
+                                        ID resumen
                                     </th>
                                     <th>
                                         Nro Consulta
@@ -58,8 +58,8 @@
                                 <tr>
                                     <td>
                                         <strong>
-								<a href="{{ url('consulta_ante_familiar/'.$ante->id_antecedente_familiar.'/'.$ante->paciente_id) }}" class="btn btn-link" style="font-weight: bold" data-toggle="tooltip" title="Cita"> {{$ante->id_antecedente_familiar}} </a>
-								</strong>
+                                <a href="{{ url('consulta_examenClinico/'.$ante->id_examen_clinico.'/'.$ante->paciente_id) }}" class="btn btn-link" style="font-weight: bold" data-toggle="tooltip" title="Cita"> {{$ante->id_examen_clinico}} </a>
+                                </strong>
                                     </td>
                                     <td class="name">
                                         {{$ante->consulta_id}}

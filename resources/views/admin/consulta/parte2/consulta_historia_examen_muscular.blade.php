@@ -8,6 +8,7 @@
 <link href="{{ url('css/styles.css')}} " rel="stylesheet">
 <link href="{{url ('template/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="{{ url('bootstrap-submenu-2.0.4/dist/css/bootstrap-submenu.min.css') }}">
+
 <div class="container">
     <!-- /.row -->
     <div class="row">
@@ -40,7 +41,7 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        ID antecedente
+                                        ID resumen
                                     </th>
                                     <th>
                                         Nro Consulta
@@ -58,8 +59,8 @@
                                 <tr>
                                     <td>
                                         <strong>
-								<a href="{{ url('consulta_ante_familiar/'.$ante->id_antecedente_familiar.'/'.$ante->paciente_id) }}" class="btn btn-link" style="font-weight: bold" data-toggle="tooltip" title="Cita"> {{$ante->id_antecedente_familiar}} </a>
-								</strong>
+                                <a href="{{ url('consulta_examenMuscular/'.$ante->id_examen_muscular.'/'.$ante->paciente_id) }}" class="btn btn-link" style="font-weight: bold" data-toggle="tooltip" title="Cita"> {{$ante->id_examen_muscular}} </a>
+                                </strong>
                                     </td>
                                     <td class="name">
                                         {{$ante->consulta_id}}

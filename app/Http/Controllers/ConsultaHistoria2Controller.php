@@ -8,87 +8,48 @@ use Illuminate\Http\Request;
 
 use App\Paciente as Paciente;
 use App\Persona as Persona;
-use App\Paciente_enfer_cardiovascular as Paciente_enfer_cardiovascular;
-use App\Paciente_enfer_patologica as Paciente_Enfer_Patologica;
-use App\Paciente_enfer_renal as Paciente_Enfer_renal;
-use App\ResumenMedica as ResumenMedica;
-use App\ResumenOdontologico as ResumenOdontologico;
-use App\Enfermedades_renales as Enfer_Renal;
-use App\Enfermedades_cardiovasculares as Enfer_Cardiovascular;
-use App\Enfermedades_patologicas as Enfer_Patologica;
-use App\Lista as Lista;
-use App\DatosClinicos as DatosClinicos;
-use App\CondicionSexual as CondicionSexual;
-use App\HistoriaOdontologica as HistoriaOdontologica;
-use App\AntecedenteFamiliar as AntecedentesFamiliares;
-use App\AntecedentePersonal as AntecedentePersonal;
-use App\Valores_listas as Valores_listas;
-use App\SignosVitales as SignosVitales;
+use App\ExamenClinico as ExamenClinico;
+use App\EvaluacionPeriodontal as EvaluacionPeriodontal;
+use App\ExamenMuscular as ExamenMuscular;
+use App\ModeloDiagnostico as ModeloDiagnostico;
+use App\TestFagerston as TestFagerston;
+use App\DiagramaRiesgo as DiagramaRiesgo;
+use App\Odontograma as Odontograma;
+use App\ControlPlaca as ControlPlaca;
+
 
 use Illuminate\Support\Facades\DB;
 
-class ConsultaHistoriaController extends Controller
+class ConsultaHistoria2Controller extends Controller
 {
 
-    public function index()
-    {
-
-        $paciente = DB::table('persona')
-            ->join('paciente', 'persona.ci', '=', 'paciente.ci')
-            ->get();
-        return view('admin.consulta.paciente', ['pacientes' => $paciente]);
-
-    }
-    public function showPaciente($nro_historia)
-    {
-
-        $persona = DB::table('paciente')
-            ->where('nro_historia', $nro_historia)
-            ->pluck('paciente.persona_id');
-
-        $paciente = DB::table('persona')
-            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
-            ->where('persona.id_persona', $persona[0])
-            ->get();
-
-        $consulta = DB::table('consulta')
-            ->join('usuarios', 'consulta.ultimo_usuario', '=', 'usuarios.id')
-            ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
-            ->where('nro_historia', $nro_historia)
-            ->get();
-        //  dd($consulta);
-
-        return view('admin.consulta.consultas_paciente', [
-            'consultas' => $consulta,
-            'pacientes' => $paciente,
-        ]);
-
-    }
-    public function showAntecedenteFamiliar($paciente)
+   
+    public function showExamenClinico($paciente)
     {
 
         $persona = DB::table('paciente')
             ->where('id_paciente', $paciente)
             ->pluck('paciente.persona_id');
 
+     //   dd($persona);
         $paciente2 = DB::table('persona')
             ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
             ->where('persona.id_persona', $persona[0])
             ->get();
 
-        $antecedentes = DB::table('antecedentes_familiares')
-            ->join('usuarios', 'antecedentes_familiares.ultimo_usuario', '=', 'usuarios.id')
+        $antecedentes = DB::table('examen_clinico')
+            ->join('usuarios', 'examen_clinico.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->get();
-        return view('admin.consulta.consulta_historia_antecedentes', [
+        return view('admin.consulta.parte2.consulta_historia_examen_clinico', [
             'pacientes'    => $paciente2,
             'antecedentes' => $antecedentes,
         ]);
 
     }
 
-    public function getAntecedenteFamiliar($id, $paciente)
+    public function getExamenClinico($id, $paciente)
     {
 
         $persona = DB::table('paciente')
@@ -100,114 +61,40 @@ class ConsultaHistoriaController extends Controller
             ->where('persona.id_persona', $persona[0])
             ->get();
 
-        $antecedentes = DB::table('antecedentes_familiares')
-            ->where('id_antecedente_familiar', $id)
+        $antecedentes = DB::table('examen_clinico')
+            ->where('id_examen_clinico', $id)
             ->get();
-        $validado = DB::table('antecedentes_familiares')
-            ->where('id_antecedente_familiar', $id)
+        $validado = DB::table('examen_clinico')
+            ->where('id_examen_clinico', $id)
             ->select('validar')
             ->get();
         // dd($validado);
-        $consulta = DB::table('antecedentes_familiares')
-            ->where('id_antecedente_familiar', $id)
+        $consulta = DB::table('examen_clinico')
+            ->where('id_examen_clinico', $id)
             ->pluck('consulta_id');
-//dd($consulta);
-        $enfermedades_cardiovasculares = DB::table('paciente_enfer_cardiovascular')
-            ->join('enfermedades_cardiovasculares', 'enfermedades_cardiovasculares.id_enfermedad_cardiovascular', '=', 'paciente_enfer_cardiovascular.enfermedad_cardiovascular_id')
-            ->join('valores_listas', 'valores_listas.id_valor', '=', 'paciente_enfer_cardiovascular.circulo_hereditario')
-            ->where('consulta_id', $consulta[0])
-            ->where('antecedente', 'familiar')
-            ->get();
-        //dd($enfermedades_cardiovasculares);
-        $enfer_renal = DB::table('paciente_enfer_renal')
-            ->join('enfermedades_renales', 'paciente_enfer_renal.enfermedad_renal_id', '=', 'enfermedades_renales.id_enfermedad_renal')
-            ->join('valores_listas', 'paciente_enfer_renal.circulo_hereditario', '=', 'valores_listas.id_valor')
-            ->where('consulta_id', $consulta[0])
-            ->where('antecedente', 'familiar')
-            ->get();
+            //dd($consulta);
 
-        $id_categorias = DB::table('listas')
-            ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
-            ->where('listas.lista', 'categorias_patologicas')
-            ->where('valores_listas.codigo', 'alergicas')
-            ->pluck('valores_listas.id_valor');
-
-        $enfer_alergicas = DB::table('paciente_enfer_patologicas')
-            ->join('enfermedades_patologicas', 'paciente_enfer_patologicas.enfermedad_patologica_id', '=', 'enfermedades_patologicas.id_enfermedad_patologica')
-            ->join('valores_listas', 'paciente_enfer_patologicas.circulo_familiar_id', '=', 'valores_listas.id_valor')
-            ->where('consulta_id', $consulta[0])
-            ->where('enfermedades_patologicas.valor_id', $id_categorias[0])
-            ->where('antecedente', 'familiar')
-            ->get();
-
-        $id_categorias2 = DB::table('listas')
-            ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
-            ->where('listas.lista', 'categorias_patologicas')
-            ->where('valores_listas.codigo', 'infecciosas')
-            ->pluck('valores_listas.id_valor');
-
-        $enfer_infecciosas = DB::table('paciente_enfer_patologicas')
-            ->join('enfermedades_patologicas', 'paciente_enfer_patologicas.enfermedad_patologica_id', '=', 'enfermedades_patologicas.id_enfermedad_patologica')
-            ->join('valores_listas', 'paciente_enfer_patologicas.circulo_familiar_id', '=', 'valores_listas.id_valor')
-            ->where('consulta_id', $consulta[0])
-            ->where('enfermedades_patologicas.valor_id', $id_categorias2[0])
-            ->where('antecedente', 'familiar')
-            ->get();
-
-        $id_categorias3 = DB::table('listas')
-            ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
-            ->where('listas.lista', 'categorias_patologicas')
-            ->where('valores_listas.codigo', 'transmision_sexual')
-            ->pluck('valores_listas.id_valor');
-
-        $enfer_sexual = DB::table('paciente_enfer_patologicas')
-            ->join('enfermedades_patologicas', 'paciente_enfer_patologicas.enfermedad_patologica_id', '=', 'enfermedades_patologicas.id_enfermedad_patologica')
-            ->join('valores_listas', 'paciente_enfer_patologicas.circulo_familiar_id', '=', 'valores_listas.id_valor')
-            ->where('consulta_id', $consulta[0])
-            ->where('enfermedades_patologicas.valor_id', $id_categorias3[0])
-            ->where('antecedente', 'familiar')
-            ->get();
-
-        $id_categorias4 = DB::table('listas')
-            ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
-            ->where('listas.lista', 'categorias_patologicas')
-            ->where('valores_listas.codigo', 'cancer')
-            ->pluck('valores_listas.id_valor');
-
-        $enfer_cancer = DB::table('paciente_enfer_patologicas')
-            ->join('enfermedades_patologicas', 'paciente_enfer_patologicas.enfermedad_patologica_id', '=', 'enfermedades_patologicas.id_enfermedad_patologica')
-            ->join('valores_listas', 'paciente_enfer_patologicas.circulo_familiar_id', '=', 'valores_listas.id_valor')
-            ->where('consulta_id', $consulta[0])
-            ->where('antecedente', 'familiar')
-            ->where('enfermedades_patologicas.valor_id', $id_categorias4[0])
-            ->get();
 
         // dd($enfermedades_cardiovasculares);
-        return view('admin.consulta.consulta_antecedente_familia', [
+        return view('admin.consulta.parte2.consulta_examen_clinico', [
             'pacientes'                     => $paciente2,
             'ante'                          => $antecedentes,
             'consulta'                      => $consulta[0],
-            'enfermedades_cardiovasculares' => $enfermedades_cardiovasculares,
-            'enfermedades_renales'          => $enfer_renal,
-            'enfermedades_alergicas'        => $enfer_alergicas,
-            'enfermedades_infecciosas'      => $enfer_infecciosas,
-            'enfermedades_sexuales'         => $enfer_sexual,
-            'enfermedades_cancer'           => $enfer_cancer,
             'validado'                      => $validado,
 
         ]);
 
     }
 
-    public function updateAntecedenteFamiliar(Request $req)
+    public function updateExamenClinico(Request $req)
     {
         //dd($req->input('id_enfermedad'));
         $data = $req->all();
 
         try {
 
-            $verificar = DB::table('antecedentes_familiares')
-                ->where('id_antecedente_familiar', $req->input('id_enfermedad'))
+            $verificar = DB::table('examen_clinico')
+                ->where('id_examen_clinico', $req->input('id_enfermedad'))
                 ->select('consulta_id', 'paciente_id', 'fecha', 'validar')
                 ->get();
 
@@ -218,24 +105,18 @@ class ConsultaHistoriaController extends Controller
             $data['paciente_id']             = $verificar[0]->paciente_id;
             $data['fecha']                   = $verificar[0]->fecha;
             $data['validar']                 = $verificar[0]->validar;
-            $data['id_antecedente_familiar'] = $req->input('id_enfermedad');
+            $data['id_examen_clinico'] = $req->input('id_enfermedad');
 
             unset($data['_token']);
             unset($data['historia']);
-            unset($data['tipo_enfermedad']);
-            unset($data['circulo_familiar']);
-            unset($data['enfer_cardiov']);
-            unset($data['enfer_renal']);
-            unset($data['enfer_alergica']);
-            unset($data['id_enfermedad']);
 
-            DB::table('antecedentes_familiares')
+            DB::table('examen_clinico')
                 ->where('paciente_id', $data['paciente_id'])
                 ->where('consulta_id', $data['consulta_id'])
                 ->where('fecha', $data['fecha'])
                 ->delete();
 
-            $consulta2 = AntecedentesFamiliares::create($data);
+            $consulta2 = ExamenClinico::create($data);
 
         } catch (Exception $ex) {
             DB::rollback();
@@ -247,7 +128,7 @@ class ConsultaHistoriaController extends Controller
 
     }
 
-    public function validarAntecedenteFamiliar(Request $req)
+    public function validarExamenClinico(Request $req)
     {
         // dd($req->id_enfermedad);
         $data = $req->all();
@@ -255,8 +136,8 @@ class ConsultaHistoriaController extends Controller
 
         try {
 
-            $verificar = DB::table('antecedentes_familiares')
-                ->where('id_antecedente_familiar', $req->input('id_enfermedad'))
+            $verificar = DB::table('examen_clinico')
+                ->where('id_examen_clinico', $req->input('id_enfermedad'))
                 ->update([
                     'validar'  => '1',
                     'profesor' => Auth::user()->id,
@@ -274,7 +155,7 @@ class ConsultaHistoriaController extends Controller
         DB::commit();
 
     }
-      public function showAntecedentePersonal($paciente)
+      public function showEvaluacionPeriodontal($paciente)
     {
         //dd($paciente);
         $persona = DB::table('paciente')
@@ -286,20 +167,20 @@ class ConsultaHistoriaController extends Controller
             ->where('persona.id_persona', $persona[0])
             ->get();
 
-        $antecedentes = DB::table('antecedentes_personales')
-            ->join('usuarios', 'antecedentes_personales.ultimo_usuario', '=', 'usuarios.id')
+        $antecedentes = DB::table('evaluacion_periodontal')
+            ->join('usuarios', 'evaluacion_periodontal.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->get();
 
-           // dd($antecedentes);
-        return view('admin.consulta.consulta_historia_antecedentes_personal', [
+            //dd($antecedentes);
+        return view('admin.consulta.parte2.consulta_historia_evaluacion_periodontal', [
             'pacientes'    => $paciente2,
             'antecedentes' => $antecedentes,
         ]);
 
     }
-        public function getAntecedentePersonal($id, $paciente)
+        public function getEvaluacionPeriodontal($id, $paciente)
     {
 
         $persona = DB::table('paciente')
@@ -311,106 +192,31 @@ class ConsultaHistoriaController extends Controller
             ->where('persona.id_persona', $persona[0])
             ->get();
 
-        $antecedentes = DB::table('antecedentes_personales')
-            ->where('id_antecedente_personal', $id)
+        $antecedentes = DB::table('evaluacion_periodontal')
+            ->where('id_evaluacion_periodontal', $id)
             ->get();
-        $validado = DB::table('antecedentes_personales')
-            ->where('id_antecedente_personal', $id)
+        $validado = DB::table('evaluacion_periodontal')
+            ->where('id_evaluacion_periodontal', $id)
             ->select('validar')
             ->get();
         // dd($validado);
-        $consulta = DB::table('antecedentes_personales')
-            ->where('id_antecedente_personal', $id)
+        $consulta = DB::table('evaluacion_periodontal')
+            ->where('id_evaluacion_periodontal', $id)
             ->pluck('consulta_id');
 //dd($consulta);
-        $enfermedades_cardiovasculares = DB::table('paciente_enfer_cardiovascular')
-            ->join('enfermedades_cardiovasculares', 'enfermedades_cardiovasculares.id_enfermedad_cardiovascular', '=', 'paciente_enfer_cardiovascular.enfermedad_cardiovascular_id')
-            ->join('valores_listas', 'valores_listas.id_valor', '=', 'paciente_enfer_cardiovascular.circulo_hereditario')
-            ->where('consulta_id', $consulta[0])
-            ->where('antecedente', 'personal')
-            ->get();
-        //dd($enfermedades_cardiovasculares);
-        $enfer_renal = DB::table('paciente_enfer_renal')
-            ->join('enfermedades_renales', 'paciente_enfer_renal.enfermedad_renal_id', '=', 'enfermedades_renales.id_enfermedad_renal')
-            ->join('valores_listas', 'paciente_enfer_renal.circulo_hereditario', '=', 'valores_listas.id_valor')
-            ->where('consulta_id', $consulta[0])
-            ->where('antecedente', 'personal')
-            ->get();
-
-        $id_categorias = DB::table('listas')
-            ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
-            ->where('listas.lista', 'categorias_patologicas')
-            ->where('valores_listas.codigo', 'alergicas')
-            ->pluck('valores_listas.id_valor');
-
-        $enfer_alergicas = DB::table('paciente_enfer_patologicas')
-            ->join('enfermedades_patologicas', 'paciente_enfer_patologicas.enfermedad_patologica_id', '=', 'enfermedades_patologicas.id_enfermedad_patologica')
-            ->join('valores_listas', 'paciente_enfer_patologicas.circulo_familiar_id', '=', 'valores_listas.id_valor')
-            ->where('consulta_id', $consulta[0])
-            ->where('antecedente', 'personal')
-            ->where('enfermedades_patologicas.valor_id', $id_categorias[0])
-            ->get();
-
-        $id_categorias2 = DB::table('listas')
-            ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
-            ->where('listas.lista', 'categorias_patologicas')
-            ->where('valores_listas.codigo', 'infecciosas')
-            ->pluck('valores_listas.id_valor');
-
-        $enfer_infecciosas = DB::table('paciente_enfer_patologicas')
-            ->join('enfermedades_patologicas', 'paciente_enfer_patologicas.enfermedad_patologica_id', '=', 'enfermedades_patologicas.id_enfermedad_patologica')
-            ->join('valores_listas', 'paciente_enfer_patologicas.circulo_familiar_id', '=', 'valores_listas.id_valor')
-            ->where('consulta_id', $consulta[0])
-            ->where('antecedente', 'personal')
-            ->where('enfermedades_patologicas.valor_id', $id_categorias2[0])
-            ->get();
-
-        $id_categorias3 = DB::table('listas')
-            ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
-            ->where('listas.lista', 'categorias_patologicas')
-            ->where('valores_listas.codigo', 'transmision_sexual')
-            ->pluck('valores_listas.id_valor');
-
-        $enfer_sexual = DB::table('paciente_enfer_patologicas')
-            ->join('enfermedades_patologicas', 'paciente_enfer_patologicas.enfermedad_patologica_id', '=', 'enfermedades_patologicas.id_enfermedad_patologica')
-            ->join('valores_listas', 'paciente_enfer_patologicas.circulo_familiar_id', '=', 'valores_listas.id_valor')
-            ->where('consulta_id', $consulta[0])
-            ->where('antecedente', 'personal')
-            ->where('enfermedades_patologicas.valor_id', $id_categorias3[0])
-            ->get();
-
-        $id_categorias4 = DB::table('listas')
-            ->join('valores_listas', 'listas.id_lista', '=', 'valores_listas.lista_id')
-            ->where('listas.lista', 'categorias_patologicas')
-            ->where('valores_listas.codigo', 'cancer')
-            ->pluck('valores_listas.id_valor');
-
-        $enfer_cancer = DB::table('paciente_enfer_patologicas')
-            ->join('enfermedades_patologicas', 'paciente_enfer_patologicas.enfermedad_patologica_id', '=', 'enfermedades_patologicas.id_enfermedad_patologica')
-            ->join('valores_listas', 'paciente_enfer_patologicas.circulo_familiar_id', '=', 'valores_listas.id_valor')
-            ->where('consulta_id', $consulta[0])
-            ->where('antecedente', 'personal')
-            ->where('enfermedades_patologicas.valor_id', $id_categorias4[0])
-            ->get();
-
+      
         // dd($enfermedades_cardiovasculares);
-        return view('admin.consulta.consulta_antecedentes_personal', [
+        return view('admin.consulta.parte2.consulta_evaluacion_periodontal', [
             'pacientes'                     => $paciente2,
             'ante'                          => $antecedentes,
             'consulta'                      => $consulta[0],
-            'enfermedades_cardiovasculares' => $enfermedades_cardiovasculares,
-            'enfermedades_renales'          => $enfer_renal,
-            'enfermedades_alergicas'        => $enfer_alergicas,
-            'enfermedades_infecciosas'      => $enfer_infecciosas,
-            'enfermedades_sexuales'         => $enfer_sexual,
-            'enfermedades_cancer'           => $enfer_cancer,
             'validado'                      => $validado,
 
         ]);
 
     }
 
-    public function updateAntecedentePersonal(Request $req)
+    public function updateEvaluacionPeriodontal(Request $req)
     {
         //dd($req->input('id_enfermedad'));
         $data = $req->all();
@@ -418,8 +224,8 @@ class ConsultaHistoriaController extends Controller
 
         try {
 
-            $verificar = DB::table('antecedentes_personales')
-                ->where('id_antecedente_personal', $req->input('id_enfermedad'))
+            $verificar = DB::table('evaluacion_periodontal')
+                ->where('id_evaluacion_periodontal', $req->input('id_enfermedad'))
                 ->select('consulta_id', 'paciente_id', 'fecha', 'validar')
                 ->get();
                // dd($verificar);
@@ -430,23 +236,18 @@ class ConsultaHistoriaController extends Controller
             $data['paciente_id']             = $verificar[0]->paciente_id;
             $data['fecha']                   = $verificar[0]->fecha;
             $data['validar']                 = $verificar[0]->validar;
-            $data['id_antecedente_personal'] = $req->input('id_enfermedad');
+            $data['id_evaluacion_periodontal'] = $req->input('id_enfermedad');
 
             unset($data['_token']);
             unset($data['historia']);
-            unset($data['tipo_enfermedad']);
-            unset($data['circulo_familiar']);
-            unset($data['enfer_cardiov']);
-            unset($data['enfer_renal']);
-            unset($data['enfer_alergica']);
-            unset($data['id_enfermedad']);
+           
 
-            DB::table('antecedentes_personales')
+            DB::table('evaluacion_periodontal')
                 ->where('paciente_id', $data['paciente_id'])
                 ->where('consulta_id', $data['consulta_id'])
                 ->where('fecha', $data['fecha'])
                 ->delete();
-          $consulta2 = AntecedentePersonal::create($data);
+          $consulta2 = EvaluacionPeriodontal::create($data);
 
 
         } catch (Exception $ex) {
@@ -459,7 +260,7 @@ class ConsultaHistoriaController extends Controller
 
     }
 
-    public function validarAntecedentePersonal(Request $req)
+    public function validarEvaluacionPeriodontal(Request $req)
     {
         // dd($req->id_enfermedad);
         $data = $req->all();
@@ -467,8 +268,8 @@ class ConsultaHistoriaController extends Controller
 
         try {
 
-            $verificar = DB::table('antecedentes_personales')
-                ->where('id_antecedente_personal', $req->input('id_enfermedad'))
+            $verificar = DB::table('evaluacion_periodontal')
+                ->where('id_evaluacion_periodontal', $req->input('id_enfermedad'))
                 ->update([
                     'validar'  => '1',
                     'profesor' => Auth::user()->id,
@@ -486,7 +287,7 @@ class ConsultaHistoriaController extends Controller
         DB::commit();
 
     }
-         public function getDatosClinicos($id, $paciente)
+         public function getExamenMuscular($id, $paciente)
     {
 
         $persona = DB::table('paciente')
@@ -497,40 +298,34 @@ class ConsultaHistoriaController extends Controller
             ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
             ->where('persona.id_persona', $persona[0])
             ->get();
-        $antecedentes = DB::table("datos_clinicos")
-                        ->where("id_dato_clinico",$id)
+        $antecedentes = DB::table("examen_muscular")
+                        ->where("id_examen_muscular",$id)
                         ->get();
 
 
-        $validado = DB::table('datos_clinicos')
-            ->where('id_dato_clinico', $id)
+        $validado = DB::table('examen_muscular')
+            ->where('id_examen_muscular', $id)
             ->select('validar')
             ->get();
         //dd($validado);
-        $consulta = DB::table('datos_clinicos')
-            ->where('id_dato_clinico', $id)
+        $consulta = DB::table('examen_muscular')
+            ->where('id_examen_muscular', $id)
             ->pluck('consulta_id');
-       // dd($consulta);
-        if ($paciente2[0]->genero == 'M') {
-            $genero = 1;
-        } else {
-            $genero = 0;
-        }
-       
+    
         // dd($enfermedades_cardiovasculares);
-        return view('admin.consulta.consulta_historia_datos_clinicos', [
+        return view('admin.consulta.parte2.consulta_examen_muscular', [
             'pacientes'                     => $paciente2,
             'ante'                          => $antecedentes,
             'consulta'                      => $consulta[0],
             'validado'                      => $validado,
-            'genero'      => $genero,
+            
         ]);
 
     }
 
-     public function showDatosClinicos($paciente)
+     public function showExamenMuscular($paciente)
     {
-       // dd($paciente);
+       //dd($paciente);
         $persona = DB::table('paciente')
             ->where('id_paciente', $paciente)
             ->pluck('paciente.persona_id');
@@ -540,20 +335,20 @@ class ConsultaHistoriaController extends Controller
             ->where('persona.id_persona', $persona[0])
             ->get();
 
-        $antecedentes = DB::table('datos_clinicos')
-            ->join('usuarios', 'datos_clinicos.ultimo_usuario', '=', 'usuarios.id')
+        $antecedentes = DB::table('examen_muscular')
+            ->join('usuarios', 'examen_muscular.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->get();
 
-         //  dd($antecedentes);
-        return view('admin.consulta.consulta_datos_clinicos', [
+           //dd($antecedentes);
+        return view('admin.consulta.parte2.consulta_historia_examen_muscular', [
             'pacientes'    => $paciente2,
             'antecedentes' => $antecedentes,
         ]);
 
     }
-      public function updateDatosClinicos(Request $req)
+      public function updateExamenMuscular(Request $req)
     {
         $data = $req->all();
        // dd($data);
@@ -561,8 +356,8 @@ class ConsultaHistoriaController extends Controller
 
         try {
 
-             $verificar = DB::table('datos_clinicos')
-                ->where('id_dato_clinico', $req->input('id_enfermedad'))
+             $verificar = DB::table('examen_muscular')
+                ->where('id_examen_muscular', $req->input('id_enfermedad'))
                 ->select('consulta_id', 'paciente_id', 'fecha', 'validar')
                 ->get();
                // dd($verificar);
@@ -573,19 +368,19 @@ class ConsultaHistoriaController extends Controller
             $data['paciente_id']             = $verificar[0]->paciente_id;
             $data['fecha']                   = $verificar[0]->fecha;
             $data['validar']                 = $verificar[0]->validar;
-            $data['id_dato_clinico'] = $req->input('id_enfermedad');
+            $data['id_examen_muscular'] = $req->input('id_enfermedad');
 
             unset($data['_token']);
             unset($data['historia']);
             unset($data['id_enfermedad']);
- // dd($data);
-            DB::table('datos_clinicos')
+
+            DB::table('examen_muscular')
                 ->where('paciente_id', $data['paciente_id'])
                 ->where('consulta_id', $data['consulta_id'])
                 ->where('fecha', $data['fecha'])
                 ->delete();
-
-          $consulta2 = DatosClinicos::create($data);
+ //dd($data);
+          $consulta2 = ExamenMuscular::create($data);
 
 
         } catch (Exception $ex) {
@@ -597,15 +392,15 @@ class ConsultaHistoriaController extends Controller
         DB::commit();
 
     }
-     public function validarDatosClinicos(Request $req)
+     public function validarExamenMuscular(Request $req)
     {
         // dd($req->id_enfermedad);
         $data = $req->all();
         $today = date("Y-m-d");
         try {
 
-            $verificar = DB::table('datos_clinicos')
-                ->where('id_dato_clinico', $req->input('id_enfermedad'))
+            $verificar = DB::table('examen_muscular')
+                ->where('id_examen_muscular', $req->input('id_enfermedad'))
                 ->update([
                     'validar'  => '1',
                     'profesor' => Auth::user()->id,

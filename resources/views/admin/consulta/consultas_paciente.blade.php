@@ -24,23 +24,23 @@
                         <li class="dropdown-submenu"><a href="{{ url('consulta_antecedentefamiliar', array($paciente->id_paciente)) }}" tabindex="0">III) Ant. Familiares</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('consulta_antecedentepersonal', array($paciente->id_paciente)) }}" tabindex="0">IV) Ant. Personales</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('consulta_datosclinicos', array($paciente->id_paciente)) }}" tabindex="0">V) Datos Clinicos Seleccionados</a></li>
-                        <li class="dropdown-submenu"><a href="{{ url('consulta_resumenclinica', array($paciente->id_paciente)) }}" tabindex="0">Res. de la Historia Medica</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('consulta_resumenmedico', array($paciente->id_paciente)) }}" tabindex="0">Res. de la Historia Medica</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('consulta_signosvitales', array($paciente->id_paciente)) }}" tabindex="0">VI) Signos Vitales</a></li>
-                        <li class="dropdown-submenu"><a href="{{ url('consulta_historiaodontologica', array($paciente->id_paciente)) }}" tabindex="0">VII) Historia Odontologica</a></li>
-                        <li class="dropdown-submenu"><a href="{{ url('consulta_resumenodontologica', array($paciente->id_paciente)) }}" tabindex="0">Res. de la Historia Odontologica</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('consulta_historiaOdontologica', array($paciente->id_paciente)) }}" tabindex="0">VII) Historia Odontologica</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('consulta_resumenodontologico', array($paciente->id_paciente)) }}" tabindex="0">Res. de la Historia Odontologica</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>VIII al XIII<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-submenu"><a href="{{ url('examen_clinico', array($paciente->id_paciente)) }}" tabindex="0">VIII) Examen Clinico</a></li>
-                        <li class="dropdown-submenu"><a  href="{{ url('evaluacion_periodontal', array($paciente->id_paciente)) }}" tabindex="0">IX) Evaluacion Periodontal</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('consulta_examenClinico', array($paciente->id_paciente)) }}" tabindex="0">VIII) Examen Clinico</a></li>
+                        <li class="dropdown-submenu"><a  href="{{ url('consulta_evaluacionPeriodontal', array($paciente->id_paciente)) }}" tabindex="0">IX) Evaluacion Periodontal</a></li>
                         <li class="dropdown-submenu"><a  href="{{ url('test_fagerstrom', array($paciente->id_paciente)) }}" tabindex="0"> Test de Fagerström</a></li>
                         <li class="dropdown-submenu"><a  href="{{url('diagrama_riesgo', array($paciente->id_paciente))}}" tabindex="0"> Diagrama de Riesgo</a></li>  
                         <li class="dropdown-submenu"><a href="{{ url('odontograma', array($paciente->id_paciente)) }}" tabindex="0">X) Odontograma</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('control_placa', array($paciente->id_paciente)) }}" tabindex="0">XI) Control de Placa</a></li>
                         <li class="dropdown-submenu"><a  href="{{ url('registro_imageneologico', array($paciente->id_paciente)) }}" tabindex="0">XII) Imageneologia</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">XIII) Examen de la Oclusion</a></li>
-                        <li class="dropdown-submenu"><a href="{{ url('examen_muscular', array($paciente->id_paciente)) }}" tabindex="0">XIV) Examen Muscular y Articular</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('consulta_examenMuscular', array($paciente->id_paciente)) }}" tabindex="0">XIV) Examen Muscular y Articular</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('modelo_diagnostico', array($paciente->id_paciente)) }}"  tabindex="0">XV) Modelos de Diagnosticos</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">XVI) Examenes Complementarios</a></li>
                        
@@ -72,7 +72,19 @@
          
             @endforeach
             <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12" style=" background-color:white;padding-left:0; margin-top: 25px; padding-bottom: 25px;">
-                <div style="font-size: 20px; text-align: center; color:#59bddd; padding-bottom: 25px; padding-top: 15px">
+             @foreach ($pacientes as $paciente)
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label for="motivo">Nombre</label>
+                    <textarea class="form-control" disabled cols="25" autofocus="true" rows="1" name="nombre">{{$paciente->nombre }} {{ $paciente->apellido }}</textarea>
+                </div>
+                <div class="col-md-4">
+                    <label for="motivo" class="">C.I:</label>
+                    <textarea class="form-control" disabled cols="75" autofocus="true" rows="1" name="ci">{{ $paciente->ci }}</textarea>
+                </div>
+            </div>
+            @endforeach
+                <div class="col-sm-12" style="font-size: 20px; text-align: center; color:#59bddd; padding-bottom: 25px; padding-top: 15px">
                     Consultas del Paciente
                 </div>
                 <div class="col-lg-12">

@@ -58,7 +58,7 @@
                                 <tr>
                                     <td>
                                         <strong>
-								<a href="{{ url('consulta_ante_familiar/'.$ante->id_antecedente_familiar.'/'.$ante->paciente_id) }}" class="btn btn-link" style="font-weight: bold" data-toggle="tooltip" title="Cita"> {{$ante->id_antecedente_familiar}} </a>
+								<a href="{{ url('consulta_historiaOdontologica/'.$ante->id_historia_odontologica.'/'.$ante->paciente_id) }}" class="btn btn-link" style="font-weight: bold" data-toggle="tooltip" title="Cita"> {{$ante->id_historia_odontologica}} </a>
 								</strong>
                                     </td>
                                     <td class="name">

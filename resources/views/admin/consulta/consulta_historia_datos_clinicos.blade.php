@@ -8,6 +8,13 @@
 <link href="{{ url('css/styles.css')}} " rel="stylesheet">
 <link href="{{ url('css/admin.css')}} " rel="stylesheet">
 <link href="{{url ('template/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+<script>
+var datos_clinicos = <?php echo json_encode($ante); ?>;
+var valido = <?php echo json_encode($validado); ?>;
+
+
+
+</script>
 <div class="container">
     <!-- /.row -->
     <div class="row">
@@ -28,6 +35,8 @@
                     <input type="hidden" name="consulta_id" value=<?php echo $consulta; ?> >
                     <input type="hidden" name="paciente_id" value="{{$paciente->id_paciente}}">
                     <input type="hidden" name="historia" value="{{$paciente->nro_historia}}">
+                      <input type="hidden" name="id_enfermedad" id="id_enfermedad">
+                  
                     <div class="form-group">
                         <div class="col-md-4">
                             <label for="motivo">Nombre</label>
@@ -177,6 +186,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
+                            <a type="submit" onclick="validar();" class="btn btn-primary">Validar</a>
                             <button type="submit" onclick="insertar_datos_clinicos();" class="btn btn-primary">Registrar
                             </button>
                             <a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
@@ -205,7 +215,25 @@ if (<?php echo $genero; ?>) {
     $('#mujer').css('display', 'none');
 
 }
+
 $(document).ready(function() {
+    if(valido[0].validar == ''){
+    console.log('vacio')
+    new PNotify({
+        title: 'Historia No Validada',
+        text: 'Esta Historia no ha sido validada',
+        hide: false,
+        styling: 'bootstrap3'
+    });
+  }else {
+    new PNotify({
+        title: 'Historia Validada',
+        text: 'Esta Historia ha sido validada',
+        hide: false,
+        type: 'success',
+        styling: 'bootstrap3'
+    });
+  }
     $("#fecha_consulta").datepicker({
         dateFormat: "yy-mm-dd",
         changeYear: true,
@@ -226,7 +254,101 @@ $(document).ready(function() {
     var newDate = new Date();
     newDate.setDate(newDate.getDate() + 1);
     $('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
+
+
+    $.each(datos_clinicos, function(i, val) {
+        $('#asma').prop('checked', check('S', val.asma));
+        $('#aspirina').prop('checked', check('S', val.aspirina));
+        $('#barbituricos').prop('checked', check('S', val.barbituricos));
+        $('#cambio_salud_ultimo_ayo').prop('checked', check('S', val.cambio_salud_ultimo_ayo));
+        $('#cansancio').prop('checked', check('S', val.cansancio));
+        $('#cicatrizacion_lenta').prop('checked', check('S', val.cicatrizacion_lenta));
+        $('#desmayo').prop('checked', check('S', val.desmayo));
+        $('#desorden_sangre').prop('checked', check('S', val.desorden_sangre));
+        $('#dificultad_tragar').prop('checked', check('S', val.dificultad_tragar));
+        $('#dolor_pecho').prop('checked', check('S', val.dolor_pecho));
+        $('#embarazo').prop('checked', check('S', val.embarazo));
+        $('#examinado_ultimo_ayo').prop('checked', check('S', val.examinado_ultimo_ayo));
+        $('#grave_enfermo').prop('checked', check('S', val.grave_enfermo));
+        $('#hemorragia_nasal').prop('checked', check('S', val.hemorragia_nasal));
+        $('#hospitalizado').prop('checked', check('S', val.hospitalizado));
+        $('#indigestion').prop('checked', check('S', val.indigestion));
+        $('#marcapaso').prop('checked', check('S', val.marcapaso));
+        $('#moretones').prop('checked', check('S', val.moretones));
+        $('#orines').prop('checked', check('S', val.orines));
+        $('#otros_medicamentos').prop('checked', check('S', val.otros_medicamentos));
+        $('#pastilla_anticonceptiva').prop('checked', check('S', val.pastilla_anticonceptiva));
+        $('#penicilina').prop('checked', check('S', val.penicilina));
+        $('#perdida_peso').prop('checked', check('S', val.perdida_peso));
+        $('#sangra_largo_tiempo').prop('checked', check('S', val.sangra_largo_tiempo));
+        $('#sediento').prop('checked', check('S', val.sediento));
+        $('#sinusitis').prop('checked', check('S', val.sinusitis));
+        $('#sulfonamida').prop('checked', check('S', val.sulfonamida));
+        $('#tos').prop('checked', check('S', val.tos));
+        $('#tos_sangre').prop('checked', check('S', val.tos_sangre));
+        $('#tranfusion_sanguinea').prop('checked', check('S', val.tranfusion_sanguinea));
+        $('#trastorno_visual').prop('checked', check('S', val.trastorno_visual));
+        $('#vomito').prop('checked', check('S', val.vomito));
+        $('#yodo').prop('checked', check('S', val.yodo));
+        $('#espec_fecha_hospitalizacion').val(val.espec_fecha_hospitalizacion);
+        $('#espec_grav_enfermo').val(val.espec_grav_enfermo);
+        $('#fecha_consulta').val(val.fecha);
+        $('#espec_otros_medicamentos').val(val.espec_otros_medicamentos);
+        $('#id_enfermedad').val(val.id_dato_clinico);
+
+        console.log(val)
+    });
+
+    function check(elem, val) {
+        if (elem == val) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+
 });
+
+function validar() {
+    var id_enfermedad = $('#id_enfermedad').val()
+    console.log(id_enfermedad, "<?php echo csrf_token(); ?>")
+    $.ajax({
+
+        url: "{{ url('/validar_dato_clinico') }}",
+        type: "POST",
+        data: {
+            '_token': $('input[name=_token]').val(),
+            id_enfermedad: id_enfermedad
+        },
+        success: function(data) {
+            PNotify.removeAll();
+            new PNotify({
+                title: 'Validacion Exitosa',
+                text: 'Los Datos Clinicos han sido validados!',
+                type: 'success',
+                styling: 'bootstrap3'
+            });
+            new PNotify({
+                title: 'Historia Validada',
+                text: 'Esta Historia ha sido validada',
+                hide: false,
+                type: 'success',
+                styling: 'bootstrap3'
+            });
+            console.log('exito')
+
+
+        },
+        error: function() {
+            alert("error!!!!");
+        }
+
+    });
+
+
+}
 
 function insertar_datos_clinicos() {
     console.log($("#form_familiares")[0]);
@@ -254,7 +376,7 @@ function insertar_datos_clinicos() {
             var formData = new FormData($("#form_familiares")[0]);
 
             $.ajax({
-                url: "{{ url('/datosclinicos') }}",
+                url: "{{ url('/update_dato_clinico') }}",
                 type: 'POST',
                 data: formData,
                 async: false,

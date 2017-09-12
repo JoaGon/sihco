@@ -64,6 +64,7 @@ class DiagnosticoController extends Controller
     {
 
         $data = $req->all();
+        //dd($data);
       
         DB::beginTransaction();
 
@@ -87,8 +88,10 @@ class DiagnosticoController extends Controller
                 ->where('paciente_id', $data['paciente_id'])
                 ->where('consulta_id', $data['consulta_id'])
                 ->where('fecha', $data['fecha'])
+                ->where('especialidad', $data['especialidad'])
                 ->where('tipo', 'clinico')
                 ->count();
+               // dd($verificar);
 
             if ($verificar > 0) {
 
@@ -97,6 +100,7 @@ class DiagnosticoController extends Controller
                     ->where('consulta_id', $data['consulta_id'])
                     ->where('fecha', $data['fecha'])
                     ->where('tipo', 'clinico')
+                    ->where('especialidad', $data['especialidad'])
                     ->pluck('diagnosticos.id_diagnosticos');
 
                 $data['id_diagnosticos'] = $id[0];
@@ -110,6 +114,7 @@ class DiagnosticoController extends Controller
                     ->where('consulta_id', $data['consulta_id'])
                     ->where('fecha', $data['fecha'])
                     ->where('tipo', 'clinico')
+                    ->where('especialidad', $data['especialidad'])
                     ->delete();
 
             }
@@ -142,7 +147,6 @@ class DiagnosticoController extends Controller
     {
 
         $data = $req->all();
-      
         DB::beginTransaction();
 
         try {
@@ -167,6 +171,7 @@ class DiagnosticoController extends Controller
                 ->where('consulta_id', $data['consulta_id'])
                 ->where('tipo', 'definitivo')
                 ->where('fecha', $data['fecha'])
+                ->where('especialidad', $data['especialidad'])
                 ->count();
 
             if ($verificar > 0) {
@@ -176,6 +181,7 @@ class DiagnosticoController extends Controller
                     ->where('consulta_id', $data['consulta_id'])
                     ->where('fecha', $data['fecha'])
                     ->where('tipo', 'definitivo')
+                    ->where('especialidad', $data['especialidad'])
                     ->pluck('diagnosticos.id_diagnosticos');
 
                 $data['id_diagnosticos'] = $id[0];
@@ -189,6 +195,7 @@ class DiagnosticoController extends Controller
                     ->where('consulta_id', $data['consulta_id'])
                     ->where('fecha', $data['fecha'])
                     ->where('tipo', 'definitivo')
+                    ->where('especialidad', $data['especialidad'])
                     ->delete();
 
             }

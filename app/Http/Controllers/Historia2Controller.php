@@ -180,6 +180,7 @@ class Historia2Controller extends Controller
      public function control_placa(Request $req){
 
         $data = $req->all();
+       // dd($data);
        //dd(json_decode($data['dientes']),'leedasada');
         DB::beginTransaction();
 

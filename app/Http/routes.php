@@ -267,10 +267,72 @@ Route::get('consulta_examenMuscular/{id}/{paciente_id}','ConsultaHistoria2Contro
 Route::post('update_examenMuscular','ConsultaHistoria2Controller@updateExamenMuscular');
 Route::post('validar_examen_muscular','ConsultaHistoria2Controller@validarExamenMuscular');
 
+Route::get('consulta_modeloDiagnostico/{nro_historia}','ConsultaHistoria2Controller@showModeloDiagnostico');
+Route::get('consulta_modeloDiagnostico/{id}/{paciente_id}','ConsultaHistoria2Controller@getModeloDiagnostico');
+
+Route::post('update_examenMuscular','ConsultaHistoria2Controller@updateModeloDiagnostico');
+Route::post('validar_examen_muscular','ConsultaHistoria2Controller@validarModeloDiagnostico');
+
+Route::get('consulta_testFagerstrom/{nro_historia}','ConsultaHistoria2Controller@showTestFagerstrom');
+Route::get('consulta_testFagerstrom/{id}/{paciente_id}','ConsultaHistoria2Controller@getTestFagerstrom');
+
+Route::post('update_testFagerstrom','ConsultaHistoria2Controller@updateTestFagerstrom');
+
+Route::get('consulta_diagramaRiesgo/{nro_historia}','ConsultaHistoria2Controller@showDiagramaRiesgo');
+Route::get('consulta_diagramaRiesgo/{id}/{paciente_id}','ConsultaHistoria2Controller@getDiagramaRiesgo');
+
+Route::post('update_diagramaRiesgo','ConsultaHistoria2Controller@updateDiagramaRiesgo');
+Route::post('validar_diagramaRiesgo','ConsultaHistoria2Controller@validarDiagramaRiesgo');
+
+Route::get('consulta_controlPlaca/{nro_historia}','ConsultaHistoria2Controller@showControlPlaca');
+Route::get('consulta_controlPlaca/{id}/{paciente_id}','ConsultaHistoria2Controller@getControlPlaca');
+
+Route::post('update_controlPlaca','ConsultaHistoria2Controller@updateControlPlaca');
+Route::post('validar_controPlaca','ConsultaHistoria2Controller@validarControlPlaca');
+
+Route::get('consulta_coronasPuentes/{nro_historia}','ConsultaHistoria3Controller@showcoronasPuentes');
+Route::get('consulta_coronasPuentes/{id}/{paciente_id}','ConsultaHistoria3Controller@getcoronasPuentes');
+
+Route::post('update_coronasPuentes','ConsultaHistoria3Controller@updatecoronasPuentes');
+Route::post('validar_coronasPuentes','ConsultaHistoria3Controller@validarcoronasPuentes');
+
+Route::get('consulta_operatoria/{nro_historia}','ConsultaHistoria3Controller@showOperatoria');
+Route::get('consulta_operatoria/{id}/{paciente_id}','ConsultaHistoria3Controller@getOperatoria');
+
+Route::post('update_operatoria','ConsultaHistoria3Controller@updateOperatoria');
+Route::post('validar_operatoria','ConsultaHistoria3Controller@validarOperatoria');
+
+Route::get('consulta_cirugia/{nro_historia}','ConsultaHistoria3Controller@showCirugia');
+Route::get('consulta_cirugia/{id}/{paciente_id}','ConsultaHistoria3Controller@getCirugia');
+
+Route::post('update_cirugia','ConsultaHistoria3Controller@updateCirugia');
+Route::post('validar_cirugia','ConsultaHistoria3Controller@validarCirugia');
+
+Route::get('consulta_endondocia/{nro_historia}','ConsultaHistoria3Controller@showEndodoncia');
+Route::get('consulta_endondocia/{id}/{paciente_id}','ConsultaHistoria3Controller@getEndodoncia');
+
+Route::post('update_endodoncia','ConsultaHistoria3Controller@updateEndodoncia');
+Route::post('validar_endodoncia','ConsultaHistoria3Controller@validarEndodoncia');
+
+Route::get('consulta_totales/{nro_historia}','ConsultaHistoria3Controller@showTotales');
+Route::get('consulta_totales/{id}/{paciente_id}','ConsultaHistoria3Controller@getTotales');
+
+Route::post('update_totales','ConsultaHistoria3Controller@updateTotales');
+Route::post('validar_totales','ConsultaHistoria3Controller@validarTotales');
+
+Route::get('consulta_diagnostico_clinico/{nro_historia}','ConsultaDiagnosticoController@showDiagnosticoClinico');
+Route::get('consulta_diagnostico_clinico/{id}/{paciente_id}','ConsultaDiagnosticoController@getDiagnosticoClinico');
+
+Route::get('diagnosticos/{id}/{paciente_id}/{especialidad}','ConsultaDiagnosticoController@getDiagnosticos');
+
+Route::post('update_diagnostico_clinico','ConsultaDiagnosticoController@updateDiagnosticoClinico');
+Route::post('validar_diagnostico_clinico','ConsultaDiagnosticoController@validarDiagnosticoClinico');
 
 Route::get('datos_paciente/{paciente_id}/{consulta_id}','ConsultaHistoriaController@datos_principal');
 
 Route::get('consulta_historia','ConsultaHistoria@index');
+Route::get('graficas','GraficasController@show');
+Route::get('graficas_user/{anio}/{mes}','GraficasController@todos_usuarios');
 
 Route::get('/test/', function () {
   $pdf = PDF::loadView('pruebaparapdf');

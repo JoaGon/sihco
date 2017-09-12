@@ -17,10 +17,10 @@ class UsuarioController extends Controller
        
         $usuario = DB::table('persona')
             ->join('usuarios', 'persona.ci', '=', 'usuarios.ci')
+            ->join('roles', 'usuarios.rol_id', '=', 'roles.id_rol')
             ->get();
         $rol = DB::table('roles')
             ->get();
-
         return view('admin.usuarios', ['usuarios' => $usuario, 'roles' => $rol]);
 
     }

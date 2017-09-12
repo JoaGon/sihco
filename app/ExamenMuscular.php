@@ -12,8 +12,8 @@ class ExamenMuscular extends Authenticatable
      * @var array
      */
     protected $fillable = [
-       'oral_posterio_der',
       'temporal_posterio_izq',
+      'temporal_posterio_der',
       'temporar_medio_der',
       'temporar_medio_izq',
       'temporal_anterior_der',

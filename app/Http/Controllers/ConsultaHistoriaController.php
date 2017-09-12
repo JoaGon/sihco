@@ -76,11 +76,25 @@ class ConsultaHistoriaController extends Controller
             ->where('persona.id_persona', $persona[0])
             ->get();
 
+
+        if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_id == 4){
+
+        
         $antecedentes = DB::table('antecedentes_familiares')
             ->join('usuarios', 'antecedentes_familiares.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->where('antecedentes_familiares.ultimo_usuario', Auth::user()->id)
             ->get();
+
+        }else{
+             $antecedentes = DB::table('antecedentes_familiares')
+            ->join('usuarios', 'antecedentes_familiares.ultimo_usuario', '=', 'usuarios.id')
+            ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
+            ->where('paciente_id', $paciente)
+            ->get();
+            //dd($antecedentes);
+        }
         return view('admin.consulta.consulta_historia_antecedentes', [
             'pacientes'    => $paciente2,
             'antecedentes' => $antecedentes,
@@ -276,7 +290,6 @@ class ConsultaHistoriaController extends Controller
     }
       public function showAntecedentePersonal($paciente)
     {
-        //dd($paciente);
         $persona = DB::table('paciente')
             ->where('id_paciente', $paciente)
             ->pluck('paciente.persona_id');
@@ -286,13 +299,24 @@ class ConsultaHistoriaController extends Controller
             ->where('persona.id_persona', $persona[0])
             ->get();
 
-        $antecedentes = DB::table('antecedentes_personales')
+        if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_id == 4){
+
+             $antecedentes = DB::table('antecedentes_personales')
+            ->join('usuarios', 'antecedentes_personales.ultimo_usuario', '=', 'usuarios.id')
+            ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
+            ->where('paciente_id', $paciente)
+            ->where('antecedentes_personales.ultimo_usuario',Auth::user()->id)
+            ->get();
+        }else{
+
+             $antecedentes = DB::table('antecedentes_personales')
             ->join('usuarios', 'antecedentes_personales.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->get();
+        }
+       
 
-           // dd($antecedentes);
         return view('admin.consulta.consulta_historia_antecedentes_personal', [
             'pacientes'    => $paciente2,
             'antecedentes' => $antecedentes,
@@ -497,6 +521,8 @@ class ConsultaHistoriaController extends Controller
             ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
             ->where('persona.id_persona', $persona[0])
             ->get();
+
+
         $antecedentes = DB::table("datos_clinicos")
                         ->where("id_dato_clinico",$id)
                         ->get();
@@ -540,11 +566,21 @@ class ConsultaHistoriaController extends Controller
             ->where('persona.id_persona', $persona[0])
             ->get();
 
+
+        if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_id == 4){
         $antecedentes = DB::table('datos_clinicos')
             ->join('usuarios', 'datos_clinicos.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->where('datos_clinicos.ultimo_usuario', Auth::user()->id)
             ->get();
+        }else{
+            $antecedentes = DB::table('datos_clinicos')
+            ->join('usuarios', 'datos_clinicos.ultimo_usuario', '=', 'usuarios.id')
+            ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
+            ->where('paciente_id', $paciente)
+            ->get(); 
+        }
 
          //  dd($antecedentes);
         return view('admin.consulta.consulta_datos_clinicos', [
@@ -635,11 +671,21 @@ class ConsultaHistoriaController extends Controller
             ->where('persona.id_persona', $persona[0])
             ->get();
 
+        if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_id == 4){
+        
         $antecedentes = DB::table('resumen_historia_medica')
             ->join('usuarios', 'resumen_historia_medica.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->where('resumen_historia_medica.ultimo_usuario', Auth::user()->id)
             ->get();
+        }else{
+          $antecedentes = DB::table('resumen_historia_medica')
+            ->join('usuarios', 'resumen_historia_medica.ultimo_usuario', '=', 'usuarios.id')
+            ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
+            ->where('paciente_id', $paciente)
+            ->get();  
+        }
         return view('admin.consulta.consulta_historia_resumen_medica', [
             'pacientes'    => $paciente2,
             'antecedentes' => $antecedentes,
@@ -763,11 +809,21 @@ class ConsultaHistoriaController extends Controller
             ->where('persona.id_persona', $persona[0])
             ->get();
 
+        if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_id == 4){
+         
         $antecedentes = DB::table('resumen_historia_odontologica')
             ->join('usuarios', 'resumen_historia_odontologica.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->where('resumen_historia_odontologica.ultimo_usuario', Auth::user()->id)
             ->get();
+        }else{
+             $antecedentes = DB::table('resumen_historia_odontologica')
+            ->join('usuarios', 'resumen_historia_odontologica.ultimo_usuario', '=', 'usuarios.id')
+            ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
+            ->where('paciente_id', $paciente)
+            ->get();
+        }
         return view('admin.consulta.consulta_historia_resumen_odontologico', [
             'pacientes'    => $paciente2,
             'antecedentes' => $antecedentes,
@@ -890,12 +946,22 @@ class ConsultaHistoriaController extends Controller
             ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
             ->where('persona.id_persona', $persona[0])
             ->get();
+        if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_id == 4){
+        
+        $antecedentes = DB::table('signos_vitales')
+            ->join('usuarios', 'signos_vitales.ultimo_usuario', '=', 'usuarios.id')
+            ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
+            ->where('signos_vitales.ultimo_usuario',Auth::user()->id)
+            ->where('paciente_id', $paciente)
+            ->get();
+        }else{
 
         $antecedentes = DB::table('signos_vitales')
             ->join('usuarios', 'signos_vitales.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->get();
+        }
         return view('admin.consulta.consulta_historia_signos_vitales', [
             'pacientes'    => $paciente2,
             'antecedentes' => $antecedentes,
@@ -1018,13 +1084,23 @@ class ConsultaHistoriaController extends Controller
             ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
             ->where('persona.id_persona', $persona[0])
             ->get();
-
+    if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_id == 4){
+        
         $antecedentes = DB::table('historia_odontologica')
+            ->join('usuarios', 'historia_odontologica.ultimo_usuario', '=', 'usuarios.id')
+            ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
+            ->where('paciente_id', $paciente)
+            ->where('historia_odontologica.ultimo_usuario',Auth::user()->id)
+            ->get();
+
+        }else{
+            $antecedentes = DB::table('historia_odontologica')
             ->join('usuarios', 'historia_odontologica.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->get();
          //   dd($antecedentes);
+        }
         return view('admin.consulta.consulta_historia_odontologica', [
             'pacientes'    => $paciente2,
             'antecedentes' => $antecedentes,

@@ -37,7 +37,7 @@
                                     <th>C.I</th>
                                     <th>Celular</th>
                                     <th>Fecha de Nacimiento</th>
-                                    <th>Direccion</th>
+                                    <th>Email</th>
                                     <th>Rol</th>
                                     <th>Estatus</th>
                                     <th>Acciones</th>
@@ -52,8 +52,8 @@
                                     <td>{{$user->ci}}</td>
                                     <td>{{$user->celular}}</td>
                                     <td>{{$user->fecha_nacimiento}}</td>
-                                    <td>{{$user->direccion}}</td>
-                                    <td>{{$user->rol_id}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td>{{$user->rol_name}}</td>
                                     @if($user->valor_id == '1')
                                     <td>Activo</td>
                                     @endif @if($user->valor_id == '2')

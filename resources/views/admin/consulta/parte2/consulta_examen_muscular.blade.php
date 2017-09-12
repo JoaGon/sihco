@@ -526,6 +526,7 @@ console.log(antecendetes)
             </div>
             <div class="form-group">
                 <div class="col-md-6 col-md-offset-4">
+                 <a type="button" onclick="validar();" class="btn btn-primary">Validar</a>
                     <button type="submit" onclick="insertar_historia();" class="btn btn-primary">Registrar
                     </button>
                     <a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
@@ -650,7 +651,7 @@ function validar() {
     console.log(id_enfermedad, "<?php echo csrf_token(); ?>")
     $.ajax({
 
-        url: "{{ url('/validar_examen_clinico') }}",
+        url: "{{ url('/validar_examen_muscular') }}",
         type: "POST",
         data: {
             '_token': $('input[name=_token]').val(),
@@ -660,7 +661,7 @@ function validar() {
             PNotify.removeAll();
             new PNotify({
                 title: 'Validacion Exitosa',
-                text: 'La evaluacion Periodontal ha sido validado!',
+                text: 'El examen Muscular ha sido validado!',
                 type: 'success',
                 styling: 'bootstrap3'
             });

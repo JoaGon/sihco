@@ -458,6 +458,26 @@
     <script src="{{ url('js/form-validator/jquery.form-validator.min.js') }}"></script>
     <script>
     $(document).ready(function() {
+
+    if(valido[0].validar == ''){
+    new PNotify({
+        title: 'Historia No Validada',
+        text: 'Esta Historia no ha sido validada',
+        hide: false,
+        styling: 'bootstrap3'
+    });
+  }else {
+    $('#validar-button').css('display','none')
+    $('#registrar-button').css('display','none')
+    new PNotify({
+        title: 'Historia Validada',
+        text: 'Esta Historia ha sido validada',
+        hide: false,
+        type: 'success',
+        styling: 'bootstrap3'
+    });
+
+  }
         $("#nacimiento_edit").datepicker({
             dateFormat: "yy-mm-dd",
             changeYear: true,

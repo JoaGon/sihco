@@ -305,11 +305,11 @@ var valido = <?php echo json_encode($validado); ?>;
                     </div>
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
-                            <button type="submit" onclick="insertar_familiares();" class="btn btn-primary">Registrar</button>
-                            <button type="submit" onclick="validar();" class="btn btn-primary">Validar</button>
-                            <button type="submit" href="{{ url('antecedente_personal')}}" class="btn btn-primary">
-                                <i class="fa fa-btn fa-user"></i> Siguiente </button>
-                            <a type="submit" href="{{ URL::previous() }}" class="btn btn-primary">
+                            <button type="submit"  id="registrar-button" onclick="insertar_familiares();" class="btn btn-primary">Registrar</button>
+                            @if( Auth::user()->rol_id == 1 or Auth::user()->rol_id == 2 or Auth::user()->rol_id == 3 )
+                            <button type="submit"  id="validar-button" onclick="validar();" class="btn btn-primary">Validar</button>
+                            @endif
+                           <a type="submit" href="{{ URL::previous() }}" class="btn btn-primary">
                                 <i class="fa fa-btn fa-user"></i> Volver </a>
                         </div>
                         @endforeach

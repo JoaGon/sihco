@@ -11,7 +11,58 @@
 <link href="{{url ('template/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 <link href="{{ url('css/file-input/fileinput.min.css')}}" media="all" rel="stylesheet" type="text/css" />
 <link href="{{ url('js/file-upload/themes/explorer/theme.css')}}" media="all" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="{{ url('js/images.js')}}"></script>
 <style type="text/css">
+
+.ejemplo3 {
+background-color: #3465AD;
+color: #FFFFFF;
+padding: 10px;
+text-align: center;
+margin:5px;
+float: left;
+height: 110px;
+width: 130%;
+border-radius: 10px;
+-moz-border-radius: 20px;
+-moz-border-bottom-colors: LightSeaGreen;
+-moz-border-left-colors: lightblue;
+-moz-border-right-colors: #999999;
+-moz-border-top-colors: CornflowerBlue;
+}
+
+.ejemplo4 {
+background-color: #3465AD;
+color: #FFFFFF;
+padding: 10px;
+text-align: center;
+margin:5px;
+height: 80px;
+float: left;
+border-radius: 10px;
+-moz-border-radius: 20px;
+-moz-border-bottom-colors: LightSeaGreen;
+-moz-border-left-colors: lightblue;
+-moz-border-right-colors: #999999;
+-moz-border-top-colors: CornflowerBlue;
+}
+.ejemplo5 {
+background-color: #3465AD;
+color: #FFFFFF;
+padding: 10px;
+text-align: center;
+margin:5px;
+float: left;
+width: 100%;
+height: 200px;
+border-radius: 10px;
+-moz-border-radius: 20px;
+-moz-border-bottom-colors: LightSeaGreen;
+-moz-border-left-colors: lightblue;
+-moz-border-right-colors: #999999;
+-moz-border-top-colors: CornflowerBlue;
+}
 .file-preview-image {
     width: 50% !important;
     height: 80px !important;
@@ -222,6 +273,14 @@
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
                                         <input class="form-control" type="input" name="motivo_examen" id="motivo_examen" style="color:black ">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        Agregar Imagenes
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4">
+                                        <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit_modal" >Agregar</a>
                                     </div>
                                 </div>
                             </div>
@@ -508,6 +567,258 @@
         </div>
     </div>
     <!-- /.row -->
+    <div id="edit_modal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Registro de Imagenes</h4>
+                    </div>
+                    <div class="modal-body">
+                    <input id="fileinput" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput2" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput3" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput4" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput5" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput6" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput7" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput8" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput9" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput10" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput11" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput12" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput13" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput14" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput15" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput16" name="imageProfile2" type="file" style="display:none;"/>
+                  
+                  <input id="fileinput17" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput18" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput19" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput20" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput21" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput22" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput23" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput24" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput25" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput26" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput27" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput28" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput29" name="imageProfile2" type="file" style="display:none;"/>
+                  
+                  
+                  
+                    <div class="row">
+                        
+                            <div class="col-md-1"  style="margin:5px">
+                                <div class="ejemplo4 primera" id="primera1">
+                                <label id="falseinput" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                            </div>
+                            </div> 
+                            <div class="col-md-1 primera"  style="margin:5px">
+                                <div class="ejemplo4" id="primera2"> 
+                                <label id="falseinput2" style="cursor:pointer;">Agregar</label>
+                                <label id="ver2"  style="cursor:pointer;">Ver</label>
+                                </div>
+                               
+                            </div>  
+                            <div class="col-md-1" style="margin:5px">
+                                <div class="ejemplo3" id="primera3">
+                                <label id="falseinput3" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label></div>
+                            </div>  
+                            <div class="col-md-1" style="margin:5px">
+                                <div class="ejemplo3" id="primera4">
+                                <label id="falseinput4" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label></div>
+                            </div>  
+                            <div class="col-md-1" style="margin:5px">
+                                <div class="ejemplo3" id="primera5">
+                                <label id="falseinput5" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label></div>
+                            </div>  
+                            <div class="col-md-1" style="margin:5px">
+                                <div class="ejemplo3" id="primera6">
+                                <label id="falseinput6" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label></div>
+                            </div> 
+                            <div class="col-md-1" style="margin:5px">
+                                <div class="ejemplo4" id="primera7">
+                                <label id="falseinput7" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label></div>
+                            </div>  
+                            <div class="col-md-1" style="margin:5px">
+                                <div class="ejemplo4" id="primera8">
+                                <label id="falseinpu8" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label></div>
+                            </div> 
+
+                    </div>
+                       <div class="row">
+                        
+                            <div class="col-md-1"  style="margin:5px">
+                                <div class="ejemplo4" id="primera9">
+                                <label id="falseinput9" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label></div>
+                            </div>
+                            <div class="col-md-1" style="margin:5px">
+                                <div class="ejemplo4" id="primera10">
+                                <label id="falseinput10" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                                </div>
+                            </div>  
+                            
+                            <div class="col-md-1" style="margin:5px; float: right; margin-right: 26%;">
+                                <div class="ejemplo4" id="primera11">
+                                    <label id="falseinput11" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+
+                                </div>
+                            </div>  
+                            <div class="col-md-1" style="margin:5px; float: right; margin-left: 25%;">
+                                <div class="ejemplo4" id="primera12"><label id="falseinput12" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                                </div>
+                            </div> 
+
+                    </div>  
+
+                       <div class="row">
+                        
+                            <div class="col-md-1"  style="margin:5px">
+                                <div class="ejemplo4" id="primera13">
+                                    <label id="falseinput13" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                                </div>
+                            </div> 
+                            <div class="col-md-1" style="margin:5px">
+                                <div class="ejemplo4" id="primera14"><label id="falseinput14" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                                </div>
+                            </div>  
+                            <div class="col-md-1" style="margin:5px">
+                                <div class="ejemplo3" id="primera215"><label id="falseinput15" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                                </div>
+                            </div>  
+                            <div class="col-md-1" style="margin:5px">
+                                <div class="ejemplo3" id="primera16"><label id="falseinput16" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                                </div>
+                            </div>  
+                            <div class="col-md-1" style="margin:5px">
+                                <div class="ejemplo3" id="primera17"><label id="falseinput17" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                                </div>
+                            </div>  
+                            <div class="col-md-1" style="margin:5px">
+                                <div class="ejemplo3" id="primera18"><label id="falseinput18" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                                </div>
+                            </div> 
+                            <div class="col-md-1" style="margin:5px">
+                                <div class="ejemplo4" id="primera19"><label id="falseinput19" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                                </div>
+                            </div>  
+                            <div class="col-md-1" style="margin:5px">
+                                <div class="ejemplo4" id="primera20"><label id="falseinput20" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                                </div>
+                            </div> 
+
+                    </div>   
+                     <div class="row">
+                        
+                            <div class="col-md-1"  style="margin:15px">
+                                <div class="ejemplo4" id="primera21"><label id="falseinput21" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                                </div>
+                            </div> 
+                            <div class="col-md-1" style="margin:15px">
+                                <div class="ejemplo3" id="primera22"><label id="falseinput22" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                                </div>
+                            </div>  
+                            <div class="col-md-1" style="margin:15px">
+                                <div class="ejemplo3" id="primera23"><label id="falseinput23" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                                </div>
+                            </div>  
+                            <div class="col-md-1" style="margin:15px">
+                                <div class="ejemplo3" id="primera24"><label id="falseinput24" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label></div>
+                            </div>  
+                            
+                    </div> 
+                    <div class="row">
+                        
+                            <div class="col-md-1"  style="margin:15px">
+                                <div class="ejemplo4" id="primera25"><label id="falseinput25" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                                </div>
+                            </div> 
+                            <div class="col-md-1" style="margin:15px">
+                                <div class="ejemplo3" id="primera26"><label id="falseinput26" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                                </div>
+                            </div>  
+                            <div class="col-md-1" style="margin:15px">
+                                <div class="ejemplo3" id="primera27"><label id="falseinput27" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                                </div>
+                            </div>  
+                            <div class="col-md-1" style="margin:15px">
+                                <div class="ejemplo3" id="primera28"><label id="falseinput28" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label></div>
+                            </div>  
+                            
+                    </div> 
+                    <div class="row">
+                        
+                            <div class="col-md-8"  style="margin:15px">
+                                <div class="ejemplo5" id="primera29"><label id="falseinput29" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label></div>
+                            </div> 
+                            
+                    </div>                        
+                    </div>                       
+
+
+                    <div class="modal-footer">
+                        <button type="button" class=" btn btn-default" data-dismiss="modal">Cerrar</button> {!! Form::submit('Guardar cambios', ['class' => 'btn btn-primary ']) !!}
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+                {!! Form::close() !!}
+            </div>
+            </div>
+            <!-- /.modal-dialog -->
+            <div id="big-image" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Imagen Completa</h4>
+                    </div>
+                    <div class="modal-body">
+                    <div class="row">
+                         <div id="imagenologico" class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="background-color:white;padding-left:0; text-align: center;     margin-left: 15%;">
+                            <img id="img_imagenologico" src='' style="display:block;margin:0 auto 0 auto; width: auto; higth: auto; max-height: 720px; max-width: 480px;">
+                        </div> 
+                    </div>
+                     
+                    
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button> {!! Form::submit('Guardar cambios', ['class' => 'btn btn-primary ']) !!}
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+                {!! Form::close() !!}
+            </div>
+            <!-- /.modal-dialog -->
 </div>
 </div>
 <!--<script src="{{ url('bower_components/jquery/dist/jquery.min.js') }}"></script>-->
@@ -548,112 +859,13 @@
 <!-- wPaint file -->
 <script type="text/javascript" src="{{ url('plugins/file/src/wPaint.menu.main.file.js')}}"></script>
 <script>
+               
+            
 var btnCust = '<button type="button" class="btn btn-default" title="Add picture tags" ' +
     'onclick="alert(\'Call your custom code here.\')">' +
     '<i class="glyphicon glyphicon-tag"></i>' +
     '</button>';
 
-$("#file-1").fileinput({
-    uploadUrl: "{{url('/register_imaging')}}", // you must set a valid URL here else you will get an error
-    allowedFileExtensions: ['jpg', 'png', 'gif'],
-    overwriteInitial: false,
-    maxFileSize: 1000,
-    maxFilesNum: 1,
-    autoReplace: true,
-    removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
-    removeTitle: 'Remove',
-    maxFileCount: 1,
-    uploadExtraData: function(previewId, index) {
-        return {
-            key: index
-        };
-    },
-    overwriteInitial: false,
-
-    initialPreviewAsData: true // identify if you are sending preview data only and not the markup
-        //allowedFileTypes: ['image', 'video', 'flash'],
-        /*slugCallback: function (filename) {
-            return filename.replace('(', '_').replace(']', '_');
-        }*/
-});
-$("#file-2").fileinput({
-    uploadUrl: '#', // you must set a valid URL here else you will get an error
-    allowedFileExtensions: ['jpg', 'png', 'gif'],
-    overwriteInitial: false,
-    maxFileSize: 1000,
-    maxFilesNum: 10,
-    //allowedFileTypes: ['image', 'video', 'flash'],
-    slugCallback: function(filename) {
-        return filename.replace('(', '_').replace(']', '_');
-    }
-});
-$("#file-4").fileinput({
-    uploadUrl: '#', // you must set a valid URL here else you will get an error
-    allowedFileExtensions: ['jpg', 'png', 'gif'],
-    overwriteInitial: false,
-    maxFileSize: 1000,
-    maxFilesNum: 10,
-    //allowedFileTypes: ['image', 'video', 'flash'],
-    slugCallback: function(filename) {
-        return filename.replace('(', '_').replace(']', '_');
-    }
-});
-$("#file-3").fileinput({
-    uploadUrl: '#', // you must set a valid URL here else you will get an error
-    allowedFileExtensions: ['jpg', 'png', 'gif'],
-    overwriteInitial: false,
-    maxFileSize: 1000,
-    maxFilesNum: 10,
-    //allowedFileTypes: ['image', 'video', 'flash'],
-    slugCallback: function(filename) {
-        return filename.replace('(', '_').replace(']', '_');
-    }
-});
-
-$("#file-5").fileinput({
-    uploadUrl: '#', // you must set a valid URL here else you will get an error
-    allowedFileExtensions: ['jpg', 'png', 'gif'],
-    overwriteInitial: false,
-    maxFileSize: 1000,
-    maxFilesNum: 10,
-    //allowedFileTypes: ['image', 'video', 'flash'],
-    slugCallback: function(filename) {
-        return filename.replace('(', '_').replace(']', '_');
-    }
-});
-$("#file-6").fileinput({
-    uploadUrl: '#', // you must set a valid URL here else you will get an error
-    allowedFileExtensions: ['jpg', 'png', 'gif'],
-    overwriteInitial: false,
-    maxFileSize: 1000,
-    maxFilesNum: 10,
-    //allowedFileTypes: ['image', 'video', 'flash'],
-    slugCallback: function(filename) {
-        return filename.replace('(', '_').replace(']', '_');
-    }
-});
-$("#file-7").fileinput({
-    uploadUrl: '#', // you must set a valid URL here else you will get an error
-    allowedFileExtensions: ['jpg', 'png', 'gif'],
-    overwriteInitial: false,
-    maxFileSize: 1000,
-    maxFilesNum: 10,
-    //allowedFileTypes: ['image', 'video', 'flash'],
-    slugCallback: function(filename) {
-        return filename.replace('(', '_').replace(']', '_');
-    }
-});
-$("#file-8").fileinput({
-    uploadUrl: '#', // you must set a valid URL here else you will get an error
-    allowedFileExtensions: ['jpg', 'png', 'gif'],
-    overwriteInitial: false,
-    maxFileSize: 1000,
-    maxFilesNum: 10,
-    //allowedFileTypes: ['image', 'video', 'flash'],
-    slugCallback: function(filename) {
-        return filename.replace('(', '_').replace(']', '_');
-    }
-});
 
 function big_imaging(ruta, id) {
     console.log(id);

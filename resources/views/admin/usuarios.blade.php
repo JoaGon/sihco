@@ -39,7 +39,6 @@
                                     <th>Fecha de Nacimiento</th>
                                     <th>Email</th>
                                     <th>Rol</th>
-                                    <th>Estatus</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -54,11 +53,7 @@
                                     <td>{{$user->fecha_nacimiento}}</td>
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->rol_name}}</td>
-                                    @if($user->valor_id == '1')
-                                    <td>Activo</td>
-                                    @endif @if($user->valor_id == '2')
-                                    <td>Inactivo</td>
-                                    @endif
+                                   
                                     <td>
                                         {!! Form::open(array('class' => 'form-inline', 'method' => 'POST', 'url' => array('usuario/delete', $user->id))) !!} <a class="btn btn-success btn-xs" href="#" id="try" onclick="edit_user('{{$user->id}}')" data-link="{{ url('/edit') }}"> Editar </a> {!! Form::submit('Borrar', array('class' => 'btn btn-danger btn-xs')) !!} {!! Form::close() !!}
                                         <!-- Standard button -->

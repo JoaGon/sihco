@@ -186,8 +186,10 @@ var valido = <?php echo json_encode($validado); ?>;
                     </div>
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
-                            <a type="submit" onclick="validar();" class="btn btn-primary">Validar</a>
-                            <button type="submit" onclick="insertar_datos_clinicos();" class="btn btn-primary">Registrar
+                         @if( Auth::user()->rol_id == 1 or Auth::user()->rol_id == 2 or Auth::user()->rol_id == 3 )
+                            <a type="submit" id="validar-button" onclick="validar();" class="btn btn-primary">Validar</a>
+                        @endif
+                            <button id="registrar-button" type="submit" onclick="insertar_datos_clinicos();" class="btn btn-primary">Registrar
                             </button>
                             <a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
                         </div>

@@ -337,8 +337,10 @@ console.log(antecendetes)
                     </div>
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
-                          <a type="button" onclick="validar();" class="btn btn-primary">Validar</a>
-                            <button type="submit" onclick="insertar_odontologica();" class="btn btn-primary">Registrar
+                        @if( Auth::user()->rol_id == 1 or Auth::user()->rol_id == 2 or Auth::user()->rol_id == 3 )
+                          <a type="button" id="validar-button" onclick="validar();" class="btn btn-primary">Validar</a>
+                        @endif
+                            <button type="submit" id="registrar-button" onclick="insertar_odontologica();" class="btn btn-primary">Registrar
                             </button>
                             <a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
                         </div>
@@ -363,22 +365,6 @@ console.log(antecendetes)
 $(document).ready(function() {
     console.log('vacio', valido[0])
 
-    if(valido[0].validar == ''){
-    new PNotify({
-        title: 'Historia No Validada',
-        text: 'Esta Historia no ha sido validada',
-        hide: false,
-        styling: 'bootstrap3'
-    });
-  }else {
-    new PNotify({
-        title: 'Historia Validada',
-        text: 'Esta Historia ha sido validada',
-        hide: false,
-        type: 'success',
-        styling: 'bootstrap3'
-    });
-  }
     $("#fecha_consulta").datepicker({
         dateFormat: "yy-mm-dd",
         changeYear: true,

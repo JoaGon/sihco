@@ -461,7 +461,7 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
             ->join('usuarios', 'modelo_diagnostico.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
-            ->where('modelo_diagnostico.ultimo_usuario'Auth::user()->id)
+            ->where('modelo_diagnostico.ultimo_usuario', Auth::user()->id)
             ->get();
 }else{
 

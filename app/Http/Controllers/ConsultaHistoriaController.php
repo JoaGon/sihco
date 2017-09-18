@@ -55,13 +55,60 @@ class ConsultaHistoriaController extends Controller
             ->join('usuarios', 'consulta.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('nro_historia', $nro_historia)
+            ->select('consulta.id', 'persona.*', 'consulta.*')
             ->get();
-        //  dd($consulta);
+         //dd($consulta);
 
         return view('admin.consulta.consultas_paciente', [
             'consultas' => $consulta,
             'pacientes' => $paciente,
         ]);
+
+    }
+
+    public function showConsult(Request $req)
+    {
+
+        //$data = $req->all()
+        $consulta = $req['consulta'];
+     //   dd($consulta);
+
+        $antecedentes = DB::table('consulta')
+            ->where('consulta.id', $consulta)
+            ->get();
+        
+        return $antecedentes;
+
+    }
+
+    public function validarConsult(Request $req)
+    {
+
+
+        $consulta = $req['consulta'];
+        $today = date("Y-m-d");
+
+        try {
+
+            $verificar = DB::table('consulta')
+                ->where('id', $consulta)
+                ->update([
+                    'validar'  => '1',
+                    'profesor' => Auth::user()->id,
+                    'fecha_validacion' => $today
+                ]);
+
+            return 'validado';
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
+
+        return $antecedentes;
 
     }
     public function showAntecedenteFamiliar($paciente)

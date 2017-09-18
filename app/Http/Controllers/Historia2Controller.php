@@ -19,6 +19,9 @@ use App\TestFagerston as TestFagerston;
 use App\DiagramaRiesgo as DiagramaRiesgo;
 use App\Odontograma as Odontograma;
 use App\ControlPlaca as ControlPlaca;
+
+use App\RegistroImageneologia as RegistroImageneologia;
+
 use DB;
 use Illuminate\Http\Request;
 
@@ -320,7 +323,61 @@ class Historia2Controller extends Controller
         DB::commit();
 
     }
+    public function registroImageneologico(Request $req)
+    {
 
+        $data = $req->all();
+     /*   $d = RegistroImageneologia::all();
+        dd($d);*/
+        DB::beginTransaction();
+
+        try {
+
+            $consulta = intval($req->input('consulta_id'));
+
+            $data['ultimo_usuario'] = Auth::user()->id;
+            $data['profesor']       = Auth::user()->id;
+            $data['validar']        = '';
+
+            unset($data['_token']);
+            unset($data['historia']);
+
+            $verificar = DB::table('registros_imageneologicos')
+                ->where('paciente_id', $data['paciente_id'])
+                ->where('consulta_id', $data['consulta_id'])
+                ->where('fecha', $data['fecha'])
+                ->count();
+
+            if ($verificar > 0) {
+
+                $id = DB::table('registros_imageneologicos')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->pluck('registros_imageneologicos.id_registro_imageneologico');
+
+                $data['id_registro_imageneologico'] = $id[0];
+
+                DB::table('registros_imageneologicos')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->delete();
+
+            }
+      //  dd($data);
+
+            $consulta2 = RegistroImageneologia::create($data);
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
+
+    }
     public function modelodiagnosticoIndex($paciente_id, $consulta)
     {
         $consulta = intval($consulta);

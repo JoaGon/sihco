@@ -19,7 +19,6 @@
 				<div style="font-size: 20px; text-align: center; color:#59bddd;">
 					 Examen Clinico
 				</div>
-				 <fieldset>
 				<form class="form-horizontal" id="form_familiares">
 					 {{ csrf_field() }} <input type="hidden" name="consulta_id" value={{$consulta}}>
 					<input type="hidden" name="paciente_id" value="{{$paciente->id_paciente}}"> <input type="hidden" name="historia" value="{{$paciente->nro_historia}}">
@@ -194,7 +193,6 @@
 					</div>
 					<!-- /.col-lg-12 -->
 				</form>
-				 </fieldset>
 			</div>
 		</div>
 	</div>

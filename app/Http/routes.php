@@ -160,6 +160,8 @@ Route::get("diagrama_riesgo/{paciente_id}/{consulta_id}",'Historia2Controller@di
 Route::post("diagrama_riesgo",'Historia2Controller@diagramariesgo');
 
 
+Route::post("registro_imageneologico",'Historia2Controller@registroImageneologico');
+
 
 Route::get("endodoncia/{paciente_id}/{consulta_id}",'Historia3Controller@endodonciaIndex');
 Route::post("endodoncia",'Historia3Controller@endodoncia');
@@ -204,6 +206,9 @@ Route::post('password/reset', 'Auth\PasswordController@reset');
 
 Route::get('consulta_historia_paciente','ConsultaHistoriaController@index');
 Route::get('consulta_paciente/{nro_historia}','ConsultaHistoriaController@showPaciente');
+Route::post('ver_consulta/','ConsultaHistoriaController@showConsult');
+Route::post('validar_consulta/','ConsultaHistoriaController@validarConsult');
+
 Route::get('consulta_paciente_/{consulta}','ConsultaHistoriaController@showAntecedenteFamiliar');
 
 

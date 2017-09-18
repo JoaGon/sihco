@@ -236,6 +236,9 @@
 							<th>
 								Fecha
 							</th>
+                            <th>
+                                Estatus
+                            </th>
 							
 						</tr>
 						</thead>
@@ -244,7 +247,7 @@
 						<tr>
 							<td>
 								<strong>
-								<a href="{{ url('consulta_paciente_/'.$con->id) }}" class="btn btn-link" style="font-weight: bold" data-toggle="tooltip" title="Cita"> {{$con->id}} </a>
+								<a onclick="show({{$con->id}})" id="try" class="btn btn-link" style="font-weight: bold" data-link="{{ url('/ver_consulta') }}" title="Cita"> {{$con->id}} </a>
 								</strong>
 							</td>
 							<td class="name">
@@ -259,6 +262,14 @@
 							<td>
 								{{$con->fecha_consulta}}
 							</td>
+                            <td>
+
+                            @if ($con->validar == 1)
+                                Validado
+                            @else
+                            No Validado
+                            @endif
+                            </td>
 						</tr>
 						 @endforeach
 						</tbody>
@@ -270,6 +281,8 @@
 					</ul>
 				</div>
 				<!-- /.panel-body -->
+
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
 					</div>
             </div>
             <!--div class="col-md-6 col-md-offset-4">
@@ -280,6 +293,52 @@
 		</div>
 		<!-- /.row -->
 	</div>
+       <!-- /.modal-dialog -->
+    <div id="view-consult" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Consulta</h4>
+                    </div>
+                    <div class="modal-body">
+                   <div class="row" >
+                        
+                        <div class="form-group">
+                            <label for="motivo" class="col-md-8 col-md-offset-1">Motivo de la Consulta</label>
+                            <div class="col-md-8 col-md-offset-1">
+                                <textarea class="form-control" cols="75" id="motivo" data-validation="required" data-validation-error-msg="Introduzca un motivo de la consulta" autofocus="true" rows="4" name="motivo"></textarea>
+                                @if ($errors->has('motivo'))
+                                <span class="help-block">
+                        <strong>{{ $errors->first('motivo') }}</strong>
+                      </span> @endif
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="motivo" class="col-md-8 col-md-offset-1">Enfermedad Actual</label>
+                            <div class="col-md-8 col-md-offset-1">
+                                <textarea class="form-control" cols="75" id="enfermedad" data-validation="required" data-validation-error-msg="Introduzca una enfermedad actual de la consulta" autofocus="true" rows="4" name="enfermedad"></textarea>
+                                @if ($errors->has('enfermedad'))
+                                <span class="help-block">
+                                  <strong>{{ $errors->first('enfermedad') }}</strong>
+                                </span> @endif
+                            </div>
+                        </div>
+                        <input type="hidden" name="id_consulta" id="id_consulta">
+                        <input type="hidden" name="nro_historia" id="nro_historia">
+                    </div>
+                     
+                    
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button> 
+                        <button type="button" class="btn btn-default" onclick="validar()">Validar</button> 
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+                {!! Form::close() !!}
+            </div>
+       
 
 <!--<script src="{{ url( 'bower_components/jquery/dist/jquery.min.js') }} "></script>-->
 <!-- jQuery -->
@@ -318,6 +377,91 @@ var myLanguage = {
                language: myLanguage,
         });
  });
+function show(consulta){
+
+    console.log("cc", consulta)
+
+        var consulta2 = consulta
+        var url = $('#try').attr("data-link");
+        console.log(url);
+        $.ajax({
+
+            url: url,
+
+            type: "POST",
+
+            data: {
+                '_token': $('input[name=_token]').val(),
+                consulta: consulta2
+            },
+
+            success: function(data) {
+
+                console.log(data);
+
+                document.getElementById("motivo").value = data[0].motivo_consulta;
+
+                document.getElementById("enfermedad").value = data[0].enfermedad_actual;
+
+                document.getElementById("id_consulta").value = data[0].id;
+                
+                document.getElementById("nro_historia").value = data[0].nro_historia;
+
+
+
+
+               
+              $('#view-consult').modal('show');
+            },
+            error: function() {
+
+                alert("error!!!!");
+
+            }
+
+        }); //end of ajax
+}
+function validar(consulta){
+
+    console.log("cc", consulta)
+
+        var consulta2 = consulta
+        var id = $('#id_consulta').val()
+
+        console.log(id);
+        $.ajax({
+
+            url: "{{ url('/validar_consulta') }}",
+
+            type: "POST",
+
+            data: {
+                '_token': $('input[name=_token]').val(),
+                consulta: id
+
+            },
+
+            success: function(data) {
+
+                console.log(data);
+
+               PNotify.removeAll();
+                new PNotify({
+                    title: 'Validacion Exitosa',
+                    text: 'La evaluacion Periodontal ha sido validado!',
+                    type: 'success',
+                    styling: 'bootstrap3'
+                });
+               location.href = '../consulta_paciente/'+$('#nro_historia').val()
+            },
+            error: function() {
+
+                alert("error!!!!");
+
+            }
+
+        }); //end of ajax
+}
 // #myInput is a <input type="text "> element
 function register_imagen(id_consulta)
     {

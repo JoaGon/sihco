@@ -219,22 +219,6 @@ console.log(antecendetes)
 $(document).ready(function () {
   console.log('vacio', valido[0])
 
-	if(valido[0].validar == ''){
-    new PNotify({
-        title: 'Historia No Validada',
-        text: 'Esta Historia no ha sido validada',
-        hide: false,
-        styling: 'bootstrap3'
-    });
-  }else {
-    new PNotify({
-        title: 'Historia Validada',
-        text: 'Esta Historia ha sido validada',
-        hide: false,
-        type: 'success',
-        styling: 'bootstrap3'
-    });
-  }
 
   $("#fecha").datepicker({dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true});
   $(".notification").fadeTo(3000, 500).slideUp(500, function(){

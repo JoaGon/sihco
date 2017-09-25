@@ -318,7 +318,7 @@ function validar() {
     console.log(id_enfermedad, "<?php echo csrf_token(); ?>")
     $.ajax({
 
-        url: "{{ url('/validar_examen_muscular') }}",
+        url: "{{ url('/validar_modeloDiagnostico') }}",
         type: "POST",
         data: {
             '_token': $('input[name=_token]').val(),
@@ -376,7 +376,7 @@ function insertar_historia() {
             var formData = new FormData($("#form_familiares")[0]);
 
             $.ajax({
-                url: "{{ url('/update_examenMuscular') }}",
+                url: "{{ url('/update_modeloDiagnostico') }}",
                 type: 'POST',
                 data: formData,
                 async: false,

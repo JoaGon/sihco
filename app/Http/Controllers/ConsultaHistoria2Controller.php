@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Paciente as Paciente;
 use App\Persona as Persona;
 use App\ExamenClinico as ExamenClinico;
+use App\ExamenOclusion as ExamenOclusion;
 use App\EvaluacionPeriodontal as EvaluacionPeriodontal;
 use App\ExamenMuscular as ExamenMuscular;
 use App\ModeloDiagnostico as ModeloDiagnostico;
@@ -18,6 +19,7 @@ use App\Odontograma as Odontograma;
 use App\ControlPlaca as ControlPlaca;
 
 
+use App\RegistroImageneologia as RegistroImageneologia;
 use Illuminate\Support\Facades\DB;
 
 class ConsultaHistoria2Controller extends Controller
@@ -43,12 +45,14 @@ class ConsultaHistoria2Controller extends Controller
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('examen_clinico.ultimo_usuario',Auth::user()->id)
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get();
         }else{
             $antecedentes = DB::table('examen_clinico')
             ->join('usuarios', 'examen_clinico.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get();
         }
         return view('admin.consulta.parte2.consulta_historia_examen_clinico', [
@@ -124,7 +128,6 @@ class ConsultaHistoria2Controller extends Controller
                 ->where('consulta_id', $data['consulta_id'])
                 ->where('fecha', $data['fecha'])
                 ->delete();
-
             $consulta2 = ExamenClinico::create($data);
 
         } catch (Exception $ex) {
@@ -164,6 +167,296 @@ class ConsultaHistoria2Controller extends Controller
         DB::commit();
 
     }
+    public function showOclusion($paciente)
+    {
+
+        $persona = DB::table('paciente')
+            ->where('id_paciente', $paciente)
+            ->pluck('paciente.persona_id');
+
+        $paciente2 = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
+     if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_id == 4){
+    
+        $antecedentes = DB::table('examen_oclusion')
+            ->join('usuarios', 'examen_oclusion.ultimo_usuario', '=', 'usuarios.id')
+            ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
+            ->where('examen_oclusion.ultimo_usuario',Auth::user()->id)
+            ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
+            ->get();
+        }else{
+            $antecedentes = DB::table('examen_oclusion')
+            ->join('usuarios', 'examen_oclusion.ultimo_usuario', '=', 'usuarios.id')
+            ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
+            ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
+            ->get();
+        }
+      // dd($antecedentes);
+        
+        return view('admin.consulta.parte2.consulta_historia_examen_oclusion', [
+            'pacientes'    => $paciente2,
+            'antecedentes' => $antecedentes,
+        ]);
+
+    }
+
+    public function getOclusion($id, $paciente)
+    {
+
+        $persona = DB::table('paciente')
+            ->where('id_paciente', $paciente)
+            ->pluck('paciente.persona_id');
+
+        $paciente2 = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
+
+        $antecedentes = DB::table('examen_oclusion')
+            ->where('id_oclusion', $id)
+            ->get();
+        $validado = DB::table('examen_oclusion')
+            ->where('id_oclusion', $id)
+            ->select('validar')
+            ->get();
+        // dd($validado);
+        $consulta = DB::table('examen_oclusion')
+            ->where('id_oclusion', $id)
+            ->pluck('consulta_id');
+            //dd($consulta);
+
+
+        // dd($enfermedades_cardiovasculares);
+        return view('admin.consulta.parte2.consulta_examen_oclusion', [
+            'pacientes'                     => $paciente2,
+            'ante'                          => $antecedentes,
+            'consulta'                      => $consulta[0],
+            'validado'                      => $validado,
+
+        ]);
+
+    }
+
+    public function updateOclusion(Request $req)
+    {
+    //dd($req->input('id_enfermedad'));
+        $data = $req->all();
+
+        try {
+
+            $verificar = DB::table('examen_oclusion')
+                ->where('id_oclusion', $req->input('id_enfermedad'))
+                ->select('consulta_id', 'paciente_id', 'fecha', 'validar')
+                ->get();
+
+            $data['ultimo_usuario']          = Auth::user()->id;
+            $data['profesor']                = Auth::user()->id;
+            $data['validar']                 = '';
+            $data['consulta_id']             = $verificar[0]->consulta_id;
+            $data['paciente_id']             = $verificar[0]->paciente_id;
+            $data['fecha']                   = $verificar[0]->fecha;
+            $data['validar']                 = $verificar[0]->validar;
+            $data['id_oclusion'] = $req->input('id_enfermedad');
+
+            unset($data['_token']);
+            unset($data['historia']);
+               // dd($data);
+
+            DB::table('examen_oclusion')
+                ->where('paciente_id', $data['paciente_id'])
+                ->where('consulta_id', $data['consulta_id'])
+                ->where('fecha', $data['fecha'])
+                ->delete();
+
+            $consulta2 = ExamenOclusion::create($data);
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
+
+    }
+
+    public function validarOclusion(Request $req)
+    {
+        // dd($req->id_enfermedad);
+        $data = $req->all();
+        $today = date("Y-m-d");
+
+        try {
+
+            $verificar = DB::table('examen_oclusion')
+                ->where('id_oclusion', $req->input('id_enfermedad'))
+                ->update([
+                    'validar'  => '1',
+                    'profesor' => Auth::user()->id,
+                    'fecha_validacion' => $today
+                ]);
+
+            return 'validado';
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
+
+    }
+     public function showImageneologia($paciente)
+    {
+
+        $persona = DB::table('paciente')
+            ->where('id_paciente', $paciente)
+            ->pluck('paciente.persona_id');
+          //  dd($persona);
+        $paciente2 = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
+     if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_id == 4){
+    
+        $antecedentes = DB::table('registros_imageneologicos')
+            ->join('usuarios', 'registros_imageneologicos.ultimo_usuario', '=', 'usuarios.id')
+            ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
+            ->where('registros_imageneologicos.ultimo_usuario',Auth::user()->id)
+            ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
+            ->get();
+        }else{
+            $antecedentes = DB::table('registros_imageneologicos')
+            ->join('usuarios', 'registros_imageneologicos.ultimo_usuario', '=', 'usuarios.id')
+            ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
+            ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
+            ->get();
+        }
+      // dd($antecedentes);
+        
+        return view('admin.consulta.parte2.consulta_historia_imageneologia', [
+            'pacientes'    => $paciente2,
+            'antecedentes' => $antecedentes,
+        ]);
+
+    }
+    public function getImageneologia($id, $paciente)
+    {
+
+        $persona = DB::table('paciente')
+            ->where('id_paciente', $paciente)
+            ->pluck('paciente.persona_id');
+
+        $paciente2 = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
+
+        $antecedentes = DB::table('registros_imageneologicos')
+            ->where('id_registro_imageneologico', $id)
+            ->get();
+        $validado = DB::table('registros_imageneologicos')
+            ->where('id_registro_imageneologico', $id)
+            ->select('validar')
+            ->get();
+        // dd($validado);
+        $consulta = DB::table('registros_imageneologicos')
+            ->where('id_registro_imageneologico', $id)
+            ->pluck('consulta_id');
+            //dd($consulta);
+
+
+        // dd($enfermedades_cardiovasculares);
+        return view('admin.consulta.parte2.consulta_imageneologia', [
+            'pacientes'                     => $paciente2,
+            'ante'                          => $antecedentes,
+            'consulta'                      => $consulta[0],
+            'validado'                      => $validado,
+
+        ]);
+
+    }
+
+    public function updateImageneologia(Request $req)
+    {
+    //dd($req->input('id_enfermedad'));
+        $data = $req->all();
+
+        try {
+
+            $verificar = DB::table('registros_imageneologicos')
+                ->where('id_registro_imageneologico', $req->input('id_enfermedad'))
+                ->select('consulta_id', 'paciente_id', 'fecha', 'validar')
+                ->get();
+
+            $data['ultimo_usuario']          = Auth::user()->id;
+            $data['profesor']                = Auth::user()->id;
+            $data['validar']                 = '';
+            $data['consulta_id']             = $verificar[0]->consulta_id;
+            $data['paciente_id']             = $verificar[0]->paciente_id;
+            $data['fecha']                   = $verificar[0]->fecha;
+            $data['validar']                 = $verificar[0]->validar;
+            $data['id_registro_imageneologico'] = $req->input('id_enfermedad');
+
+            unset($data['_token']);
+            unset($data['historia']);
+               // dd($data);
+
+            DB::table('registros_imageneologicos')
+                ->where('paciente_id', $data['paciente_id'])
+                ->where('consulta_id', $data['consulta_id'])
+                ->where('fecha', $data['fecha'])
+                ->delete();
+
+            $consulta2 = RegistroImageneologia::create($data);
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
+
+    }
+
+    public function validarImageneologia(Request $req)
+    {
+        // dd($req->id_enfermedad);
+        $data = $req->all();
+        $today = date("Y-m-d");
+
+        try {
+
+            $verificar = DB::table('registros_imageneologicos')
+                ->where('id_registro_imageneologico', $req->input('id_enfermedad'))
+                ->update([
+                    'validar'  => '1',
+                    'profesor' => Auth::user()->id,
+                    'fecha_validacion' => $today
+                ]);
+
+            return 'validado';
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
+
+    }
+
+
+  
       public function showEvaluacionPeriodontal($paciente)
     {
         //dd($paciente);
@@ -182,12 +475,14 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->where('evaluacion_periodontal.ultimo_usuario',Auth::user()->id)
+            ->orderBy('fecha','desc')
             ->get();
         }else{
             $antecedentes = DB::table('evaluacion_periodontal')
             ->join('usuarios', 'evaluacion_periodontal.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get(); 
         }
 
@@ -359,12 +654,14 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->where('examen_muscular.ultimo_usuario',Auth::user()->id)
+            ->orderBy('fecha','desc')
             ->get();
 }else{
     $antecedentes = DB::table('examen_muscular')
             ->join('usuarios', 'examen_muscular.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get();
 }
            //dd($antecedentes);
@@ -462,6 +759,7 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->where('modelo_diagnostico.ultimo_usuario', Auth::user()->id)
+            ->orderBy('fecha','desc')
             ->get();
 }else{
 
@@ -469,6 +767,7 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
             ->join('usuarios', 'modelo_diagnostico.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get();
 }
         return view('admin.consulta.parte2.consulta_historia_modelo_diagnostico', [
@@ -600,12 +899,14 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->where('test_fagerstrom.ultimo_usuario',Auth::user()->id)
+            ->orderBy('fecha','desc')
             ->get();
 }else{
      $antecedentes = DB::table('test_fagerstrom')
             ->join('usuarios', 'test_fagerstrom.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get();
 }
         return view('admin.consulta.parte2.consulta_historia_test_fagerstrom', [
@@ -712,6 +1013,7 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->where('diagrama_riesgo.ultimo_usuario',Auth::user()->id)
+            ->orderBy('fecha','desc')
             ->get();
 }else{
 
@@ -719,6 +1021,7 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
             ->join('usuarios', 'diagrama_riesgo.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get();
 }
         return view('admin.consulta.parte2.consulta_historia_diagrama_riesgo', [
@@ -850,6 +1153,7 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->where('control_placa.ultimo_usuario',Auth::user()->id)
+            ->orderBy('fecha','desc')
             ->get();
 
         }else{
@@ -857,6 +1161,7 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
             ->join('usuarios', 'control_placa.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get();
          //   dd($antecedentes);
         }

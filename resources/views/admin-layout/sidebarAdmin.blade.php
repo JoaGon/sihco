@@ -458,6 +458,11 @@
     <script src="{{ url('js/form-validator/jquery.form-validator.min.js') }}"></script>
     <script>
     $(document).ready(function() {
+        var monkeyList = new List('consultas', {
+	  valueNames: ['name'],
+	  page: 10,
+	  pagination: true
+	});
 
     if(valido[0].validar == ''){
     new PNotify({

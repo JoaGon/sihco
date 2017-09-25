@@ -42,12 +42,14 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->where('coronas_puentes.ultimo_usuario',Auth::user()->id)
+            ->orderBy('fecha','desc')
             ->get();
 }else{
     $antecedentes = DB::table('coronas_puentes')
             ->join('usuarios', 'coronas_puentes.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get();
 }
         return view('admin.consulta.parte3.consulta_historia_coronas_puentes', [
@@ -181,12 +183,14 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->where('operatoria.ultimo_usuario',Auth::user()->id)
+            ->orderBy('fecha','desc')
             ->get();
 }else{
     $antecedentes = DB::table('operatoria')
             ->join('usuarios', 'operatoria.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get();
 }
             //dd($antecedentes);
@@ -357,12 +361,14 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->where('cirugia.ultimo_usuario',Auth::user()->id)
+            ->orderBy('fecha','desc')
             ->get();
 }else{
       $antecedentes = DB::table('cirugia')
             ->join('usuarios', 'cirugia.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get();
 }
            //dd($antecedentes);
@@ -460,12 +466,14 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->where('endodoncia.ultimo_usuario',Auth::user()->id)
+            ->orderBy('fecha','desc')
             ->get();
         }else{
             $antecedentes = DB::table('endodoncia')
             ->join('usuarios', 'endodoncia.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get();
         }
         return view('admin.consulta.parte3.consulta_historia_endodoncia', [
@@ -597,12 +605,14 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->where('dentaduras_totales.ultimo_usuario',Auth::user()->id)
+            ->orderBy('fecha','desc')
             ->get();
 }else{
      $antecedentes = DB::table('dentaduras_totales')
             ->join('usuarios', 'dentaduras_totales.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get();
 }
         return view('admin.consulta.parte3.consulta_historia_totales', [
@@ -735,12 +745,14 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->where('diagrama_riesgo.ultimo_usuario',Auth::user()->id)
+            ->orderBy('fecha','desc')
             ->get();
 }else{
      $antecedentes = DB::table('diagrama_riesgo')
             ->join('usuarios', 'diagrama_riesgo.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get();
 }
         return view('admin.consulta.parte2.consulta_historia_diagrama_riesgo', [
@@ -872,12 +884,14 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->where('control_placa.ultimo_usuario',Auth::user()->id)
+            ->orderBy('fecha','desc')
             ->get();
 }else{
     $antecedentes = DB::table('control_placa')
             ->join('usuarios', 'control_placa.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get();
 }
          //   dd($antecedentes);

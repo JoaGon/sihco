@@ -159,6 +159,9 @@ Route::post("test_fagerstrom",'Historia2Controller@testfagerstrom');
 Route::get("diagrama_riesgo/{paciente_id}/{consulta_id}",'Historia2Controller@diagramariesgoIndex');
 Route::post("diagrama_riesgo",'Historia2Controller@diagramariesgo');
 
+Route::get("examen_oclusion/{paciente_id}/{consulta_id}",'Historia2Controller@examenOclusionIndex');
+Route::post("examen_oclusion",'Historia2Controller@examenOclusion');
+
 
 Route::post("registro_imageneologico",'Historia2Controller@registroImageneologico');
 
@@ -275,8 +278,16 @@ Route::post('validar_examen_muscular','ConsultaHistoria2Controller@validarExamen
 Route::get('consulta_modeloDiagnostico/{nro_historia}','ConsultaHistoria2Controller@showModeloDiagnostico');
 Route::get('consulta_modeloDiagnostico/{id}/{paciente_id}','ConsultaHistoria2Controller@getModeloDiagnostico');
 
-Route::post('update_examenMuscular','ConsultaHistoria2Controller@updateModeloDiagnostico');
-Route::post('validar_examen_muscular','ConsultaHistoria2Controller@validarModeloDiagnostico');
+Route::post('update_modeloDiagnostico','ConsultaHistoria2Controller@updateModeloDiagnostico');
+Route::post('validar_modeloDiagnostico','ConsultaHistoria2Controller@validarModeloDiagnostico');
+
+
+Route::get('consulta_oclusion/{nro_historia}','ConsultaHistoria2Controller@showOclusion');
+Route::get('consulta_oclusion/{id}/{paciente_id}','ConsultaHistoria2Controller@getOclusion');
+
+Route::post('update_oclusion','ConsultaHistoria2Controller@updateOclusion');
+Route::post('validar_oclusion','ConsultaHistoria2Controller@validarOclusion');
+
 
 Route::get('consulta_testFagerstrom/{nro_historia}','ConsultaHistoria2Controller@showTestFagerstrom');
 Route::get('consulta_testFagerstrom/{id}/{paciente_id}','ConsultaHistoria2Controller@getTestFagerstrom');
@@ -332,6 +343,12 @@ Route::get('diagnosticos/{id}/{paciente_id}/{especialidad}','ConsultaDiagnostico
 
 Route::post('update_diagnostico_clinico','ConsultaDiagnosticoController@updateDiagnosticoClinico');
 Route::post('validar_diagnostico_clinico','ConsultaDiagnosticoController@validarDiagnosticoClinico');
+
+Route::get('consulta_Imageneologia/{nro_historia}','ConsultaHistoria2Controller@showImageneologia');
+Route::get('consulta_Imageneologia/{id}/{paciente_id}','ConsultaHistoria2Controller@getImageneologia');
+
+Route::post('update_Imageneologia','ConsultaHistoria2Controller@updateImageneologia');
+Route::post('validar_Imageneologia','ConsultaHistoria2Controller@validarImageneologia');
 
 Route::get('datos_paciente/{paciente_id}/{consulta_id}','ConsultaHistoriaController@datos_principal');
 

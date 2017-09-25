@@ -55,6 +55,7 @@ class ConsultaHistoriaController extends Controller
             ->join('usuarios', 'consulta.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('nro_historia', $nro_historia)
+            ->orderBy('fecha_consulta','desc')
             ->select('consulta.id', 'persona.*', 'consulta.*')
             ->get();
          //dd($consulta);
@@ -132,15 +133,18 @@ class ConsultaHistoriaController extends Controller
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->where('antecedentes_familiares.ultimo_usuario', Auth::user()->id)
+            ->orderBy('fecha','desc')
             ->get();
+           // dd($antecedentes);
 
         }else{
              $antecedentes = DB::table('antecedentes_familiares')
             ->join('usuarios', 'antecedentes_familiares.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get();
-            //dd($antecedentes);
+           // dd($antecedentes);
         }
         return view('admin.consulta.consulta_historia_antecedentes', [
             'pacientes'    => $paciente2,
@@ -353,6 +357,7 @@ class ConsultaHistoriaController extends Controller
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->where('antecedentes_personales.ultimo_usuario',Auth::user()->id)
+            ->orderBy('fecha','desc')
             ->get();
         }else{
 
@@ -360,6 +365,7 @@ class ConsultaHistoriaController extends Controller
             ->join('usuarios', 'antecedentes_personales.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get();
         }
        
@@ -620,12 +626,14 @@ class ConsultaHistoriaController extends Controller
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->where('datos_clinicos.ultimo_usuario', Auth::user()->id)
+            ->orderBy('fecha','desc')
             ->get();
         }else{
             $antecedentes = DB::table('datos_clinicos')
             ->join('usuarios', 'datos_clinicos.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get(); 
         }
 
@@ -725,12 +733,14 @@ class ConsultaHistoriaController extends Controller
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->where('resumen_historia_medica.ultimo_usuario', Auth::user()->id)
+            ->orderBy('fecha','desc')
             ->get();
         }else{
           $antecedentes = DB::table('resumen_historia_medica')
             ->join('usuarios', 'resumen_historia_medica.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get();  
         }
         return view('admin.consulta.consulta_historia_resumen_medica', [
@@ -863,12 +873,14 @@ class ConsultaHistoriaController extends Controller
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->where('resumen_historia_odontologica.ultimo_usuario', Auth::user()->id)
+            ->orderBy('fecha','desc')
             ->get();
         }else{
              $antecedentes = DB::table('resumen_historia_odontologica')
             ->join('usuarios', 'resumen_historia_odontologica.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get();
         }
         return view('admin.consulta.consulta_historia_resumen_odontologico', [
@@ -1000,6 +1012,7 @@ class ConsultaHistoriaController extends Controller
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('signos_vitales.ultimo_usuario',Auth::user()->id)
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get();
         }else{
 
@@ -1007,6 +1020,7 @@ class ConsultaHistoriaController extends Controller
             ->join('usuarios', 'signos_vitales.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get();
         }
         return view('admin.consulta.consulta_historia_signos_vitales', [
@@ -1138,6 +1152,7 @@ class ConsultaHistoriaController extends Controller
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
             ->where('historia_odontologica.ultimo_usuario',Auth::user()->id)
+            ->orderBy('fecha','desc')
             ->get();
 
         }else{
@@ -1145,6 +1160,7 @@ class ConsultaHistoriaController extends Controller
             ->join('usuarios', 'historia_odontologica.ultimo_usuario', '=', 'usuarios.id')
             ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
             ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
             ->get();
          //   dd($antecedentes);
         }

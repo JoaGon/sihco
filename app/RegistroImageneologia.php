@@ -65,6 +65,7 @@ class RegistroImageneologia extends Model
           'profesor',
           'validar' ,
           'fecha_validacion' ,
+          'imagen_ppal',
         
     ];
     public $timestamps = true;

@@ -12,6 +12,7 @@ use App\Paciente as Paciente;
 use App\Lista as Lista;
 use App\Valores_listas as Valores_listas;
 use App\ExamenClinico as ExamenClinico;
+use App\ExamenOclusion as ExamenOclusion;
 use App\EvaluacionPeriodontal as EvaluacionPeriodontal;
 use App\ExamenMuscular as ExamenMuscular;
 use App\ModeloDiagnostico as ModeloDiagnostico;
@@ -85,6 +86,75 @@ class Historia2Controller extends Controller
 
             }
             $consulta2 = ExamenClinico::create($data);
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
+
+    }
+        public function examenOclusionIndex($paciente_id, $consulta)
+    {
+        
+        $consulta = intval($consulta);
+
+        $persona = DB::table('paciente')
+            ->where('id_paciente', $paciente_id)
+            ->pluck('paciente.persona_id');
+
+        $paciente = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
+//dd($paciente);
+
+                return view('admin.parte2Historia.examen_oclusion', ['consulta' => $consulta, 'id_paciente' => $paciente_id], ['pacientes' => $paciente]);
+    }
+    public function examenOclusion(Request $req)
+    {
+
+        $data = $req->all();
+       // dd($data);
+        DB::beginTransaction();
+
+        try {
+
+            $consulta = intval($req->input('consulta_id'));
+
+            $data['ultimo_usuario'] = Auth::user()->id;
+            $data['profesor']       = Auth::user()->id;
+            $data['validar']        = '';
+
+            unset($data['_token']);
+            unset($data['historia']);
+
+            $verificar = DB::table('examen_oclusion')
+                ->where('paciente_id', $data['paciente_id'])
+                ->where('consulta_id', $data['consulta_id'])
+                ->where('fecha', $data['fecha'])
+                ->count();
+
+            if ($verificar > 0) {
+
+                $id = DB::table('examen_oclusion')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->pluck('examen_oclusion.id_oclusion');
+
+                $data['id_oclusion'] = $id[0];
+
+                DB::table('examen_oclusion')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->delete();
+
+            }
+            $consulta2 = ExamenOclusion::create($data);
 
         } catch (Exception $ex) {
             DB::rollback();

@@ -118,6 +118,7 @@
 <script src="{{ url('bootstrap-submenu-2.0.4/dist/js/bootstrap-submenu.min.js')}}" defer></script>
 <script>
 $(document).ready(function() {
+    
     $("#nacimiento_edit").datepicker({
         dateFormat: "yy-mm-dd",
         changeYear: true,

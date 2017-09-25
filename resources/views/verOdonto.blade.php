@@ -206,7 +206,7 @@
         <input type="hidden" name="paciente_id" value="{{$paciente->id_paciente}}">
         <input type="hidden" name="historia" value="{{$paciente->nro_historia}}">
         <input size="200px" id="imagenesSel" value='
-;arrastrable2_abrasion:165.00001525878906:171;arrastrable1_abfraccion:120:169;arrastrable0_abajo:80:169' type="text" readonly>
+;arrastrable2_abrasion:165.00001525878906:171;arrastrable1_abfraccion:128:169;arrastrable0_abajo:80:169' type="text" readonly>
         <input id="numElemento" value='0' type="hidden" readonly>
         <input id="btnGuardar" value='Guardar' type="button" readonly>
         <div class="row">

@@ -61,7 +61,7 @@
                                 <tr>
                                     <td>
                                         <strong>
-                                <a href="{{ url('consulta_examenClinico/'.$ante->id_examen_clinico.'/'.$ante->paciente_id) }}" class="btn btn-link" style="font-weight: bold" data-toggle="tooltip" title="Cita"> {{$ante->id_examen_clinico}} </a>
+                                <a href="{{ url('consulta_examenClinico/'.$ante->id_oclusion.'/'.$ante->paciente_id) }}" class="btn btn-link" style="font-weight: bold" data-toggle="tooltip" title="Cita"> {{$ante->id_oclusion}} </a>
                                 </strong>
                                     </td>
                                     <td class="name">

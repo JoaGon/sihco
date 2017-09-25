@@ -114,6 +114,11 @@
 <script src="{{ url('bootstrap-submenu-2.0.4/dist/js/bootstrap-submenu.min.js')}}" defer></script>
 <script>
 $(document).ready(function() {
+    var monkeyList = new List('consultas', {
+	  valueNames: ['name'],
+	  page: 10,
+	  pagination: true
+	});
     $("#nacimiento_edit").datepicker({
         dateFormat: "yy-mm-dd",
         changeYear: true,

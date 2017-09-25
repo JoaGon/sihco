@@ -819,6 +819,7 @@ border-radius: 10px;
 <link rel="Stylesheet" type="text/css" href="{{ url('src/wPaint.css')}}" />
 <script type="text/javascript" src="{{ url('src/wPaint.utils.js')}}"></script>
 <script type="text/javascript" src="{{ url('src/wPaint.js')}}"></script>
+<script type="text/javascript" src="{{ url('src/wPaint2.js')}}"></script>
 <!-- wPaint main -->
 <script type="text/javascript" src="{{ url('plugins/main/src/fillArea.min.js')}}"></script>
 <script type="text/javascript" src="{{ url('plugins/main/src/wPaint.menu.main.js')}}"></script>
@@ -947,7 +948,9 @@ function createCallback(cbName) {
     }
 }
 function insertar_historia() {
-    console.log("asdad")
+    var c5=document.getElementById("test");
+    var d5=c5.toDataURL("image/png");
+
 
     var myLanguage = {
         errorTitle: 'El formulario fallo en enviarse',
@@ -970,6 +973,7 @@ function insertar_historia() {
             //return false; // Will stop the submission of the form
             console.log($("#form_familiares")[0]);
             var formData = new FormData($("#form_familiares")[0]);
+            formData.append('imagen_ppal', d5);
 
             $.ajax({
                 url: "{{ url('/registro_imageneologico') }}",

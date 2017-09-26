@@ -15,8 +15,11 @@ use App\ExamenMuscular as ExamenMuscular;
 use App\ModeloDiagnostico as ModeloDiagnostico;
 use App\TestFagerston as TestFagerston;
 use App\DiagramaRiesgo as DiagramaRiesgo;
-use App\Odontograma as Odontograma;
 use App\ControlPlaca as ControlPlaca;
+
+use App\Odontograma as Odontograma;
+use App\ElementosOdontograma as ElementosOdontograma;
+
 
 
 use App\RegistroImageneologia as RegistroImageneologia;
@@ -150,6 +153,187 @@ class ConsultaHistoria2Controller extends Controller
 
             $verificar = DB::table('examen_clinico')
                 ->where('id_examen_clinico', $req->input('id_enfermedad'))
+                ->update([
+                    'validar'  => '1',
+                    'profesor' => Auth::user()->id,
+                    'fecha_validacion' => $today
+                ]);
+
+            return 'validado';
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
+
+    }
+     public function showOdontograma($paciente)
+    {
+
+        $persona = DB::table('paciente')
+            ->where('id_paciente', $paciente)
+            ->pluck('paciente.persona_id');
+
+     //   dd($persona);
+        $paciente2 = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
+     if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_id == 4){
+    
+        $antecedentes = DB::table('odontograma')
+            ->join('usuarios', 'odontograma.ultimo_usuario', '=', 'usuarios.id')
+            ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
+            ->where('odontograma.ultimo_usuario',Auth::user()->id)
+            ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
+            ->get();
+        }else{
+            $antecedentes = DB::table('odontograma')
+            ->join('usuarios', 'odontograma.ultimo_usuario', '=', 'usuarios.id')
+            ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
+            ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
+            ->get();
+        }
+
+        return view('admin.consulta.parte2.consulta_historia_odontograma', [
+            'pacientes'    => $paciente2,
+            'antecedentes' => $antecedentes,
+        ]);
+
+    }
+
+    public function getOdontograma($id, $paciente)
+    {
+
+        $persona = DB::table('paciente')
+            ->where('id_paciente', $paciente)
+            ->pluck('paciente.persona_id');
+
+        $paciente2 = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
+
+        $antecedentes = DB::table('odontograma')
+            ->where('id_odontograma', $id)
+            ->get();
+        $elementos = DB::table('elementos_odontograma')
+            ->where('odontograma_id', $id)
+            ->get();
+          //  dd($elementos);
+        $validado = DB::table('odontograma')
+            ->where('id_odontograma', $id)
+            ->select('validar')
+            ->get();
+        // dd($validado);
+        $consulta = DB::table('odontograma')
+            ->where('id_odontograma', $id)
+            ->pluck('consulta_id');
+            //dd($consulta);
+
+
+        // dd($enfermedades_cardiovasculares);
+        return view('consultar_odonto', [
+            'pacientes'                     => $paciente2,
+            'ante'                          => $antecedentes,
+            'elementos'                     => $elementos,
+            'consulta'                      => $consulta[0],
+            'validado'                      => $validado,
+
+        ]);
+
+    }
+
+    public function updateOdontograma(Request $req)
+    {
+        //dd($req->input('id_enfermedad'));
+        $data = $req->all();
+        try {
+
+            $verificar = DB::table('odontograma')
+                ->where('id_odontograma', $req->input('id_enfermedad'))
+                ->select('consulta_id', 'paciente_id', 'fecha', 'validar')
+                ->get();
+
+            $data['ultimo_usuario']          = Auth::user()->id;
+            $data['profesor']                = Auth::user()->id;
+            $data['validar']                 = '';
+            $data['consulta_id']             = $verificar[0]->consulta_id;
+            $data['paciente_id']             = $verificar[0]->paciente_id;
+            $data['fecha']                   = $verificar[0]->fecha;
+            $data['validar']                 = $verificar[0]->validar;
+            $data['id_odontograma'] = $req->input('id_enfermedad');
+
+            $data['nro_historia'] = $data['historia'];
+            unset($data['_token']);
+            unset($data['historia']);
+
+             $id = DB::table('odontograma')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->pluck('odontograma.id_odontograma');
+
+                $data['id_odontograma'] = $id[0];
+
+                DB::table('elementos_odontograma')
+                    ->where('odontograma_id', $data['id_odontograma'])
+                    ->delete();
+                    
+                DB::table('odontograma')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->delete();
+       // dd( $data['paciente_id'],$data['consulta_id'],$data['fecha']);
+
+                $consulta2 = Odontograma::create([
+                    'paciente_id'    => $data['paciente_id'],
+                    'nro_historia'   => $data['nro_historia'],
+                    'consulta_id'    => $data['consulta_id'],
+                    'ultimo_usuario' => Auth::user()->id,
+                    'fecha' => $data['fecha'],
+
+                ]);
+             //   dd($consulta2->id_odontograma);
+
+            foreach (json_decode($data['elementos']) as $key => $value) {
+
+                $consulta3 = ElementosOdontograma::create([
+                'elemento'       => $value->elemento,
+                'posicion_x'     => $value->left,
+                'posicion_y'     => $value->top,
+                'odontograma_id' =>  $consulta2->id_odontograma
+                ]);
+
+            }
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
+
+
+    }
+
+    public function validarOdontograma(Request $req)
+    {
+        // dd($req->id_enfermedad);
+        $data = $req->all();
+        $today = date("Y-m-d");
+
+        try {
+
+            $verificar = DB::table('odontograma')
+                ->where('id_odontograma', $req->input('id_enfermedad'))
                 ->update([
                     'validar'  => '1',
                     'profesor' => Auth::user()->id,

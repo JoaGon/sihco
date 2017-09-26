@@ -15,7 +15,19 @@
     <script src="{{ url('js/pnotify/dist/pnotify.buttons.js')}}"></script>
     <script src="{{ url('js/pnotify/dist/pnotify.nonblock.js')}}"></script>
     <script src="{{ url('js/form-validator/jquery.form-validator.min.js') }}"></script>
+    <script>
 
+var valido = <?php echo json_encode($validado); ?>;
+
+var antecendetes = <?php echo json_encode($ante); ?>;
+
+var elementos = <?php echo json_encode($elementos); ?>;
+console.log(antecendetes)
+console.log(elementos)
+
+        
+
+</script>
     <style type="text/css">
     body {
         /*background-color: #E3E0F9;*/
@@ -87,7 +99,44 @@
 
         }
     }
+function validar() {
+    var id_enfermedad = jQuery('#id_enfermedad').val()
+    console.log(id_enfermedad, "<?php echo csrf_token(); ?>")
+    jQuery.ajax({
 
+        url: "{{ url('/validar_odontograma') }}",
+        type: "POST",
+        data: {
+            '_token': jQuery('input[name=_token]').val(),
+            id_enfermedad: id_enfermedad
+        },
+        success: function(data) {
+            PNotify.removeAll();
+            new PNotify({
+                title: 'Validacion Exitosa',
+                text: 'El odontograma ha sido validado!',
+                type: 'success',
+                styling: 'bootstrap3'
+            });
+             new PNotify({
+                title: 'Historia Validada',
+                text: 'Esta Historia ha sido validada',
+                hide: false,
+                type: 'success',
+                styling: 'bootstrap3'
+            });
+            console.log('exito')
+
+
+        },
+        error: function() {
+            alert("error!!!!");
+        }
+
+    });
+
+
+}
     function dibujar() {
         elementos = jQuery("#imagenesSel").val();
         //alert('con: '+elementos);
@@ -106,8 +155,8 @@
                 jQuery("#elementoSeleccionado").append(cad);
             }
         }
-        arrayElementos1 = elementos.split(':');
-        nomImagen = arrayElementos1
+      //  arrayElementos1 = elementos.split(':');
+//  nomImagen = arrayElementos1
     }
 
     function eliminar(valDiv) {
@@ -116,6 +165,40 @@
         jQuery("#numElemento").val(valElemento);
     }
     jQuery(document).ready(function() {
+
+           jQuery.each(antecendetes, function(i, val) {
+
+            jQuery('#id_enfermedad').val(val.id_odontograma);
+            jQuery('#fecha').val(val.fecha);
+
+           });
+        //alert('con: '+elementos);
+        arrayElementos = elementos
+        for (var i in arrayElementos) {
+            console.log("sad",arrayElementos[i])
+            //      document.write(ss[i]);
+            //      document.write("<br/>");
+            arrayElementos2 = arrayElementos[i].elemento.split('_');
+            console.log("sad",arrayElementos2)
+             if (arrayElementos2[1] != undefined) {
+            posLeft = arrayElementos[i].posicion_x;
+            posTop = arrayElementos[i].posicion_y;
+                cad = '<div ondblclick="eliminar(this.id)" id="' + arrayElementos[i].elemento + '" class="dialogletra" title="Pulsado" style="position:relative;left:' + posLeft + ';top:' + posTop + '"><img src="../../imgOdont/' + arrayElementos2[1] + '.gif"></div>';
+                jQuery("#elementoSeleccionado").append(cad);
+            }
+           /* arrayElementos1 = arrayElementos[i].split(':');
+            arrayElementos2 = arrayElementos1[0].split('_');
+            console.log(arrayElementos1, arrayElementos2)
+            if (arrayElementos2[1] != undefined) {
+                posLeft = arrayElementos1[1];
+                posTop = arrayElementos1[2];
+                cad = '<div ondblclick="eliminar(this.id)" id="' + arrayElementos1[0] + '" class="dialogletra" title="Pulsado" style="position:relative;left:' + posLeft + ';top:' + posTop + '"><img src="../../imgOdont/' + arrayElementos2[1] + '.gif"></div>';
+                //\       document.write(cad);
+                jQuery("#elementoSeleccionado").append(cad);
+            }*/
+        }
+        //arrayElementos1 = arrayElementos[i]
+      //  nomImagen = arrayElementos1
 
   jQuery("#fecha").datepicker({dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true});
 
@@ -154,7 +237,7 @@
         })
         jQuery("#btnGuardar").click(function() {
             numElemento = jQuery("#numElemento").val() - 1;
-            alert("aca estoy con " + numElemento);
+            //alert("aca estoy con " + numElemento);
             valor = '';
             array = []
             jQuery(".dialogletra").each(function() {
@@ -175,7 +258,7 @@
             formData.append('elementos', JSON.stringify(array));
 
            jQuery.ajax({
-                url: "{{ url('/save_odonto') }}",
+                url: "{{ url('/update_odontograma') }}",
                 type: 'POST',
                 data: formData,
                 async: false,
@@ -223,10 +306,10 @@
                                     <input class="form-control" id="fecha" type="text" class="form-control" name="fecha" data-validation="required" data-validation-error-msg="Debe ingrear una fecha" value="{{ old('fecha') }}">
                                 </div>
                             </div>
-       
         <input type="hidden" name="consulta_id" value={{$consulta}}>
         <input type="hidden" name="paciente_id" value="{{$paciente->id_paciente}}">
         <input type="hidden" name="historia" value="{{$paciente->nro_historia}}">
+        <input type="hidden" name="id_enfermedad" id="id_enfermedad">
         <input style="display: none" size="200px" id="imagenesSel" value='
 ;arrastrable2_abrasion:500.00001525878906:171;arrastrable1_abfraccion:450:169;arrastrable0_abajo:80:169' type="text" readonly>
         <input id="numElemento" value='0' type="hidden" readonly>

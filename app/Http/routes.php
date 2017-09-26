@@ -288,6 +288,12 @@ Route::get('consulta_oclusion/{id}/{paciente_id}','ConsultaHistoria2Controller@g
 Route::post('update_oclusion','ConsultaHistoria2Controller@updateOclusion');
 Route::post('validar_oclusion','ConsultaHistoria2Controller@validarOclusion');
 
+Route::get('consulta_odontograma/{nro_historia}','ConsultaHistoria2Controller@showOdontograma');
+Route::get('consulta_odontograma/{id}/{paciente_id}','ConsultaHistoria2Controller@getOdontograma');
+
+Route::post('update_odontograma','ConsultaHistoria2Controller@updateOdontograma');
+Route::post('validar_odontograma','ConsultaHistoria2Controller@validarOdontograma');
+
 
 Route::get('consulta_testFagerstrom/{nro_historia}','ConsultaHistoria2Controller@showTestFagerstrom');
 Route::get('consulta_testFagerstrom/{id}/{paciente_id}','ConsultaHistoria2Controller@getTestFagerstrom');

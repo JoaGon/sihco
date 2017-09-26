@@ -65,7 +65,7 @@
                         <li class="dropdown-submenu"><a  href="{{ url('consulta_evaluacionPeriodontal', array($paciente->id_paciente)) }}" tabindex="0">IX) Evaluacion Periodontal</a></li>
                         <li class="dropdown-submenu"><a  href="{{ url('consulta_testFagerstrom', array($paciente->id_paciente)) }}" tabindex="0"> Test de Fagerström</a></li>
                         <li class="dropdown-submenu"><a  href="{{url('consulta_diagramaRiesgo', array($paciente->id_paciente))}}" tabindex="0"> Diagrama de Riesgo</a></li>  
-                        <li class="dropdown-submenu"><a href="{{ url('odontograma', array($paciente->id_paciente)) }}" tabindex="0">X) Odontograma</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('consulta_odontograma', array($paciente->id_paciente)) }}" tabindex="0">X) Odontograma</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('consulta_controlPlaca', array($paciente->id_paciente)) }}" tabindex="0">XI) Control de Placa</a></li>
                         <li class="dropdown-submenu"><a  href="{{ url('registro_imageneologico', array($paciente->id_paciente)) }}" tabindex="0">XII) Imageneologia</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">XIII) Examen de la Oclusion</a></li>
@@ -109,7 +109,7 @@
                         <li class="dropdown-submenu"><a  href="{{ url('consulta_evaluacionPeriodontal', array($paciente->id_paciente)) }}" tabindex="0">IX) Evaluacion Periodontal</a></li>
                         <li class="dropdown-submenu"><a  href="{{ url('consulta_testFagerstrom', array($paciente->id_paciente)) }}" tabindex="0"> Test de Fagerström</a></li>
                         <li class="dropdown-submenu"><a  href="{{url('consulta_diagramaRiesgo', array($paciente->id_paciente))}}" tabindex="0"> Diagrama de Riesgo</a></li>  
-                        <li class="dropdown-submenu"><a href="{{ url('odontograma', array($paciente->id_paciente)) }}" tabindex="0">X) Odontograma</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('consulta_odontograma', array($paciente->id_paciente)) }}" tabindex="0">X) Odontograma</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('consulta_controlPlaca', array($paciente->id_paciente)) }}" tabindex="0">XI) Control de Placa</a></li>
                         <li class="dropdown-submenu"><a  href="{{ url('registro_imageneologico', array($paciente->id_paciente)) }}" tabindex="0">XII) Imageneologia</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">XIII) Examen de la Oclusion</a></li>
@@ -162,7 +162,7 @@
                         <li class="dropdown-submenu"><a  href="{{ url('consulta_evaluacionPeriodontal', array($paciente->id_paciente)) }}" tabindex="0">IX) Evaluacion Periodontal</a></li>
                         <li class="dropdown-submenu"><a  href="{{ url('consulta_testFagerstrom', array($paciente->id_paciente)) }}" tabindex="0"> Test de Fagerström</a></li>
                         <li class="dropdown-submenu"><a  href="{{url('consulta_diagramaRiesgo', array($paciente->id_paciente))}}" tabindex="0"> Diagrama de Riesgo</a></li>  
-                        <li class="dropdown-submenu"><a href="{{ url('odontograma', array($paciente->id_paciente)) }}" tabindex="0">X) Odontograma</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('consulta_odontograma', array($paciente->id_paciente)) }}" tabindex="0">X) Odontograma</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('consulta_controlPlaca', array($paciente->id_paciente)) }}" tabindex="0">XI) Control de Placa</a></li>
                         <li class="dropdown-submenu"><a  href="{{ url('consulta_Imageneologia', array($paciente->id_paciente)) }}" tabindex="0">XII) Imageneologia</a></li>
                         <li class="dropdown-submenu"><a  href="{{ url('consulta_oclusion', array($paciente->id_paciente)) }}" tabindex="0">XIII) Examen de la Oclusion</a></li>

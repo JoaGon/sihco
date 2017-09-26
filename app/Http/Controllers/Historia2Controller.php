@@ -19,6 +19,8 @@ use App\ModeloDiagnostico as ModeloDiagnostico;
 use App\TestFagerston as TestFagerston;
 use App\DiagramaRiesgo as DiagramaRiesgo;
 use App\Odontograma as Odontograma;
+use App\ElementosOdontograma as ElementosOdontograma;
+
 use App\ControlPlaca as ControlPlaca;
 
 use App\RegistroImageneologia as RegistroImageneologia;
@@ -694,18 +696,53 @@ class Historia2Controller extends Controller
 
             unset($data['_token']);
             unset($data['historia']);
-            foreach (json_decode($data['elementos']) as $key => $value) {
+            $verificar = DB::table('odontograma')
+                ->where('paciente_id', $data['paciente_id'])
+                ->where('consulta_id', $data['consulta_id'])
+                ->where('fecha', $data['fecha'])
+                ->count();
+
+            if ($verificar > 0) {
+
+                $id = DB::table('odontograma')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->pluck('odontograma.id_odontograma');
+
+                $data['id_odontograma'] = $id[0];
+
+                DB::table('elementos_odontograma')
+                    ->where('odontograma_id', $data['id_odontograma'])
+                    ->delete();
+                    
+                DB::table('odontograma')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->delete();
+
+            }
+
 
                 $consulta2 = Odontograma::create([
                     'paciente_id'    => $data['paciente_id'],
                     'nro_historia'   => $data['nro_historia'],
                     'consulta_id'    => $data['consulta_id'],
-                    'elemento'       => $value->elemento,
-                    'posicion_x'     => $value->left,
-                    'posicion_y'     => $value->top,
                     'ultimo_usuario' => Auth::user()->id,
+                    'fecha' => $data['fecha'],
 
                 ]);
+
+            foreach (json_decode($data['elementos']) as $key => $value) {
+
+                $consulta3 = ElementosOdontograma::create([
+                'elemento'       => $value->elemento,
+                'posicion_x'     => $value->left,
+                'posicion_y'     => $value->top,
+                'odontograma_id' =>  $consulta2->id_odontograma
+                ]);
+
             }
             /* $verificar = DB::table('odontograma')
         ->where('paciente_id',$data['paciente_id'])

@@ -14,23 +14,7 @@ angular.module("AdminPersonales",[], function($interpolateProvider){
   var url_cancer = "../../cancer";
 
   console.log('enferrrr',valido)
-  if(valido[0].validar == ''){
-    console.log('vacio')
-    new PNotify({
-        title: 'Historia No Validada',
-        text: 'Esta Historia no ha sido validada',
-        hide: false,
-        styling: 'bootstrap3'
-    });
-  }else {
-    new PNotify({
-        title: 'Historia Validada',
-        text: 'Esta Historia ha sido validada',
-        hide: false,
-        type: 'success',
-        styling: 'bootstrap3'
-    });
-  }
+
   test = [];
   
   $scope.enfermedades = enfer_cardiovascular;

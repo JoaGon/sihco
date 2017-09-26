@@ -1,15 +1,21 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
 
-<head>
-    <title>Probando el plugin button de jQuery UI</title>
+
     <link type="text/css" href="{{url('jqueryui/jquery-ui.css')}}" rel="Stylesheet" />
     <script type="text/javascript" src="{{ url('bower_components/jquery/dist/jquery.min.js') }}"></script>
+     <link href="{{ url('js/pnotify/dist/pnotify.css')}}" rel="stylesheet">
+    <link href="{{ url('js/pnotify/dist/pnotify.buttons.css')}}" rel="stylesheet">
+    <link href="{{ url('js/pnotify/dist/pnotify.nonblock.css')}}" rel="stylesheet">
+
     <script>
     jQuery.noConflict();
     </script>
     <script type="text/javascript" src="{{ url('jqueryui/jquery-ui.min.js')}}"></script>
     <script src="{{url('/libDsiaV3/public/js/bootstrap/ie-emulation-modes-warning.js')}}"></script>
+     <script src="{{ url('js/pnotify/dist/pnotify.js')}}"></script>/
+    <script src="{{ url('js/pnotify/dist/pnotify.buttons.js')}}"></script>
+    <script src="{{ url('js/pnotify/dist/pnotify.nonblock.js')}}"></script>
+    <script src="{{ url('js/form-validator/jquery.form-validator.min.js') }}"></script>
+
     <style type="text/css">
     body {
         /*background-color: #E3E0F9;*/
@@ -110,6 +116,9 @@
         jQuery("#numElemento").val(valElemento);
     }
     jQuery(document).ready(function() {
+
+  jQuery("#fecha").datepicker({dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true});
+
         var letras = ['abajo', 'abfraccion', 'abrasion', 'absceso', 'abstraccion', 'arriba', 'atricion',
             'bifurcacion', 'caries', 'cariesmed', 'cariespeq', 'cavidades', 'contacto', 'coronaB', 'coronaD', 'cuspide',
             'diastemas', 'e_cerrado', 'empaquetam', 'endo_realizado', 'endodontico', 'erosion',
@@ -152,7 +161,7 @@
                 var elemento = this;
                 var posicion = jQuery(this).position();
                 valor = valor + ';' + elemento.id + ':' + posicion.left + ':' + posicion.top;
-                alert("elemento.id=" + elemento.id + "left: " + posicion.left + ", top: " + posicion.top);
+                //alert("elemento.id=" + elemento.id + "left: " + posicion.left + ", top: " + posicion.top);
                 var obj = {
                     'elemento': elemento.id,
                     'left': posicion.left,
@@ -191,24 +200,36 @@
         })
     });
     </script>
-</head>
-
-<body>
+<div class="container">
+ <div class="row">
+        <div class="col-lg-10 col-sm-8 col-sm-offset-4 col-lg-offset-2 col-md-offset-4">
+   <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12" style=" background-color:white;padding-left:0; margin-top: 25px">
+                <div style="font-size: 20px; text-align: center; color:#59bddd;">
+                    Odontograma
+                </div>
     <form class="form-horizontal" id="form_familiares">
-        Coordenadas del elemento relativas al contenedor:
-        <br> X: <span id="posx"></span>
-        <br> Y: <span id="posy"></span>
-        <br>
-        <br> Coordenadas del elemento absolutas a la página:
-        <br> X: <span id="offsetx"></span>
-        <br> Y: <span id="offsety"></span> @foreach ($pacientes as $paciente)
+    @foreach ($pacientes as $paciente)
+    <div class="form-group">
+                                <div class="col-md-4">
+                                    <label for="motivo">Nombre</label>
+                                    <textarea class="form-control" disabled cols="25" autofocus="true" rows="1" name="nombre">{{$paciente->nombre }} {{ $paciente->apellido }}</textarea>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="motivo" class="">C.I:</label>
+                                    <textarea class="form-control" disabled cols="75" autofocus="true" rows="1" name="ci">{{ $paciente->ci }}</textarea>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="motivo" class="">Fecha Consulta</label>
+                                    <input class="form-control" id="fecha" type="text" class="form-control" name="fecha" data-validation="required" data-validation-error-msg="Debe ingrear una fecha" value="{{ old('fecha') }}">
+                                </div>
+                            </div>
+       
         <input type="hidden" name="consulta_id" value={{$consulta}}>
         <input type="hidden" name="paciente_id" value="{{$paciente->id_paciente}}">
         <input type="hidden" name="historia" value="{{$paciente->nro_historia}}">
-        <input size="200px" id="imagenesSel" value='
-;arrastrable2_abrasion:165.00001525878906:171;arrastrable1_abfraccion:120:169;arrastrable0_abajo:80:169' type="text" readonly>
+        <input style="display: none" size="200px" id="imagenesSel" value='
+;arrastrable2_abrasion:500.00001525878906:171;arrastrable1_abfraccion:450:169;arrastrable0_abajo:80:169' type="text" readonly>
         <input id="numElemento" value='0' type="hidden" readonly>
-        <input id="btnGuardar" value='Guardar' type="button" readonly>
         <div class="row">
             <div class="col-xs-1 col-sm-1 col-md-1">
                 <div id="botonesletras1" class="botonesletras"></div>
@@ -223,11 +244,21 @@
             </div>
         </div>
         <div class=''></div>
+        <div class="form-group">
+                    <div class="col-md-6 col-md-offset-4">
+                     <a type="button" onclick="validar();" class="btn btn-primary">Validar</a>
+                        <a type="button" id="btnGuardar" class="btn btn-primary">Registrar
+                        </a>
+                        <a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
+                    </div>
+                </div>
         @endforeach
     </form>
-</body>
+    </div>
+    </div>
+    </div>
 
-</html>
+</div>
 <!--     Bootstrap core JavaScript-->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="{{url('/libDsiaV3/public/js/bootstrap/bootstrap.min.js')}}"></script>
@@ -235,5 +266,5 @@
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="{{url('/libDsiaV3/public/js/bootstrap/ie10-viewport-bug-workaround.js')}}"></script>
 <script>
-dibujar();
+//dibujar();
 </script>

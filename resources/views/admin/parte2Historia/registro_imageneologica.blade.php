@@ -1,4 +1,4 @@
-@extends('admin-layout.sidebarAdmin') @section('content')
+ @extends('admin-layout.sidebarAdmin') @section('content')
 <!-- DataTables CSS -->
 <link href="{{ url('template/vendor/datatables-plugins/dataTables.bootstrap.css')}}" rel="stylesheet">
 <!-- DataTables Responsive CSS -->
@@ -229,15 +229,14 @@ border-radius: 10px;
                                     <input class="form-control" id="fecha" type="text" class="form-control" name="fecha" data-validation="required" data-validation-error-msg="Debe ingrear una fecha" value="{{ old('fecha') }}">
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                            </div>
+                            
                             <div class="row row_border">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="col-lg-3 col-md-3 col-sm-3">
                                         Ordenado Por:
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <select class="form-control" style="color: black" name="corona_tam">
+                                        <select class="form-control" style="color: black" name="ordenado_por" id="ordenado_por">
                                             <option>Seleccione..</option>
                                             <option>Radiologia</option>
                                             <option>CIA Periodoncia</option>
@@ -260,19 +259,19 @@ border-radius: 10px;
                                         Numero y tipo de Imagen:
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
-                                        <input type="checkbox" name="check[]" id="cambio_salud_ultimo_ayo" value="S">Panoramica
+                                        <input type="checkbox" name="panoramica" id="panoramica" value="S">Panoramica
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
-                                        <input type="checkbox" name="check[]" id="sangra_largo_tiempo" value="S"> Periapicales
+                                        <input type="checkbox" name="periapical" id="periapical" value="S"> Periapicales
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
-                                        <input type="checkbox" name="check[]" id="cicatrizacion_lenta" value="S"> Interproximales
+                                        <input type="checkbox" name="interproximal" id="interproximal" value="S"> Interproximales
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-3">
-                                        <input type="checkbox" name="check[]" id="cicatrizacion_lenta" value="S"> Otros
+                                        <input type="checkbox" name="otro" id="otro" value="S"> Otros
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
-                                        <input class="form-control" type="input" name="motivo_examen" id="motivo_examen" style="color:black ">
+                                        <input class="form-control" type="input" name="espec_otro" id="espec_otro" style="color:black ">
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -284,36 +283,8 @@ border-radius: 10px;
                                     </div>
                                 </div>
                             </div>
-                </div>
                 <div class="row">
-                    <div class="col-lg-12">
-                        <form enctype="multipart/form-data">
-                            <!--div class="form-group col-lg-3"  >
-						            <input id="file-1" name="imagen_" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1">
-						        </div>
-						        <div class="form-group col-lg-3" >
-						            <input id="file-2" name="imagen_" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-ount="1">
-						        </div>
-						        <div class="form-group col-lg-3"  >
-						            <input id="file-3" name="imagen_" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1">
-						        </div>
-						        <div class="form-group col-lg-3"  >
-						            <input id="file-4" name="imagen_" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-ount="1">
-						        </div>
-						         <div class="form-group col-lg-3"  >
-						            <input id="file-5" name="imagen_" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1">
-						        </div>
-						        <div class="form-group col-lg-3" >
-						            <input id="file-6" name="imagen_" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-ount="1">
-						        </div>
-						        <div class="form-group col-lg-3"  >
-						            <input id="file-7" name="imagen_" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1">
-						        </div>
-						        <div class="form-group col-lg-3"  >
-						            <input id="file-8" name="imagen_" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-ount="1">
-						        </div-->
-                        </form>
-                    </div>
+                    
                     <div id="wPaint-demo1" class="col-lg-10" style="position:relative; width:500px; height:200px; background-color:#7a7a7a; margin:70px auto 20px auto;"></div>
                     <center style="margin-bottom: 50px;">
                         <input type="button" value="toggle menu" onclick="console.log($('#wPaint-demo1').wPaint('menuOrientation')); $('#wPaint-demo1').wPaint('menuOrientation', $('#wPaint-demo1').wPaint('menuOrientation') === 'vertical' ? 'horizontal' : 'vertical');" />
@@ -325,36 +296,36 @@ border-radius: 10px;
                     <div class="col-lg-12">
                         <!--textarea name="calidad_imagen" id="calidad_imagen" placeholder="" data-validation="required" data-validation-error-msg="Debe especificar" class="form-control" style="height: 100px;"></textarea-->
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="check[]" id="examinado_ultimo_ayo" value="S"> Apta para interpretar
+                            <input type="checkbox" name="apta_interpretar" id="apta_interpretar" value="S"> Apta para interpretar
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="check[]" id="cambio_salud_ultimo_ayo" value="S">Alta Densidad
+                            <input type="checkbox" name="alta_densidad" id="alta_densidad" value="S">Alta Densidad
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="check[]" id="sangra_largo_tiempo" value="S"> Baja Densidad
+                            <input type="checkbox" name="baja_densidad" id="baja_densidad" value="S"> Baja Densidad
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="check[]" id="cicatrizacion_lenta" value="S"> Borrosa
+                            <input type="checkbox" name="borrosa" id="borrosa" value="S"> Borrosa
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="check[]" id="perdida_peso" value="S"> Distorsion
+                            <input type="checkbox" name="distorsion" id="distorsion" value="S"> Distorsion
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
-                            <input type="checkbox" name="check[]" id="perdida_peso" value="S"> Defectos
-                            <input type="text" name="check[]" id="perdida_peso" style="color: black">
+                            <input type="checkbox" name="defecto" id="defecto" value="S"> Defectos
+                            <input type="text" name="defecto_imagen" id="defecto_imagen" style="color: black">
                         </div>
                     </div>
                 </div>
                 <div class="row row_border ">
                     2. Hallazgos radiográficos en estructuras óseas:
                     <div class="col-lg-12">a- Radiolucida
-                        <textarea name="oseas" id="oseas" placeholder="Introduzca el Resumen" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
+                        <textarea name="radiolucida" id="radiolucida" placeholder="Introduzca" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
                     </div>
                     <div class="col-lg-12">b- Radiopaca
-                        <textarea name="oseas" id="oseas" placeholder="Introduzca el Resumen" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
+                        <textarea name="radiopaca" id="radiopaca" placeholder="Introduzca el Resumen" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
                     </div>
                     <div class="col-lg-12">c- Mixta
-                        <textarea name="oseas" id="oseas" placeholder="Introduzca el Resumen" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
+                        <textarea name="mixta" id="mixta" placeholder="Introduzca el Resumen" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
                     </div>
                 </div>
                 <div class="row row_border ">
@@ -364,21 +335,21 @@ border-radius: 10px;
                         <input type="checkbox" name="check[]" id="examinado_ultimo_ayo" value="S">
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">Lados
-                        <select class="form-control" style="color: black" name="corona_tam">
+                        <select class="form-control" style="color: black" name="seno_maxilar_lado" id="seno_maxilar_lado">
                             <option>Grande</option>
                             <option>Mediana</option>
                             <option>Peque;a</option>
                         </select>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">Bordes
-                        <select class="form-control" style="color: black" name="corona_forma">
+                        <select class="form-control" style="color: black" name="seno_maxilar_borde" id="seno_maxilar_borde">
                             <option>Globulosa</option>
                             <option>Cilindricas</option>
                             <option>Triangulares</option>
                         </select>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">Forma
-                        <select class="form-control" style="color: black" name="corona_forma">
+                        <select class="form-control" style="color: black" name="seno_maxilar_forma" id="seno_maxilar_forma">
                             <option>Globulosa</option>
                             <option>Cilindricas</option>
                             <option>Triangulares</option>
@@ -386,7 +357,7 @@ border-radius: 10px;
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         b. Condilo - Cuello del condilo mandibular
-                        <select class="form-control" style="color: black; width: 33.33%" name="corona_forma">
+                        <select class="form-control" style="color: black; width: 33.33%" name="cuello_condilo" id="cuello_condilo">
                             <option>Globulosa</option>
                             <option>Cilindricas</option>
                             <option>Triangulares</option>
@@ -395,21 +366,21 @@ border-radius: 10px;
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <span class="col-lg-12" style="padding-left: 0px;">c. Fosas Nasales</span>
                         <div class="col-lg-4 col-md-4 col-sm-4">Lados
-                            <select class="form-control" style="color: black" name="corona_tam">
+                            <select class="form-control" style="color: black" name="fosa_nasal_lado" id="fosa_nasal_lado">
                                 <option>Grande</option>
                                 <option>Mediana</option>
                                 <option>Peque;a</option>
                             </select>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">Bordes
-                            <select class="form-control" style="color: black" name="corona_forma">
+                            <select class="form-control" style="color: black" name="fosa_nasal_borde" id="fosa_nasal_borde">
                                 <option>Globulosa</option>
                                 <option>Cilindricas</option>
                                 <option>Triangulares</option>
                             </select>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">Forma
-                            <select class="form-control" style="color: black" name="corona_forma">
+                            <select class="form-control" style="color: black" name="fosa_nasal_forma" id="fosa_nasal_forma">
                                 <option>Globulosa</option>
                                 <option>Cilindricas</option>
                                 <option>Triangulares</option>
@@ -419,10 +390,10 @@ border-radius: 10px;
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <span class="col-lg-12" style="padding-left: 0px;">d. Arco cigomatico</span>
                         <div class="col-lg-12 col-md-12 col-sm-12">Discontinuidad
-                            <input type="checkbox" name="check[]" id="examinado_ultimo_ayo" value="S">
+                            <input type="checkbox" name="discontinuidad" id="discontinuidad" value="S">
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">Lado
-                            <select class="form-control" style="color: black" name="corona_tam">
+                            <select class="form-control" style="color: black" name="arco_lado" id="arco_lado">
                                 <option>Grande</option>
                                 <option>Mediana</option>
                                 <option>Peque;a</option>
@@ -433,42 +404,42 @@ border-radius: 10px;
                         e. Espacion Aereo, sombra de tejido blando (region del cuello)
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">Presencia de Radiopacidad
-                        <select class="form-control" style="color: black" name="corona_tam">
+                        <select class="form-control" style="color: black" name="presencia_radiopacidad" id="presencia_radiopacidad">
                             <option>Grande</option>
                             <option>Mediana</option>
                             <option>Peque;a</option>
                         </select>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">Lado
-                        <select class="form-control" style="color: black" name="corona_forma">
+                        <select class="form-control" style="color: black" name="espacio_aereo_lado" id="espacio_aereo_lado">
                             <option>Globulosa</option>
                             <option>Cilindricas</option>
                             <option>Triangulares</option>
                         </select>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">Bordes
-                        <select class="form-control" style="color: black" name="corona_forma">
+                        <select class="form-control" style="color: black" name="espacio_aereo_bordes" id="espacio_aereo_bordes">
                             <option>Globulosa</option>
                             <option>Cilindricas</option>
                             <option>Triangulares</option>
                         </select>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">Forma
-                        <select class="form-control" style="color: black" name="corona_forma">
+                        <select class="form-control" style="color: black" name="espacio_aereo_forma" id="espacio_aereo_forma">
                             <option>Globulosa</option>
                             <option>Cilindricas</option>
                             <option>Triangulares</option>
                         </select>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">Numero
-                        <select class="form-control" style="color: black" name="corona_forma">
+                        <select class="form-control" style="color: black" name="espacio_aereo_numero" id="espacio_aereo_numero">
                             <option>Globulosa</option>
                             <option>Cilindricas</option>
                             <option>Triangulares</option>
                         </select>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">Ubicacion
-                        <select class="form-control" style="color: black" name="corona_forma">
+                        <select class="form-control" style="color: black" name="espacio_aereo_ubicacion" id="espacio_aereo_ubicacion">
                             <option>Globulosa</option>
                             <option>Cilindricas</option>
                             <option>Triangulares</option>
@@ -480,64 +451,64 @@ border-radius: 10px;
                     <div class="col-lg-12 col-sm-4 col-md-4">a. Anomalias: Anomalia de Tama;o</div>
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="col-lg-4 col-sm-4 col-md-4">
-                            <select class="form-control" style="color: black; margin: 15px" name="corona_forma">
+                            <select class="form-control" style="color: black; margin: 15px" name="anomalia_tam" id="anomalia_tam">
                                 <option>Globulosa</option>
                                 <option>Cilindricas</option>
                                 <option>Triangulares</option>
                             </select>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="giroversiones" id="giroversiones">
+                            <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="espec_anomalia_tam" id="espec_anomalia_tam">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">SUpemumerarios
-                        <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="extrusiones" id="extrusiones">
+                        <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="supernumerarios" id="supernumerarios">
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Taurodontismo
-                        <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="inclinados" id="inclinados">
+                        <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="taurodontismo" id="taurodontismo">
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Hipercementosis
-                        <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="faceta_desgaste" id="faceta_desgaste">
+                        <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="hipercementosis" id="hipercementosis">
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Otras
-                        <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="faceta_desgaste" id="faceta_desgaste">
+                        <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="otras" id="otras">
                     </div>
                     <div class="col-lg-12">b. Radiolucides coronal:
-                        <textarea name="oseas" id="oseas" placeholder="Introduzca el Resumen" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
+                        <textarea name="radiolucides_coronal" id="radiolucides_coronal" placeholder="Introduzca el Resumen" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
                     </div>
                 </div>
                 `
                 <div class="row row_border ">
                     5. Región apical
                     <div class="col-lg-12">
-                        <textarea name="apical" id="apical" placeholder="Introduzca el Resumen" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
+                        <textarea name="region_apical" id="region_apical" placeholder="Introduzca el Resumen" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
                     </div>
                 </div>
                 <div class="row row_border ">
                     6. Cresta alveolar
                     <div class="col-lg-12">
-                        <textarea name="cresta" id="cresta" placeholder="Introduzca el Resumen" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
+                        <textarea name="cresta_alveolar" id="cresta_alveolar" placeholder="Introduzca el Resumen" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Dientes Inclinados
-                        <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="extrusiones" id="extrusiones">
+                        <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="dientes_inclinados" id="dientes_inclinados">
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Espacios Abiertos
-                        <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="inclinados" id="inclinados">
+                        <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="espacios_abiertos" id="espacios_abiertos">
                     </div>
                 </div>
                 <div class="row row_border ">
                     7. Hallazgos adicionales
                     <div class="col-lg-12">
-                        <textarea name="adicionales" id="adicionales" placeholder="Introduzca el Resumen" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
+                        <textarea name="hallazgos_adicionales" id="hallazgos_adicionales" placeholder="Introduzca el Resumen" data-validation="required" data-validation-error-msg="Debe especificar el resumen" class="form-control" style="height: 100px;"></textarea>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">1:2
-                        <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="extrusiones" id="extrusiones">
+                        <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="uno_dos" id="uno_dos">
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">1:1
-                        <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="inclinados" id="inclinados">
+                        <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="uno_uno" id="uno_uno">
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">2:1
-                        <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="inclinados" id="inclinados">
+                        <input class="form-control" type="text" style="color: black; margin: 15px" data-validation="required" data-validation-error-msg="Requerido" name="dos_uno" id="dos_uno">
                     </div>
                 </div>
                 <div class="row row_border ">
@@ -848,6 +819,7 @@ border-radius: 10px;
 <link rel="Stylesheet" type="text/css" href="{{ url('src/wPaint.css')}}" />
 <script type="text/javascript" src="{{ url('src/wPaint.utils.js')}}"></script>
 <script type="text/javascript" src="{{ url('src/wPaint.js')}}"></script>
+<script type="text/javascript" src="{{ url('src/wPaint2.js')}}"></script>
 <!-- wPaint main -->
 <script type="text/javascript" src="{{ url('plugins/main/src/fillArea.min.js')}}"></script>
 <script type="text/javascript" src="{{ url('plugins/main/src/wPaint.menu.main.js')}}"></script>
@@ -859,8 +831,11 @@ border-radius: 10px;
 <!-- wPaint file -->
 <script type="text/javascript" src="{{ url('plugins/file/src/wPaint.menu.main.file.js')}}"></script>
 <script>
-               
-            
+          
+$(document).ready(function(){
+  $("#fecha").datepicker({dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true});
+})   
+      
 var btnCust = '<button type="button" class="btn btn-default" title="Add picture tags" ' +
     'onclick="alert(\'Call your custom code here.\')">' +
     '<i class="glyphicon glyphicon-tag"></i>' +
@@ -971,6 +946,66 @@ function createCallback(cbName) {
             console.log(cbName, arguments);
         }
     }
+}
+function insertar_historia() {
+    var c5=document.getElementById("test");
+    var d5=c5.toDataURL("image/png");
+
+
+    var myLanguage = {
+        errorTitle: 'El formulario fallo en enviarse',
+        requiredFields: 'No se ha introducido datos',
+        badTime: 'No ha dado una hora correcta',
+        badEmail: 'No ha dado una direccion de email correcta',
+        badTelephone: 'No ha dado un numero de telefono correcto',
+
+    }
+
+    $.validate({
+        modules: 'logic',
+        language: myLanguage,
+        form: '#form_familiares',
+        onError: function($form) {
+          //  alert('Validation of form '+$form.attr('id')+' failed!');
+        },
+        onSuccess: function($form) {
+            //alert('The form '+$form.attr('id')+' is valid!');
+            //return false; // Will stop the submission of the form
+            console.log($("#form_familiares")[0]);
+            var formData = new FormData($("#form_familiares")[0]);
+            formData.append('imagen_ppal', d5);
+
+            $.ajax({
+                url: "{{ url('/registro_imageneologico') }}",
+                type: 'POST',
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function() {
+                    //popover_show();
+                    new PNotify({
+                        title: 'Registro Exitoso',
+                        text: 'El registro Imageneologico ha sido almacenado!',
+                        type: 'success',
+                        styling: 'bootstrap3'
+                    });
+                    console.log('exito')
+                },
+                error: function(e) {
+                    console.log('Error!!!', e);
+                }
+            });
+            return false;
+        },
+
+        onElementValidate: function(valid, $el, $form, errorMess) {
+            console.log('Input ' + $el.attr('name') + ' is ' + (valid ? 'VALID' : 'NOT VALID'));
+        }
+    });
+
+
 }
 
 // init wPaint

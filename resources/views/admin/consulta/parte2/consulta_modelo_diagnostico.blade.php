@@ -244,22 +244,7 @@ console.log(antecendetes)
 <script src="{{ url('js/list.min.js')}}"></script>
 <script>
 $(document).ready(function() {
-     if(valido[0].validar == ''){
-    new PNotify({
-        title: 'Historia No Validada',
-        text: 'Esta Historia no ha sido validada',
-        hide: false,
-        styling: 'bootstrap3'
-    });
-  }else {
-    new PNotify({
-        title: 'Historia Validada',
-        text: 'Esta Historia ha sido validada',
-        hide: false,
-        type: 'success',
-        styling: 'bootstrap3'
-    });
-  }
+  
     $("#fecha_consulta").datepicker({
         dateFormat: "yy-mm-dd",
         changeYear: true,
@@ -333,7 +318,7 @@ function validar() {
     console.log(id_enfermedad, "<?php echo csrf_token(); ?>")
     $.ajax({
 
-        url: "{{ url('/validar_examen_muscular') }}",
+        url: "{{ url('/validar_modeloDiagnostico') }}",
         type: "POST",
         data: {
             '_token': $('input[name=_token]').val(),
@@ -391,7 +376,7 @@ function insertar_historia() {
             var formData = new FormData($("#form_familiares")[0]);
 
             $.ajax({
-                url: "{{ url('/update_examenMuscular') }}",
+                url: "{{ url('/update_modeloDiagnostico') }}",
                 type: 'POST',
                 data: formData,
                 async: false,

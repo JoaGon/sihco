@@ -35,8 +35,12 @@
         var newName = (name ? name.capitalize() : ''),
             canvasName = 'canvas' + newName,
             ctxName = 'ctx' + newName;
-
+            console.log("canvas-name", canvasName)
         _this[canvasName] = document.createElement('canvas');
+        if(name == ""){
+          name = "test"
+        }
+        _this[canvasName].id = name
         _this[ctxName] = _this[canvasName].getContext('2d');
         _this['$' + canvasName] = $(_this[canvasName]);
         

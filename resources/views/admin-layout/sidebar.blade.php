@@ -251,7 +251,6 @@
     <!-- Custom Theme JavaScript -->
     <script src="{{ url('template/dist/js/sb-admin-2.js')}}"></script>
     <script src="{{ url('template/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{ url('js/form-validator/jquery.form-validator.min.js') }}"></script>
     <script src="{{url('jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
     <script src="{{ url('js/pnotify/dist/pnotify.js')}}"></script>/
     <script src="{{ url('js/pnotify/dist/pnotify.buttons.js')}}"></script>

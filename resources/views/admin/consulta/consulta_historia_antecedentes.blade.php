@@ -51,6 +51,10 @@
                                     <th>
                                         Fecha
                                     </th>
+                                     <th>
+                                        Estatus
+                                    </th>
+
                                 </tr>
                             </thead>
                             <tbody class="list">
@@ -70,6 +74,14 @@
                                     <td>
                                         {{$ante->fecha}}
                                     </td>
+                                     <td>
+
+                                    @if ($ante->validar == 1)
+                                        Validado
+                                    @else
+                                    No Validado
+                                    @endif
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -80,18 +92,17 @@
                     <ul class="pagination">
                     </ul>
                 </div>
-                <div class="form-group">
+               
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+            <div class="form-group">
                     <div class="col-md-6 col-md-offset-4">
-                        <button type="submit" onclick="insertar_familiares();" class="btn btn-primary">Registrar</button>
-                        <button type="submit" href="{{ url('antecedente_personal')}}" class="btn btn-primary">
-                            <i class="fa fa-btn fa-user"></i> Siguiente </button>
+
                         <a type="submit" href="{{ url('consulta_paciente', array($paciente->nro_historia)) }}" class="btn btn-primary">
                             <i class="fa fa-btn fa-user"></i> Volver </a>
                     </div>
                 </div>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
         </div>
         <!-- /.col-lg-12 -->
     </div>

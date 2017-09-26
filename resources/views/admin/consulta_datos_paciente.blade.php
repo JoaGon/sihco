@@ -110,7 +110,7 @@
                         <li class="dropdown-submenu"><a href="{{ url('odontograma', array($paciente->id_paciente, $consulta)) }}" tabindex="0">X) Odontograma</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('control_placa', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XI) Control de Placa</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('registro_imageneologico', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XII) Imageneologia</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">XIII) Examen de la Oclusion</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('examen_oclusion', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XIII) Examen de la Oclusion</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('examen_muscular', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XIV) Examen Muscular y Articular</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('modelo_diagnostico', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XV) Modelos de Diagnosticos</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">XVI) Examenes Complementarios</a></li>

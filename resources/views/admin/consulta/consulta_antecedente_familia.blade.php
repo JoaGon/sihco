@@ -79,6 +79,7 @@ var valido = <?php echo json_encode($validado); ?>;
                                         <td>
                                             <a class="btn btn-danger" ng-click="eliminarEnfermedad(i,res.id_paciente_enfer_cardiovascular, {{$consulta}},{{$paciente->id_paciente}})">Eliminar</a>
                                         </td>
+                                      
                                     </tr>
                                 </tbody>
                             </table>

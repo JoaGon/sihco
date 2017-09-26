@@ -12,13 +12,19 @@ use App\Paciente as Paciente;
 use App\Lista as Lista;
 use App\Valores_listas as Valores_listas;
 use App\ExamenClinico as ExamenClinico;
+use App\ExamenOclusion as ExamenOclusion;
 use App\EvaluacionPeriodontal as EvaluacionPeriodontal;
 use App\ExamenMuscular as ExamenMuscular;
 use App\ModeloDiagnostico as ModeloDiagnostico;
 use App\TestFagerston as TestFagerston;
 use App\DiagramaRiesgo as DiagramaRiesgo;
 use App\Odontograma as Odontograma;
+use App\ElementosOdontograma as ElementosOdontograma;
+
 use App\ControlPlaca as ControlPlaca;
+
+use App\RegistroImageneologia as RegistroImageneologia;
+
 use DB;
 use Illuminate\Http\Request;
 
@@ -82,6 +88,75 @@ class Historia2Controller extends Controller
 
             }
             $consulta2 = ExamenClinico::create($data);
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
+
+    }
+        public function examenOclusionIndex($paciente_id, $consulta)
+    {
+        
+        $consulta = intval($consulta);
+
+        $persona = DB::table('paciente')
+            ->where('id_paciente', $paciente_id)
+            ->pluck('paciente.persona_id');
+
+        $paciente = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
+//dd($paciente);
+
+                return view('admin.parte2Historia.examen_oclusion', ['consulta' => $consulta, 'id_paciente' => $paciente_id], ['pacientes' => $paciente]);
+    }
+    public function examenOclusion(Request $req)
+    {
+
+        $data = $req->all();
+       // dd($data);
+        DB::beginTransaction();
+
+        try {
+
+            $consulta = intval($req->input('consulta_id'));
+
+            $data['ultimo_usuario'] = Auth::user()->id;
+            $data['profesor']       = Auth::user()->id;
+            $data['validar']        = '';
+
+            unset($data['_token']);
+            unset($data['historia']);
+
+            $verificar = DB::table('examen_oclusion')
+                ->where('paciente_id', $data['paciente_id'])
+                ->where('consulta_id', $data['consulta_id'])
+                ->where('fecha', $data['fecha'])
+                ->count();
+
+            if ($verificar > 0) {
+
+                $id = DB::table('examen_oclusion')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->pluck('examen_oclusion.id_oclusion');
+
+                $data['id_oclusion'] = $id[0];
+
+                DB::table('examen_oclusion')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->delete();
+
+            }
+            $consulta2 = ExamenOclusion::create($data);
 
         } catch (Exception $ex) {
             DB::rollback();
@@ -320,7 +395,61 @@ class Historia2Controller extends Controller
         DB::commit();
 
     }
+    public function registroImageneologico(Request $req)
+    {
 
+        $data = $req->all();
+     /*   $d = RegistroImageneologia::all();
+        dd($d);*/
+        DB::beginTransaction();
+
+        try {
+
+            $consulta = intval($req->input('consulta_id'));
+
+            $data['ultimo_usuario'] = Auth::user()->id;
+            $data['profesor']       = Auth::user()->id;
+            $data['validar']        = '';
+
+            unset($data['_token']);
+            unset($data['historia']);
+
+            $verificar = DB::table('registros_imageneologicos')
+                ->where('paciente_id', $data['paciente_id'])
+                ->where('consulta_id', $data['consulta_id'])
+                ->where('fecha', $data['fecha'])
+                ->count();
+
+            if ($verificar > 0) {
+
+                $id = DB::table('registros_imageneologicos')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->pluck('registros_imageneologicos.id_registro_imageneologico');
+
+                $data['id_registro_imageneologico'] = $id[0];
+
+                DB::table('registros_imageneologicos')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->delete();
+
+            }
+      //  dd($data);
+
+            $consulta2 = RegistroImageneologia::create($data);
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
+
+    }
     public function modelodiagnosticoIndex($paciente_id, $consulta)
     {
         $consulta = intval($consulta);
@@ -567,18 +696,53 @@ class Historia2Controller extends Controller
 
             unset($data['_token']);
             unset($data['historia']);
-            foreach (json_decode($data['elementos']) as $key => $value) {
+            $verificar = DB::table('odontograma')
+                ->where('paciente_id', $data['paciente_id'])
+                ->where('consulta_id', $data['consulta_id'])
+                ->where('fecha', $data['fecha'])
+                ->count();
+
+            if ($verificar > 0) {
+
+                $id = DB::table('odontograma')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->pluck('odontograma.id_odontograma');
+
+                $data['id_odontograma'] = $id[0];
+
+                DB::table('elementos_odontograma')
+                    ->where('odontograma_id', $data['id_odontograma'])
+                    ->delete();
+                    
+                DB::table('odontograma')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->delete();
+
+            }
+
 
                 $consulta2 = Odontograma::create([
                     'paciente_id'    => $data['paciente_id'],
                     'nro_historia'   => $data['nro_historia'],
                     'consulta_id'    => $data['consulta_id'],
-                    'elemento'       => $value->elemento,
-                    'posicion_x'     => $value->left,
-                    'posicion_y'     => $value->top,
                     'ultimo_usuario' => Auth::user()->id,
+                    'fecha' => $data['fecha'],
 
                 ]);
+
+            foreach (json_decode($data['elementos']) as $key => $value) {
+
+                $consulta3 = ElementosOdontograma::create([
+                'elemento'       => $value->elemento,
+                'posicion_x'     => $value->left,
+                'posicion_y'     => $value->top,
+                'odontograma_id' =>  $consulta2->id_odontograma
+                ]);
+
             }
             /* $verificar = DB::table('odontograma')
         ->where('paciente_id',$data['paciente_id'])

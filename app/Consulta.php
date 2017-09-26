@@ -19,6 +19,9 @@ class Consulta extends Authenticatable
         'enfermedad_actual' ,
         'fecha_consulta',
         'ultimo_usuario' ,
+        'profesor',
+        'validar',
+        'fecha_validacion'
 
     ];
     protected $primaryKey = 'id';

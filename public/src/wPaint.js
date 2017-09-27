@@ -35,7 +35,7 @@
         var newName = (name ? name.capitalize() : ''),
             canvasName = 'canvas' + newName,
             ctxName = 'ctx' + newName;
-            console.log("canvas-name", canvasName)
+            console.log("canvas-name",  _this.width)
         _this[canvasName] = document.createElement('canvas');
         if(name == ""){
           name = "test"

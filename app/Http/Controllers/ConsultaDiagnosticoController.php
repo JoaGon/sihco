@@ -122,7 +122,7 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
             ->where('paciente_id', $paciente)
             ->where('id_diagnosticos', $id)
             ->where('diagnosticos.tipo', 'clinico')
-            ->where('diagnosticos.especialidad', $especialidad)
+            ->where('diagnostico.especialidad', $especialidad)
 
             ->get();
 
@@ -157,7 +157,7 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
             $data['validar']                 = $verificar[0]->validar;
 
             $data['id_diagnosticos'] = $req->input('id_enfermedad');
-
+            $tipo2 = $data['especialidad'];
             unset($data['_token']);
             unset($data['historia']);
             unset($data['fechas']);
@@ -171,8 +171,20 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
                 ->where('fecha', $data['fecha'])
                 ->where('tipo', 'clinico')
                 ->count();
+
+                  $id = DB::table('diagnosticos')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->where('tipo', 'clinico')
+                    ->pluck('diagnosticos.id_diagnosticos');
+
+              $verificar2 = DB::table('diagnostico')
+                    ->where('diagnostico_id',$id[0])
+                    ->where('especialidad',$tipo2)
+                    ->count();
                // dd($verificar);
-            if ($verificar > 0) {
+            if ($verificar2 > 0) {
 
                 $id = DB::table('diagnosticos')
                     ->where('paciente_id', $data['paciente_id'])
@@ -183,22 +195,23 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
 
                 $data['id_diagnosticos'] = $id[0];
 
-                DB::table('diagnostico')
+                 $del = DB::table('diagnostico')
                     ->where('diagnostico_id',$id[0])
+                    ->where('especialidad', $tipo2)
                     ->delete();
 
-                DB::table('diagnosticos')
+               /* DB::table('diagnosticos')
                     ->where('paciente_id', $data['paciente_id'])
                     ->where('consulta_id', $data['consulta_id'])
                     ->where('fecha', $data['fecha'])
                     ->where('tipo', 'clinico')
-                    ->delete();
+                    ->delete();*/
 
             }
              // dd($data);
           // dd($data['fecha'],$data['consulta_id'], $data['paciente_id'], $data['validar'], $data['fecha_validacion'], $data['profesor']);
            
-            $consulta2 =  Diagnosticos::create($data);
+           // $consulta2 =  Diagnosticos::create($data);
             // dd($consulta2->id_tratamientos);
                           // dd($consulta2);
                             for ($i=0; $i < sizeof($diagnosticos); $i++) {
@@ -207,7 +220,8 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
                                 ->insert([
                                     'fecha_tratamiento'=>$fechas[$i],
                                     'diagnostico'=>$diagnosticos[$i],
-                                    'diagnostico_id'=>$consulta2->id_diagnosticos
+                                    'diagnostico_id'=>$id[0],
+                                    'especialidad' =>$tipo2
                                     ]);
                             }
 

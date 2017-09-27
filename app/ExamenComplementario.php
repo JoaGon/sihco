@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Diagnosticos extends Authenticatable
+class ExamenComplementario extends Authenticatable
 {
     /**
      * The attributes that are mass assignable.
@@ -12,20 +12,20 @@ class Diagnosticos extends Authenticatable
      * @var array
      */
     protected $fillable = [
-      'id_diagnosticos',
+      'id_examen_complementario',
+      'resumen',
       'fecha',
-      'consulta_id',
+      'ultimo_usuario',
       'paciente_id',
+      'consulta_id' ,
+      'profesor',
       'validar',
       'fecha_validacion',
-      'profesor',
-      'ultimo_usuario',
-      'tipo'
 
     ];
-    protected $primaryKey = 'id_diagnosticos';
-    protected $table      = 'diagnosticos';
-    public $timestamps    = false;
+    protected $primaryKey = 'id_examen_complementario';
+    protected $table      = 'examen_complementario';
+    public $timestamps    = true;
 
     /**
      * The attributes that should be hidden for arrays.

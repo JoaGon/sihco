@@ -16,6 +16,7 @@ class Diagnostico extends Authenticatable
       'fecha_tratamiento',
       'diagnostico',
       'diagnostico_id',
+      'especialidad'
 
     ];
     protected $primaryKey = 'id_diagnostico';

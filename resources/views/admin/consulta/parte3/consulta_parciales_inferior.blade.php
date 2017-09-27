@@ -11,6 +11,14 @@
 <link href="{{url ('template/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 <link href="{{ url('css/file-input/fileinput.min.css')}}" media="all" rel="stylesheet" type="text/css" />
 <link href="{{ url('js/file-upload/themes/explorer/theme.css')}}" media="all" rel="stylesheet" type="text/css" />
+<script>
+
+var valido = <?php echo json_encode($validado); ?>;
+
+var antecendetes = <?php echo json_encode($ante); ?>;
+
+console.log(antecendetes)
+</script>
 <style type="text/css">
 .file-preview-image {
     width: 50% !important;
@@ -127,22 +135,14 @@
 
 #wPaint-demo1 {
     background-color: #fff !important;
-    background-image: url("/sihco/public/images/superior.png") !important;
-    background-repeat: no-repeat !important;
-    width: 350px !important;
-    height: 300px !important;
-    top: 30px !important;
-    left: 20%;
-}
-#wPaint-demo2 {
-    background-color: #fff !important;
     background-image: url("/sihco/public/images/inferior.png") !important;
     background-repeat: no-repeat !important;
-    width: 350px !important;
+      width: 350px !important;
     height: 300px !important;
     top: 30px !important;
-    left: 20%;
+    left: 10%;
 }
+
 
 
 .wPaint-theme-classic .wPaint-menu-holder {
@@ -174,6 +174,8 @@
                             <input type="hidden" name="consulta_id" value={{$consulta}}>
                             <input type="hidden" name="paciente_id" value="{{$paciente->id_paciente}}">
                             <input type="hidden" name="historia" value="{{$paciente->nro_historia}}">
+                            
+                            <input type="hidden" name="id_enfermedad" id="id_enfermedad">
                             <div class="form-group">
                                 <div class="col-md-4">
                                     <label for="motivo">Nombre</label>
@@ -194,7 +196,7 @@
                   <div class="col-lg-12">
                      
                                  <div class="row row_border">
-                                    <h4>Modelo Superior</h4>
+                                    <h4>Modelo Inferior</h4>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
                                     Clasificacion de Kennedy:
                                     </div>
@@ -267,10 +269,9 @@
                                       <div class="col-lg-8 col-md-8 col-sm-8">
                                          <input class="form-control" style="width: 100% !important" type="text" name="bases" placeholder="" id="bases" value=""> 
                                       </div>
-                                       <div id="wPaint-demo1" class="col-lg-6" style="position:relative; width:500px; height:200px; background-color:#7a7a7a; margin:70px auto 20px auto;"></div>
+                                       <div id="wPaint-demo1" class="col-lg-6" style="position:relative; width:500px; height:300px; background-color:#7a7a7a; margin:70px auto 20px auto;"></div>
                                       <div class="col-lg-6">
                                         <center  style="margin-bottom: 50px;">
-                                            <input type="button" value="toggle menu" onclick="console.log($('#wPaint-demo1').wPaint('menuOrientation')); $('#wPaint-demo1').wPaint('menuOrientation', $('#wPaint-demo1').wPaint('menuOrientation') === 'vertical' ? 'horizontal' : 'vertical');" />
                                         </center>
                                         <center id="wPaint-img"></center>
                                       </div>
@@ -292,6 +293,7 @@
                
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-4">
+                     <a type="button" onclick="validar();" class="btn btn-primary">Validar</a>
                         <button type="submit" onclick="insertar_historia();" class="btn btn-primary">Registrar
                         </button>
                         <a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
@@ -348,6 +350,43 @@
 <script>
 $(document).ready(function(){
   $("#fecha").datepicker({dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true});
+
+
+
+$.each(antecendetes, function(i, val) {
+
+         var c5=document.getElementById("test");
+          var context5 = c5.getContext('2d');
+          var img5 = new Image();
+
+          img5.onload = function() {
+            context5.drawImage(this, 0, 0, 900, 300);
+          }
+
+          img5.src = val.imagen
+       
+        $('#apoyos').val(val.apoyos);
+        $('#bases').val(val.bases);
+        $('#c_mayor').val(val.c_mayor);
+        $('#clasificacion_kennedy').val(val.clasificacion_kennedy);
+        $('#dientes_pilares').val(val.dientes_pilares);
+        $('#localizacion_retenciones').val(val.localizacion_retenciones);
+        $('#observaciones').val(val.observaciones);
+        $('#planos_guias').val(val.planos_guias);
+        $('#posicion_a').val(val.posicion_h);
+        $('#posicion_h').val(val.observacion);
+        $('#posicion_ld').val(val.posicion_ld);
+        $('#posicion_li').val(val.posicion_li);
+        $('#posicion_p').val(val.posicion_p);
+        $('#retenedores_directos').val(val.retenedores_directos);
+        $('#retenedores_indirectos').val(val.retenedores_indirectos);
+        
+
+        $('#fecha').val(val.fecha);
+
+        $('#id_enfermedad').val(val.id_parciales);
+        
+});
 })  
 
 function big_imaging(ruta, id) {
@@ -387,7 +426,7 @@ function insertar_historia() {
             formData.append('imagen', d5);
 
             $.ajax({
-                url: "{{ url('/parciales') }}",
+                url: "{{ url('/update_parciales_inferior') }}",
                 type: 'POST',
                 data: formData,
                 async: false,
@@ -414,6 +453,44 @@ function insertar_historia() {
         onElementValidate: function(valid, $el, $form, errorMess) {
             console.log('Input ' + $el.attr('name') + ' is ' + (valid ? 'VALID' : 'NOT VALID'));
         }
+    });
+
+
+}
+function validar() {
+    var id_enfermedad = $('#id_enfermedad').val()
+    console.log(id_enfermedad, "<?php echo csrf_token(); ?>")
+    $.ajax({
+
+        url: "{{ url('/validar_parciales') }}",
+        type: "POST",
+        data: {
+            '_token': $('input[name=_token]').val(),
+            id_enfermedad: id_enfermedad
+        },
+        success: function(data) {
+            PNotify.removeAll();
+            new PNotify({
+                title: 'Validacion Exitosa',
+                text: 'El control de placa ha sido validado!',
+                type: 'success',
+                styling: 'bootstrap3'
+            });
+             new PNotify({
+                title: 'Historia Validada',
+                text: 'Esta Historia ha sido validada',
+                hide: false,
+                type: 'success',
+                styling: 'bootstrap3'
+            });
+            console.log('exito')
+
+
+        },
+        error: function() {
+            alert("error!!!!");
+        }
+
     });
 
 

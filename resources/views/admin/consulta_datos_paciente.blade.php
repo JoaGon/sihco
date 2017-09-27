@@ -71,7 +71,7 @@
                         <li class="dropdown-submenu"><a tabindex="0">XIII) Examen de la Oclusion</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('examen_muscular', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XIV) Examen Muscular y Articular</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('modelo_diagnostico', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XV) Modelos de Diagnosticos</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">XVI) Examenes Complementarios</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('examen_complementario', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XVI) Examenes Complementarios</a></li>
                     </ul>
                 </li>
                  <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>Diagnostico/Pronostico<span class="caret"></span></a>
@@ -113,14 +113,15 @@
                         <li class="dropdown-submenu"><a href="{{ url('examen_oclusion', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XIII) Examen de la Oclusion</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('examen_muscular', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XIV) Examen Muscular y Articular</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('modelo_diagnostico', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XV) Modelos de Diagnosticos</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">XVI) Examenes Complementarios</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('examen_complementario', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XVI) Examenes Complementarios</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>XIII al XXIV<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li class="dropdown-submenu"><a href="{{ url('corona_puente', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XVII) Coronas y Puentes Fijos</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('totales', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XVIII) Dentaduras Totales</a></li>
-                        <li class="dropdown-submenu"><a href="{{ url('parciales', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XIX) Protesis Parcial Removible</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('parciales', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XIX) Protesis Parcial Removible Superior</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('parciales_inferior', array($paciente->id_paciente, $consulta)) }}" tabindex="0">Protesis Parcial Removible Inferior</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('endodoncia', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XX) Endodoncia</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('operatoria', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XXI) Operatoria</a></li>
                         <li class="dropdown-submenu"><a href="{{ url('cirugia', array($paciente->id_paciente, $consulta)) }}" tabindex="0">XII) Anestesiologia y Cirugia Estomatologica</a></li>

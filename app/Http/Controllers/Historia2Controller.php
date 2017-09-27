@@ -21,6 +21,8 @@ use App\DiagramaRiesgo as DiagramaRiesgo;
 use App\Odontograma as Odontograma;
 use App\ElementosOdontograma as ElementosOdontograma;
 
+use App\ExamenComplementario as ExamenComplementario;
+
 use App\ControlPlaca as ControlPlaca;
 
 use App\RegistroImageneologia as RegistroImageneologia;
@@ -157,6 +159,76 @@ class Historia2Controller extends Controller
 
             }
             $consulta2 = ExamenOclusion::create($data);
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
+
+    }
+      public function examenComplementarioIndex($paciente_id, $consulta)
+    {
+        
+        $consulta = intval($consulta);
+
+        $persona = DB::table('paciente')
+            ->where('id_paciente', $paciente_id)
+            ->pluck('paciente.persona_id');
+
+        $paciente = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
+//dd($paciente);
+
+                return view('admin.parte2Historia.examen_complementario', ['consulta' => $consulta, 'id_paciente' => $paciente_id], ['pacientes' => $paciente]);
+    }
+    public function examenComplementario(Request $req)
+    {
+
+        $data = $req->all();
+        DB::beginTransaction();
+
+        try {
+
+            $consulta = intval($req->input('consulta_id'));
+
+            $data['ultimo_usuario'] = Auth::user()->id;
+            $data['profesor']       = Auth::user()->id;
+            $data['validar']        = '';
+
+            unset($data['_token']);
+            unset($data['historia']);
+
+            $verificar = DB::table('examen_complementario')
+                ->where('paciente_id', $data['paciente_id'])
+                ->where('consulta_id', $data['consulta_id'])
+                ->where('fecha', $data['fecha'])
+                ->count();
+
+            if ($verificar > 0) {
+
+                $id = DB::table('examen_complementario')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->pluck('examen_complementario.id_examen_complementario');
+
+                $data['id_examen_complementario'] = $id[0];
+
+                DB::table('examen_complementario')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->delete();
+
+            }
+      //  dd($data);
+
+            $consulta2 = ExamenComplementario::create($data);
 
         } catch (Exception $ex) {
             DB::rollback();

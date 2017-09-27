@@ -32,7 +32,7 @@
             @endforeach
             <div class="col-lg-12">
                 <div style="font-size: 20px; text-align: center; color:#59bddd;">
-                    Diagnostico Clinico
+                    Protesis Parcial Removible Superior
                 </div>
                 <div class="panel-body" id="consultas">
                     <div class="table-responsive">
@@ -51,6 +51,9 @@
                                     <th>
                                         Fecha
                                     </th>
+                                     <th>
+                                        Estatus
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody class="list">
@@ -58,7 +61,7 @@
                                 <tr>
                                     <td>
                                         <strong>
-                                <a href="{{ url('consulta_diagnostico_clinico/'.$ante->id_diagnosticos.'/'.$ante->paciente_id) }}" class="btn btn-link" style="font-weight: bold" data-toggle="tooltip" title="Cita"> {{$ante->id_diagnosticos}} </a>
+                                <a href="{{ url('consulta_parciales_inferior/'.$ante->id_parciales.'/'.$ante->paciente_id) }}" class="btn btn-link" style="font-weight: bold" data-toggle="tooltip" title="Cita"> {{$ante->id_parciales}} </a>
                                 </strong>
                                     </td>
                                     <td class="name">
@@ -69,6 +72,14 @@
                                     </td>
                                     <td>
                                         {{$ante->fecha}}
+                                    </td>
+                                     <td>
+
+                                    @if ($ante->validar == 1)
+                                        Validado
+                                    @else
+                                    No Validado
+                                    @endif
                                     </td>
                                 </tr>
                                 @endforeach
@@ -82,9 +93,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-4">
-                        <button type="submit" onclick="insertar_familiares();" class="btn btn-primary">Registrar</button>
-                        <button type="submit" href="{{ url('antecedente_personal')}}" class="btn btn-primary">
-                            <i class="fa fa-btn fa-user"></i> Siguiente </button>
+                   
                         <a type="submit" href="{{ url('consulta_paciente', array($paciente->nro_historia)) }}" class="btn btn-primary">
                             <i class="fa fa-btn fa-user"></i> Volver </a>
                     </div>

@@ -215,7 +215,7 @@ function insertar_historia(){
             }
         });
           $.ajax({
-            url: "{{ url('/diagnostico_clinico') }}",
+            url: "{{ url('/diagnostico') }}",
             type: 'POST',
             data: formData,
             async: false,

@@ -162,6 +162,9 @@ Route::post("diagrama_riesgo",'Historia2Controller@diagramariesgo');
 Route::get("examen_oclusion/{paciente_id}/{consulta_id}",'Historia2Controller@examenOclusionIndex');
 Route::post("examen_oclusion",'Historia2Controller@examenOclusion');
 
+Route::get("examen_complementario/{paciente_id}/{consulta_id}",'Historia2Controller@examenComplementarioIndex');
+Route::post("examen_complementario",'Historia2Controller@examenComplementario');
+
 
 Route::post("registro_imageneologico",'Historia2Controller@registroImageneologico');
 
@@ -180,6 +183,9 @@ Route::post("totales",'Historia3Controller@totales');
 
 Route::get("parciales/{paciente_id}/{consulta_id}",'ImagenController@parcialesIndex');
 Route::post("parciales",'Historia3Controller@parciales');
+
+Route::get("parciales_inferior/{paciente_id}/{consulta_id}",'Historia3Controller@parcialesInferiorIndex');
+Route::post("parciales_inferior/",'Historia3Controller@parcialesInferior');
 
 Route::get("diagnostico/{paciente_id}/{consulta_id}",'DiagnosticoController@diagnosticoIndex');
 Route::post("diagnostico",'DiagnosticoController@diagnostico');
@@ -294,6 +300,12 @@ Route::get('consulta_odontograma/{id}/{paciente_id}','ConsultaHistoria2Controlle
 Route::post('update_odontograma','ConsultaHistoria2Controller@updateOdontograma');
 Route::post('validar_odontograma','ConsultaHistoria2Controller@validarOdontograma');
 
+Route::get('consulta_examen_complementario/{nro_historia}','ConsultaHistoria2Controller@showComplementario');
+Route::get('consulta_examen_complementario/{id}/{paciente_id}','ConsultaHistoria2Controller@getComplementario');
+
+Route::post('update_examen_complementario','ConsultaHistoria2Controller@updateComplementario');
+Route::post('validar_examen_complementario','ConsultaHistoria2Controller@validarComplementario');
+
 
 Route::get('consulta_testFagerstrom/{nro_historia}','ConsultaHistoria2Controller@showTestFagerstrom');
 Route::get('consulta_testFagerstrom/{id}/{paciente_id}','ConsultaHistoria2Controller@getTestFagerstrom');
@@ -329,6 +341,22 @@ Route::get('consulta_cirugia/{id}/{paciente_id}','ConsultaHistoria3Controller@ge
 
 Route::post('update_cirugia','ConsultaHistoria3Controller@updateCirugia');
 Route::post('validar_cirugia','ConsultaHistoria3Controller@validarCirugia');
+
+
+Route::get('consulta_parciales/{nro_historia}','ConsultaHistoria3Controller@showParciales');
+Route::get('consulta_parciales/{id}/{paciente_id}','ConsultaHistoria3Controller@getParciales');
+
+Route::post('update_parciales','ConsultaHistoria3Controller@updateParciales');
+Route::post('validar_parciales','ConsultaHistoria3Controller@validarParciales');
+
+
+Route::get('consulta_parciales_inferior/{nro_historia}','ConsultaHistoria3Controller@showParcialesInferior');
+Route::get('consulta_parciales_inferior/{id}/{paciente_id}','ConsultaHistoria3Controller@getParcialesInferior');
+
+Route::post('update_parciales_inferior','ConsultaHistoria3Controller@updateParcialesInferior');
+Route::post('validar_parciales_inferior','ConsultaHistoria3Controller@validarParcialesInferior');
+
+
 
 Route::get('consulta_endondocia/{nro_historia}','ConsultaHistoria3Controller@showEndodoncia');
 Route::get('consulta_endondocia/{id}/{paciente_id}','ConsultaHistoria3Controller@getEndodoncia');

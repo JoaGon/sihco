@@ -78,50 +78,55 @@ class DiagnosticoController extends Controller
             $data['fecha_validacion']        = '';
             unset($data['_token']);
             $diagnosticos = $data['diagnosticos'];
-            $data['tipo']        = 'clinico';
+            $data['tipo']        = 'definitivo';
             $fechas = $data['fechas'];
+            $tipo = $data['especialidad'];
             unset($data['fechas']);
             unset($data['diagnosticos']);
-            unset($data['historia']);
+
+            unset($data['especialidad']);
   
             $verificar = DB::table('diagnosticos')
                 ->where('paciente_id', $data['paciente_id'])
                 ->where('consulta_id', $data['consulta_id'])
                 ->where('fecha', $data['fecha'])
-                ->where('especialidad', $data['especialidad'])
-                ->where('tipo', 'clinico')
+                ->where('tipo', 'definitivo')
                 ->count();
-               // dd($verificar);
 
-            if ($verificar > 0) {
+
+                $verificar2 = DB::table('diagnostico')
+                    ->where('diagnostico_id',$id[0])
+                    ->where('especialidad', $tipo)
+                    ->get();
+
+            if ($verificar2 > 0) {
 
                 $id = DB::table('diagnosticos')
                     ->where('paciente_id', $data['paciente_id'])
                     ->where('consulta_id', $data['consulta_id'])
                     ->where('fecha', $data['fecha'])
-                    ->where('tipo', 'clinico')
-                    ->where('especialidad', $data['especialidad'])
+                    ->where('tipo', 'definitivo')
                     ->pluck('diagnosticos.id_diagnosticos');
 
                 $data['id_diagnosticos'] = $id[0];
 
                 DB::table('diagnostico')
                     ->where('diagnostico_id',$id[0])
+                    ->where('especialidad', $tipo)
                     ->delete();
 
-                DB::table('diagnosticos')
+                /*DB::table('diagnosticos')
                     ->where('paciente_id', $data['paciente_id'])
                     ->where('consulta_id', $data['consulta_id'])
                     ->where('fecha', $data['fecha'])
-                    ->where('tipo', 'clinico')
-                    ->where('especialidad', $data['especialidad'])
-                    ->delete();
+                    ->where('tipo', 'definitivo')
+                    ->delete();*/
 
             }
              // dd($data);
           // dd($data['fecha'],$data['consulta_id'], $data['paciente_id'], $data['validar'], $data['fecha_validacion'], $data['profesor']);
            
-            $consulta2 =  Diagnosticos::create($data);
+            //$consulta2 =  Diagnosticos::create($data);
             // dd($consulta2->id_tratamientos);
                           // dd($consulta2);
                             for ($i=0; $i < sizeof($diagnosticos); $i++) {
@@ -130,7 +135,8 @@ class DiagnosticoController extends Controller
                                 ->insert([
                                     'fecha_tratamiento'=>$fechas[$i],
                                     'diagnostico'=>$diagnosticos[$i],
-                                    'diagnostico_id'=>$consulta2->id_diagnosticos
+                                    'diagnostico_id'=>$consulta2->id_diagnosticos,
+                                    'especialidad' =>$tipo
                                     ]);
                             }
 
@@ -147,6 +153,9 @@ class DiagnosticoController extends Controller
     {
 
         $data = $req->all();
+
+             // dd("aqui");
+
         DB::beginTransaction();
 
         try {
@@ -159,59 +168,72 @@ class DiagnosticoController extends Controller
             $data['fecha_validacion']        = '';
     
             unset($data['_token']);
+
             $diagnosticos = $data['diagnosticos'];
             $fechas = $data['fechas'];
-            $data['tipo']        = 'definitivo';
+            $data['tipo']        = 'clinico';
+
+            $tipo2 = $data['especialidad'];
+
+            unset($data['especialidad']);
+  
             unset($data['fechas']);
             unset($data['diagnosticos']);
             unset($data['historia']);
-  
+
+
             $verificar = DB::table('diagnosticos')
                 ->where('paciente_id', $data['paciente_id'])
                 ->where('consulta_id', $data['consulta_id'])
-                ->where('tipo', 'definitivo')
+                ->where('tipo', 'clinico')
                 ->where('fecha', $data['fecha'])
-                ->where('especialidad', $data['especialidad'])
                 ->count();
-
-            if ($verificar > 0) {
 
                 $id = DB::table('diagnosticos')
                     ->where('paciente_id', $data['paciente_id'])
                     ->where('consulta_id', $data['consulta_id'])
                     ->where('fecha', $data['fecha'])
-                    ->where('tipo', 'definitivo')
-                    ->where('especialidad', $data['especialidad'])
+                    ->where('tipo', 'clinico')
                     ->pluck('diagnosticos.id_diagnosticos');
 
-                $data['id_diagnosticos'] = $id[0];
-
-                DB::table('diagnostico')
+              $verificar2 = DB::table('diagnostico')
                     ->where('diagnostico_id',$id[0])
-                    ->delete();
+                    ->where('especialidad',$tipo2)
+                    ->count();
 
-                DB::table('diagnosticos')
+            if ($verificar2 > 0) {
+
+
+                $data['id_diagnosticos'] = $id[0];
+               // dd($id[0],$tipo2);
+
+                $del = DB::table('diagnostico')
+                    ->where('diagnostico_id',$id[0])
+                    ->where('especialidad', $tipo2)
+                    ->delete();
+                   //dd("aq",$del);
+
+
+               /* DB::table('diagnosticos')
                     ->where('paciente_id', $data['paciente_id'])
                     ->where('consulta_id', $data['consulta_id'])
                     ->where('fecha', $data['fecha'])
-                    ->where('tipo', 'definitivo')
-                    ->where('especialidad', $data['especialidad'])
-                    ->delete();
+                    ->where('tipo', 'clinico')
+                    ->delete();*/
 
             }
-             // dd($data);
           // dd($data['fecha'],$data['consulta_id'], $data['paciente_id'], $data['validar'], $data['fecha_validacion'], $data['profesor']);
            
-            $consulta2 =  Diagnosticos::create($data);
-            // dd($consulta2->id_tratamientos);
-                          // dd($consulta2);
+            //$consulta2 =  Diagnosticos::create($data);
+            // dd("aa");
                             for ($i=0; $i < sizeof($diagnosticos); $i++) {
                           //  dd($diagnosticos[$i]);
                                 DB::table('diagnostico')
                                 ->insert([
                                     'fecha_tratamiento'=>$fechas[$i],
                                     'diagnostico'=>$diagnosticos[$i],
-                                    'diagnostico_id'=>$consulta2->id_diagnosticos
+                                    'diagnostico_id'=>$id[0],
+                                    'especialidad' =>$tipo2
                                     ]);
                             }
 

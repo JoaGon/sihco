@@ -8,6 +8,7 @@
 <link href="{{ url('css/styles.css')}} " rel="stylesheet">
 <link href="{{url ('template/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="{{ url('bootstrap-submenu-2.0.4/dist/css/bootstrap-submenu.min.css') }}">
+
 <div class="container">
     <!-- /.row -->
     <div class="row">
@@ -32,7 +33,7 @@
             @endforeach
             <div class="col-lg-12">
                 <div style="font-size: 20px; text-align: center; color:#59bddd;">
-                    Diagnostico Clinico
+                    Evaluacion Periodontal
                 </div>
                 <div class="panel-body" id="consultas">
                     <div class="table-responsive">
@@ -51,6 +52,9 @@
                                     <th>
                                         Fecha
                                     </th>
+                                    <th>
+                                        Estatus
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody class="list">
@@ -58,7 +62,7 @@
                                 <tr>
                                     <td>
                                         <strong>
-                                <a href="{{ url('consulta_diagnostico_clinico/'.$ante->id_diagnosticos.'/'.$ante->paciente_id) }}" class="btn btn-link" style="font-weight: bold" data-toggle="tooltip" title="Cita"> {{$ante->id_diagnosticos}} </a>
+                                <a href="{{ url('consulta_examen_complementario/'.$ante->id_examen_complementario.'/'.$ante->paciente_id) }}" class="btn btn-link" style="font-weight: bold" data-toggle="tooltip" title="Cita"> {{$ante->id_examen_complementario}} </a>
                                 </strong>
                                     </td>
                                     <td class="name">
@@ -69,6 +73,14 @@
                                     </td>
                                     <td>
                                         {{$ante->fecha}}
+                                    </td>
+                                     <td>
+
+                                    @if ($ante->validar == 1)
+                                        Validado
+                                    @else
+                                    No Validado
+                                    @endif
                                     </td>
                                 </tr>
                                 @endforeach
@@ -82,9 +94,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-4">
-                        <button type="submit" onclick="insertar_familiares();" class="btn btn-primary">Registrar</button>
-                        <button type="submit" href="{{ url('antecedente_personal')}}" class="btn btn-primary">
-                            <i class="fa fa-btn fa-user"></i> Siguiente </button>
+               
                         <a type="submit" href="{{ url('consulta_paciente', array($paciente->nro_historia)) }}" class="btn btn-primary">
                             <i class="fa fa-btn fa-user"></i> Volver </a>
                     </div>

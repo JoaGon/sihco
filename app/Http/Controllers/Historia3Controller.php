@@ -426,5 +426,148 @@ class Historia3Controller extends Controller
         return view('admin.parte3Historia.parciales', ['consulta' => $consulta, 'id_paciente' => $paciente_id], ['pacientes' => $paciente]);
 
     }
+         public function parciales(Request $req)
+    {
+
+        $data = $req->all();
+      //  dd($data);
+
+            //$consulta2 = Endodoncia::all();
+           // dd($consulta2);
+        DB::beginTransaction();
+
+
+        try {
+
+            $consulta = intval($req->input('consulta_id'));
+
+            $data['ultimo_usuario'] = Auth::user()->id;
+            $data['profesor']       = Auth::user()->id;
+            $data['validar']        = '';
+
+            $data['orientacion']        = 'superior';
+      
+            unset($data['_token']);
+            unset($data['historia']);
+
+            $verificar = DB::table('parciales')
+                ->where('paciente_id', $data['paciente_id'])
+                ->where('consulta_id', $data['consulta_id'])
+                ->where('fecha', $data['fecha'])
+                ->where('orientacion', 'superior')
+
+                ->count();
+
+            if ($verificar > 0) {
+
+                $id = DB::table('parciales')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                ->where('orientacion', 'superior')
+
+                    ->pluck('parciales.id_parciales');
+
+                $data['id_parciales'] = $id[0];
+
+                DB::table('parciales')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                ->where('orientacion', 'superior')
+
+                    ->delete();
+
+            }
+           // dd($data);
+            $consulta2 = Parciales::create($data);
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
+
+    }
+    public function parcialesInferior(Request $req)
+    {
+
+        $data = $req->all();
+      //  dd($data);
+
+            //$consulta2 = Endodoncia::all();
+           // dd($consulta2);
+        DB::beginTransaction();
+
+
+        try {
+
+            $consulta = intval($req->input('consulta_id'));
+
+            $data['ultimo_usuario'] = Auth::user()->id;
+            $data['profesor']       = Auth::user()->id;
+            $data['validar']        = '';
+
+            $data['orientacion']        = 'inferior';
+      
+            unset($data['_token']);
+            unset($data['historia']);
+
+            $verificar = DB::table('parciales')
+                ->where('paciente_id', $data['paciente_id'])
+                ->where('consulta_id', $data['consulta_id'])
+                ->where('fecha', $data['fecha'])
+                ->where('orientacion', 'inferior')
+                ->count();
+
+            if ($verificar > 0) {
+
+                $id = DB::table('parciales')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->where('orientacion', 'inferior')
+                    ->pluck('parciales.id_parciales');
+
+                $data['id_parciales'] = $id[0];
+
+                DB::table('parciales')
+                    ->where('paciente_id', $data['paciente_id'])
+                    ->where('consulta_id', $data['consulta_id'])
+                    ->where('fecha', $data['fecha'])
+                    ->where('orientacion', 'inferior')
+                    ->delete();
+            }
+           // dd($data);
+            $consulta2 = Parciales::create($data);
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
+
+    }
+     public function parcialesInferiorIndex($paciente_id, $consulta)
+    {
+        //$data = $req->all();
+        $consulta = intval($consulta);
+
+        $persona = DB::table('paciente')
+            ->where('id_paciente', $paciente_id)
+            ->pluck('paciente.persona_id');
+
+        $paciente = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
+
+        return view('admin.parte3Historia.parciales_inferior', ['consulta' => $consulta, 'id_paciente' => $paciente_id], ['pacientes' => $paciente]);
+
+    }
 
 }

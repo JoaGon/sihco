@@ -127,7 +127,7 @@
 
 #wPaint-demo1 {
     background-color: #fff !important;
-    background-image: url("/sihco/public/images/superior.png") !important;
+    background-image: url("/sihco/public/images/inferior.png") !important;
     background-repeat: no-repeat !important;
     width: 350px !important;
     height: 300px !important;
@@ -166,7 +166,7 @@
                 @endif @foreach ($pacientes as $paciente)
                 <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12" style=" background-color:white;padding-left:0; margin-top: 25px">
                     <div style="font-size: 20px; text-align: center; color:#59bddd;">
-                        Protesis Parcial Removible Superior
+                        Protesis Parcial Removible Inferior
                     </div>
                     <fieldset>
                         <form class="form-horizontal" id="form_familiares">
@@ -284,6 +284,7 @@
 
                                  </div>
                          
+                         
                     <!-- /.panel -->
                 </div>
                 </div>
@@ -358,6 +359,14 @@ function big_imaging(ruta, id) {
     $('#ruta_imaging').val(ruta);
 }
 
+function validar_imag() {
+    if ($('#ruta_imaging').val()) {
+        $('#form_imaging_study').submit();
+    } else {
+        alert('Seleccion\u00e9 una imagen');
+        event.preventDefault();
+    }
+}
 function insertar_historia() {
     var c5=document.getElementById("test");
     var d5=c5.toDataURL("image/png");
@@ -387,7 +396,7 @@ function insertar_historia() {
             formData.append('imagen', d5);
 
             $.ajax({
-                url: "{{ url('/parciales') }}",
+                url: "{{ url('/parciales_inferior') }}",
                 type: 'POST',
                 data: formData,
                 async: false,
@@ -398,7 +407,7 @@ function insertar_historia() {
                     //popover_show();
                     new PNotify({
                         title: 'Registro Exitoso',
-                        text: 'La registro ha sido almacenado!',
+                        text: 'El registro ha sido almacenado!',
                         type: 'success',
                         styling: 'bootstrap3'
                     });
@@ -419,15 +428,6 @@ function insertar_historia() {
 
 }
 
-
-function validar_imag() {
-    if ($('#ruta_imaging').val()) {
-        $('#form_imaging_study').submit();
-    } else {
-        alert('Seleccion\u00e9 una imagen');
-        event.preventDefault();
-    }
-}
 
 function eliminar() {
 
@@ -593,3 +593,4 @@ $('#wPaint-demo2').wPaint({
 });
 </script>
 @endsection
+p

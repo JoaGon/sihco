@@ -17,6 +17,9 @@ use App\TestFagerston as TestFagerston;
 use App\DiagramaRiesgo as DiagramaRiesgo;
 use App\ControlPlaca as ControlPlaca;
 
+use App\ExamenComplementario as ExamenComplementario;
+
+
 use App\Odontograma as Odontograma;
 use App\ElementosOdontograma as ElementosOdontograma;
 
@@ -153,6 +156,147 @@ class ConsultaHistoria2Controller extends Controller
 
             $verificar = DB::table('examen_clinico')
                 ->where('id_examen_clinico', $req->input('id_enfermedad'))
+                ->update([
+                    'validar'  => '1',
+                    'profesor' => Auth::user()->id,
+                    'fecha_validacion' => $today
+                ]);
+
+            return 'validado';
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
+
+    }
+    public function showComplementario($paciente)
+    {
+
+        $persona = DB::table('paciente')
+            ->where('id_paciente', $paciente)
+            ->pluck('paciente.persona_id');
+
+     //   dd($persona);
+        $paciente2 = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
+     if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_id == 4){
+    
+        $antecedentes = DB::table('examen_complementario')
+            ->join('usuarios', 'examen_complementario.ultimo_usuario', '=', 'usuarios.id')
+            ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
+            ->where('examen_complementario.ultimo_usuario',Auth::user()->id)
+            ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
+            ->get();
+        }else{
+            $antecedentes = DB::table('examen_complementario')
+            ->join('usuarios', 'examen_complementario.ultimo_usuario', '=', 'usuarios.id')
+            ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
+            ->where('paciente_id', $paciente)
+            ->orderBy('fecha','desc')
+            ->get();
+        }
+        return view('admin.consulta.parte2.consulta_historia_examen_complementario', [
+            'pacientes'    => $paciente2,
+            'antecedentes' => $antecedentes,
+        ]);
+
+    }
+
+    public function getComplementario($id, $paciente)
+    {
+
+        $persona = DB::table('paciente')
+            ->where('id_paciente', $paciente)
+            ->pluck('paciente.persona_id');
+
+        $paciente2 = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
+
+        $antecedentes = DB::table('examen_complementario')
+            ->where('id_examen_complementario', $id)
+            ->get();
+        $validado = DB::table('examen_complementario')
+            ->where('id_examen_complementario', $id)
+            ->select('validar')
+            ->get();
+        // dd($validado);
+        $consulta = DB::table('examen_complementario')
+            ->where('id_examen_complementario', $id)
+            ->pluck('consulta_id');
+            //dd($consulta);
+
+
+        // dd($enfermedades_cardiovasculares);
+        return view('admin.consulta.parte2.consulta_examen_complementario', [
+            'pacientes'                     => $paciente2,
+            'ante'                          => $antecedentes,
+            'consulta'                      => $consulta[0],
+            'validado'                      => $validado,
+
+        ]);
+
+    }
+
+    public function updateComplementario(Request $req)
+    {
+        //dd($req->input('id_enfermedad'));
+        $data = $req->all();
+
+        try {
+
+            $verificar = DB::table('examen_complementario')
+                ->where('id_examen_complementario', $req->input('id_enfermedad'))
+                ->select('consulta_id', 'paciente_id', 'fecha', 'validar')
+                ->get();
+
+            $data['ultimo_usuario']          = Auth::user()->id;
+            $data['profesor']                = Auth::user()->id;
+            $data['validar']                 = '';
+            $data['consulta_id']             = $verificar[0]->consulta_id;
+            $data['paciente_id']             = $verificar[0]->paciente_id;
+            $data['fecha']                   = $verificar[0]->fecha;
+            $data['validar']                 = $verificar[0]->validar;
+            $data['id_examen_complementario'] = $req->input('id_enfermedad');
+
+            unset($data['_token']);
+            unset($data['historia']);
+
+            DB::table('examen_complementario')
+                ->where('paciente_id', $data['paciente_id'])
+                ->where('consulta_id', $data['consulta_id'])
+                ->where('fecha', $data['fecha'])
+                ->delete();
+            $consulta2 = ExamenComplementario::create($data);
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
+
+    }
+
+    public function validarComplementario(Request $req)
+    {
+        // dd($req->id_enfermedad);
+        $data = $req->all();
+        $today = date("Y-m-d");
+
+        try {
+
+            $verificar = DB::table('examen_complementario')
+                ->where('id_examen_complementario', $req->input('id_enfermedad'))
                 ->update([
                     'validar'  => '1',
                     'profesor' => Auth::user()->id,

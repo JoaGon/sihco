@@ -165,6 +165,274 @@ if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_i
         DB::commit();
 
     }
+    public function showParciales($paciente)
+    {
+
+        $persona = DB::table('paciente')
+            ->where('id_paciente', $paciente)
+            ->pluck('paciente.persona_id');
+
+        $paciente2 = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
+if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_id == 4){
+
+        $antecedentes = DB::table('parciales')
+            ->join('usuarios', 'parciales.ultimo_usuario', '=', 'usuarios.id')
+            ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
+            ->where('paciente_id', $paciente)
+            ->where('parciales.ultimo_usuario',Auth::user()->id)
+            ->where('parciales.orientacion','superior')
+            ->orderBy('fecha','desc')
+            ->get();
+}else{
+    $antecedentes = DB::table('parciales')
+            ->join('usuarios', 'parciales.ultimo_usuario', '=', 'usuarios.id')
+            ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
+            ->where('paciente_id', $paciente)
+            ->where('parciales.orientacion','superior')
+            ->orderBy('fecha','desc')
+            ->get();
+}
+
+        return view('admin.consulta.parte3.consulta_historia_parciales', [
+            'pacientes'    => $paciente2,
+            'antecedentes' => $antecedentes,
+        ]);
+
+    }
+
+    public function getParciales($id, $paciente)
+    {
+
+        $persona = DB::table('paciente')
+            ->where('id_paciente', $paciente)
+            ->pluck('paciente.persona_id');
+
+        $paciente2 = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
+
+        $antecedentes = DB::table('parciales')
+            ->where('id_parciales', $id)
+            ->get();
+        $validado = DB::table('parciales')
+            ->where('id_parciales', $id)
+            ->select('validar')
+            ->get();
+        // dd($validado);
+        $consulta = DB::table('parciales')
+            ->where('id_parciales', $id)
+            ->pluck('consulta_id');
+            //dd($consulta);
+
+
+        // dd($enfermedades_cardiovasculares);
+        return view('admin.consulta.parte3.consulta_parciales', [
+            'pacientes'                     => $paciente2,
+            'ante'                          => $antecedentes,
+            'consulta'                      => $consulta[0],
+            'validado'                      => $validado,
+
+        ]);
+
+    }
+
+    public function updateParciales(Request $req)
+    {
+        //dd($req->input('id_enfermedad'));
+        $data = $req->all();
+        try {
+
+            $verificar = DB::table('parciales')
+                ->where('id_parciales', $req->input('id_enfermedad'))
+                ->select('consulta_id', 'paciente_id', 'fecha', 'validar')
+                ->get();
+       // dd($verificar);
+
+            $data['ultimo_usuario']          = Auth::user()->id;
+            $data['profesor']                = Auth::user()->id;
+            $data['validar']                 = '';
+            $data['consulta_id']             = $verificar[0]->consulta_id;
+            $data['paciente_id']             = $verificar[0]->paciente_id;
+            $data['fecha']                   = $verificar[0]->fecha;
+            $data['validar']                 = $verificar[0]->validar;
+            $data['id_parciales'] = $req->input('id_enfermedad');
+            $data['orientacion']        = 'superior';
+
+            unset($data['_token']);
+            unset($data['historia']);
+
+            DB::table('parciales')
+                ->where('paciente_id', $data['paciente_id'])
+                ->where('consulta_id', $data['consulta_id'])
+                ->where('fecha', $data['fecha'])
+                ->where('orientacion', 'superior')
+                ->delete();
+
+            $consulta2 = Parciales::create($data);
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
+
+    }
+
+    public function validarParciales(Request $req)
+    {
+       // dd($req->id_enfermedad);
+        $data = $req->all();
+        $today = date("Y-m-d");
+
+        try {
+
+            $verificar = DB::table('parciales')
+                ->where('id_parciales', $req->input('id_enfermedad'))
+                ->update([
+                    'validar'  => '1',
+                    'profesor' => Auth::user()->id,
+                    'fecha_validacion' => $today
+                ]);
+
+            return 'validado';
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
+
+    }
+       public function showParcialesInferior($paciente)
+    {
+
+        $persona = DB::table('paciente')
+            ->where('id_paciente', $paciente)
+            ->pluck('paciente.persona_id');
+
+        $paciente2 = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
+if(Auth::user()->rol_id == 6 || Auth::user()->rol_id == 5 || Auth::user()->rol_id == 4){
+
+        $antecedentes = DB::table('parciales')
+            ->join('usuarios', 'parciales.ultimo_usuario', '=', 'usuarios.id')
+            ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
+            ->where('paciente_id', $paciente)
+            ->where('parciales.ultimo_usuario',Auth::user()->id)
+            ->where('parciales.orientacion','inferior')
+            ->orderBy('fecha','desc')
+            ->get();
+}else{
+    $antecedentes = DB::table('parciales')
+            ->join('usuarios', 'parciales.ultimo_usuario', '=', 'usuarios.id')
+            ->join('persona', 'persona.id_persona', '=', 'usuarios.persona_id')
+            ->where('paciente_id', $paciente)
+            ->where('parciales.orientacion','inferior')
+            ->orderBy('fecha','desc')
+            ->get();
+}
+
+        return view('admin.consulta.parte3.consulta_historia_parciales_inferior', [
+            'pacientes'    => $paciente2,
+            'antecedentes' => $antecedentes,
+        ]);
+
+    }
+
+      public function getParcialesInferior($id, $paciente)
+    {
+
+        $persona = DB::table('paciente')
+            ->where('id_paciente', $paciente)
+            ->pluck('paciente.persona_id');
+
+        $paciente2 = DB::table('persona')
+            ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->where('persona.id_persona', $persona[0])
+            ->get();
+
+        $antecedentes = DB::table('parciales')
+            ->where('id_parciales', $id)
+            ->get();
+        $validado = DB::table('parciales')
+            ->where('id_parciales', $id)
+            ->select('validar')
+            ->get();
+        // dd($validado);
+        $consulta = DB::table('parciales')
+            ->where('id_parciales', $id)
+            ->pluck('consulta_id');
+            //dd($consulta);
+
+
+        // dd($enfermedades_cardiovasculares);
+        return view('admin.consulta.parte3.consulta_parciales_inferior', [
+            'pacientes'                     => $paciente2,
+            'ante'                          => $antecedentes,
+            'consulta'                      => $consulta[0],
+            'validado'                      => $validado,
+
+        ]);
+
+    }
+
+    
+
+    public function updateParcialesInferior(Request $req)
+    {
+        //dd($req->input('id_enfermedad'));
+        $data = $req->all();
+        try {
+
+            $verificar = DB::table('parciales')
+                ->where('id_parciales', $req->input('id_enfermedad'))
+                ->select('consulta_id', 'paciente_id', 'fecha', 'validar')
+                ->get();
+       // dd($verificar);
+
+            $data['ultimo_usuario']          = Auth::user()->id;
+            $data['profesor']                = Auth::user()->id;
+            $data['validar']                 = '';
+            $data['consulta_id']             = $verificar[0]->consulta_id;
+            $data['paciente_id']             = $verificar[0]->paciente_id;
+            $data['fecha']                   = $verificar[0]->fecha;
+            $data['validar']                 = $verificar[0]->validar;
+            $data['id_parciales'] = $req->input('id_enfermedad');
+            $data['orientacion']        = 'inferior';
+
+            unset($data['_token']);
+            unset($data['historia']);
+
+            DB::table('parciales')
+                ->where('paciente_id', $data['paciente_id'])
+                ->where('consulta_id', $data['consulta_id'])
+                ->where('fecha', $data['fecha'])
+                ->where('orientacion', 'inferior')
+                ->delete();
+
+            $consulta2 = Parciales::create($data);
+
+        } catch (Exception $ex) {
+            DB::rollback();
+            echo $ex;
+            die();
+        }
+
+        DB::commit();
+
+    }
+
+  
       public function showOperatoria($paciente)
     {
         //dd($paciente);

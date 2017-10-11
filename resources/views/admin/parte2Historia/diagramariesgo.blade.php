@@ -43,55 +43,49 @@
 						</div>
 					</div>
 					<div class="row row_border ">
-						<div class="col-lg-12">
-							<div class="col-lg-6">
+						<div class="col-lg-6">
+							<div class="col-lg-12">
 							BOP
+								<input type="text" placeholder="max. 200" class="form-control" name="bop" style="color: black" id="bop" data-validation="required" data-validation-error-msg="Debe especificar" > 
 							</div>
-							<div class="col-lg-6">
-								<input type="text" name="bop" style="color: black" id="bop" data-validation="required" data-validation-error-msg="Debe especificar" > 
-							</div>
+							
 						</div>
-						<div class="col-lg-12">
-							<div class="col-lg-6">
+						<div class="col-lg-6">
+							<div class="col-lg-12">
 							PD >= 5
+							<input type="text" class="form-control" placeholder="max. 25" name="pd" style="color: black" id="pd" data-validation="required" data-validation-error-msg="Debe especificar" >
 							</div>
-							<div class="col-lg-6">
-								<input type="text" name="pd" style="color: black" id="pd" data-validation="required" data-validation-error-msg="Debe especificar" > 
-							</div>
+							
 						</div>
-						<div class="col-lg-12">
-							<div class="col-lg-6">
+						<div class="col-lg-6">
+							<div class="col-lg-12">
 							Tooth loss
+							<input type="text" class="form-control" placeholder="max. 25" name="tooth" style="color: black" id="tooth" data-validation="required" data-validation-error-msg="Debe especificar" > 
 							</div>
-							<div class="col-lg-6">
-								<input type="text" name="tooth" style="color: black" id="tooth" data-validation="required" data-validation-error-msg="Debe especificar" > 
-							</div>
+							
 						</div>
-						<div class="col-lg-12">
-							<div class="col-lg-6">
+						<div class="col-lg-6">
+							<div class="col-lg-12">
 							BL / Age
+							<input type="text" class="form-control" placeholder="max. 5" name="bl_age" style="color: black" id="bl_age" data-validation="required" data-validation-error-msg="Debe especificar" > 
 							</div>
-							<div class="col-lg-6">
-								<input type="text" name="bl_age" style="color: black" id="bl_age" data-validation="required" data-validation-error-msg="Debe especificar" > 
-							</div>
+							
 						</div>
-						<div class="col-lg-12">
-							<div class="col-lg-6">
+						<div class="col-lg-6">
+							<div class="col-lg-12">
 							Syst / Age
+							<input type="text" class="form-control" placeholder="max. 52000" name="sys_age" style="color: black" id="sys_age" data-validation="required" data-validation-error-msg="Debe especificar" > 
 							</div>
-							<div class="col-lg-6">
-								<input type="text" name="sys_age" style="color: black" id="sys_age" data-validation="required" data-validation-error-msg="Debe especificar" > 
-							</div>
+							
 						</div>
-						<div class="col-lg-12">
-							<div class="col-lg-6">
+						<div class="col-lg-6">
+							<div class="col-lg-12">
 							Envir.
+							<input type="text" class="form-control" placeholder="max. 200" name="envir" style="color: black" id="envir" data-validation="required" data-validation-error-msg="Debe especificar" > 
 							</div>
-							<div class="col-lg-6">
-								<input type="text" name="envir" style="color: black" id="envir" data-validation="required" data-validation-error-msg="Debe especificar" > 
-							</div>
+							
 						</div>
-						<div class="col-lg-12" style="text-align: center;">
+						<div  class="col-md-6 col-md-offset-4" style="text-align: center; margin-left: 25%; margin-top: 5%">
 						 	<a href="#" onclick="verChart()" class="btn btn-primary">Calcular</a>
 							
 						</div>

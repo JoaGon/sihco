@@ -478,15 +478,15 @@ $('#fileinput27').change(function() {
         }
 
     });
-$('#fileinput2').change(function() {
+$('#fileinput28').change(function() {
         var input = $('#fileinput28')[0];
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
             reader.onload = function(e) {
                 document.getElementById("primera28").style.backgroundImage = "url('" + e.target.result + "')";
-
-
+                //$( "#primera28" ).append( "<img class='ejemplo3' src=\"" + e.target.result + "\" name='primera28'>" );
+                $("#test").val(e.target.result);
             };
 
             reader.readAsDataURL(input.files[0]);

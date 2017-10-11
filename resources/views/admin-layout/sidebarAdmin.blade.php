@@ -319,6 +319,14 @@
                         <a href="{{ url('/consulta_historia_paciente') }}"><i class="fa fa-file-o fa-fw"></i>Consultar Historia</a>
                     </li>
                      <li>
+                        <a href="{{url('/Vercitas/1/1/')}}"><i class="fa fa-bar-chart-o fa-fw"></i> Ver citas</a>
+                        <!-- /.nav-second-level -->
+                    </li>
+                     <li>
+                        <a href="{{url('/cita')}}"><i class="fa fa-bar-chart-o fa-fw"></i> Citas</a>
+                        <!-- /.nav-second-level -->
+                    </li>
+                     <li>
                         <a href="{{url('/graficas')}}"><i class="fa fa-bar-chart-o fa-fw"></i> Reportes</a>
                         <!-- /.nav-second-level -->
                     </li>

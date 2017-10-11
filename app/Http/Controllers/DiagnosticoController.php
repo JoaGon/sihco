@@ -222,9 +222,9 @@ class DiagnosticoController extends Controller
                     ->delete();*/
 
             }
-          // dd($data['fecha'],$data['consulta_id'], $data['paciente_id'], $data['validar'], $data['fecha_validacion'], $data['profesor']);
+           dd($data['fecha'],$data['consulta_id'], $data['paciente_id'], $data['validar'], $data['fecha_validacion'], $data['profesor']);
            
-            //$consulta2 =  Diagnosticos::create($data);
+            $consulta2 =  Diagnosticos::create($data);
             // dd("aa");
                             for ($i=0; $i < sizeof($diagnosticos); $i++) {
                           //  dd($diagnosticos[$i]);
@@ -280,10 +280,6 @@ class DiagnosticoController extends Controller
             $data['validar']        = '';
             $data['fecha_validacion']        = '';
             unset($data['_token']);
-            $diagnosticos = $data['diagnosticos'];
-            $fechas = $data['fechas'];
-            unset($data['fechas']);
-            unset($data['diagnosticos']);
             unset($data['historia']);
 
             $verificar = DB::table('tratamientos')
@@ -298,13 +294,9 @@ class DiagnosticoController extends Controller
                     ->where('paciente_id', $data['paciente_id'])
                     ->where('consulta_id', $data['consulta_id'])
                     ->where('fecha', $data['fecha'])
-                    ->pluck('coronas_puentes.id_tratamientos');
+                    ->pluck('tratamientos.id_tratamientos');
 
                 $data['id_tratamientos'] = $id[0];
-
-                DB::table('tratamiento')
-                    ->where('tratamiento_id',$id[0])
-                    ->delete();
 
                 DB::table('tratamientos')
                     ->where('paciente_id', $data['paciente_id'])
@@ -318,15 +310,7 @@ class DiagnosticoController extends Controller
             $consulta2 =  Tratamientos::create($data);
             // dd($consulta2->id_tratamientos);
                           // dd($consulta2);
-                            for ($i=0; $i < sizeof($diagnosticos); $i++) {
-                          //  dd($diagnosticos[$i]);
-                                DB::table('tratamiento')
-                                ->insert([
-                                    'fecha_tratamiento'=>$fechas[$i],
-                                    'tratamiento_realizado'=>$diagnosticos[$i],
-                                    'tratamiento_id'=>$consulta2->id_tratamientos
-                                    ]);
-                            }
+                         
 
         } catch (Exception $ex) {
             DB::rollback();

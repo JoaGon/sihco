@@ -39,11 +39,10 @@
                         <li class="dropdown-submenu"><a tabindex="0">Pronostico</a></li>
                     </ul>
                 </li>
-                <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>Tratamiento<span class="caret"></span></a>
+                <li class="dropdown"><a  tabindex="0" data-toggle="dropdown" data-submenu>Tratamiento<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-submenu"><a tabindex="0">Plan de Tratamiento</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">Reg. de Actividades Clinicas</a></li>
-                    </ul>
+                        <li class="dropdown-submenu"><a  href="{{ url('consulta_tratamiento', array($paciente->id_paciente)) }}" tabindex="0">Plan de Tratamiento</a></li>
+                     </ul>
                 </li>
             </ul>
             @elseif( Auth::user()->rol_id == 5)
@@ -79,14 +78,13 @@
                     <ul class="dropdown-menu">
                         <li class="dropdown-submenu"><a  href="{{ url('consulta_diagnostico_clinico', array($paciente->id_paciente)) }}" tabindex="0">Diagnostico Clinico</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">Diagnostico Definivo</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">Pronostico</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('consulta_pronostico', array($paciente->id_paciente)) }}"  tabindex="0">Pronostico</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>Tratamiento<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-submenu"><a tabindex="0">Plan de Tratamiento</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">Reg. de Actividades Clinicas</a></li>
-                    </ul>
+                        <li class="dropdown-submenu"><a href="{{ url('consulta_tratamiento', array($paciente->id_paciente)) }}" tabindex="0">Plan de Tratamiento</a></li>
+                   </ul>
                 </li>
                 </ul>
             @elseif( Auth::user()->rol_id == 4)
@@ -134,13 +132,12 @@
                     <ul class="dropdown-menu">
                         <li class="dropdown-submenu"><a  href="{{ url('consulta_diagnostico_clinico', array($paciente->id_paciente)) }}" tabindex="0">Diagnostico Clinico</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">Diagnostico Definivo</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">Pronostico</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('consulta_pronostico', array($paciente->id_paciente)) }}" tabindex="0">Pronostico</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>Tratamiento<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-submenu"><a tabindex="0">Plan de Tratamiento</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">Reg. de Actividades Clinicas</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('consulta_tratamiento', array($paciente->id_paciente)) }}" tabindex="0">Plan de Tratamiento</a></li>
                     </ul>
                 </li>
             </ul>
@@ -188,13 +185,12 @@
                     <ul class="dropdown-menu">
                         <li class="dropdown-submenu"><a  href="{{ url('consulta_diagnostico_clinico', array($paciente->id_paciente)) }}" tabindex="0">Diagnostico Clinico</a></li>
                         <li class="dropdown-submenu"><a tabindex="0">Diagnostico Definivo</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">Pronostico</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('consulta_pronostico', array($paciente->id_paciente)) }}" tabindex="0">Pronostico</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>Tratamiento<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-submenu"><a tabindex="0">Plan de Tratamiento</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">Reg. de Actividades Clinicas</a></li>
+                        <li class="dropdown-submenu"><a href="{{ url('consulta_tratamiento', array($paciente->id_paciente)) }}" tabindex="0">Plan de Tratamiento</a></li>
                     </ul>
                 </li>
             </ul>

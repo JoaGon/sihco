@@ -271,7 +271,7 @@ border-radius: 10px;
                                         <input type="checkbox" name="otro" id="otro" value="S"> Otros
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
-                                        <input class="form-control" type="input" name="espec_otro" id="espec_otro" style="color:black ">
+                                        <input class="form-control" type="input" name="espec_otro" id="espec_otro" data-validation="required" data-validation-depends-on="otro" data-validation-error-msg="Debe especificar" style="color:black ">
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -279,7 +279,13 @@ border-radius: 10px;
                                         Agregar Imagenes
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4">
-                                        <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit_modal" >Agregar</a>
+                                        <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit_modal" >Agregar Periapicales</a>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4">
+                                        <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit_modal2" >Agregar Oclusales</a>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4">
+                                        <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit_modal3" >Agregar Panoramica</a>
                                     </div>
                                 </div>
                             </div>
@@ -546,42 +552,34 @@ border-radius: 10px;
                         <h4 class="modal-title">Registro de Imagenes</h4>
                     </div>
                     <div class="modal-body">
-                    <input id="fileinput" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput" name="imageProfile" type="file" style="display:none;"/>
                     <input id="fileinput2" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput3" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput4" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput5" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput6" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput7" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput8" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput9" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput10" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput11" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput12" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput13" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput14" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput15" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput16" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput3" name="imageProfile3" type="file" style="display:none;"/>
+                    <input id="fileinput4" name="imageProfile4" type="file" style="display:none;"/>
+                    <input id="fileinput5" name="imageProfile5" type="file" style="display:none;"/>
+                    <input id="fileinput6" name="imageProfile6" type="file" style="display:none;"/>
+                    <input id="fileinput7" name="imageProfile7" type="file" style="display:none;"/>
+                    <input id="fileinput8" name="imageProfile8" type="file" style="display:none;"/>
+                    <input id="fileinput9" name="imageProfile9" type="file" style="display:none;"/>
+                    <input id="fileinput10" name="imageProfile10" type="file" style="display:none;"/>
+                    <input id="fileinput11" name="imageProfile11" type="file" style="display:none;"/>
+                    <input id="fileinput12" name="imageProfile12" type="file" style="display:none;"/>
+                    <input id="fileinput13" name="imageProfile13" type="file" style="display:none;"/>
+                    <input id="fileinput14" name="imageProfile14" type="file" style="display:none;"/>
+                    <input id="fileinput15" name="imageProfile15" type="file" style="display:none;"/>
+                    <input id="fileinput16" name="imageProfile16" type="file" style="display:none;"/>
                   
-                  <input id="fileinput17" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput18" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput19" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput20" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput21" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput22" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput23" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput24" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput25" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput26" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput27" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput28" name="imageProfile2" type="file" style="display:none;"/>
-                    <input id="fileinput29" name="imageProfile2" type="file" style="display:none;"/>
+                  <input id="fileinput17" name="imageProfile17" type="file" style="display:none;"/>
+                    <input id="fileinput18" name="imageProfile18" type="file" style="display:none;"/>
+                    <input id="fileinput19" name="imageProfile19" type="file" style="display:none;"/>
+                    <input id="fileinput20" name="imageProfile20" type="file" style="display:none;"/>
+                 
                   
                   
                   
                     <div class="row">
-                        
-                            <div class="col-md-1"  style="margin:5px">
+                         <div class="col-md-12" style="text-align: center; font-size: 20px;color: blue;">Periapicales</div>
+                            <div class="col-md-1"  style="margin:5px; margin-left: 10%">
                                 <div class="ejemplo4 primera" id="primera1">
                                 <label id="falseinput" style="cursor:pointer;">Agregar</label>
                                 <label id="ver"  style="cursor:pointer;">Ver</label>
@@ -626,21 +624,24 @@ border-radius: 10px;
                             </div> 
 
                     </div>
+                     <div class="col-md-12" style="text-align: center; font-size: 20px;color: blue;">Interproximales</div>
                        <div class="row">
-                        
-                            <div class="col-md-1"  style="margin:5px">
+                         
+                            <div class="col-md-1"  style="margin:5px;margin-left: 10%">
                                 <div class="ejemplo4" id="primera9">
                                 <label id="falseinput9" style="cursor:pointer;">Agregar</label>
                                 <label id="ver"  style="cursor:pointer;">Ver</label></div>
                             </div>
+
                             <div class="col-md-1" style="margin:5px">
                                 <div class="ejemplo4" id="primera10">
                                 <label id="falseinput10" style="cursor:pointer;">Agregar</label>
                                 <label id="ver"  style="cursor:pointer;">Ver</label>
                                 </div>
                             </div>  
+
                             
-                            <div class="col-md-1" style="margin:5px; float: right; margin-right: 26%;">
+                            <div class="col-md-1" style="margin:5px; float: right; margin-right: 16%;">
                                 <div class="ejemplo4" id="primera11">
                                     <label id="falseinput11" style="cursor:pointer;">Agregar</label>
                                 <label id="ver"  style="cursor:pointer;">Ver</label>
@@ -656,8 +657,8 @@ border-radius: 10px;
                     </div>  
 
                        <div class="row">
-                        
-                            <div class="col-md-1"  style="margin:5px">
+                          <div class="col-md-12" style="text-align: center; font-size: 20px;color: blue;">Periapicales</div>
+                            <div class="col-md-1"  style="margin:5px;margin-left: 10%">
                                 <div class="ejemplo4" id="primera13">
                                     <label id="falseinput13" style="cursor:pointer;">Agregar</label>
                                 <label id="ver"  style="cursor:pointer;">Ver</label>
@@ -700,60 +701,8 @@ border-radius: 10px;
                             </div> 
 
                     </div>   
-                     <div class="row">
-                        
-                            <div class="col-md-1"  style="margin:15px">
-                                <div class="ejemplo4" id="primera21"><label id="falseinput21" style="cursor:pointer;">Agregar</label>
-                                <label id="ver"  style="cursor:pointer;">Ver</label>
-                                </div>
-                            </div> 
-                            <div class="col-md-1" style="margin:15px">
-                                <div class="ejemplo3" id="primera22"><label id="falseinput22" style="cursor:pointer;">Agregar</label>
-                                <label id="ver"  style="cursor:pointer;">Ver</label>
-                                </div>
-                            </div>  
-                            <div class="col-md-1" style="margin:15px">
-                                <div class="ejemplo3" id="primera23"><label id="falseinput23" style="cursor:pointer;">Agregar</label>
-                                <label id="ver"  style="cursor:pointer;">Ver</label>
-                                </div>
-                            </div>  
-                            <div class="col-md-1" style="margin:15px">
-                                <div class="ejemplo3" id="primera24"><label id="falseinput24" style="cursor:pointer;">Agregar</label>
-                                <label id="ver"  style="cursor:pointer;">Ver</label></div>
-                            </div>  
-                            
-                    </div> 
-                    <div class="row">
-                        
-                            <div class="col-md-1"  style="margin:15px">
-                                <div class="ejemplo4" id="primera25"><label id="falseinput25" style="cursor:pointer;">Agregar</label>
-                                <label id="ver"  style="cursor:pointer;">Ver</label>
-                                </div>
-                            </div> 
-                            <div class="col-md-1" style="margin:15px">
-                                <div class="ejemplo3" id="primera26"><label id="falseinput26" style="cursor:pointer;">Agregar</label>
-                                <label id="ver"  style="cursor:pointer;">Ver</label>
-                                </div>
-                            </div>  
-                            <div class="col-md-1" style="margin:15px">
-                                <div class="ejemplo3" id="primera27"><label id="falseinput27" style="cursor:pointer;">Agregar</label>
-                                <label id="ver"  style="cursor:pointer;">Ver</label>
-                                </div>
-                            </div>  
-                            <div class="col-md-1" style="margin:15px">
-                                <div class="ejemplo3" id="primera28"><label id="falseinput28" style="cursor:pointer;">Agregar</label>
-                                <label id="ver"  style="cursor:pointer;">Ver</label></div>
-                            </div>  
-                            
-                    </div> 
-                    <div class="row">
-                        
-                            <div class="col-md-8"  style="margin:15px">
-                                <div class="ejemplo5" id="primera29"><label id="falseinput29" style="cursor:pointer;">Agregar</label>
-                                <label id="ver"  style="cursor:pointer;">Ver</label></div>
-                            </div> 
-                            
-                    </div>                        
+                
+                                     
                     </div>                       
 
 
@@ -765,6 +714,136 @@ border-radius: 10px;
                 {!! Form::close() !!}
             </div>
             </div>
+          
+            <!-- /.modal-dialog -->
+           <div id="edit_modal2" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Registro de Imagenes</h4>
+                    </div>
+                    <div class="modal-body">
+
+                          <input id="fileinput" name="imageProfile2" type="file" style="display:none;"/>
+                
+                    <input id="fileinput21" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput22" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput23" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput24" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput25" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput26" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput27" name="imageProfile2" type="file" style="display:none;"/>
+                    <input id="fileinput28" name="imageProfile2" type="file" style="display:none;"/>
+                   
+                 
+                     <div class="row" >
+                       
+                            <div class="col-md-1"  style="margin:15px">
+                            Oclusal total sup.
+                                <div class="ejemplo4" id="primera21"><label id="falseinput21" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                                </div>
+                            </div> 
+                            <div class="col-md-1" style="margin:15px">
+                            Oclusal anterosup
+                                <div class="ejemplo3" id="primera22"><label id="falseinput22" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                                </div>
+                            </div>  
+                            <div class="col-md-1" style="margin:15px">
+                            Oclusal lat. supIzquierdo
+                                <div class="ejemplo3" id="primera23"><label id="falseinput23" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                                </div>
+                            </div>  
+                            <div class="col-md-1" style="margin:15px">
+                            Oclusal lat. supDerecho
+                                <div class="ejemplo3" id="primera24"><label id="falseinput24" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label></div>
+                            </div>  
+                            
+                    </div> 
+                    <div class="row">
+                        
+                            <div class="col-md-1"  style="margin:15px">
+                             Oclusal total inf.
+                                <div class="ejemplo4" id="primera25"><label id="falseinput25" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                                </div>
+                            </div> 
+                            <div class="col-md-1" style="margin:15px">
+                             Oclusal anterosinf
+                                <div class="ejemplo3" id="primera26"><label id="falseinput26" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                                </div>
+                            </div>  
+                            <div class="col-md-1" style="margin:15px">
+                              Oclusal lat. infIzquierdo
+                                <div class="ejemplo3" id="primera27"><label id="falseinput27" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label>
+                                </div>
+                            </div>  
+                            <div class="col-md-1" style="margin:15px">
+                                Oclusal lat. infDerecho
+                                <div class="ejemplo3" id="primera28"><label id="falseinput28" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label></div>
+                            </div>  
+                            
+                    </div> 
+                                    
+                    
+                    </div>                        
+
+
+                    <div class="modal-footer">
+                        <button type="button" class=" btn btn-default" data-dismiss="modal">Cerrar</button> {!! Form::submit('Guardar cambios', ['class' => 'btn btn-primary ']) !!}
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+                {!! Form::close() !!}
+            </div>
+            </div>
+
+              <!-- /.modal-dialog -->
+           <div id="edit_modal3" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Registro de Imagenes</h4>
+                    </div>
+                    <div class="modal-body">
+                        
+                          <input id="fileinput" name="imageProfile2" type="file" style="display:none;"/>
+                   
+                    <input id="fileinput29" name="imageProfile2" type="file" style="display:none;"/>
+                  
+                  
+              
+                    <div class="row">
+                        
+                            <div class="col-md-10"  style="margin:15px; margin-left: 10%;">
+                                <div class="ejemplo5" id="primera29"><label id="falseinput29" style="cursor:pointer;">Agregar</label>
+                                <label id="ver"  style="cursor:pointer;">Ver</label></div>
+                            </div> 
+                            
+                    </div>                       
+                    
+                    </div>                        
+
+
+                    <div class="modal-footer">
+                        <button type="button" class=" btn btn-default" data-dismiss="modal">Cerrar</button> {!! Form::submit('Guardar cambios', ['class' => 'btn btn-primary ']) !!}
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+                {!! Form::close() !!}
+            </div>
+            </div>
+
+
+
             <!-- /.modal-dialog -->
             <div id="big-image" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -783,13 +862,17 @@ border-radius: 10px;
                     
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button> {!! Form::submit('Guardar cambios', ['class' => 'btn btn-primary ']) !!}
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar
                     </div>
                 </div>
                 <!-- /.modal-content -->
                 {!! Form::close() !!}
             </div>
             <!-- /.modal-dialog -->
+
+            <input type="hidden" id="test" name="primera28">
+          
+         
 </div>
 </div>
 <!--<script src="{{ url('bower_components/jquery/dist/jquery.min.js') }}"></script>-->

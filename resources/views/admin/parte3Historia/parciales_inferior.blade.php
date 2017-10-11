@@ -195,13 +195,12 @@
                      
                                  <div class="row row_border">
                                     <h4>Modelo Superior</h4>
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
                                     Clasificacion de Kennedy:
+                                     <input class="form-control" style="width: 100% !important" type="text" name="clasificacion_kennedy" placeholder="" id="clasificacion_kennedy" value="">
                                     </div>
-                                      <div class="col-lg-8 col-md-8 col-sm-8">
-                                         <input class="form-control" style="width: 100% !important" type="text" name="clasificacion_kennedy" placeholder="" id="clasificacion_kennedy" value=""> 
-                                      </div>
-                                   <div class="col-lg-2 col-md-2 col-sm-2">
+                                     
+                                   <div class="col-lg-12 col-md-12 col-sm-12">
                                     Posicion:
                                     </div>
                                     <div class="col-lg-2 col-md-2 col-sm-2">
@@ -219,54 +218,46 @@
                                      <div class="col-lg-2 col-md-2 col-sm-2">
                                    <input class="form-control" style="width: 100% !important" type="text" name="posicion_li" placeholder="L.I" id="posicion_li" value=""> 
                                     </div> 
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
                                     Dientes Pilares:
+                                     <input class="form-control" style="width: 100% !important" type="text" name="dientes_pilares" placeholder="" id="dientes_pilares" value=""> 
+                                  
                                     </div>
-                                      <div class="col-lg-8 col-md-8 col-sm-8">
-                                         <input class="form-control" style="width: 100% !important" type="text" name="dientes_pilares" placeholder="" id="dientes_pilares" value=""> 
-                                      </div>
-                                      <div class="col-lg-4 col-md-4 col-sm-4">
+                                   
+                                      <div class="col-lg-12 col-md-12 col-sm-12">
                                     Localizacion de Retenciones:
+                                    <textarea name="localizacion_retenciones" id="localizacion_retenciones" placeholder="" class="form-control" data-validation="required" data-validation-depends-on="otro" data-validation-error-msg="Debe especificar otra enfermedad" style="height: 100px;"></textarea>
                                     </div>
-                                      <div class="col-lg-8 col-md-8 col-sm-8">
-                                         <textarea name="localizacion_retenciones" id="localizacion_retenciones" placeholder="" class="form-control" data-validation="required" data-validation-depends-on="otro" data-validation-error-msg="Debe especificar otra enfermedad" style="height: 100px;"></textarea>
-                                      </div> 
-                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                    
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
                                     Retenedores Directos:
+                                     <textarea name="retenedores_directos" id="retenedores_directos" placeholder="" class="form-control" data-validation="required" data-validation-depends-on="otro" data-validation-error-msg="Debe especificar otra enfermedad" style="height: 100px;"></textarea>
                                     </div>
-                                      <div class="col-lg-8 col-md-8 col-sm-8">
-                                         <textarea name="retenedores_directos" id="retenedores_directos" placeholder="" class="form-control" data-validation="required" data-validation-depends-on="otro" data-validation-error-msg="Debe especificar otra enfermedad" style="height: 100px;"></textarea>
-                                      </div> 
-                                      <div class="col-lg-4 col-md-4 col-sm-4">
+                                     
+                                      <div class="col-lg-12 col-md-12 col-sm-12">
                                     Apoyos:
+                                      <input class="form-control" style="width: 100% !important" type="text" name="apoyos" placeholder="" id="apoyos" value=""> 
                                     </div>
-                                      <div class="col-lg-8 col-md-8 col-sm-8">
-                                         <input class="form-control" style="width: 100% !important" type="text" name="apoyos" placeholder="" id="apoyos" value=""> 
-                                      </div>
-                                      <div class="col-lg-4 col-md-4 col-sm-4">
+                                     
+                                      <div class="col-lg-12 col-md-12 col-sm-12">
                                     Retenedores Indirectos:
+                                     <input class="form-control" style="width: 100% !important" type="text" name="retenedores_indirectos" placeholder="" id="retenedores_indirectos" value=""> 
                                     </div>
-                                      <div class="col-lg-8 col-md-8 col-sm-8">
-                                         <input class="form-control" style="width: 100% !important" type="text" name="retenedores_indirectos" placeholder="" id="retenedores_indirectos" value=""> 
-                                      </div>
-                                      <div class="col-lg-4 col-md-4 col-sm-4">
+                                      
+                                      <div class="col-lg-12 col-md-12 col-sm-12">
                                     Planos Guias:
+                                     <input class="form-control" style="width: 100% !important" type="text" name="planos_guias" placeholder="" id="planos_guias" value=""> 
                                     </div>
-                                      <div class="col-lg-8 col-md-8 col-sm-8">
-                                         <input class="form-control" style="width: 100% !important" type="text" name="planos_guias" placeholder="" id="planos_guias" value=""> 
-                                      </div>
-                                       <div class="col-lg-4 col-md-4 col-sm-4">
+                                      
+                                       <div class="col-lg-12 col-md-12 col-sm-12">
                                     C. Mayor:
+                                    <input class="form-control" style="width: 100% !important" type="text" name="c_mayor" placeholder="" id="c_mayor" value=""> 
                                     </div>
-                                      <div class="col-lg-8 col-md-8 col-sm-8">
-                                         <input class="form-control" style="width: 100% !important" type="text" name="c_mayor" placeholder="" id="c_mayor" value=""> 
-                                      </div>
-                                       <div class="col-lg-4 col-md-4 col-sm-4">
+                                    
+                                       <div class="col-lg-12 col-md-12 col-sm-12">
                                     Bases:
+                                     <input class="form-control" style="width: 100% !important" type="text" name="bases" placeholder="" id="bases" value=""> 
                                     </div>
-                                      <div class="col-lg-8 col-md-8 col-sm-8">
-                                         <input class="form-control" style="width: 100% !important" type="text" name="bases" placeholder="" id="bases" value=""> 
-                                      </div>
                                        <div id="wPaint-demo1" class="col-lg-6" style="position:relative; width:500px; height:200px; background-color:#7a7a7a; margin:70px auto 20px auto;"></div>
                                       <div class="col-lg-6">
                                         <center  style="margin-bottom: 50px;">

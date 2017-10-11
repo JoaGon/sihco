@@ -21,6 +21,16 @@ class Tratamientos extends Authenticatable
       'profesor',
       'ultimo_usuario',
       'especialidad',
+      'fase_emergencia' ,
+      'fase_sistemica' ,
+      'fase_inicial' ,
+      'fase_correctiva' ,
+      't_periodontal' ,
+      't_endodontico' ,
+      't_restaurativo' ,
+      't_quirurgico' ,
+      't_protesico' ,
+      'fase_mantenimiento',
 
     ];
     protected $primaryKey = 'id_tratamientos';

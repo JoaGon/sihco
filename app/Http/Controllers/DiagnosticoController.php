@@ -64,7 +64,7 @@ class DiagnosticoController extends Controller
     {
 
         $data = $req->all();
-        //dd($data);
+        dd($data);
       
         DB::beginTransaction();
 
@@ -154,7 +154,7 @@ class DiagnosticoController extends Controller
 
         $data = $req->all();
 
-             // dd("aqui");
+             // 
 
         DB::beginTransaction();
 
@@ -174,13 +174,13 @@ class DiagnosticoController extends Controller
             $data['tipo']        = 'clinico';
 
             $tipo2 = $data['especialidad'];
-
-            unset($data['especialidad']);
+            //dd("aqui", $tipo2);
+           // unset($data['especialidad']);
   
             unset($data['fechas']);
             unset($data['diagnosticos']);
             unset($data['historia']);
-
+            //dd("aqui");
 
             $verificar = DB::table('diagnosticos')
                 ->where('paciente_id', $data['paciente_id'])
@@ -188,7 +188,9 @@ class DiagnosticoController extends Controller
                 ->where('tipo', 'clinico')
                 ->where('fecha', $data['fecha'])
                 ->count();
-
+              //  DD($verificar);
+                
+            if($verificar > 0){
                 $id = DB::table('diagnosticos')
                     ->where('paciente_id', $data['paciente_id'])
                     ->where('consulta_id', $data['consulta_id'])
@@ -196,16 +198,15 @@ class DiagnosticoController extends Controller
                     ->where('tipo', 'clinico')
                     ->pluck('diagnosticos.id_diagnosticos');
 
-              $verificar2 = DB::table('diagnostico')
+                    $verificar2 = DB::table('diagnostico')
                     ->where('diagnostico_id',$id[0])
                     ->where('especialidad',$tipo2)
                     ->count();
-
-            if ($verificar2 > 0) {
+                     if ($verificar2 > 0) {
 
 
                 $data['id_diagnosticos'] = $id[0];
-               // dd($id[0],$tipo2);
+                //dd($id[0],$tipo2);
 
                 $del = DB::table('diagnostico')
                     ->where('diagnostico_id',$id[0])
@@ -214,25 +215,30 @@ class DiagnosticoController extends Controller
                    //dd("aq",$del);
 
 
-               /* DB::table('diagnosticos')
+               DB::table('diagnosticos')
                     ->where('paciente_id', $data['paciente_id'])
                     ->where('consulta_id', $data['consulta_id'])
                     ->where('fecha', $data['fecha'])
                     ->where('tipo', 'clinico')
-                    ->delete();*/
+                    ->delete();
 
             }
-           dd($data['fecha'],$data['consulta_id'], $data['paciente_id'], $data['validar'], $data['fecha_validacion'], $data['profesor']);
+        }
+
+              
+
+           
+         //  dd($data);
            
             $consulta2 =  Diagnosticos::create($data);
-            // dd("aa");
+          //  dd("aa",$consulta2->id_diagnosticos);
                             for ($i=0; $i < sizeof($diagnosticos); $i++) {
                           //  dd($diagnosticos[$i]);
                                 DB::table('diagnostico')
                                 ->insert([
                                     'fecha_tratamiento'=>$fechas[$i],
                                     'diagnostico'=>$diagnosticos[$i],
-                                    'diagnostico_id'=>$id[0],
+                                    'diagnostico_id'=>$consulta2->id_diagnosticos,
                                     'especialidad' =>$tipo2
                                     ]);
                             }

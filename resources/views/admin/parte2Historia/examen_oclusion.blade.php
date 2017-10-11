@@ -275,9 +275,9 @@
                                </label> 
                            </div>
                        <p><label>Drawing tool: 
-                       <select id="dtool">
+                       <select  id="dtool">
                         <option value="line">Line</option>
-                        <option value="rect">Rectangle</option>
+                        <option value="rect" selected>Rectangle</option>
                         <option value="pencil">Pencil</option>
                         <option value="circle">Circle</option>
                         </select></label></p>
@@ -302,13 +302,7 @@
                                    9. Incluya en un circulo  interferencias en lateralidad: Derecho
                                </label> 
                            </div>
-                       <p><label>Drawing tool: 
-                       <select id="dtool">
-                        <option value="line">Line</option>
-                        <option value="rect">Rectangle</option>
-                        <option value="pencil">Pencil</option>
-                        <option value="circle">Circle</option>
-                        </select></label></p>
+                     
 
                     <div id="container3" width="400" height="300" class="col-lg-10 col-sm-8">
                       <canvas  id="imageView2" style="left:100px" width="750" height="300">
@@ -329,13 +323,7 @@
                                    9. Incluya en un circulo  interferencias en lateralidad: Izquierdo
                                </label> 
                            </div>
-                       <p><label>Drawing tool: 
-                       <select id="dtool">
-                        <option value="line">Line</option>
-                        <option value="rect">Rectangle</option>
-                        <option value="pencil">Pencil</option>
-                        <option value="circle">Circle</option>
-                        </select></label></p>
+                     
 
                     <div id="container4" width="400" height="300" class="col-lg-10 col-sm-8">
                       <canvas  id="imageView3" style="left:100px" width="750" height="300">
@@ -356,13 +344,7 @@
                                    10. Incluya en un circulo la interferencia en el movimiento protrusivo
                                </label> 
                            </div>
-                       <p><label>Drawing tool: 
-                       <select id="dtool">
-                        <option value="line">Line</option>
-                        <option value="rect">Rectangle</option>
-                        <option value="pencil">Pencil</option>
-                        <option value="circle">Circle</option>
-                        </select></label></p>
+                       
 
                     <div id="container5" width="400" height="300" class="col-lg-10 col-sm-8">
                       <canvas  id="imageView4" style="left:100px" width="750" height="300">

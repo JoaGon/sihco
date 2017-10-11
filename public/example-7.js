@@ -9,8 +9,9 @@ window.addEventListener('load', function () {
 
   // The active tool instance.
   var tool;
-  var tool_default = 'line';
-
+  var tool_default = 'rect';
+ var scale=1.00;
+ 
   function init () {
     // Find the canvas element.
     canvaso = document.getElementById('imageView3');
@@ -43,9 +44,24 @@ window.addEventListener('load', function () {
     canvas.width  = canvaso.width;
     canvas.height = canvaso.height;
     container.appendChild(canvas);
+ var originalWindowWidth=window.innerWidth;
+    var originalCanvasWidth=document.getElementById('imageTemp3').width;
 
     context = canvas.getContext('2d');
-
+  function debounce(func, wait, immediate) {
+  var timeout;
+  return function() {
+    var context = this, args = arguments;
+    var later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+};
     // Get the tool select input.
     var tool_select = document.getElementById('dtool');
     if (!tool_select) {
@@ -59,7 +75,12 @@ window.addEventListener('load', function () {
       tool = new tools[tool_default]();
       tool_select.value = tool_default;
     }
+  var resizeCanvas = debounce(function() {
+        scale=window.innerWidth/originalWindowWidth;
+        $('#imageTemp3').css('width',originalCanvasWidth*scale);
+      }, 250);
 
+    window.addEventListener('resize', resizeCanvas);
     // Attach the mousedown, mousemove and mouseup event listeners.
     canvas.addEventListener('mousedown', ev_canvas, false);
     canvas.addEventListener('mousemove', ev_canvas, false);
@@ -69,10 +90,11 @@ window.addEventListener('load', function () {
   // The general-purpose event handler. This function just determines the mouse 
   // position relative to the canvas element.
   function ev_canvas (ev) {
+     var rect = canvas.getBoundingClientRect();
     console.log(ev)
     if (ev.layerX || ev.layerX == 0) { // Firefox
-      ev._x = ev.layerX -70;
-      ev._y = ev.layerY -580;
+      ev._x =  parseInt((event.x - rect.left)/scale);
+      ev._y = parseInt((event.y - rect.top)/scale);
     } else if (ev.offsetX || ev.offsetX == 0) { // Opera
       ev._x = ev.offsetX;
       ev._y = ev.offsetY;
@@ -163,6 +185,7 @@ window.addEventListener('load', function () {
         return;
       }
 
+      context.lineWidth = 3;
       context.strokeStyle = 'red';
       context.strokeRect(x, y, w, h);
     };

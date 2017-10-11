@@ -246,8 +246,7 @@
         <div class=''></div>
         <div class="form-group">
                     <div class="col-md-6 col-md-offset-4">
-                     <a type="button" onclick="validar();" class="btn btn-primary">Validar</a>
-                        <a type="button" id="btnGuardar" class="btn btn-primary">Registrar
+                       <a type="button" id="btnGuardar" class="btn btn-primary">Registrar
                         </a>
                         <a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
                     </div>

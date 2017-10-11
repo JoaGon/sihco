@@ -110,28 +110,24 @@
 					<div class="row row_border ">
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 							Sangramiento
+							<input type="text" class="form-control" name="sangramiento" style="color: black" id="sangramiento" data-validation="required" data-validation-error-msg="Debe especificar" >
 						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-							<input type="text" name="sangramiento" style="color: black" id="sangramiento" data-validation="required" data-validation-error-msg="Debe especificar" > 
-						</div>
+						
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 							Cepillado
+							<input type="text" class="form-control" name="cepillado" style="color: black" id="cepillado" data-validation="required"  data-validation-error-msg="Debe especificar" > 
 						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-							<input type="text" name="cepillado" style="color: black" id="cepillado" data-validation="required"  data-validation-error-msg="Debe especificar" > 
-						</div>
+						
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 							Espontaneo
+								<input type="text" class="form-control" name="espontaneo" style="color: black" id="espontaneo" data-validation="required" data-validation-error-msg="Debe especificar" > 
 						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-							<input type="text" name="espontaneo" style="color: black" id="espontaneo" data-validation="required" data-validation-error-msg="Debe especificar" > 
-						</div>
+						
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 							Otros
+							<input type="text" class="form-control" name="otro" style="color: black" id="otro" data-validation="required" data-validation-error-msg="Debe especificar" > 
 						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-							<input type="text" name="otro" style="color: black" id="otro" data-validation="required" data-validation-error-msg="Debe especificar" > 
-						</div>
+					
 						</div>
 					<div class="row row_border ">
 					<div class="col-lg-12">

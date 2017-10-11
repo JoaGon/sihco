@@ -161,7 +161,7 @@
 					 	<label>
 								Viscosidad
 						</label> 
-							<select style="color: black" name="viscosidad"  data-validation="required" data-validation-error-msg="Debe indicar que tipo">
+							<select class="form-control" style="color: black" name="viscosidad"  data-validation="required" data-validation-error-msg="Debe indicar que tipo">
 								<option value="" selected>Selecione..</option>
 								<option value="serosa">Serosa</option>
 								<option value="mucosa">Mucosa</option>

@@ -95,19 +95,25 @@
                             <input style="display:none" type="text" class="form-control" id="persona_id" name="persona_id">
                             <div class="form-group">
                                 <div class="form-group col-md-4">
-                                    <label for="min_quantity" class="col-sm-2 control-label">Nro Historia</label>
+                                   <div class="col-md-12">
+                                        <label for="name_edit" class="control-label">Nro Historia</label>
+                                    </div>
                                     <div class="col-sm-10">
                                         <input style="margin-bottom: 15px;" type="text" class="form-control" name="nro_edit" id="nro_edit" placeholder="numero de historia">
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="name_edit" class="col-sm-2 control-label">Nombre</label>
+                                    <div class="col-md-12">
+                                        <label for="name_edit" class="col-sm-2 control-label">Nombre</label>
+                                    </div>
                                     <div class="col-sm-10">
                                         <input style="margin-bottom: 15px;" type="text" data-validation="required" data-validation-error-msg="Debe Introducir un nombre" class="form-control" id="name_edit" name="name_edit" placeholder="Nombre">
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="apellido_edit" class="col-sm-2 control-label">Apellido</label>
+                                   <div class="col-md-12">
+                                        <label for="name_edit" class="control-label">Apellido</label>
+                                    </div>
                                     <div class="col-sm-10">
                                         <input style="margin-bottom: 15px;" data-validation="required" data-validation-error-msg="Debe Introducir el apellido" type="text" class="form-control" name="apellido_edit" id="apellido_edit" placeholder="Apellido">
                                     </div>
@@ -115,23 +121,34 @@
                             </div>
                             <div class="form-group">
                                 <div class="form-group  col-md-4">
-                                    <label for="cedula_edit" class="col-sm-2 control-label">Cedula</label>
+                                   <div class="col-md-12">
+                                        <label for="name_edit" class="control-label">Cedula</label>
+                                    </div>
                                     <div class="col-sm-10">
                                         <input style="margin-bottom: 15px;" type="text" data-validation="required" data-validation-error-msg="Debe Introducir la Cedula de Identidad" class="form-control" name="cedula_edit" id="cedula_edit" placeholder="Nro de Cedula">
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="sexo_edit" class="col-sm-2 control-label">Sexo</label>
+                                   <div class="col-md-10">
+                                        <label for="name_edit" class="control-label">Sexo</label>
+                                    
                                     <div>
-                                        <select style="width: 200px; margin-left: 103px" data-validation="required" data-validation-error-msg="Debe Introducir un Genero" name="sexo_edit" class="form-control" id="sexo_edit">
+                                        <select class="form-control" data-validation="required" data-validation-error-msg="Debe Introducir un Genero" name="sexo_edit" class="form-control" id="sexo_edit">
                                             <option value="">Seleccione...</option>
                                             <option value="F">Femenino</option>
                                             <option value="M">Masculino</option>
                                         </select>
                                     </div>
+                                    </div>
                                 </div>
+
+                           
+
+
                                 <div class="form-group col-md-4 ">
-                                    <label for="telefono_edit" class="col-sm-2 control-label">Telefono</label>
+                                    <div class="col-md-12">
+                                        <label for="name_edit" class="control-label">Telefono</label>
+                                    </div>
                                     <div class="col-sm-10">
                                         <input style="margin-bottom: 15px;" data-validation="required" data-validation-error-msg="Debe Introducir un numero de Telefono" type="text" class="form-control" name="telefono_edit" id="telefono_edit" placeholder="Nro de Telefono">
                                     </div>
@@ -139,19 +156,25 @@
                             </div>
                             <div class="form-group">
                                 <div class="form-group col-md-4">
-                                    <label for="celular_edit" class="col-sm-2 control-label">Celular</label>
+                                 <div class="col-md-12">
+                                        <label for="name_edit" class="control-label">Celular</label>
+                                    </div>
                                     <div class="col-sm-10">
                                         <input style="margin-bottom: 15px;" type="text" data-validation="required" data-validation-error-msg="Debe Introducir un numero Celular" class="form-control" name="celular_edit" id="celular_edit" placeholder="Nro de Cedular">
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="direccion_edit" class="col-sm-2 control-label">Direccion</label>
+                                    <div class="col-md-12">
+                                        <label for="name_edit" class="control-label">Direccion</label>
+                                    </div>
                                     <div class="col-sm-10">
                                         <input style="margin-bottom: 15px;" type="text" data-validation="required" data-validation-error-msg="Debe Introducir una Direccion" class="form-control" name="direccion_edit" id="direccion_edit" placeholder="Direccion">
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="email_edit" class="col-sm-2 control-label">Grupo sanguineo</label>
+                                     <div class="col-md-12">
+                                        <label for="name_edit" class="control-label">Grupo sanguineo</label>
+                                    </div>
                                     <div class="col-sm-10">
                                         <select class="form-control" id="grupo_sanguineo" data-validation="required" data-validation-error-msg="Debe seleccionar un valor" name="grupo_sanguineo" value="{{ old('grupo_sanguineo') }}">
                                             <option value="" selected>Selecione..</option>
@@ -165,7 +188,9 @@
                             </div>
                             <div class="form-group">
                                 <div class="form-group col-md-4">
-                                    <label for="email_edit" class="col-sm-2 control-label">Estado Civil</label>
+                                    <div class="col-md-12">
+                                        <label for="name_edit" class="control-label">Estado civil</label>
+                                    </div>
                                     <div class="col-sm-10">
                                         <select class="form-control" id="estado_civil" data-validation="required" data-validation-error-msg="Debe Introducir un Estado Civil" name="estado_civil" value="{{ old('estado_civil') }}">
                                             <option value="" selected>Selecione..</option>
@@ -177,13 +202,17 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="min_quantity" class="col-sm-2 control-label">Ocupacion</label>
+                                   <div class="col-md-12">
+                                        <label for="name_edit" class="control-label">Ocupacion</label>
+                                    </div>
                                     <div class="col-sm-10">
                                         <input style="margin-bottom: 15px;" type="text" data-validation="required" data-validation-error-msg="Debe Introducir una Ocupacion" class="form-control" name="ocupacion_edit" id="ocupacion_edit" placeholder="Ocupacion">
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="min_quantity" class="col-sm-2 control-label">Fecha Ingreso</label>
+                                   <div class="col-md-12">
+                                        <label for="name_edit" class="control-label">Fecha Ingreso</label>
+                                    </div>
                                     <div class="col-sm-10">
                                         <input style="margin-bottom: 15px;" type="text" data-validation="required" data-validation-error-msg="Debe Introducir una fecha de Ingreso" class="form-control" name="ingreso_edit" id="ingreso_edit" placeholder="Fecha de Ingreso">
                                     </div>
@@ -191,19 +220,25 @@
                             </div>
                             <div class="form-group">
                                 <div class="form-group col-md-4">
-                                    <label for="min_quantity" class="col-sm-2 control-label">Fecha de Nacimiento</label>
+                                    <div class="col-md-12">
+                                        <label for="name_edit" class="control-label">Fecha de nacimiento</label>
+                                    </div>
                                     <div class="col-sm-10">
                                         <input style="margin-bottom: 15px;" type="text" data-validation="required" data-validation-error-msg="Debe Introducir una fecha de Nacimiento" class="form-control" name="nacimiento_edit" id="nacimiento_edit" placeholder="Fecha de Nacimiento">
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="familiar_cercano" class="col-sm-2 control-label">Lugar de Nacimiento</label>
+                                    <div class="col-md-12">
+                                        <label for="name_edit" class="control-label">Lugar de nacimiento</label>
+                                    </div>
                                     <div class="col-sm-10">
                                         <input style="margin-bottom: 15px;" type="text" data-validation="required" data-validation-error-msg="Debe Introducir un lugar" class="form-control" name="lugar_nacimiento" id="lugar_nacimiento" placeholder="Familiar cercano">
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="familiar_cercano" class="col-sm-2 control-label">Familiar Cercano</label>
+                                    <div class="col-md-12">
+                                        <label for="name_edit" class="control-label">Familiar cercano</label>
+                                    </div>
                                     <div class="col-sm-10">
                                         <input style="margin-bottom: 15px;" type="text" data-validation="required" data-validation-error-msg="Debe Introducir un nombre" class="form-control" name="familiar_cercano" id="familiar_cercano" placeholder="Familiar cercano">
                                     </div>
@@ -211,19 +246,25 @@
                             </div>
                             <div class="form-group">
                                 <div class="form-group col-md-4">
-                                    <label for="min_quantity" class="col-sm-2 control-label">Parentesco</label>
+                                   <div class="col-md-12">
+                                        <label for="name_edit" class="control-label">Parentesco</label>
+                                    </div>
                                     <div class="col-sm-10">
                                         <input style="margin-bottom: 15px;" type="text" data-validation="required" data-validation-error-msg="Debe Introducir una fecha de Nacimiento" class="form-control" name="parentesco" id="parentesco" placeholder="parentesco">
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="min_quantity" class="col-sm-2 control-label">Direccion del familiar</label>
+                                    <div class="col-md-12">
+                                        <label for="name_edit" class="control-label">Direccion del familiar</label>
+                                    </div>
                                     <div class="col-sm-10">
                                         <input style="margin-bottom: 15px;" type="text" data-validation="required" data-validation-error-msg="Debe Introducir una fecha de Nacimiento" class="form-control" name="direccion_familiar" id="direccion_familiar" placeholder="Direccion del familiar">
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="min_quantity" class="col-sm-2 control-label">Nro Telefono del familiar</label>
+                                    <div class="col-md-12">
+                                        <label for="name_edit" class="control-label">Nro telef. del Familiar</label>
+                                    </div>
                                     <div class="col-sm-10">
                                         <input style="margin-bottom: 15px;" type="text" data-validation="required" data-validation-error-msg="Debe Introducir un numero de telefono" class="form-control" name="telefono_familiar" id="telefono_familiar" placeholder="Telefono del familiar">
                                     </div>

@@ -91,20 +91,19 @@
                     <div class="col-lg-12 col-md-12 col-sm-12">
                       <input type="checkbox" name="dentadura_ninguna" id="dentadura_ninguna" value="S"> a. Ninguna
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2">
+                    <div class="col-lg-3 col-md-3 col-sm-3">
                       <input type="checkbox" name="dentadura_si_usuado" id="dentadura_si_usuado" value="S"> b. Si ha usado 
+
+                      <input type="text" class="form-control" data-validation="required" data-validation-depends-on="dentadura_si_usuado" placeholder="Cuantas" data-validation-error-msg="Debe especificar cuantas" name="dentadura_cuanta" id="dentadura_cuanta" > 
                       </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                    Cuantas
-                      <input type="text" name="dentadura_cuanta" id="dentadura_cuanta" value="S"> 
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2">
+                   
+                    <div class="col-lg-3 col-md-3 col-sm-3">
                       <input type="checkbox" name="dentadura_buena" id="dentadura_buena" value="S"> Buena
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2">
+                    <div class="col-lg-3 col-md-3 col-sm-3">
                       <input type="checkbox" name="dentadura_mala" id="dentadura_mala" value="S"> Mala
                     </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2">
+                    <div class="col-lg-3 col-md-3 col-sm-3">
                       <input type="checkbox" name="dentadura_uso" id="dentadura_uso" value="S"> A&ntilde;os de uso
                     </div>
 
@@ -129,7 +128,12 @@
                     <div class="col-lg-3 col-md-3 col-sm-3">
                       <input type="checkbox" name="tipo_detadura_nunguna" id="tipo_detadura_nunguna" value="S"> Ninguna
                     </div>
-                     <div class="col-lg-6 col-md-6 col-sm-4">
+                  
+                             
+                   
+                  </div>
+                  <div class="row row_border">
+                       <div class="col-lg-6 col-md-6 col-sm-4">
                     f.Uso de la dentadura:
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
@@ -170,8 +174,6 @@
 
                      </select>
                     </div>                  
-                   
-                             
                    
                   </div>
                       <div class="row row_border">
@@ -240,18 +242,20 @@
                        a. Distancia Interoclusal:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
-                      <input type="text" name="eval_dist_adecuada" placeholder="Adecuada" id="eval_dist_adecuada" value="">  
+                      <input type="text" class="form-control" name="eval_dist_adecuada" placeholder="Adecuada" id="eval_dist_adecuada" value="">  
                       </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
                     (+)
-                      <input type="text" name="eval_mas" id="eval_mas" value="S"> 
+                      <input class="form-control" type="text" name="eval_mas" id="eval_mas"> 
+                      (-)
+                      <input type="text" class="form-control" name="eval_menos" id="eval_menos" > 
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                    (-)
-                      <input type="text" name="eval_menos" id="eval_menos" value="S"> 
-                    </div>
+               
                    
-                     <div class="col-lg-6 col-md-6 col-sm-4">
+                     
+                  </div>
+                  <div class="row row_border">
+                    <div class="col-lg-6 col-md-6 col-sm-4">
                     b.Estabilidad:
                     </div>
                     <div class="  col-lg-4 col-md-4 col-sm-4">
@@ -649,8 +653,8 @@
                        <option value="estrecho">Estrecho</option>
                        <option value="promedio">Promedio</option>
                      </select>
-                    </div>  
-                     <div class="col-lg-6 col-md-6 col-sm-6">
+                    </div> 
+                        <div class="col-lg-6 col-md-6 col-sm-6">
                     Depresibilidad:
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4">
@@ -659,7 +663,11 @@
                        <option value="estrecho">Estrecho</option>
                        <option value="promedio">Promedio</option>
                      </select>
-                    </div> 
+                    </div>  
+                 
+                  </div>
+                  <div class="row row_border">
+                    
                      <div class="col-lg-12 col-md-12 col-sm-12">
                     n. Torus:
                     </div>
@@ -670,17 +678,15 @@
                    <input class="form-control" style="width: 100% !important" type="text" name="palatino_ausente" placeholder="Ausente" id="palatino_ausente" value=""> 
                     </div>
                      <div class="col-lg-2 col-md-2 col-sm-2">
-                   <input class="form-control" style="width: 100% !important" type="text" name="palatino_presente" placeholder="Presente" id="palatino_presente" value=""> 
-                    </div>  
-                     <div class="col-lg-6 col-md-6 col-sm-6">
-                     Tamano
+                   <input class="form-control" style="width: 100% !important" type="text" name="palatino_presente" placeholder="Presente" id="palatino_presente" value="">
+                   Tamano
                        <select class="form-control" name="palatino_tam" id="palatino_tam">
                             <option value="grande">Grande</option>
                            <option value="mediano">Mediano</option>
                            <option value="pequeno">Pequeno</option>
-                       </select>
-                    </div> 
-
+                       </select> 
+                    </div>  
+                     
                     <div class="col-lg-2 col-md-2 col-sm-2">
                     Mandibular:
                     </div>
@@ -689,15 +695,17 @@
                     </div>
                      <div class="col-lg-2 col-md-2 col-sm-2">
                    <input class="form-control" style="width: 100% !important" type="text" name="mandibular_presente" placeholder="Presente" id="mandibular_presente" value=""> 
-                    </div>  
-                     <div class="col-lg-6 col-md-6 col-sm-6">
-                     Tamano
+                    Tamano
                        <select class="form-control" name="mandibular_tam" id="mandibular_tam">
                            <option value="grande">Grande</option>
                            <option value="mediano">Mediano</option>
                            <option value="pequeno">Pequeno</option>
                        </select>
-                    </div> 
+                    </div>  
+                      
+                     
+                  </div>
+                  <div class="row row_border">
                       <div class="col-lg-6 col-md-6 col-sm-4">
                     o.Espacio Intercadas:
                     </div>
@@ -720,7 +728,7 @@
                        <option value="favorable">Favorable</option>
                        <option value="desfavorable">Desfavorable</option>
                      </select>
-                    </div>  
+                    </div> 
                   </div>
                    <div class="row row_border">
                  <div class="col-lg-12 col-md-12 col-sm-12">
@@ -790,25 +798,28 @@
                     <div class="col-lg-4 col-md-4 col-sm-4">
                        <input type="text" name="espacion_disp_oclusal" id="espacion_disp_oclusal" value="" class="form-control">
                     </div> 
-                     <div class="col-lg-4 col-md-4 col-sm-4">
+                     
+                  </div>
+                  <div class="row row_border">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
                      Seleccion dientes artificiales:
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
                        Color<input type="text" name="seleccion_arti_color" id="seleccion_arti_color" value="" class="form-control">
                     </div> 
-                     <div class="col-lg-4 col-md-4 col-sm-4">
+                     <div class="col-lg-6 col-md-6 col-sm-6">
                        Marca<input type="text" name="seleccion_arti_marca" id="seleccion_arti_marca" value="" class="form-control">
                     </div>
-                     <div class="col-lg-3 col-md-3 col-sm-3">
+                     <div class="col-lg-12 col-md-12 col-sm-12">
                      Formula:
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
                        Anteriores<input type="text" name="formula_anterior" id="formula_anterior" value="" class="form-control">
                     </div> 
-                     <div class="col-lg-3 col-md-3 col-sm-3">
+                     <div class="col-lg-4 col-md-4 col-sm-4">
                        Posteriores<input type="text" name="formula_posterior" id="formula_posterior" value="" class="form-control">
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
                        Marca<input type="text" name="formula_marca" id="formula_marca" value="" class="form-control">
                     </div>
                    

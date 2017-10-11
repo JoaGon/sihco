@@ -48,14 +48,21 @@
 							<input class="form-control" id="fecha" type="text" class="form-control" name="fecha" data-validation="required" data-validation-error-msg="Debe ingrear una fecha" value="{{ old('fecha') }}">
 						</div>
 					</div>
-<div class="row row_border ">
-					<div class="col-lg-12 col-md-6 col-sm-6">
+					<div class="row col-lg-12 col-md-6 col-sm-6" style="text-align: center;font-size: 20px; color: white">
 					Marque la zona afectada por placa
 				
 					</div>
-</div>		
 
-	<center>	
+
+
+					<div class="row row_border ">
+							<div class="col-lg-12 col-md-6 col-sm-6">
+							Indique la cantidad de dientes presentes:
+							<input type="input" data-validation="number" data-validation-allowing="range[0;32]" data-validation-error-msg="La cantidad maxima es 32"  class="form-control" name="diente_presentes" id="sr" style="color:black ">	
+							
+							</div>
+					</div>
+						<center>	
 	<div>
 		<svg height="50" class="[[i.tipoDiente]]" width="50"  ng-repeat="i in adultoArriva" id="[[i.id]]">
 			
@@ -94,13 +101,6 @@
 	</div>			
 </center>
 
-					<div class="row row_border ">
-							<div class="col-lg-12 col-md-6 col-sm-6">
-							Indique la cantidad de dientes presentes:
-							<input type="input" name="diente_presentes" id="sr" style="color:black ">	
-							
-							</div>
-					</div>
 					<div class="row row_border ">
 							<div class="col-lg-12 col-md-6 col-sm-6">
 							<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border-width: 0" bordercolor="#FFFF00" width="67%" id="AutoNumber3">

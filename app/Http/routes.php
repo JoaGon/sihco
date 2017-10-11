@@ -54,6 +54,14 @@ Route::post('/register_imaging','ImagenController@safeRadio');
 Route::post('/delete/avatar','ImagenController@deleteAvatar');
 
 
+
+
+Route::get('/Vercitas/{clinica?}/{especialidad?}/{date?}','CitasController@cargarCitas');
+
+
+Route::get('/cita','PacienteController@cita');
+Route::post('/cita/paciente','PacienteController@citaRegister');
+
 Route::get('datos/consulta/{nro_historia}','ConsultaController@consulta_paciente');
 Route::get('consulta', 'ConsultaController@index');
 Route::post('motivo_consulta','ConsultaController@save');
@@ -196,8 +204,6 @@ Route::post("diagnostico_clinico",'DiagnosticoController@diagnosticoDef');
 Route::get("pronostico/{paciente_id}/{consulta_id}",'DiagnosticoController@pronosticoIndex');
 Route::post("pronostico",'DiagnosticoController@pronostico');
 
-Route::get("tratamiento/{paciente_id}/{consulta_id}",'DiagnosticoController@tratamientoIndex');
-Route::post("tratamiento",'DiagnosticoController@totales');
 
 Route::get("tratamiento/{paciente_id}/{consulta_id}",'DiagnosticoController@tratamientoIndex');
 Route::post("tratamiento",'DiagnosticoController@tratamiento');
@@ -383,6 +389,30 @@ Route::get('consulta_Imageneologia/{id}/{paciente_id}','ConsultaHistoria2Control
 
 Route::post('update_Imageneologia','ConsultaHistoria2Controller@updateImageneologia');
 Route::post('validar_Imageneologia','ConsultaHistoria2Controller@validarImageneologia');
+
+
+
+Route::get('consulta_pronostico/{nro_historia}','ConsultaDiagnosticoController@showPronostico');
+Route::get('consulta_pronostico/{id}/{paciente_id}','ConsultaDiagnosticoController@getPronostico');
+
+Route::get('pronosticos/{id}/{paciente_id}/{especialidad}','ConsultaDiagnosticoController@getPronosticos');
+
+Route::post('update_pronostico','ConsultaDiagnosticoController@updatePronostico');
+Route::post('validar_pronostico','ConsultaDiagnosticoController@validarPronostico');
+
+
+
+Route::get('consulta_tratamiento/{nro_historia}','ConsultaDiagnosticoController@showTratamiento');
+Route::get('consulta_tratamiento/{id}/{paciente_id}','ConsultaDiagnosticoController@getTratamiento');
+
+//Route::get('pronosticos/{id}/{paciente_id}/{especialidad}','ConsultaDiagnosticoController@getPronosticos');
+
+Route::post('update_tratamiento','ConsultaDiagnosticoController@updateTratamiento');
+Route::post('validar_tratamiento','ConsultaDiagnosticoController@validarTratamiento');
+
+
+
+
 
 Route::get('datos_paciente/{paciente_id}/{consulta_id}','ConsultaHistoriaController@datos_principal');
 

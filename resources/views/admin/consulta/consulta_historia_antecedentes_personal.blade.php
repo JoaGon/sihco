@@ -99,7 +99,7 @@
                     <div class="col-md-6 col-md-offset-4">
 
                         <a type="submit" href="{{ url('consulta_paciente', array($paciente->nro_historia)) }}" class="btn btn-primary">
-                            <i class="fa fa-btn fa-user"></i> Volver </a>
+                             Volver </a>
                     </div>
                 </div>
         </div>

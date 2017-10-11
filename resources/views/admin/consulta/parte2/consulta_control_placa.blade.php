@@ -149,9 +149,12 @@ console.log(antecendetes, dientes)
 						<div class="col-md-6 col-md-offset-4">
 							<a class="btn btn-primary" onclick="contar()">Calcular</a>	
 						 	<a class="btn btn-primary" id="limpiar" onclick="limpiar2()" class="btn btn-primary">Limpiar</a>
-							<button type="submit" onclick="insertar_historia();" class="btn btn-primary">Registrar
-							</button>
-							 <a type="button" onclick="validar();" class="btn btn-primary">Validar</a>
+							<button id="registrar-button" type="submit " onclick="insertar_historia(); " class="btn btn-primary ">Registrar
+              </button>
+							
+            @if( Auth::user()->rol_id == 1 or Auth::user()->rol_id == 2 or Auth::user()->rol_id == 3 )
+               <a type="submit" id="validar-button" onclick="validar();" class="btn btn-primary">Validar</a>
+             @endif   
 							
 						 	
 						 	<a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>

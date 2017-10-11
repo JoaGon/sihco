@@ -22,23 +22,7 @@ angular.module("UpdatePersonal",['angularUtils.directives.dirPagination'], funct
   $scope.enfer_trans_sexual = enfermedades_sexuales;
 
   console.log("card222222222",valido[0]);
- if(valido[0].validar == ''){
-    console.log('vacio')
-    new PNotify({
-        title: 'Historia No Validada',
-        text: 'Esta Historia no ha sido validada',
-        hide: false,
-        styling: 'bootstrap3'
-    });
-  }else {
-    new PNotify({
-        title: 'Historia Validada',
-        text: 'Esta Historia ha sido validada',
-        hide: false,
-        type: 'success',
-        styling: 'bootstrap3'
-    });
-  }
+
  /*Obtienes las enfermedades cardiovasculares registradas en BD*/
   $http({
     method: "POST",

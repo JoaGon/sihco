@@ -1,0 +1,59 @@
+.Highlighted a{
+    background-color : green !important;
+    background-image :none !important;
+    color: White !important;
+    font-weight:bold !important;
+    font-size: 8pt;
+    text-shadow: 1px 1px #000 !important;
+}
+
+center 
+{
+    background-color: #3a9ecb;
+    color: white;
+    font-weight: bold;
+
+}
+.grey-light
+{
+    background-color: #a8a8a8;
+    color: white;
+    font-size: 15px;
+}
+td
+{
+    background-color: #e3e3e3;
+    font-size: 15px;
+}
+.white
+{
+    background-color: white;
+}
+.ui-datepicker-title {
+    background-color: #3a9ecb;
+}
+
+
+a.sobreelemento{
+    color: #3b9dcc !important;
+    background-color: white !important;
+}
+
+a.sobreelemento:hover {
+
+    background-color:#e3e3e3 !important; 
+}
+
+.ui-datepicker {
+    width: 250px;
+}
+
+.ui-datepicker td span, .ui-datepicker td a,
+.ui-datepicker-calendar td:last-child .ui-state-active,
+.ui-datepicker-calendar td:first-child .ui-state-active {
+    width: 100%;
+    height: 100%;
+}
+.ui-datepicker tbody td:last-child {
+    border-right: 1px solid #bbb;
+}

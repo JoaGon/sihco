@@ -21,7 +21,7 @@
             @endif @foreach ($pacientes as $paciente)
             <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12" style=" background-color:white;padding-left:0; margin-top: 25px">
                 <div style="font-size: 20px; text-align: center; color:#59bddd;">
-                    Resumen Historia Medica
+                    Resumen Historia M&eacute;dica
                 </div>
                 <fieldset>
                     <form class="form-horizontal" id="form_familiares">

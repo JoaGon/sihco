@@ -118,13 +118,13 @@
                     </div>
                     <div class="row row_border">
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="enfer_meta_endocrina" id="enfer_meta_endocrina" value="S"> 3-Enfer. Metabolicas y Endocrinas
+                            <input type="checkbox" name="enfer_meta_endocrina" id="enfer_meta_endocrina" value="S"> 3-Enfer. Metab&oacute;licas y Endocrinas
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="discrasia_sanguinea" id="discrasia_sanguinea" value="S"> 4-Discrasias Sanguineas
+                            <input type="checkbox" name="discrasia_sanguinea" id="discrasia_sanguinea" value="S"> 4-Discrasias Sangu&iacute;neas
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="fiebre_reumatica" id="fiebre_reumatica" value="S"> 5-Fiebre Reumatica
+                            <input type="checkbox" name="fiebre_reumatica" id="fiebre_reumatica" value="S"> 5-Fiebre Reum&aacute;tica
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <input type="checkbox" name="artritis_reumatoidea" id="artritis_reumatoidea" value="S"> 6- Artritis Reumatoidea
@@ -132,7 +132,7 @@
                     </div>
                     <div class="row row_border ">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <input type="checkbox" name="" id="enfer_alergica" onchange="insertar_alergica()" value="S"> 7-Enfermedades Alergicas
+                            <input type="checkbox" name="" id="enfer_alergica" onchange="insertar_alergica()" value="S"> 7-Enfermedades Al&eacute;rgicas
                         </div>
                         <a style="color: white; cursor: pointer; float: left;" ng-hide="(!enfer_alergica)" onclick="insertar_alergica();"><i class="fa fa-btn fa-user-plus"></i></a>
                         <div ng-hide="(!enfer_alergica)">
@@ -170,7 +170,7 @@
                     </div>
                     <div class="row row_border ">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <input type="checkbox" name="" id="enfer_cancer" onchange="insertar_cancer()" value="S"> 8-Cancer
+                            <input type="checkbox" name="" id="enfer_cancer" onchange="insertar_cancer()" value="S"> 8-C&aacute;ncer
                         </div>
                         <a style="color: white; cursor: pointer; float: left;" ng-hide="(!enfer_cancer)" onclick="insertar_cancer();"><i class="fa fa-btn fa-user-plus"></i></a>
                         <div ng-hide="(!enfer_cancer)">
@@ -246,7 +246,7 @@
                     </div>
                     <div class="row row_border ">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                            <input type="checkbox" name="" id="enfer_trasnm_sexual" onchange="insertar_sexual()" value="S"> 10-Enfermedades de Transmision sexual
+                            <input type="checkbox" name="" id="enfer_trasnm_sexual" onchange="insertar_sexual()" value="S"> 10-Enfermedades de Transmisi&oacute;n sexual
                         </div>
                         <a style="color: white; cursor: pointer; float: left;" ng-hide="(!enfer_trans_sexual)" onclick="insertar_sexual();"><i class="fa fa-btn fa-user-plus"></i></a>
                         <div ng-hide="(!enfer_trans_sexual)">
@@ -284,7 +284,7 @@
                     </div>
                     <div class="row row_border">
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="adenopatia" id="adenopatia" value="S"> 11-Adenopatias
+                            <input type="checkbox" name="adenopatia" id="adenopatia" value="S"> 11-Adenopat&iacute;as
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <input type="checkbox" name="cefalea" id="cefalea" value="S"> 12- Cefalea
@@ -307,12 +307,12 @@
                             <input type="checkbox" name="ictericia" id="ictericia" value="S"> 17- Ictericia
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="trastorno_audicion" id="trastorno_audicion" value="S"> 18- Trastornos de la Audicion
+                            <input type="checkbox" name="trastorno_audicion" id="trastorno_audicion" value="S"> 18- Trastornos de la Audici&oacute;n
                         </div>
                     </div>
                     <div class="row row_border ">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <input type="checkbox" name="intervencion_quirurgica" id="intervencion_quirurgica" value="S"> 19- Intervenciones Quirurgicas
+                            <input type="checkbox" name="intervencion_quirurgica" id="intervencion_quirurgica" value="S"> 19- Intervenciones Quir&uacute;rgicas
                         </div>
                         <div class="col-lg-12">
                             <textarea name="espec_interv_quirurgica" id="Especifique" placeholder="Especifique" class="form-control" data-validation="required" data-validation-depends-on="intervencion_quirurgica" data-validation-error-msg="Debe especificar la intervencion quirurgica" style="height: 100px;"></textarea>
@@ -336,7 +336,7 @@
                     </div>
                     <div class="row row_border ">
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="accidente_transito" id="accidente_transito" value="S"> 22- Accidentes de Transito
+                            <input type="checkbox" name="accidente_transito" id="accidente_transito" value="S"> 22- Accidentes de Tr&aacute;nsito
                         </div>
                         <div class="col-lg-12">
                             <textarea name="espec_accidente_transito" id="espec_accidente_transito" placeholder="Especifique" class="form-control" data-validation="required" data-validation-depends-on="accidente_transito" data-validation-error-msg="Debe especificar el accidente" style="height: 100px;"></textarea>

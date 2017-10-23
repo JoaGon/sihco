@@ -102,7 +102,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('sexo') ?  ' has-error' : '' }}" >
-                            <label for="sexo" class="col-md-4 control-label"> Sexo</label>
+                            <label for="sexo" class="col-md-4 control-label"> Genero</label>
                                 <div class="col-md-6">
                                     <select class="form-control" id="sexo" data-validation="required" data-validation-error-msg="Debe Introducir un genero" name="sexo" >
                                         <option value="" selected>Selecione..</option>
@@ -176,7 +176,7 @@
                             <div class="form-group{{ $errors->has('valor_id') ?
                                 ' has-error' : '' }}" >
                                 <label for="valor_id" class="col-md-4 control-label">
-                                    Valor</label>
+                                    Estatus</label>
 
                                     <div class="col-md-6">
                                         <select class="form-control" id="valor_id"  data-validation="required" data-validation-error-msg="Debe Seleccionar una opcion"  name="valor_id" >

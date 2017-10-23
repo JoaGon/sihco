@@ -76,17 +76,7 @@
 
                 <div class="form-group" style="margin-right: 10px">
 
-                <div class="col-md-4">
-                  <label for="direccion_familiar" class="">Direcion (familiar cercano)</label>
-
-                  <textarea id="direccion_familiar" type="text" class="form-control"  data-validation="required" data-validation-error-msg="Debe Introducir una Direccion" name="direccion_familiar" value="{{ old('direccion_familiar') }}"></textarea>
-
-                  @if ($errors->has('direccion_familiar'))
-                  <span class="help-block">
-                    <strong>{{ $errors->first('direccion_familiar') }}</strong>
-                </span>
-                @endif  
-                </div>
+                
                 <div class="col-md-4">
                    <label for="telefono" class="">Telefono</label>
 
@@ -118,6 +108,17 @@
                 @endif
 
                 </div>  
+                  <div class="col-md-4">
+              <label for="ocupacion" class="">Ocupacion</label>
+
+              <textarea id="ocupacion" type="text" class="form-control"  data-validation="required" data-validation-error-msg="Debe Introducir una Ocupacion" name="ocupacion" value="{{ old('ocupacion') }}"></textarea>
+
+              @if ($errors->has('ocupacion'))
+              <span class="help-block">
+                <strong>{{ $errors->first('ocupacion') }}</strong>
+            </span>
+            @endif
+            </div>
 
              
 
@@ -167,42 +168,7 @@
                         @endif
                     </div> 
             </div>
-            <div class="form-group" style="margin-right: 10px">
-            <div class="col-md-4">
-              <label for="ocupacion" class="">Ocupacion</label>
-
-              <textarea id="ocupacion" type="text" class="form-control"  data-validation="required" data-validation-error-msg="Debe Introducir una Ocupacion" name="ocupacion" value="{{ old('ocupacion') }}"></textarea>
-
-              @if ($errors->has('ocupacion'))
-              <span class="help-block">
-                <strong>{{ $errors->first('ocupacion') }}</strong>
-            </span>
-            @endif
-            </div>
-            <div class="col-md-4">
-                <label for="familiar_cercano" class="">Nombre de Familiar mas cercano</label>
-
-                <input id="familiar_cercano" type="text" class="form-control"  data-validation="required" data-validation-error-msg="Debe Introducir un Nombre" name="familiar_cercano" value="{{ old('familiar_cercano') }}">
-
-                @if ($errors->has('familiar_cercano'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('familiar_cercano') }}</strong>
-                </span>
-                @endif
-            </div>
-            <div class="col-md-4">
-                <label for="telefono_familiar" class="">Telefono Familiar</label>
-
-                <input id="telefono_familiar" type="text" class="form-control"  data-validation="required" data-validation-error-msg="Debe Introducir un numero de Telefono" name="telefono_familiar" value="{{ old('telefono_familiar') }}">
-
-                @if ($errors->has('telefono_familiar'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('telefono_familiar') }}</strong>
-                </span>
-                @endif
-            </div>
-            </div>
-        <div class="form-group" style="margin-right: 10px">
+                 <div class="form-group" style="margin-right: 10px">
         <div class="col-md-4">
                           <label for="fecha_nacimiento" class="">Fecha de Nacimiento</label>
 
@@ -237,10 +203,14 @@
  <select class="form-control" id="grupo_sanguineo"  data-validation="required" data-validation-error-msg="Debe seleccionar un valor" name="grupo_sanguineo" value="{{ old('grupo_sanguineo') }}">
        
         <option value="" selected>Selecione..</option>
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="AB">AB</option>
-            <option value="O">O</option>
+            <option value="A+">A+</option>
+            <option value="B+">B+</option>
+            <option value="AB+">AB+</option>
+            <option value="O+">O+</option>
+             <option value="A-">A-</option>
+            <option value="B-">B-</option>
+            <option value="AB-">AB-</option>
+            <option value="O-">O-</option>
 </select>
         @if ($errors->has('grupo_sanguineo'))
         <span class="help-block">
@@ -249,6 +219,8 @@
         @endif
         </div>
         </div>
+        
+            
         <div class="form-group" style="margin-right: 10px">
            <div class="col-md-4"> 
         <label for="zona_residencia" class="">Zona de Residencia</label>
@@ -270,17 +242,18 @@
         </span>
         @endif  
         </div>
-        <div class="col-md-4">
-        <label for="parentesco" class="">Parentesco</label>
+         <div class="col-md-4">
+           <label for="lugar_nacimiento" class="">Lugar de Nacimiento</label>
+           <input id="lugar_nacimiento" type="text" data-validation="required" data-validation-error-msg="Debe Introducir un nombre" class="form-control" name="lugar_nacimiento" value="{{ old('lugar_nacimiento') }}">
 
-        <input id="parentesco" type="text" class="form-control"  data-validation="required" data-validation-error-msg="Debe Introducir un parentesco" name="parentesco" value="{{ old('parentesco') }}">
-
-        @if ($errors->has('parentesco'))
-        <span class="help-block">
-            <strong>{{ $errors->first('parentesco') }}</strong>
+           @if ($errors->has('lugar_nacimiento'))
+           <span class="help-block">
+            <strong>{{ $errors->first('lugar_nacimiento') }}</strong>
         </span>
-        @endif
-        </div>
+        @endif  
+
+    </div>
+       
         <div class="col-md-4">
         <label for="estado_civil" class="">Estado Civil</label>
 
@@ -352,19 +325,64 @@
         @endif
         </div>
         </div>
-         <div class="form-group" style="margin-right: 10px">
 
-          <div class="col-md-4">
-           <label for="lugar_nacimiento" class="">Lugar de Nacimiento</label>
-           <input id="lugar_nacimiento" type="text" data-validation="required" data-validation-error-msg="Debe Introducir un nombre" class="form-control" name="lugar_nacimiento" value="{{ old('lugar_nacimiento') }}">
-
-           @if ($errors->has('lugar_nacimiento'))
-           <span class="help-block">
-            <strong>{{ $errors->first('lugar_nacimiento') }}</strong>
-        </span>
-        @endif  
-
+         <div class="col-lg-12" style="text-align: center;">
+    
+    <label>Datos del Familiar</label>
     </div>
+    <hr class="col-lg-12" style="border-top: 3px solid #6d6262 !important; width:90%!important;">
+   
+
+<div class="form-group" style="margin-right: 10px">
+          
+            <div class="col-md-4">
+                <label for="familiar_cercano" class="">Nombre de Familiar mas cercano</label>
+
+                <input id="familiar_cercano" type="text" class="form-control"  data-validation="required" data-validation-error-msg="Debe Introducir un Nombre" name="familiar_cercano" value="{{ old('familiar_cercano') }}">
+
+                @if ($errors->has('familiar_cercano'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('familiar_cercano') }}</strong>
+                </span>
+                @endif
+            </div>
+            <div class="col-md-4">
+                <label for="telefono_familiar" class="">Telefono Familiar</label>
+
+                <input id="telefono_familiar" type="text" class="form-control"  data-validation="required" data-validation-error-msg="Debe Introducir un numero de Telefono" name="telefono_familiar" value="{{ old('telefono_familiar') }}">
+
+                @if ($errors->has('telefono_familiar'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('telefono_familiar') }}</strong>
+                </span>
+                @endif
+            </div>
+
+            <div class="col-md-4">
+                  <label for="direccion_familiar" class="">Direcion (familiar cercano)</label>
+
+                  <textarea id="direccion_familiar" type="text" class="form-control"  data-validation="required" data-validation-error-msg="Debe Introducir una Direccion" name="direccion_familiar" value="{{ old('direccion_familiar') }}"></textarea>
+
+                  @if ($errors->has('direccion_familiar'))
+                  <span class="help-block">
+                    <strong>{{ $errors->first('direccion_familiar') }}</strong>
+                </span>
+                @endif  
+                </div>
+            </div>
+        <div class="form-group" style="margin-right: 10px">
+     <div class="col-md-4">
+        <label for="parentesco" class="">Parentesco</label>
+
+        <input id="parentesco" type="text" class="form-control"  data-validation="required" data-validation-error-msg="Debe Introducir un parentesco" name="parentesco" value="{{ old('parentesco') }}">
+
+        @if ($errors->has('parentesco'))
+        <span class="help-block">
+            <strong>{{ $errors->first('parentesco') }}</strong>
+        </span>
+        @endif
+        </div>
+         
 </div>
 
          <div class="form-group">

@@ -21,7 +21,7 @@
             @endif @foreach ($pacientes as $paciente)
             <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12" style=" background-color:white;padding-left:0; margin-top: 25px">
                 <div style="font-size: 20px; text-align: center; color:#59bddd;">
-                    Datos Clinicos Seleccionados
+                    Datos Cl&iacute;nicos Seleccionados
                 </div>
                 <form class="form-horizontal" id="form_familiares">
                     {{ csrf_field() }}
@@ -53,7 +53,7 @@
                             <input type="checkbox" name="sangra_largo_tiempo" id="sangra_largo_tiempo" value="S"> 3- ¿Sangre usted por largo tiempo cuando se corta?
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="cicatrizacion_lenta" id="cicatrizacion_lenta" value="S"> 4- ¿Su proceso de cicatrizacion es lento?
+                            <input type="checkbox" name="cicatrizacion_lenta" id="cicatrizacion_lenta" value="S"> 4- ¿Su proceso de cicatrizaci&oacute;n es lento?
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <input type="checkbox" name="perdida_peso" id="perdida_peso" value="S"> 5-¿Ha perdido usted peso sin hacer dieta durante los ultimos meses?
@@ -80,7 +80,7 @@
                             <input type="checkbox" name="marcapaso" id="marcapaso" value="S"> 8- ¿Posee usted marcapasos?
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="tranfusion_sanguinea" id="tranfusion_sanguinea" value="S"> 9. ¿Le han hecho transfusiones sanguineas?
+                            <input type="checkbox" name="tranfusion_sanguinea" id="tranfusion_sanguinea" value="S"> 9. ¿Le han hecho transfusiones sangu&iacute;neas?
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <input type="checkbox" name="asma" id="asma" value="S"> 10. ¿Ha sufrido o sufre usted de asma?
@@ -135,13 +135,13 @@
                             <input type="checkbox" name="dificultad_tragar" id="dificultad_tragar" value="S"> 19- ¿Tiene usted alguna dificultad para tragar?
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="indigestion" id="indigestion" value="S"> 20- ¿Sufre usted de Indigestion frecuente?
+                            <input type="checkbox" name="indigestion" id="indigestion" value="S"> 20- ¿Sufre usted de Indigesti&oacute;n frecuente?
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <input type="checkbox" name="vomito" id="vomito" value="S">21- ¿Vomita con frecuencia?
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="orines" id="orines" value="S"> 22- ¿Orina usted mas de seis veces al dia?
+                            <input type="checkbox" name="orines" id="orines" value="S"> 22- ¿Orina usted mas de seis veces al d&iacute;a?
                         </div>
                     </div>
                     <div class="row row_border">

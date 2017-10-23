@@ -44,7 +44,7 @@
                     </div>
                     <div class="row row_border ">
                         <div class="col-lg-12">
-                            <input type="checkbox" name="tratamiento_odontologico" id="tratamiento_odontologico" value="S"> 1- ¿Esta recibiendo algun tratamiento medico u odontologico actualmente?
+                            <input type="checkbox" name="tratamiento_odontologico" id="tratamiento_odontologico" value="S"> 1- ¿Esta recibiendo algun tratamiento m&eacute;dico u odontologico actualmente?
                         </div>
                         <div class="col-lg-12">
                             <textarea name="espec_tratamiento_odon" id="espec_tratamiento_odon" placeholder="Especifique" class="form-control" data-validation="required" data-validation-depends-on="tratamiento_odontologico" data-validation-error-msg="Debe especificar el tratamiento" style="height: 100px;"></textarea>
@@ -61,13 +61,13 @@
                             <input type="checkbox" name="nervios_tratamiento" id="nervios_tratamiento" value="S"> 4- ¿Se siente usted nervioso o intranquilo cuando va a recibir tratamiente dental?
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="reaccion_anestesico" id="reaccion_anestesico" value="S"> 5- ¿Ha tendio usted alguna reaccion al anestesico dental (Mareos, Desmayos, Dolor de Cabeza)?
+                            <input type="checkbox" name="reaccion_anestesico" id="reaccion_anestesico" value="S"> 5- ¿Ha tendio usted alguna reacci&oacute;n al anest&eacute;sico dental (Mareos, Desmayos, Dolor de Cabeza)?
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <input type="checkbox" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="S"> 6- ¿Ha tenido recientemente dolor en su dentadura?
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="sangra_encia" id="sangra_encia" value="S"> 7- ¿Le sangran a usted las encias?
+                            <input type="checkbox" name="sangra_encia" id="sangra_encia" value="S"> 7- ¿Le sangran a usted las enc&iacute;as?
                         </div>
                     </div>
                     <div class="row row_border ">
@@ -113,13 +113,13 @@
                             <input type="checkbox" name="otros_medios" id="otros_medios" value="S"> 13- ¿Utiliza usted otros medios para lograr su higiene bucal?
                         </div>
                         <div class="col-lg-12">
-                            <label> ¿Cu&acute;les medios utiliza y con que frecuencia?</label>
+                            <label> ¿Cu&aacute;les medios utiliza y con que frecuencia?</label>
                             <textarea name="cuales_medios" id="cuales_medios" data-validation="required" data-validation-depends-on="otros_medios" data-validation-error-msg="Debe indicar los medios y la frecuencia" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
                         </div>
                     </div>
                     <div class="row row_border ">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            14- ¿Cual es su dieta normal?
+                            14- ¿Cu&aacute;l es su dieta normal?
                         </div>
                         <div class="col-lg-12">
                             <textarea name="dieta_habitual" id="dieta_habitual" data-validation="required" data-validation-error-msg="Debe especificar su dieta" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
@@ -176,7 +176,7 @@
                             <input type="checkbox" name="endodoncia" id="endodoncia" value="S"> 20- ¿Le han realizado tratamiento endod&oacute;nticos?
                         </div>
                         <div class="col-lg-12">
-                            <label>Cuando?</label>
+                            <label>Cu&aacute;ndo?</label>
                             <textarea name="cuando_endodoncia" data-validation="required" data-validation-depends-on="endodoncia" data-validation-error-msg="Debe indicar la fecha" id="cuando_endodoncia" class="form-control"></textarea>
                         </div>
                         <div class="col-lg-12">

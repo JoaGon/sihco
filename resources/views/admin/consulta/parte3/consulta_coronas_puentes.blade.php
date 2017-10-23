@@ -59,11 +59,11 @@ console.log(antecendetes)
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 Tipo de Corona
-                                <input type="input" name="tipo_corona" id="tipo_corona" style="color:black ">
+                                <input type="input" class="form-control" name="tipo_corona" id="tipo_corona" style="color:black ">
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 Material
-                                <input type="input" name="material" id="material" style="color:black ">
+                                <input type="input" class="form-control" name="material" id="material" style="color:black ">
                             </div>
                         </div>
                         <div class="row row_border ">
@@ -74,44 +74,45 @@ console.log(antecendetes)
                                 <div class="col-lg-3 col-md-3 col-sm-3">
                                     Tipo de Puente
                                 </div>
-                                <input type="input" name="tipo_puente" id="tipo_puente" style="color:black ">
+                                <input type="input" class="form-control" name="tipo_puente" id="tipo_puente" style="color:black ">
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="col-lg-3 col-md-3 col-sm-3">
                                     Dientes Pilares
                                 </div>
-                                <input type="input" name="dientes_pilares" id="dientes_pilares" style="color:black ">
+                                <input type="input" class="form-control" name="dientes_pilares" id="dientes_pilares" style="color:black ">
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="col-lg-3 col-md-3 col-sm-3">
                                     Retenedores
                                 </div>
-                                <input type="input" name="retenedores" id="retenedores" style="color:black ">
+                                <input type="input" class="form-control" name="retenedores" id="retenedores" style="color:black ">
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="col-lg-3 col-md-3 col-sm-3">
                                     Conectores
                                 </div>
-                                <input type="input" name="conectores" id="conectores" style="color:black ">
+                                <input type="input" class="form-control" name="conectores" id="conectores" style="color:black ">
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="col-lg-3 col-md-3 col-sm-3">
                                     Ponticos
                                 </div>
-                                <input type="input" name="panticos" id="panticos" style="color:black ">
+                                <input type="input" class="form-control" name="panticos" id="panticos" style="color:black ">
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="col-lg-3 col-md-3 col-sm-3">
                                     Material
                                 </div>
-                                <input type="input" name="material_puente" id="material_puente" style="color:black ">
+                                <input type="input" class="form-control" name="material_puente" id="material_puente" style="color:black ">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                             <a type="button" onclick="validar();" class="btn btn-primary">Validar</a>
-                                <button type="submit" onclick="insertar_historia();" class="btn btn-primary">Registrar
-                                </button>
+                              <button type="submit"  id="registrar-button" onclick="insertar_familiares();" class="btn btn-primary">Registrar</button>
+                            @if( Auth::user()->rol_id == 1 or Auth::user()->rol_id == 2 or Auth::user()->rol_id == 3 )
+                            <button type="submit"  id="validar-button" onclick="validar();" class="btn btn-primary">Validar</button>
+                            @endif
                                 <a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
                             </div>
                             @endforeach

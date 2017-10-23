@@ -47,20 +47,20 @@ console.log(antecendetes);
                             <input class="form-control" id="fecha_consulta" type="text" class="form-control" name="fecha" data-validation="required" data-validation-error-msg="Debe ingrear una fecha" value="{{ old('fecha_consulta') }}">
                         </div>
                     </div>
-                    <div class="row row_border ">
+                         <div class="row row_border ">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Presion Sanguinea
-                            <input type="text" style="color: black; margin: 15px" data-validation="number" data-validation-error-msg="Debe indicar un valor numerico" name="presion_sanguinea" id="presion_sanguinea">mm/Hg
+                            <input type="text" placeholder="mm/Hg" class="form-control" style="color: black; margin: 15px" data-validation="number" data-validation-error-msg="Debe indicar un valor numerico" name="presion_sanguinea" id="presion_sanguinea">
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Pulso
-                            <input type="text" style="color: black; margin: 15px" data-validation="number" data-validation-error-msg="Debe indicar un valor numerico" name="pulso" id="pulso">p/min
+                            <input type="text" class="form-control" placeholder="p/min" style="color: black; margin: 15px" data-validation="number" data-validation-error-msg="Debe indicar un valor numerico" name="pulso" id="pulso">
                         </div>
                     </div>
                     <div class="row row_border ">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Temperatura
-                            <input type="text" style="color: black; margin: 15px" data-validation="number" data-validation-error-msg="Debe indicar un valor numerico" name="temperatura" id="temperatura">C
+                            <input type="text" class="form-control" placeholder="C" style="color: black; margin: 15px" data-validation="number" data-validation-error-msg="Debe indicar un valor numerico" name="temperatura" id="temperatura">
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">Frecuencia Respiratoria
-                            <input type="text" style="color: black; margin: 15px" data-validation="number" data-validation-error-msg="Debe indicar un valor numerico" name="frecuencia_respiratoria" id="frecuencia_respiratoria" ">ppm
+                            <input type="text" placeholder="ppm" class="form-control" style="color: black; margin: 15px" data-validation="number" data-validation-error-msg="Debe indicar un valor numerico" name="frecuencia_respiratoria" id="frecuencia_respiratoria" ">
                             </div>
                            
                   </div>

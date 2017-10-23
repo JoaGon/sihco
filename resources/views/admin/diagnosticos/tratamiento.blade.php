@@ -55,27 +55,87 @@
 						</div>
 					</div>
 
-          <div id="diagnostico" class="col-lg-12" style="margin-bottom: 15px">
-            <div class="col-md-4">
-              <label for="motivo" class="">Fecha tratamiento</label>
-              <input class="form-control" id="fecha_diagnostico" type="date" class="form-control" name="fechas[]" data-validation="required" data-validation-error-msg="Debe ingrear una fecha" value="{{ old('fecha') }}">
-            </div>
-             <div class="col-md-8 ">
-                      <textarea name="diagnosticos[]" id="diagnostico_" placeholder="Introduzca el tratamiento" data-validation="required" data-validation-error-msg="Debe especificar el diagnostico" class="form-control" style="height: 100px;"></textarea>
-                
+          <div class="row row_border ">
+
+            <label>Fase de Emergencia</label>
+            <div class="col-lg-12">
+                 <textarea name="fase_emergencia" id="fase_emergencia" placeholder="Introduzca el tratamiento" data-validation="required" data-validation-error-msg="Debe especificar el diagnostico" class="form-control" style="height: 100px;"></textarea>
+        </div>
+          </div>
+          <div class="row row_border ">
+
+            <label>Fase Sistemica</label>
+            <div class="col-lg-12">
+                 <textarea name="fase_sistemica" id="fase_sistemica" placeholder="Introduzca el tratamiento" data-validation="required" data-validation-error-msg="Debe especificar el diagnostico" class="form-control" style="height: 100px;"></textarea>
+        </div>
+          </div>
+          <div class="row row_border ">
+
+            <label>Fase Inicial</label>
+            <div class="col-lg-12">
+                 <textarea name="fase_inicial" id="fase_inicial" placeholder="Introduzca el tratamiento" data-validation="required" data-validation-error-msg="Debe especificar el diagnostico" class="form-control" style="height: 100px;"></textarea>
+        </div>
+          </div>
+
+<div class="row row_border ">
+
+            <label>Fase Correctiva:</label>
+             <textarea name="fase_correctiva" id="fase_correctiva" placeholder="Introduzca el tratamiento" data-validation="required" data-validation-error-msg="Debe especificar el diagnostico" class="form-control" style="height: 100px;"></textarea>
+          
+            <div class="col-lg-12">
+             <label>Tratamiento periodontal</label>
+            <div class="col-lg-12">
+                 <textarea name="t_periodontal" id="t_periodontal" placeholder="Introduzca el tratamiento" data-validation="required" data-validation-error-msg="Debe especificar el diagnostico" class="form-control" style="height: 100px;"></textarea>
               </div>
+
+                      </div>
+                      <div class="col-lg-12">
+             <label>Tratamiento Endodontico</label>
+            <div class="col-lg-12">
+                 <textarea name="t_endodontico" id="t_endodontico" placeholder="Introduzca el tratamiento" data-validation="required" data-validation-error-msg="Debe especificar el diagnostico" class="form-control" style="height: 100px;"></textarea>
               </div>
-             
+
+                      </div>
+                      <div class="col-lg-12">
+             <label>Tratamiento Restaurativo</label>
+            <div class="col-lg-12">
+                 <textarea name="t_restaurativo" id="t_restaurativo" placeholder="Introduzca el tratamiento" data-validation="required" data-validation-error-msg="Debe especificar el diagnostico" class="form-control" style="height: 100px;"></textarea>
+              </div>
+
+                      </div>
+                      <div class="col-lg-12">
+             <label>Tratamiento Quirurgico</label>
+            <div class="col-lg-12">
+                 <textarea name="t_quirurgico" id="t_quirurgico" placeholder="Introduzca el tratamiento" data-validation="required" data-validation-error-msg="Debe especificar el diagnostico" class="form-control" style="height: 100px;"></textarea>
+              </div>
+
+                      </div>
+                      <div class="col-lg-12">
+             <label>Tratamiento Protesico</label>
+            <div class="col-lg-12">
+                 <textarea name="t_protesico" id="t_protesico" placeholder="Introduzca el tratamiento" data-validation="required" data-validation-error-msg="Debe especificar el diagnostico" class="form-control" style="height: 100px;"></textarea>
+              </div>
+
+                      </div>
+
+          </div>
+
+
+           <div class="row row_border ">
+
+            <label>Fase Mantenimiento</label>
+            <div class="col-lg-12">
+                 <textarea name="fase_mantenimiento" id="fase_mantenimiento" placeholder="Introduzca el tratamiento" data-validation="required" data-validation-error-msg="Debe especificar el diagnostico" class="form-control" style="height: 100px;"></textarea>
+        </div>
+          </div>
+        
 
 					<div class="form-group">
-						<div class="col-md-8 col-md-offset-2">
+						<div class="col-md-6 col-md-offset-4">
 							<button type="submit" onclick="insertar_historia();" class="btn btn-primary">Registrar
 							</button>    
 						 	<a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
-              <input type="button" id="btAdd" value="Añadir Tratamiento" class="btn btn-primary bt" />
-              <input type="button" id="btRemove" value="Eliminar Tratamiento" class="btn btn-primary bt" />
-              <input type="button" id="btRemoveAll" value="Eliminar Todo" class=" btn btn-primary bt" />
-							
+             	
 						</div>
 						 @endforeach
 					</div>

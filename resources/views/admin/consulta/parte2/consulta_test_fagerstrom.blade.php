@@ -237,6 +237,7 @@ console.log(antecendetes)
                         </div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
+                            
                                 <button type="submit" onclick="insertar_historia();" class="btn btn-primary">Registrar
                                 </button>
                                 <a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>

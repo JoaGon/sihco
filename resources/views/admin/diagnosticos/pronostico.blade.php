@@ -63,20 +63,25 @@
           <div id="diagnostico" class="col-lg-12" style="margin-bottom: 15px">
             
              <div class="col-md-12 ">
-                      <textarea name="pronostico" id="pronostico" placeholder="Introduzca el diagnostico" data-validation="required" data-validation-error-msg="Debe especificar el diagnostico" class="form-control" style="height: 100px;"></textarea>
+                      <textarea name="pronostico" id="pronostico" placeholder="Introduzca el pronostico general" data-validation="required" data-validation-error-msg="Debe especificar el diagnostico" class="form-control" style="height: 100px;"></textarea>
+                
+              </div>
+              </div>
+              <div id="diagnostico" class="col-lg-12" style="margin-bottom: 15px">
+            
+             <div class="col-md-12 ">
+                      <textarea name="pronostico_individual" id="pronostico" placeholder="Introduzca el pronostico indivudial" data-validation="required" data-validation-error-msg="Debe especificar el diagnostico" class="form-control" style="height: 100px;"></textarea>
                 
               </div>
               </div>
              
 
 					<div class="form-group">
-						<div class="col-md-8 col-md-offset-2">
+						<div class="col-md-6 col-md-offset-4">
 							<button type="submit" onclick="insertar_historia();" class="btn btn-primary">Registrar
 							</button>    
 						 	<a href="{{ URL::previous() }}" class="btn btn-primary">Volver</a>
-              <input type="button" id="btAdd" value="Añadir Diagnostico" class="btn btn-primary bt" />
-              <input type="button" id="btRemove" value="Eliminar Diagnostico" class="btn btn-primary bt" />
-              <input type="button" id="btRemoveAll" value="Eliminar Todo" class=" btn btn-primary bt" />
+              
 							
 						</div>
 						 @endforeach

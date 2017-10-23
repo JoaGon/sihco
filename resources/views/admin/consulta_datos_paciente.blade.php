@@ -137,7 +137,7 @@
                 <li class="dropdown"><a tabindex="0" data-toggle="dropdown" data-submenu>Tratamiento<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li class="dropdown-submenu"><a  href="{{ url('tratamiento', array($paciente->id_paciente, $consulta)) }}"  tabindex="0">Plan de Tratamiento</a></li>
-                        <li class="dropdown-submenu"><a tabindex="0">Reg. de Actividades Clinicas</a></li>
+                       
                     </ul>
                     </li>
             </ul>

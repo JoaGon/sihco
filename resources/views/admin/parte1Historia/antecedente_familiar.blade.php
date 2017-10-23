@@ -302,10 +302,9 @@
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
                             <button type="submit" onclick="insertar_familiares();" class="btn btn-primary">Registrar</button>
-                            <button type="submit" href="{{ url('antecedente_personal')}}" class="btn btn-primary">
-                                <i class="fa fa-btn fa-user"></i> Siguiente </button>
+                            
                             <a type="submit" href="{{ URL::previous() }}" class="btn btn-primary">
-                                <i class="fa fa-btn fa-user"></i> Volver </a>
+                                 Volver </a>
                         </div>
                         @endforeach
                     </div>

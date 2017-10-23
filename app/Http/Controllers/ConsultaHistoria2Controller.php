@@ -61,6 +61,7 @@ class ConsultaHistoria2Controller extends Controller
             ->orderBy('fecha','desc')
             ->get();
         }
+       // dd($antecedentes);
         return view('admin.consulta.parte2.consulta_historia_examen_clinico', [
             'pacientes'    => $paciente2,
             'antecedentes' => $antecedentes,

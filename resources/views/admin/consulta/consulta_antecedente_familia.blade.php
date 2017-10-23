@@ -311,7 +311,7 @@ var valido = <?php echo json_encode($validado); ?>;
                             <button type="submit"  id="validar-button" onclick="validar();" class="btn btn-primary">Validar</button>
                             @endif
                            <a type="submit" href="{{ URL::previous() }}" class="btn btn-primary">
-                                <i class="fa fa-btn fa-user"></i> Volver </a>
+                                 Volver </a>
                         </div>
                         @endforeach
                     </div>

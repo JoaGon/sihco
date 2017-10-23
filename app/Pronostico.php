@@ -21,12 +21,13 @@ class Pronostico extends Authenticatable
       'profesor',
       'ultimo_usuario',
       'especialidad',
-      'pronostico'
+      'pronostico',
+      'pronostico_individual',
 
     ];
     protected $primaryKey = 'id_pronostico';
     protected $table      = 'pronostico';
-    public $timestamps    = false;
+    public $timestamps    = true;
 
     /**
      * The attributes that should be hidden for arrays.

@@ -61,7 +61,7 @@
                                 <tr>
                                     <td>
                                         <strong>
-                                <a href="{{ url('consulta_examenClinico/'.$ante->id_oclusion.'/'.$ante->paciente_id) }}" class="btn btn-link" style="font-weight: bold" data-toggle="tooltip" title="Cita"> {{$ante->id_oclusion}} </a>
+                                <a href="{{ url('consulta_examenClinico/'.$ante->id_examen_clinico.'/'.$ante->paciente_id) }}" class="btn btn-link" style="font-weight: bold" data-toggle="tooltip" title="Cita"> {{$ante->id_examen_clinico}} </a>
                                 </strong>
                                     </td>
                                     <td class="name">
@@ -95,7 +95,7 @@
                     <div class="col-md-6 col-md-offset-4">
                    
                         <a type="submit" href="{{ url('consulta_paciente', array($paciente->nro_historia)) }}" class="btn btn-primary">
-                            <i class="fa fa-btn fa-user"></i> Volver </a>
+                             Volver </a>
                     </div>
                 </div>
                 <!-- /.panel-body -->

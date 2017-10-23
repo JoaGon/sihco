@@ -20,7 +20,8 @@ class Diagnosticos extends Authenticatable
       'fecha_validacion',
       'profesor',
       'ultimo_usuario',
-      'tipo'
+      'tipo',
+      'especialidad'
 
     ];
     protected $primaryKey = 'id_diagnosticos';

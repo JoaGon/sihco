@@ -89,13 +89,12 @@
                     <div class="row row_border">
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <input type="checkbox" name="cepillo_dental" id="cepillo_dental" value="S"> 10- ¿Usa usted cepillo dental?
+                             <input type="text" class="form-control" style="color: black" name="frecuencia_cepillado" id="frecuencia_cepillado" placeholder="¿Con que frecuencia?" data-validation="required" data-validation-depends-on="cepillo_dental" data-validation-error-msg="Debe indicar la frecuencia">
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="text" style="color: black" name="frecuencia_cepillado" id="frecuencia_cepillado" placeholder="¿Con que frecuencia?" data-validation="required" data-validation-depends-on="cepillo_dental" data-validation-error-msg="Debe indicar la frecuencia">
-                        </div>
+                       
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             11- ¿Que tipo de cepillo usa?
-                            <select style="color: black" name="tipo_cepillo">
+                            <select style="color: black" class="form-control" name="tipo_cepillo">
                                 <option value="Blando">Blando</option>
                                 <option value="Mediano">Mediano</option>
                                 <option value="Duro">Duro</option>
@@ -103,11 +102,14 @@
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <input type="checkbox" name="hilo_dental" id="hilo_dental" value="S"> 12- ¿Usa hilo Dental?
+                      
+                            <input type="text" class="form-control" style="color: black" name="frecuencia_hilo_dental" id="frecuencia_hilo_dental" placeholder=" ¿Con que frecuencia?" data-validation="required" data-validation-depends-on="hilo_dental" data-validation-error-msg="Debe indicar la frecuencia">
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="text" style="color: black" name="frecuencia_hilo_dental" id="frecuencia_hilo_dental" placeholder=" ¿Con que frecuencia?" data-validation="required" data-validation-depends-on="hilo_dental" data-validation-error-msg="Debe indicar la frecuencia">
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
+                       
+                    </div>
+                    <div class="row row_border ">
+                        
+                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <input type="checkbox" name="otros_medios" id="otros_medios" value="S"> 13- ¿Utiliza usted otros medios para lograr su higiene bucal?
                         </div>
                         <div class="col-lg-12">
@@ -153,7 +155,7 @@
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             Que tipo de complicacion?
-                            <select style="color: black" data-validation="required" data-validation-depends-on="complic_pos_exo" data-validation-error-msg="Debe indicar el tipo de complicacion" name="tipo_complicacion">
+                            <select style="color: black" class="form-control" data-validation="required" data-validation-depends-on="complic_pos_exo" data-validation-error-msg="Debe indicar el tipo de complicacion" name="tipo_complicacion">
                                 <option value="" selected>Selecione..</option>
                                 <option value="Hemorragica">Hemorragica</option>
                                 <option value="Infeccion">Infeccion</option>
@@ -162,7 +164,7 @@
                         </div>
                     </div>
                     <div class="row row_border ">
-                        <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
                             <input type="checkbox" name="ortodoncia" id="ortodoncia" value="S"> 19- ¿Le han realizado tratamiento de Ortodoncia?
                         </div>
                         <div class="col-lg-12">
@@ -188,7 +190,7 @@
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             Que tipo de tratamiento?
-                            <select style="color: black" name="tipo_tratamiento" data-validation="required" data-validation-depends-on="periodoncia" data-validation-error-msg="Debe indicar que tipo">
+                            <select style="color: black" class="form-control" name="tipo_tratamiento" data-validation="required" data-validation-depends-on="periodoncia" data-validation-error-msg="Debe indicar que tipo">
                                 <option value="" selected>Selecione..</option>
                                 <option value="Cirugia">Cirugia</option>
                                 <option value="Otros">Otros</option>
@@ -196,14 +198,14 @@
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             Fecha del ultimo tratamiento
-                            <input type="text" style="color: black" name="fecha_tratamiento" id="fecha_tratamiento">
+                            <input type="text" class="form-control" style="color: black" name="fecha_tratamiento" id="fecha_tratamiento">
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <input type="checkbox" name="protesis_dental" id="protesis_dental" value="S"> 22- ¿Usa o ha usado protesis dental?
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             Que tipo de protesis?
-                            <select style="color: black" name="tipo_protesis" data-validation="required" data-validation-depends-on="protesis_dental" data-validation-error-msg="Debe indicar que tipo">
+                            <select style="color: black" class="form-control" name="tipo_protesis" data-validation="required" data-validation-depends-on="protesis_dental" data-validation-error-msg="Debe indicar que tipo">
                                 <option value="" selected>Selecione..</option>
                                 <option value="Total">Total</option>
                                 <option value="Removible">Removible</option>
@@ -234,7 +236,7 @@
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             26- Si mastica de un solo lado, la razon se debe a:
-                            <select style="color: black" name="razon_mastica" data-validation="required" data-validation-depends-on="mastica_solo_lado" data-validation-error-msg="Debe indicar la razon">
+                            <select style="color: black" class="form-control" name="razon_mastica" data-validation="required" data-validation-depends-on="mastica_solo_lado" data-validation-error-msg="Debe indicar la razon">
                                 <option value="" selected>Selecione..</option>
                                 <option value="Sensibilidad Dental">Sensibilidad dental</option>
                                 <option value="Dolot ATM derecha">Dolor ATM derecha</option>
@@ -248,16 +250,19 @@
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             28- ¿Aprieta o Rechina los Dientes?
-                            <select style="color: black" name="rechina_diente">
+                            <select style="color: black"  class="form-control" name="rechina_diente">
                                 <option value="" selected>Selecione..</option>
                                 <option value="Si">Si</option>
                                 <option value="No">No</option>
                                 <option value="No sabe">No sabe</option>
                             </select>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4">
+                       
+                    </div>
+                    <div class="row row_border ">
+                     <div class="col-lg-4 col-md-4 col-sm-4">
                             <input type="checkbox" name="articulacion_temporomandibular" id="articulacion_temporomandibular" value="S"> 29- ¿Siente usted sonidos en una o ambas articulaciones temporomandibulares? ¿Cuando?
-                            <select style="color: black" name="cuando_articulacion" data-validation="required" data-validation-depends-on="articulacion_temporomandibular" data-validation-error-msg="Debe especificar">
+                            <select style="color: black" class="form-control" name="cuando_articulacion" data-validation="required" data-validation-depends-on="articulacion_temporomandibular" data-validation-error-msg="Debe especificar">
                                 <option value="" selected>Selecione..</option>
                                 <option value="Abrir boca">Al abrir la boca</option>
                                 <option value="Cerrar Boca">Al cerrar la boca</option>
@@ -266,23 +271,23 @@
                                 <option value="Reir">Al reir</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="row row_border ">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <input type="checkbox" name="dolor_cabeza" id="dolor_cabeza" value="S">30- ¿Sufre usted de dolores de cabeza?
+                             <input type="text" class="form-control" name="frecuencia_dolor_cabeza" style="color: black" placeholder="¿Con que Frecuencias?" id="frecuencia_dolor_cabeza" data-validation="required" data-validation-depends-on="dolor_cabeza" data-validation-error-msg="Debe indicar la frecuencia">
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <input type="text" name="frecuencia_dolor_cabeza" style="color: black" placeholder="¿Con que Frecuencias?" id="frecuencia_dolor_cabeza" data-validation="required" data-validation-depends-on="dolor_cabeza" data-validation-error-msg="Debe indicar la frecuencia">
-                        </div>
+                       
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             Especifique ciclo de dolor:
-                            <select style="color: black" name="ciclo_dolor_cabeza" data-validation="required" data-validation-depends-on="dolor_cabeza" data-validation-error-msg="Debe indicar el ciclo de dolor">
+                            <select style="color: black" class="form-control" name="ciclo_dolor_cabeza" data-validation="required" data-validation-depends-on="dolor_cabeza" data-validation-error-msg="Debe indicar el ciclo de dolor">
                                 <option value="" selected>Selecione..</option>
                                 <option value="Persistente">Persistente</option>
                                 <option value="Recurrente">Recurrente</option>
                                 <option value="Esporadico">Esporadico</option>
                             </select>
                         </div>
+                        
+                    </div>
+                    <div class="row row_border">
                         <div class="col-lg-12">
                             31- ¿Tiene usted alguno de los siguientes habitos?:
                         </div>
@@ -317,7 +322,7 @@
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             35- Preferencias Sexuales
-                            <select style="color: black" name="condicion_sexual_id">
+                            <select class="form-control" style="color: black" name="condicion_sexual_id">
                                 @foreach ($condiciones as $cond)
                                 <option value="{{$cond->id_valor}}">
                                     {{$cond->valor}}

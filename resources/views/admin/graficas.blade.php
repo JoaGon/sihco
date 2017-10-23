@@ -45,14 +45,14 @@
                                     <i class="fa fa-comments fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
-                                    <div>New Comments!</div>
+                                    <div class="huge">{{$usuarios}}</div>
+                                    <div>Usuarios</div>
                                 </div>
                             </div>
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left">Ver detalles</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -67,14 +67,14 @@
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">12</div>
-                                    <div>New Tasks!</div>
+                                    <div class="huge">{{$pacientes}}</div>
+                                    <div>Pacientes</div>
                                 </div>
                             </div>
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left">Ver detalles</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -89,14 +89,14 @@
                                     <i class="fa fa-shopping-cart fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
-                                    <div>New Orders!</div>
+                                    <div class="huge">{{$consulta}}</div>
+                                    <div>Consultas</div>
                                 </div>
                             </div>
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left">Ver detalles</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -111,14 +111,14 @@
                                     <i class="fa fa-support fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">13</div>
-                                    <div>Support Tickets!</div>
+                                    <div class="huge">{{$citas}}</div>
+                                    <div>Citas</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="{{url('CitasGraficas')}}">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left">Ver Detalles</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -133,11 +133,18 @@
                   <label>Año</label>
                   <select class="form-control" id="anio_sel"  onchange="cambiar_fecha_grafica();">
 
-                    <option value="2015" >2015</option>
-                    <option value="2016" >2016</option>
                     <option value="2017" >2017</option>
                     <option value="2018">2018</option>
                     <option value="2019" >2019</option>
+                    <option value="2020" >2020</option>
+                    <option value="2021" >2021</option>
+                    <option value="2022" >2022</option>
+                    <option value="2023" >2023</option>
+                    <option value="2024" >2024</option>
+                    <option value="2025" >2025</option>
+                    <option value="2026" >2026</option>
+                    <option value="2027" >2027</option>
+
                   </select>
 
 </div>
@@ -168,7 +175,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Area Chart Example
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Pacientes Registrados
                             <div class="pull-right">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -191,14 +198,14 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div id="morris-area-chart2"></div>
+                            <div id="morris-area-chart"></div>
                         </div>
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Bar Chart Example
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Usuarios Registrados
                             <div class="pull-right">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -234,6 +241,44 @@
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
+                     <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Consultas Registrados
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        Actions
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li><a href="#">Action</a>
+                                        </li>
+                                        <li><a href="#">Another action</a>
+                                        </li>
+                                        <li><a href="#">Something else here</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Separated link</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="row">
+                                
+                                <!-- /.col-lg-4 (nested) -->
+                                <div class="col-lg-12">
+                                    <div id="morris-bar-chart3"></div>
+                                </div>
+                                <!-- /.col-lg-8 (nested) -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
 
         </div>
         <!-- /.col-lg-12 -->
@@ -252,103 +297,7 @@
 <script src="{{ url('bootstrap-submenu-2.0.4/dist/js/bootstrap-submenu.min.js')}}" defer></script>
 <script>
 $(document).ready(function () {
-    Morris.Area({
-        element: 'morris-area-chart2',
-        data: [{
-            period: '2010 Q1',
-            iphone: 2666,
-            ipad: null,
-            itouch: 2647
-        }, {
-            period: '2010 Q2',
-            iphone: 2778,
-            ipad: 2294,
-            itouch: 2441
-        }, {
-            period: '2010 Q3',
-            iphone: 4912,
-            ipad: 1969,
-            itouch: 2501
-        }, {
-            period: '2010 Q4',
-            iphone: 3767,
-            ipad: 3597,
-            itouch: 5689
-        }, {
-            period: '2011 Q1',
-            iphone: 6810,
-            ipad: 1914,
-            itouch: 2293
-        }, {
-            period: '2011 Q2',
-            iphone: 5670,
-            ipad: 4293,
-            itouch: 1881
-        }, {
-            period: '2011 Q3',
-            iphone: 4820,
-            ipad: 3795,
-            itouch: 1588
-        }, {
-            period: '2011 Q4',
-            iphone: 15073,
-            ipad: 5967,
-            itouch: 5175
-        }, {
-            period: '2012 Q1',
-            iphone: 10687,
-            ipad: 4460,
-            itouch: 2028
-        }, {
-            period: '2012 Q2',
-            iphone: 8432,
-            ipad: 5713,
-            itouch: 1791
-        }],
-        xkey: 'period',
-        ykeys: ['iphone', 'ipad', 'itouch'],
-        labels: ['iPhone', 'iPad', 'iPod Touch'],
-        pointSize: 2,
-        hideHover: 'auto',
-        resize: true
-    });
-    Morris.Bar({
-        element: 'morris-bar-chart2',
-        data: [{
-            y: '2006',
-            a: 100,
-            b: 90
-        }, {
-            y: '2007',
-            a: 75,
-            b: 65
-        }, {
-            y: '2008',
-            a: 50,
-            b: 40
-        }, {
-            y: '2009',
-            a: 75,
-            b: 65
-        }, {
-            y: '2010',
-            a: 50,
-            b: 40
-        }, {
-            y: '2011',
-            a: 75,
-            b: 65
-        }, {
-            y: '2012',
-            a: 100,
-            b: 90
-        }],
-        xkey: 'y',
-        ykeys: ['a', 'b'],
-        labels: ['Series A', 'Series B'],
-        hideHover: 'auto',
-        resize: true
-    });
+   
   $("#nacimiento_edit").datepicker({dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true});
   $("#ingreso_edit").datepicker({dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true});
   $(".notification").fadeTo(3000, 500).slideUp(500, function(){

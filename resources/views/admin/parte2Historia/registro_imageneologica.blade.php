@@ -207,7 +207,7 @@ border-radius: 10px;
                 @endif @foreach ($pacientes as $paciente)
                 <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12" style=" background-color:white;padding-left:0; margin-top: 25px">
                     <div style="font-size: 20px; text-align: center; color:#59bddd;">
-                        Imageneologia
+                        Imagenologia
                     </div>
                     <fieldset>
                         <form class="form-horizontal" id="form_familiares">
@@ -293,7 +293,7 @@ border-radius: 10px;
                     
                     <div id="wPaint-demo1" class="col-lg-10" style="position:relative; width:500px; height:200px; background-color:#7a7a7a; margin:70px auto 20px auto;"></div>
                     <center style="margin-bottom: 50px;">
-                        <input type="button" value="toggle menu" onclick="console.log($('#wPaint-demo1').wPaint('menuOrientation')); $('#wPaint-demo1').wPaint('menuOrientation', $('#wPaint-demo1').wPaint('menuOrientation') === 'vertical' ? 'horizontal' : 'vertical');" />
+                        <input type="button" value="toggle menu" style="display: none" onclick="console.log($('#wPaint-demo1').wPaint('menuOrientation')); $('#wPaint-demo1').wPaint('menuOrientation', $('#wPaint-demo1').wPaint('menuOrientation') === 'vertical' ? 'horizontal' : 'vertical');" />
                     </center>
                     <center id="wPaint-img"></center>
                 </div>

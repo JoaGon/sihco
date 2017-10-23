@@ -154,7 +154,7 @@
         })
         jQuery("#btnGuardar").click(function() {
             numElemento = jQuery("#numElemento").val() - 1;
-            alert("aca estoy con " + numElemento);
+          //  alert("aca estoy con " + numElemento);
             valor = '';
             array = []
             jQuery(".dialogletra").each(function() {

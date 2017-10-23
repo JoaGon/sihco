@@ -39,7 +39,7 @@ class Level3
     {
         try {
             if ($this->auth->guest()){
-                return redirect()->guest('login');
+                return redirect()->guest('index');
             }
 
             $acceso = DB::table('roles')

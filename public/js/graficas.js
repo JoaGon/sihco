@@ -5,6 +5,10 @@ function cambiar_fecha_grafica(){
 
  
     cargar_grafica_user(anio_sel,mes_sel);
+    cargar_grafica_paciente(anio_sel,mes_sel);
+    cargar_grafica_consulta(anio_sel,mes_sel);
+
+
    // cargar_grafica_barras1(anio_sel,mes_sel);
    // cargar_grafica_barras(anio_sel,mes_sel);
     //cargar_grafica_lineas(anio_sel,mes_sel);
@@ -25,7 +29,7 @@ $.get(url,function(resul){
     var datos= jQuery.parseJSON(resul);
     var totaldias=datos.totaldias;
     var registrosdia=datos.registrosdia;
-    console.log("llega",datos.dias);
+    console.log("llega44",datos.dias);
 
 
 
@@ -45,6 +49,131 @@ $.get(url,function(resul){
         xkey: 'x',
         ykeys: ['y'],
         labels: ['Usuarios Registrados',],
+        hideHover: 'auto',
+        resize: true
+    });
+
+    });
+}
+
+function buscar(){
+
+console.log("aqui", $('#datepicker1').val(), $('#datepicker2').val())
+date1 = $('#datepicker1').val()
+date2 = $('#datepicker2').val()
+if (date1 =='' || date2 ==''){
+    alert("Debe ingresar las fechas")
+}
+
+$("#morris-area-chart").html('');
+
+var url = "CitasGraficasClinica/"+date1+"/"+date2+"";
+
+$("#list10").empty();
+$.get(url,function(resul){
+    console.log(resul)
+    var datos= jQuery.parseJSON(resul);
+    var totaldias=datos.totaldias;
+    var registrosdia=datos.registrosdia;
+    console.log("llegaaaaaaaaaaaa",datos);
+
+    var pacientes = datos[1];
+        for(var i in pacientes){
+            console.log(pacientes[i])
+            var ul = document.getElementById("list10");
+              var li = document.createElement("li");
+              li.appendChild(document.createTextNode(pacientes[i].nro_historia +" "+pacientes[i].nombre+" "+ pacientes[i].apellido+" "+pacientes[i].clinica));
+              ul.appendChild(li);
+
+        }
+
+      Morris.Bar({
+        element: 'morris-area-chart',
+        data:datos[0],
+        xkey: 'clinica',
+        ykeys: ['count'],
+        labels: ['Citas Registrados',],
+        hideHover: 'auto',
+        resize: true
+    });
+
+    });
+}
+
+function cargar_grafica_paciente(anio,mes){
+
+
+
+$("#morris-area-chart").html('');
+
+var url = "graficas_paciente/"+anio+"/"+mes+"";
+
+
+$.get(url,function(resul){
+
+    var datos= jQuery.parseJSON(resul);
+    var totaldias=datos.totaldias;
+    var registrosdia=datos.registrosdia;
+    console.log("llega222",datos.dias);
+
+
+
+    //var i=0; 
+
+      /*  for(i=1;i<=totaldias;i++){
+            
+            options.series[0].data.push( registrosdia[i] );
+            options.xAxis.categories.push(i);
+
+
+        }*/
+
+       Morris.Bar({
+        element: 'morris-area-chart',
+        data:datos.dias,
+        xkey: 'x',
+        ykeys: ['y'],
+        labels: ['Pacientes Registrados',],
+        hideHover: 'auto',
+        resize: true
+    });
+
+    });
+}
+function cargar_grafica_consulta(anio,mes){
+
+
+
+$("#morris-area-chart3").html('');
+
+var url = "graficas_consulta/"+anio+"/"+mes+"";
+
+
+$.get(url,function(resul){
+
+    var datos= jQuery.parseJSON(resul);
+    var totaldias=datos.totaldias;
+    var registrosdia=datos.registrosdia;
+    console.log("llega555",datos.dias);
+
+
+
+    //var i=0; 
+
+      /*  for(i=1;i<=totaldias;i++){
+            
+            options.series[0].data.push( registrosdia[i] );
+            options.xAxis.categories.push(i);
+
+
+        }*/
+
+       Morris.Bar({
+        element: 'morris-bar-chart3',
+        data:datos.dias,
+        xkey: 'x',
+        ykeys: ['y'],
+        labels: ['Pacientes Registrados',],
         hideHover: 'auto',
         resize: true
     });

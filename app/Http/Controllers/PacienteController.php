@@ -165,7 +165,8 @@ class PacienteController extends Controller
        ->get();
        $date = $req->input('date_appointment');
      //  dd($req->input('paciente_id'), $req->input('motivo'), $req->input('clinica'), $req->input('especialidad'), $req->input('observacion'), Auth::user()->id, $nro_historia[0]->nro_historia, $date);
-
+       $now = date('Y-m-d H:s:i');
+       //dd($now);
        DB::table('citas')->insert(
         [
         'paciente_id' => $req->input('paciente_id'),
@@ -180,6 +181,8 @@ class PacienteController extends Controller
         'profesor' => Auth::user()->id,
         'validar' =>'',
         'hora' => $req->input('hour_send'),
+        'created_at'=>$now,
+        'updated_at'=>$now
 
         ]);
 

@@ -122,18 +122,18 @@
                     </div>
                     <div class="row row_border">
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="neuropsicopatia" id="neuropsicopatia" value="S"> 3-Neuropsicopatias
+                            <input type="checkbox" name="neuropsicopatia" id="neuropsicopatia" value="S"> 3-Neuropsicopat&iacute;as
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="enfer_meta_endocrina" id="enfer_meta_endocrina" value="S"> 4-Enfer. Metabolicas y Endocrinas
+                            <input type="checkbox" name="enfer_meta_endocrina" id="enfer_meta_endocrina" value="S"> 4-Enfer. Metab&oacute;licas y Endocrinas
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="discrasia_sanguinea" id="discrasia_sanguinea" value="S"> 5-Discrasias Sanguineas
+                            <input type="checkbox" name="discrasia_sanguinea" id="discrasia_sanguinea" value="S"> 5-Discrasias Sangu&iacute;neas
                         </div>
                     </div>
                     <div class="row row_border ">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <input type="checkbox" name="" id="enfer_alergica" onchange="insertar_alergica()" value="S"> 6-Enfermedades Alergicas
+                            <input type="checkbox" name="" id="enfer_alergica" onchange="insertar_alergica()" value="S"> 6-Enfermedades Al&eacute;rgicas
                         </div>
                         <a style="color: white; cursor: pointer; float: left;" ng-hide="(!enfer_alergica)" onclick="insertar_alergica();"><i class="fa fa-btn fa-user-plus"></i></a>
                         <div ng-hide="(!enfer_alergica)">
@@ -171,7 +171,7 @@
                     </div>
                     <div class="row row_border">
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="fiebre_reumatica" id="fiebre_reumatica" value="S"> 7-Fiebre Reumatica
+                            <input type="checkbox" name="fiebre_reumatica" id="fiebre_reumatica" value="S"> 7-Fiebre Reum&aacute;tica
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <input type="checkbox" name="artritis_reumatoidea" id="artritis_reumatoidea" value="S"> 8- Artritis Reumatoidea
@@ -179,7 +179,7 @@
                     </div>
                     <div class="row row_border ">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <input type="checkbox" name="" id="enfer_cancer" onchange="insertar_cancer()" value="S"> 9-Cancer
+                            <input type="checkbox" name="" id="enfer_cancer" onchange="insertar_cancer()" value="S"> 9-C&aacute;ncer
                         </div>
                         <a style="color: white; cursor: pointer; float: left;" ng-hide="(!enfer_cancer)" onclick="insertar_cancer();"><i class="fa fa-btn fa-user-plus"></i></a>
                         <div ng-hide="(!enfer_cancer)">
@@ -255,7 +255,7 @@
                     </div>
                     <div class="row row_border ">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
-                            <input type="checkbox" name="" id="enfer_trasnm_sexual" onchange="insertar_sexual()" value="S"> 11-Enfermedades de Transmision sexual
+                            <input type="checkbox" name="" id="enfer_trasnm_sexual" onchange="insertar_sexual()" value="S"> 11-Enfermedades de Transmisi&oacute;n sexual
                         </div>
                         <a style="color: white; cursor: pointer; float: left;" ng-hide="(!enfer_trans_sexual)" onclick="insertar_sexual();"><i class="fa fa-btn fa-user-plus"></i></a>
                         <div ng-hide="(!enfer_trans_sexual)">

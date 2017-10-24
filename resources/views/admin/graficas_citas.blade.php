@@ -58,7 +58,7 @@
                         </button>
 </div>
 </div>
-
+  <form id="area1">
              <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
@@ -67,19 +67,13 @@
                             <div class="pull-right">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                        Actions
+                                        Accion
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#">Action</a>
+                                        <li><a name="imprimir" target="_blank" value="Imprimir" onclick="printDiv('area1')">Imprimir</a>
                                         </li>
-                                        <li><a href="#">Another action</a>
-                                        </li>
-                                        <li><a href="#">Something else here</a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Separated link</a>
-                                        </li>
+                                       
                                     </ul>
                                 </div>
                             </div>
@@ -113,6 +107,7 @@
                   
         </div>
         <!-- /.col-lg-12 -->
+        </form>
     </div>
     <!-- /.row -->
 </div>
@@ -151,6 +146,21 @@ onSelect: function(dateText, inst){
   });
   $('[data-submenu]').submenupicker();
  });
+function printDiv(nombreDiv) {
+     var contenido= document.getElementById(nombreDiv).innerHTML;
+     var contenidoOriginal= document.body.innerHTML;
+   
+
+      var WindowObject = window.open("", "PrintWindow",
+    "width=750,height=650,top=50,left=50,toolbars=no,scrollbars=yes,status=no,resizable=yes");
+    WindowObject.document.writeln(contenido);
+    WindowObject.document.close();
+    WindowObject.focus();
+    WindowObject.print();
+    WindowObject.close();
+
+     //document.body.innerHTML = contenidoOriginal;
+}
 // #myInput is a <input type="text"> element
 
 </script>

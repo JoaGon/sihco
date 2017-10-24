@@ -114,7 +114,7 @@
                         <p>Especialidad</p>
                         <select name="especialidad" class="form-control" 
                                 id="especialidad"
-                                style="width: 100%;" onchange="buscarHorario()">
+                                style="width: 100%;" >
                         </select>
                         <br>
                         <p>Fecha de la cita</p>

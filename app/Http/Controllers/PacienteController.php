@@ -7,6 +7,8 @@ use Auth;
 use Illuminate\Http\Request;
 
 use App\Paciente as Paciente;
+use App\PacienteFamiliar as PacienteFamiliar;
+
 use App\Persona as Persona;
 use App\Usuario as Usuario;
 
@@ -47,6 +49,7 @@ class PacienteController extends Controller
 
         $paciente = DB::table('persona')
             ->join('paciente', 'persona.ci', '=', 'paciente.ci')
+            ->join('paciente_familiar', 'paciente.id_paciente', '=', 'paciente_familiar.paciente_id')
             ->get();
 
         //dd($paciente);
@@ -66,6 +69,7 @@ class PacienteController extends Controller
         //echo '<pre>';print_r($request); echo '</pre>'; die();
         $paciente = DB::table('persona')
             ->join('paciente', 'persona.ci', '=', 'paciente.ci')
+           ->join('paciente_familiar', 'paciente.id_paciente', '=', 'paciente_familiar.paciente_id')
             ->where('id_paciente', $request->id_paciente)
             ->get();
 
@@ -89,10 +93,6 @@ class PacienteController extends Controller
         Paciente::where('id_paciente', '=', $request->input('id_edit'))
             ->update([
                 'grupo_sanguineo'    => $request->input('grupo_sanguineo'),
-                'familiar_cercano'   => $request->input('familiar_cercano'),
-                'parentesco'         => $request->input('parentesco'),
-                'direccion_familiar' => $request->input('direccion_familiar'),
-                'telefono_familiar'  => $request->input('telefono_familiar'),
                 'nivel_educacional'  => $request->input('nivel_educacional'),
                 'convive'            => $request->input('convive'),
                 'lee_escribe'        => $request->input('lee_escribe'),
@@ -104,6 +104,14 @@ class PacienteController extends Controller
                 'fecha_ingreso'      => $request->input('ingreso_edit'),
                 'ultimo_usuario'     => Auth::user()->id,
                 'ci'                 => $request->input('cedula_edit'),
+
+            ]);
+        PacienteFamiliar::where('paciente_id', '=', $request->input('id_edit'))
+            ->update([
+                'familiar_cercano'   => $request->input('familiar_cercano'),
+                'parentesco'         => $request->input('parentesco'),
+                'direccion_familiar' => $request->input('direccion_familiar'),
+                'telefono_familiar'  => $request->input('telefono_familiar'),
 
             ]);
         return redirect('/pacientes')->with('status', 'El Paciente ha sido actualizado');

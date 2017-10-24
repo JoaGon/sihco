@@ -21,7 +21,7 @@
             @endif @foreach ($pacientes as $paciente)
             <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12" style=" background-color:white;padding-left:0; margin-top: 25px">
                 <div style="font-size: 20px; text-align: center; color:#59bddd;">
-                    Historia Odontologica
+                    Historia Odontol&oacute;gica
                 </div>
                 <form class="form-horizontal" id="form_familiares">
                     {{ csrf_field() }}
@@ -44,7 +44,7 @@
                     </div>
                     <div class="row row_border ">
                         <div class="col-lg-12">
-                            <input type="checkbox" name="tratamiento_odontologico" id="tratamiento_odontologico" value="S"> 1- ¿Esta recibiendo algun tratamiento medico u odontologico actualmente?
+                            <input type="checkbox" name="tratamiento_odontologico" id="tratamiento_odontologico" value="S"> 1- ¿Esta recibiendo algun tratamiento m&eacute;dico u odontologico actualmente?
                         </div>
                         <div class="col-lg-12">
                             <textarea name="espec_tratamiento_odon" id="espec_tratamiento_odon" placeholder="Especifique" class="form-control" data-validation="required" data-validation-depends-on="tratamiento_odontologico" data-validation-error-msg="Debe especificar el tratamiento" style="height: 100px;"></textarea>
@@ -61,13 +61,13 @@
                             <input type="checkbox" name="nervios_tratamiento" id="nervios_tratamiento" value="S"> 4- ¿Se siente usted nervioso o intranquilo cuando va a recibir tratamiente dental?
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="reaccion_anestesico" id="reaccion_anestesico" value="S"> 5- ¿Ha tendio usted alguna reaccion al anestesico dental (Mareos, Desmayos, Dolor de Cabeza)?
+                            <input type="checkbox" name="reaccion_anestesico" id="reaccion_anestesico" value="S"> 5- ¿Ha tendio usted alguna reacci&oacute;n al anest&eacute;sico dental (Mareos, Desmayos, Dolor de Cabeza)?
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <input type="checkbox" name="dolor_reciente_dentadura" id="dolor_reciente_dentadura" value="S"> 6- ¿Ha tenido recientemente dolor en su dentadura?
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="sangra_encia" id="sangra_encia" value="S"> 7- ¿Le sangran a usted las encias?
+                            <input type="checkbox" name="sangra_encia" id="sangra_encia" value="S"> 7- ¿Le sangran a usted las enc&iacute;as?
                         </div>
                     </div>
                     <div class="row row_border ">
@@ -80,7 +80,7 @@
                     </div>
                     <div class="row row_border ">
                         <div class="col-lg-12">
-                            9- ¿Cuando fue su ultima visita al odontologo?
+                            9- ¿Cuando fue su ultima visita al odont&oacute;logo?
                         </div>
                         <div class="col-lg-12">
                             <textarea name="ultima_visita_odo" id="ultima_visita_odo" data-validation="required" data-validation-error-msg="Debe especificar" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
@@ -113,13 +113,13 @@
                             <input type="checkbox" name="otros_medios" id="otros_medios" value="S"> 13- ¿Utiliza usted otros medios para lograr su higiene bucal?
                         </div>
                         <div class="col-lg-12">
-                            <label> ¿Cuales medios utiliza y con que frecuencia?</label>
+                            <label> ¿Cu&aacute;les medios utiliza y con que frecuencia?</label>
                             <textarea name="cuales_medios" id="cuales_medios" data-validation="required" data-validation-depends-on="otros_medios" data-validation-error-msg="Debe indicar los medios y la frecuencia" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
                         </div>
                     </div>
                     <div class="row row_border ">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            14- ¿Cual es su dieta normal?
+                            14- ¿Cu&aacute;l es su dieta normal?
                         </div>
                         <div class="col-lg-12">
                             <textarea name="dieta_habitual" id="dieta_habitual" data-validation="required" data-validation-error-msg="Debe especificar su dieta" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
@@ -127,7 +127,7 @@
                     </div>
                     <div class="row row_border ">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <input type="checkbox" name="alimento_azucar" id="alimento_azucar" value="S">15- ¿Consume usted alimentos con azucar?
+                            <input type="checkbox" name="alimento_azucar" id="alimento_azucar" value="S">15- ¿Consume usted alimentos con az&uacute;car?
                         </div>
                         <div class="col-lg-12">
                             <textarea name="frecu_aliment_azucar" data-validation="required" data-validation-depends-on="alimento_azucar" data-validation-error-msg="Debe indicar los alimentos" id="frecu_aliment_azucar" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
@@ -135,7 +135,7 @@
                     </div>
                     <div class="row row_border ">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <input type="checkbox" name="cirugia_cavidad" id="cirugia_cavidad" value="S">16- ¿Le han realizado cirugia en la cavidad bucal?
+                            <input type="checkbox" name="cirugia_cavidad" id="cirugia_cavidad" value="S">16- ¿Le han realizado cirug&iacute;a en la cavidad bucal?
                         </div>
                         <div class="col-lg-12">
                             <textarea name="espec_cirugia" data-validation="required" data-validation-depends-on="cirugia_cavidad" data-validation-error-msg="Debe indicar la cirugia" id="espec_cirugia" placeholder="Especifique" class="form-control" style="height: 100px;"></textarea>
@@ -151,15 +151,15 @@
                     </div>
                     <div class="row row_border">
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="complic_pos_exo" id="complic_pos_exo" value="S"> 18. ¿Tuvo alguna complicacion despues de la exodoncia?
+                            <input type="checkbox" name="complic_pos_exo" id="complic_pos_exo" value="S"> 18. ¿Tuvo alguna complicaci&oacute;n despues de la exodoncia?
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            Que tipo de complicacion?
+                            Que tipo de complicaci&oacute;n?
                             <select style="color: black" class="form-control" data-validation="required" data-validation-depends-on="complic_pos_exo" data-validation-error-msg="Debe indicar el tipo de complicacion" name="tipo_complicacion">
                                 <option value="" selected>Selecione..</option>
-                                <option value="Hemorragica">Hemorragica</option>
-                                <option value="Infeccion">Infeccion</option>
-                                <option value="Cicatrizacion">Cicatrizacion Tardia</option>
+                                <option value="Hemorragica">Hemorr&aacute;gica</option>
+                                <option value="Infeccion">Infecci&oacute;n</option>
+                                <option value="Cicatrizacion">Cicatrizaci&oacute;n Tard&iacute;a</option>
                             </select>
                         </div>
                     </div>
@@ -173,14 +173,14 @@
                     </div>
                     <div class="row row_border">
                         <div class="col-lg-12">
-                            <input type="checkbox" name="endodoncia" id="endodoncia" value="S"> 20- ¿Le han realizado tratamiento endodonticos?
+                            <input type="checkbox" name="endodoncia" id="endodoncia" value="S"> 20- ¿Le han realizado tratamiento endod&oacute;nticos?
                         </div>
                         <div class="col-lg-12">
-                            <label>Cuando?</label>
+                            <label>Cu&aacute;ndo?</label>
                             <textarea name="cuando_endodoncia" data-validation="required" data-validation-depends-on="endodoncia" data-validation-error-msg="Debe indicar la fecha" id="cuando_endodoncia" class="form-control"></textarea>
                         </div>
                         <div class="col-lg-12">
-                            <label>En cuales Dientes?</label>
+                            <label>En cu&aacute;les Dientes?</label>
                             <textarea name="cuales_dientes_endodoncia" id="cuales_dientes_endodoncia" placeholder="Otros" class="form-control" data-validation="required" data-validation-depends-on="endodoncia" data-validation-error-msg="Debe indicar cuales dientes" style="height:80px;"></textarea>
                         </div>
                     </div>
@@ -192,19 +192,19 @@
                             Que tipo de tratamiento?
                             <select style="color: black" class="form-control" name="tipo_tratamiento" data-validation="required" data-validation-depends-on="periodoncia" data-validation-error-msg="Debe indicar que tipo">
                                 <option value="" selected>Selecione..</option>
-                                <option value="Cirugia">Cirugia</option>
+                                <option value="Cirugia">Cirug&iacute;a</option>
                                 <option value="Otros">Otros</option>
                             </select>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            Fecha del ultimo tratamiento
+                            Fecha del &uacute;ltimo tratamiento
                             <input type="text" class="form-control" style="color: black" name="fecha_tratamiento" id="fecha_tratamiento">
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="protesis_dental" id="protesis_dental" value="S"> 22- ¿Usa o ha usado protesis dental?
+                            <input type="checkbox" name="protesis_dental" id="protesis_dental" value="S"> 22- ¿Usa o ha usado pr&oacute;tesis dental?
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            Que tipo de protesis?
+                            Que tipo de pr&oacute;tesis?
                             <select style="color: black" class="form-control" name="tipo_protesis" data-validation="required" data-validation-depends-on="protesis_dental" data-validation-error-msg="Debe indicar que tipo">
                                 <option value="" selected>Selecione..</option>
                                 <option value="Total">Total</option>
@@ -213,7 +213,7 @@
                             </select>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="satisfecho_tratamiento" id="satisfecho_tratamiento" value="S">23- ¿Esta satisfecho con el tratamiento odontologico recibido?
+                            <input type="checkbox" name="satisfecho_tratamiento" id="satisfecho_tratamiento" value="S">23- ¿Esta satisfecho con el tratamiento odontol&oacute;gico recibido?
                         </div>
                     </div>
                     <div class="row row_border ">
@@ -221,10 +221,10 @@
                             24- ¿Presenta usted problemas en la mandibula que le impidan o limiten las funciones siguientes?:
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="mastica_alimentos_blandos" id="mastica_alimentos_blandos" value="S"> Masticacion de alimentos blandos
+                            <input type="checkbox" name="mastica_alimentos_blandos" id="mastica_alimentos_blandos" value="S"> Masticaci&oacute;n de alimentos blandos
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="mastica_alimentos_duros" id="mastica_alimentos_duros" value="S"> Masticacion de Alimentos Duros
+                            <input type="checkbox" name="mastica_alimentos_duros" id="mastica_alimentos_duros" value="S"> Masticaci&oacute;n de Alimentos Duros
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <input type="checkbox" name="risa_sonrisa" id="risa_sonrisa" value="S"> Sonrisa y/o Risa a carcajadas
@@ -235,7 +235,7 @@
                             <input type="checkbox" name="mastica_solo_lado" id="mastica_solo_lado" value="S"> 25- ¿Mastica usted de un solo lado?
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            26- Si mastica de un solo lado, la razon se debe a:
+                            26- Si mastica de un solo lado, la raz&oacute;n se debe a:
                             <select style="color: black" class="form-control" name="razon_mastica" data-validation="required" data-validation-depends-on="mastica_solo_lado" data-validation-error-msg="Debe indicar la razon">
                                 <option value="" selected>Selecione..</option>
                                 <option value="Sensibilidad Dental">Sensibilidad dental</option>
@@ -261,7 +261,7 @@
                     </div>
                     <div class="row row_border ">
                      <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="articulacion_temporomandibular" id="articulacion_temporomandibular" value="S"> 29- ¿Siente usted sonidos en una o ambas articulaciones temporomandibulares? ¿Cuando?
+                            <input type="checkbox" name="articulacion_temporomandibular" id="articulacion_temporomandibular" value="S"> 29- ¿Siente usted sonidos en una o ambas articulaciones temporomandibulares? ¿Cu&aacute;ndo?
                             <select style="color: black" class="form-control" name="cuando_articulacion" data-validation="required" data-validation-depends-on="articulacion_temporomandibular" data-validation-error-msg="Debe especificar">
                                 <option value="" selected>Selecione..</option>
                                 <option value="Abrir boca">Al abrir la boca</option>
@@ -277,7 +277,7 @@
                         </div>
                        
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            Especifique ciclo de dolor:
+                            Especif&iacute;que ciclo de dolor:
                             <select style="color: black" class="form-control" name="ciclo_dolor_cabeza" data-validation="required" data-validation-depends-on="dolor_cabeza" data-validation-error-msg="Debe indicar el ciclo de dolor">
                                 <option value="" selected>Selecione..</option>
                                 <option value="Persistente">Persistente</option>
@@ -289,16 +289,16 @@
                     </div>
                     <div class="row row_border">
                         <div class="col-lg-12">
-                            31- ¿Tiene usted alguno de los siguientes habitos?:
+                            31- ¿Tiene usted alguno de los siguientes h&aacute;bitos?:
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="morderse_uyas" id="morderse_uyas" value="S"> Morderse las unas
+                            <input type="checkbox" name="morderse_uyas" id="morderse_uyas" value="S"> Morderse las u&ntilde;as
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <input type="checkbox" name="morderse_labios" id="morderse_labios" value="S"> Morderse o chuparse los labios
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="morder_fosforos" id="morder_fosforos" value="S"> Morder fosforos, palillos, lapices, o pipas
+                            <input type="checkbox" name="morder_fosforos" id="morder_fosforos" value="S"> Morder f&oacute;sforos, palillos, l&aacute;pices, o pipas
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <input type="checkbox" name="respirar_boca" id="respirar_boca" value="S"> Respirar por la boca
@@ -312,13 +312,13 @@
                     </div>
                     <div class="row row_border">
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="droga" id="droga" value="S"> 32- ¿Consume Droga alucinogena?
+                            <input type="checkbox" name="droga" id="droga" value="S"> 32- ¿Consume Droga alucin&oacute;gena?
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <input type="checkbox" name="tabaco" id="tabaco" value="S"> 33- ¿Consume tabaco?
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
-                            <input type="checkbox" name="bebida_alcoholica" id="fiebre_reumatica" value="S"> 34- ¿Consume bebidad alcoholicas?
+                            <input type="checkbox" name="bebida_alcoholica" id="fiebre_reumatica" value="S"> 34- ¿Consume bebidad alcoh&oacute;licas?
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             35- Preferencias Sexuales

@@ -144,7 +144,7 @@ function cargar_grafica_consulta(anio,mes){
 
 
 
-$("#morris-area-chart3").html('');
+$("#morris-bar-chart3").html('');
 
 var url = "graficas_consulta/"+anio+"/"+mes+"";
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Paciente;
+use App\PacienteFamiliar;
 use App\Persona;
 use App\Usuario;
 use Auth;
@@ -113,6 +114,10 @@ class RegistrarController extends Controller
             'persona_id'         => $persona,
 
         ]);
+   
+
+
+
     }
 
     public function getRegister()
@@ -260,13 +265,40 @@ class RegistrarController extends Controller
         $flag2 = DB::table('paciente')
             ->where('ci', $request->input('ci'))
             ->count();
-
+       $data = $request->all();
         if ($flag) {
             $persona = DB::table('persona')
                 ->where('ci', $request->input('ci'))
                 ->pluck('persona.id_persona');
 
-            $this->createPatient($request->all(), $persona[0]);
+            //$this->createPatient($request->all(), $persona[0]);
+
+        $paciente = Paciente::create([
+            'ocupacion'          => $data['ocupacion'],
+            'fecha_ingreso'      => $data['fecha_ingreso'],
+            'lugar_nacimiento'   => $data['lugar_nacimiento'],
+            'ci'                 => $data['ci'],
+            'ultimo_usuario'     => Auth::user()->id,
+            'grupo_sanguineo'    => $data['grupo_sanguineo'],
+            'nivel_educacional'  => $data['nivel_educacional'],
+            'lee_escribe'        => $data['lee_escribe'],
+            'zona_residencia'    => $data['zona_residencia'],
+            'convive'            => $data['convive'],
+            'situacion_laboral'  => $data['situacion_laboral'],
+            'estado_civil'       => $data['estado_civil'],
+            'persona_id'         => $persona[0],
+
+        ]);
+
+         PacienteFamiliar::create([
+    
+            'familiar_cercano'   => $data['familiar_cercano'],
+            'parentesco'         => $data['parentesco'],
+            'telefono_familiar'  => $data['telefono_familiar'],
+            'direccion_familiar' => $data['direccion_familiar'],
+            'paciente_id'        => $paciente->id_paciente,
+
+        ]);
             return redirect()->back()->with('user_registered', 'El paciente se creó
         satisfactoriamente');
         } else
@@ -279,8 +311,35 @@ class RegistrarController extends Controller
             $persona = DB::table('persona')
                 ->where('ci', $request->input('ci'))
                 ->pluck('persona.id_persona');
+            $data = $request->all();
+            $paciente = Paciente::create([
+            'ocupacion'          => $data['ocupacion'],
+            'fecha_ingreso'      => $data['fecha_ingreso'],
+            'lugar_nacimiento'   => $data['lugar_nacimiento'],
+            'ci'                 => $data['ci'],
+            'ultimo_usuario'     => Auth::user()->id,
+            'grupo_sanguineo'    => $data['grupo_sanguineo'],
+            'nivel_educacional'  => $data['nivel_educacional'],
+            'lee_escribe'        => $data['lee_escribe'],
+            'zona_residencia'    => $data['zona_residencia'],
+            'convive'            => $data['convive'],
+            'situacion_laboral'  => $data['situacion_laboral'],
+            'estado_civil'       => $data['estado_civil'],
+            'persona_id'         => $persona[0],
 
-            $this->createPatient($request->all(), $persona[0]);
+        ]);
+//dd($paciente->id_paciente);
+
+         PacienteFamiliar::create([
+    
+            'familiar_cercano'   => $data['familiar_cercano'],
+            'parentesco'         => $data['parentesco'],
+            'telefono_familiar'  => $data['telefono_familiar'],
+            'direccion_familiar' => $data['direccion_familiar'],
+            'paciente_id'        => $paciente->id_paciente,
+
+        ]);
+            //$this->createPatient($request->all(), $persona[0]);
 
             return redirect()->back()->with('user_registered', 'El paciente se creó
         satisfactoriamente');

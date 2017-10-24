@@ -405,6 +405,41 @@ public function index()
         return json_encode([$citas, $citas2]);
     }
 
+     public function imprimir_paciente()
+    {
+
+         $data = DB::table('persona')
+            ->join('paciente', 'persona.ci', '=', 'paciente.ci')
+            ->join('paciente_familiar', 'paciente.id_paciente', '=', 'paciente_familiar.paciente_id')
+            ->orderBy('fecha_ingreso','DES')
+            ->get();
+            //dd($data);
+        return view("admin.imprimir.imprimir",compact(["data"]));
+    }
+
+
+     public function imprimir_usuarios()
+    {
+
+         $data   = DB::table('persona')
+            ->join('usuarios', 'persona.ci', '=', 'usuarios.ci')
+            ->join('roles', 'usuarios.rol_id', '=', 'roles.id_rol')
+            ->get();
+            //dd($data);
+        return view("admin.imprimir.imprimir_usuarios",compact(["data"]));
+    }
+
+    public function imprimir_consultas()
+    {
+
+         $data = DB::table('consulta')
+            ->join('paciente', 'consulta.paciente_id', '=', 'paciente.id_paciente')
+            ->join('persona', 'paciente.persona_id', '=', 'persona.id_persona')
+            ->orderBy('fecha_consulta','DES')
+            ->get();
+        return view("admin.imprimir.imprimir_consultas",compact(["data"]));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

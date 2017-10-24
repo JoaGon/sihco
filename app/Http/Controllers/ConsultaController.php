@@ -17,6 +17,7 @@ class ConsultaController extends Controller
 
         $paciente = DB::table('persona')
             ->join('paciente', 'persona.ci', '=', 'paciente.ci')
+            ->join('paciente_familiar', 'paciente.id_paciente', '=', 'paciente_familiar.paciente_id')
             ->get();
         return view('admin.consulta_paciente', ['pacientes' => $paciente]);
 
@@ -27,6 +28,7 @@ class ConsultaController extends Controller
 
         $paciente = DB::table('persona')
             ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->join('paciente_familiar', 'paciente.id_paciente', '=', 'paciente_familiar.paciente_id')
             ->where('paciente.nro_historia', $nro_historia)
             ->get();
         //  echo "<pre>"; print_r($paciente); echo "</pre>";
@@ -35,7 +37,6 @@ class ConsultaController extends Controller
     }
     public function save(Request $req)
     {
-        // dd("lega",$req->input('paciente_id'));
         $data = $req;
 
         $verificar = DB::table('consulta')
@@ -73,6 +74,7 @@ class ConsultaController extends Controller
 
                 ]);
             $consulta2 = $consulta->id;
+
             //dd($consulta2->id);
         }
 
@@ -86,6 +88,7 @@ class ConsultaController extends Controller
 
         $paciente = DB::table('persona')
             ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+            ->join('paciente_familiar', 'paciente.id_paciente', '=', 'paciente_familiar.paciente_id')
             ->where('persona.id_persona', $persona[0])
             ->get();
 
@@ -106,9 +109,11 @@ class ConsultaController extends Controller
         $persona = DB::table('paciente')
             ->where('id_paciente', $paciente_id)
             ->pluck('paciente.persona_id');
+    //    dd('aqui',$persona);
 
         $paciente = DB::table('persona')
             ->join('paciente', 'persona.id_persona', '=', 'paciente.persona_id')
+           ->join('paciente_familiar', 'paciente.id_paciente', '=', 'paciente_familiar.paciente_id')
             ->where('persona.id_persona', $persona[0])
             ->get();
 

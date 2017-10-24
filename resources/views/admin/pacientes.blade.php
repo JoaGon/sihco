@@ -99,7 +99,7 @@
                                         <label for="name_edit" class="control-label">Nro Historia</label>
                                     </div>
                                     <div class="col-sm-10">
-                                        <input style="margin-bottom: 15px;" type="text" class="form-control" name="nro_edit" id="nro_edit" placeholder="numero de historia">
+                                        <input style="margin-bottom: 15px;" type="text" class="form-control" disabled name="nro_edit" id="nro_edit" placeholder="numero de historia">
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -178,10 +178,14 @@
                                     <div class="col-sm-10">
                                         <select class="form-control" id="grupo_sanguineo" data-validation="required" data-validation-error-msg="Debe seleccionar un valor" name="grupo_sanguineo" value="{{ old('grupo_sanguineo') }}">
                                             <option value="" selected>Selecione..</option>
-                                            <option value="A">A</option>
-                                            <option value="B">B</option>
-                                            <option value="AB">AB</option>
-                                            <option value="O">O</option>
+                                            <option value="A+">A+</option>
+                                            <option value="B+">B+</option>
+                                            <option value="AB+">AB+</option>
+                                            <option value="O+">O+</option>
+                                            <option value="A-">A-</option>
+                                            <option value="B-">B-</option>
+                                            <option value="AB-">AB-</option>
+                                            <option value="O-">O-</option>
                                         </select>
                                     </div>
                                 </div>
@@ -236,40 +240,20 @@
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label for="name_edit" class="control-label">Familiar cercano</label>
-                                    </div>
                                     <div class="col-sm-10">
-                                        <input style="margin-bottom: 15px;" type="text" data-validation="required" data-validation-error-msg="Debe Introducir un nombre" class="form-control" name="familiar_cercano" id="familiar_cercano" placeholder="Familiar cercano">
+                                        <label for="nivel_educacional" class="">Nivel Educacional</label>
+                                        <select class="form-control" id="nivel_educacional" data-validation="required" data-validation-error-msg="Debe ingrear un valor" name="nivel_educacional" value="{{ old('nivel_educacional') }}">
+                                            <option value="" selected>Selecione..</option>
+                                            @foreach($niveles as $nivel)
+                                            <option value="{{$nivel->id_valor}}">
+                                                {{$nivel->valor}}
+                                            </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="form-group col-md-4">
-                                   <div class="col-md-12">
-                                        <label for="name_edit" class="control-label">Parentesco</label>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <input style="margin-bottom: 15px;" type="text" data-validation="required" data-validation-error-msg="Debe Introducir una fecha de Nacimiento" class="form-control" name="parentesco" id="parentesco" placeholder="parentesco">
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label for="name_edit" class="control-label">Direccion del familiar</label>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <input style="margin-bottom: 15px;" type="text" data-validation="required" data-validation-error-msg="Debe Introducir una fecha de Nacimiento" class="form-control" name="direccion_familiar" id="direccion_familiar" placeholder="Direccion del familiar">
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <div class="col-md-12">
-                                        <label for="name_edit" class="control-label">Nro telef. del Familiar</label>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <input style="margin-bottom: 15px;" type="text" data-validation="required" data-validation-error-msg="Debe Introducir un numero de telefono" class="form-control" name="telefono_familiar" id="telefono_familiar" placeholder="Telefono del familiar">
-                                    </div>
-                                </div>
-                            </div>
+                           
                             <div class="form-group">
                                 <div class="form-group col-md-4">
                                     <div class="col-sm-10">
@@ -311,19 +295,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="form-group col-md-4">
-                                    <div class="col-sm-10">
-                                        <label for="nivel_educacional" class="">Nivel Educacional</label>
-                                        <select class="form-control" id="nivel_educacional" data-validation="required" data-validation-error-msg="Debe ingrear un valor" name="nivel_educacional" value="{{ old('nivel_educacional') }}">
-                                            <option value="" selected>Selecione..</option>
-                                            @foreach($niveles as $nivel)
-                                            <option value="{{$nivel->id_valor}}">
-                                                {{$nivel->valor}}
-                                            </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
+                               
                                 <div class="form-group col-md-4">
                                     <div class="col-sm-10">
                                         <label for="email" class="">Lee / Escribe</label>
@@ -338,9 +310,52 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-lg-12" style="text-align: center;">
+                        
+                            <label>Datos del Familiar</label>
+                            </div>
+                            <hr class="col-lg-12" style="border-top: 3px solid #6d6262 !important; width:90%!important;">
+                             <div class="form-group">
+                               <div class="form-group col-md-4">
+                                    <div class="col-md-12">
+                                        <label for="name_edit" class="control-label">Nombre Familiar cercano</label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <input style="margin-bottom: 15px;" type="text" data-validation="required" data-validation-error-msg="Debe Introducir un nombre" class="form-control" name="familiar_cercano" id="familiar_cercano" placeholder="Familiar cercano">
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group col-md-4">
+                                    <div class="col-md-12">
+                                        <label for="name_edit" class="control-label">Direccion del familiar</label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <input style="margin-bottom: 15px;" type="text" data-validation="required" data-validation-error-msg="Debe Introducir una fecha de Nacimiento" class="form-control" name="direccion_familiar" id="direccion_familiar" placeholder="Direccion del familiar">
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <div class="col-md-12">
+                                        <label for="name_edit" class="control-label">Nro telef. del Familiar</label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <input style="margin-bottom: 15px;" type="text" data-validation="required" data-validation-error-msg="Debe Introducir un numero de telefono" class="form-control" name="telefono_familiar" id="telefono_familiar" placeholder="Telefono del familiar">
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="form-group">
+                               <div class="form-group col-md-4">
+                                   <div class="col-md-12">
+                                        <label for="name_edit" class="control-label">Parentesco</label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <input style="margin-bottom: 15px;" type="text" data-validation="required" data-validation-error-msg="Debe Introducir una fecha de Nacimiento" class="form-control" name="parentesco" id="parentesco" placeholder="parentesco">
+                                    </div>
+                                </div>
+                               
+                            </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                <button type="submit" onclick="$('#edit_patient_form').submit(); console.log(" lo hace ")" class="btn btn-primary">Guardar</button>
+                                <button type="submit" onclick="$('#edit_patient_form').submit();" class="btn btn-primary">Guardar</button>
                             </div>
                         </form>
                     </div>
@@ -413,14 +428,14 @@
 
             data: {
                 '_token': $('input[name=_token]').val(),
-                id_paciente: val
+                id_cita: val
             },
 
             success: function(data) {
 
                 console.log(data);
 
-                document.getElementById("id_edit").value = data[0].id_paciente;
+               /* document.getElementById("id_edit").value = data[0].id_paciente;
 
                 document.getElementById("persona_id").value = data[0].id_persona;
 
@@ -468,7 +483,7 @@
 
                 document.getElementById("zona_residencia").value = data[0].zona_residencia;
 
-                document.getElementById("nivel_educacional").value = data[0].nivel_educacional;
+                document.getElementById("nivel_educacional").value = data[0].nivel_educacional;*/
 
 
 

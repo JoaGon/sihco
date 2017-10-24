@@ -14,8 +14,8 @@
 //Route::get('/', 'HomeController@index');
 
 
-Route::get('/', function(){
-  return view('home');
+Route::get('/index', function(){
+  return view('welcome');
 });
 Route::get('canvas', function(){
   return view('admin.canvas2');
@@ -57,6 +57,8 @@ Route::post('/delete/avatar','ImagenController@deleteAvatar');
 
 
 Route::get('/Vercitas/{clinica?}/{especialidad?}/{date?}','CitasController@cargarCitas');
+Route::post('edit/cita','CitasController@editCita');
+Route::post('update/cita/paciente','CitasController@updateCita');
 
 
 Route::get('/cita','PacienteController@cita');
@@ -420,6 +422,20 @@ Route::get('consulta_historia','ConsultaHistoria@index');
 Route::get('graficas','GraficasController@show');
 Route::get('graficas_user/{anio}/{mes}','GraficasController@todos_usuarios');
 
+Route::get('graficas_paciente/{anio}/{mes}','GraficasController@todos_pacientes');
+Route::get('graficas_consulta/{anio}/{mes}','GraficasController@todos_consultas');
+
+
+Route::get('CitasGraficas','GraficasController@todos_citas');
+Route::get('CitasGraficasClinica/{anio}/{mes}','GraficasController@todos_citas_clinica');
+
+
+Route::get('imprimir_paciente','GraficasController@imprimir_paciente');
+Route::get('imprimir_usuarios','GraficasController@imprimir_usuarios');
+Route::get('imprimir_consultas','GraficasController@imprimir_consultas');
+
+
+
 Route::get('/test/', function () {
   $pdf = PDF::loadView('pruebaparapdf');
   return $pdf->stream('pruebapdf.pdf');
@@ -431,7 +447,7 @@ Route::get('panels',function(){
 
     return view('templates.panels-wells');
 });
-Route::get('index',function(){
+Route::get('index2',function(){
 
     return view('templates.index');
 });

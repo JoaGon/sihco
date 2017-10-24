@@ -351,6 +351,9 @@ function buscar (){
 
             </div>
             <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                <div> <h3>LISTA DE PACIENTES CITADOS HASTA LA FECHA</h3></div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <div id="calendar_curr_month" style=" margin-top:20px">
                     </div>                
@@ -360,8 +363,10 @@ function buscar (){
                     </div>
                 </div>
             </div>
+
+
+            
             <div style="    margin-top: 10%;" class="row col-lg-10 col-sm-8 col-sm-offset-4 col-lg-offset-2 col-md-offset-4">
-            <div> <center>LISTA DE PACIENTES CITADOS HASTA LA FECHA</center></div>
                         <div class="table-responsive" style="text-align:center">                       
                         <table class="table table-striped"  height="240px">
                         <thead class="titulo-lista" style="width:100%;position:relative">
@@ -371,7 +376,7 @@ function buscar (){
                                 <td class="grey-light" style="width:29%;"><strong>Apellidos y Nombre</strong></td>
                                  <td class="grey-light" style="width:10%;"><strong>Hora</strong></td>
                                  <td class="grey-light" style="width:29%;"><strong>Motivo</strong></td>
-                                 <td class="grey-light" style="width:29%;"><strong>Estatus</strong></td>
+                                
                                    <td class="grey-light" style="width:29%;"><strong>Acciones</strong></td>
                                 
                             </tr>
@@ -383,33 +388,17 @@ function buscar (){
                                $counter++; 
                                 ?>                                          
                                 <tr style="min-height:450px"id="init_pos-<?php echo"$counter"; ?>" data-cita="<?php echo ($appointmentRecord->id_cita); ?>" data-fecha="<?php echo ($appointmentRecord->fecha_cita); ?>">
-                                    <td style="width:1%;"><br/><br/><input type="radio" name="appointment_id" value="<?php echo $appointmentRecord->id_cita; ?>"></td>
-                                    <td style="width:1%;"><br/><br/><?php echo"$counter"; ?></td>                         
+                                    <td style="width:1%;"><br/><br/><input type="radio" name="appointment_id" value="<?php echo $appointmentRecord->id_cita; ?>"><input type="hidden" class="patient_id" name="patient_id" value="{{ $appointmentRecord->id_cita }}"></td>
+                                    <td style="wiid_citadth:1%;"><br/><br/><?php echo"$counter"; ?></td>                         
                                     <td class="name" style="width:29%;"><br/><br/><?php echo "$appointmentRecord->apellido, $appointmentRecord->nombre"; ?></td>
                                     <td style="width:4%;"><br/><br/><?php echo (date("H:i", strtotime($appointmentRecord->hora)+ 60*60)); ?></td>
-                                     <td style="width:10%;"><br/><br/><?php echo ($appointmentRecord->motivo); ?></td>
-                                     <td><br/><br/>
-                                        @if($appointmentRecord->estatus=='solicitada')
-                                            <i class="glyphicon glyphicon-user" 
-                                               data-toggle="tooltip" 
-                                               title="En espera de paciente"></i>
-                                        @elseif($appointmentRecord->estatus=='asistio')
-                                            <i class="glyphicon glyphicon-check" 
-                                               data-toggle="tooltip" 
-                                               title="Asisti&oacute;"></i>
-                                    
-                                        @endif
-                                          
-                                    </td>
+                                     <td class="name" style="width:29%;"><br/><br/><?php echo "$appointmentRecord->motivo, $appointmentRecord->motivo"; ?></td>
                                     <td style="width:4%;"> 
                                        
-                                        <a class="btn btn-success btn-xs" href="#" id="try" onclick="edit_patient()" data-link="{{ url('/edit/paciente') }}">
+                                        <a class="btn btn-success btn-xs" href="#" id="try" onclick="edit_cita()" style="margin-top: 20%;" data-link="{{ url('/edit/cita') }}">
                                             Editar
                                         </a>
-                                        <a class="btn btn-success btn-xs" href="#" id="try" onclick="edit_patient()" data-link="{{ url('/edit/paciente') }}">
-                                            Repro
-                                        </a>
-                                        <!-- Standard button -->
+                                        
                                         <input type="hidden" name="_Token" value="{{ csrf_token() }}">
                                     </td>
 
@@ -425,10 +414,83 @@ function buscar (){
 
                 </div>
 </div>
+   <!-- /.row -->
+    <div id="edit_modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Datos del Paciente</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="panel-body">
+                        <form class="form-horizontal" id="edit_patient_form" role="form" method="POST" action="{{ url('update/cita/paciente') }}">
+                            {{ csrf_field() }}
+                              <input type="hidden" id="paciente_id" name="paciente_id">
+                             <input type="hidden" id="nro_historia" name="nro_historia">
+                             <input type="hidden" id="id_edit" name="id_edit">
+
+                      
+                        <h5 id="nota-fecha-cita" style="display: none;padding-left: 15px;">Nota: Solo se puede solicitar la cita con un día de anticipación</h5>
+                         <p>Motivo de la cita</p>
+                        <input type="text" name="motivo" class="form-control" 
+                                id="motivo" 
+                                style="width: 100%;">
+                        <br>
+                        <p>Clinica</p>
+                        <select name="clinica2" class="form-control" 
+                                id="clinica2"
+                                style="width: 100%;" onchange="buscar2()">
+                                    <option value="">Seleccione...</option>
+                                    <option value="1">Clinica I</option>
+                                    <option value="2">Clinica II</option>
+                                    <option value="3">Clinica III</option>
+                        </select>
+                        <br>
+                        <p>Especialidad</p>
+                        <select name="especialidad2" class="form-control" 
+                                id="especialidad2"
+                                style="width: 100%;" >
+                        </select>
+                        <br>
+                        <p>Fecha de la cita</p>
+                        <input type="text" 
+                               name="date_appointment" id="date_appointment"
+                               class="form-control valid"
+                               placeholder="Fecha de la cita"
+                             style="width: 100%;">
+                        <br>
+                                <p>Hora</p>
+
+                                <input type="text" name="hour_send" style="width: 100%;" id="hour_send" class="form-control timepicker">
+
+                              
+                       <br>
+                        
+                        <p>Observaciones</p>
+                            <input type="text" 
+                              class="form-control"
+                               name="observacion" id="observacion"
+                               style="width: 100%;"> 
+                          
+
+                            </form>
+                         
+                            </div>
+                        </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" onclick="$('#edit_patient_form').submit();" class="btn btn-primary">Guardar</button>
+                            </div>
+                    
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+            </div>
+
             </div>
     </div>
 
-    </div>
     <!--<script src="{{ url('bower_components/jquery/dist/jquery.min.js') }}"></script>-->
     <!-- jQuery -->
     <script src="{{url('template/vendor/jquery/jquery.min.js')}}"></script>
@@ -461,13 +523,131 @@ function buscar (){
             //location.href = url;
     });
             $(document).ready(function () {
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth();
+                var yyyy = today.getFullYear();
+           
+
+                 $("#date_appointment").datepicker({dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true, minDate: new Date(yyyy, mm, dd), maxDate: "+1m" });
+           
+                  $('.timepicker').timepicker({
+        showInputs: false,
+        showDuration: true,
+        timeFormat: 'H:i:s',
+        step: 60
+    })
                 var val = "{!! $clinica !!}";
                 var val2 = "{!! $especialidad !!}";
         console.log("es",val,val2)
             $('#clinica').val(val);
             $('#especialidad').val(especialidad);
-                buscar();
+               // buscar();
 
     });
+
+    function edit_cita(){
+
+        var URL = "{{ url('edit/cita') }}";
+        
+        console.log($('input[name=appointment_id]:checked').val());
+        var id_edit=$('input[name=appointment_id]:checked').val();
+        
+        if(id_edit==null)
+        {    
+            alert('Favor seleccionar una opci\u00f3n');
+
+        }
+        else{
+ 
+        $.ajax({
+
+            url: URL,
+
+            type: "POST",
+
+            data: {
+                '_token': $('input[name=_token]').val(),
+                id_cita: id_edit
+            },
+
+            success: function(data) {
+
+                console.log(data);
+
+               document.getElementById("id_edit").value = data[0].id_cita;
+
+                document.getElementById("motivo").value = data[0].motivo;
+
+                document.getElementById("clinica2").value = data[0].clinica;
+
+                document.getElementById("date_appointment").value = data[0].fecha_cita;
+
+                document.getElementById("hour_send").value = data[0].hora;
+
+                document.getElementById("observacion").value = data[0].observacion;
+
+                buscar2();
+
+                document.getElementById("especialidad2").value = data[0].especialidad;
+                $('#edit_modal').modal('show');
+
+
+            },
+            error: function() {
+
+                alert("error!!!!");
+
+            }
+
+        }); //end of ajax*/
+        }    
+
+            }
+
+            function buscar2 (){
+
+
+    if($('#clinica2').val() == 1){
+           $('#especialidad2 option').remove();
+     
+            obj =[ 
+                {id: 1, value: "estomatologia"},
+                {id: 2, value: "periodoncia"},
+             ];
+        
+         for (var i in obj) {
+                $("#especialidad2").append($('<option></option>').val(obj[i].id).html(obj[i].value) );
+               
+            }
+           $('#especialidad').prop('readonly',false);
+      
+    }else if($('#clinica2').val() == 2){
+            $('#especialidad2 option').remove();
+             obj =[ 
+                {id: 1, value: "endodoncia"},             ];
+        
+         for (var i in obj) {
+                $("#especialidad2").append($('<option></option>').val(obj[i].id).html(obj[i].value) );
+               
+            }
+      
+    }else{
+        $('#especialidad2 option').remove();
+             obj =[ 
+                {id: 1, value: "cirugia"},
+                {id: 2, value: "operatoria"},
+             ];
+        
+         for (var i in obj) {
+                $("#especialidad2").append($('<option></option>').val(obj[i].id).html(obj[i].value) );
+               
+            }
+      
+    }
+
+}
+
+
     </script>
     @endsection

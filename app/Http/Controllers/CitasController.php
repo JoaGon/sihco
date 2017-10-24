@@ -65,4 +65,44 @@ class CitasController extends Controller
            
         ]);
     }
+
+     public function editCita(Request $req)
+    {
+        
+       // dd($req->all());
+
+        $appointments=DB::table('citas')
+                ->leftJoin('paciente','citas.paciente_id','=','paciente.id_paciente')
+                ->leftJoin('persona','paciente.persona_id','=','persona.id_persona')
+                ->where('citas.id_cita',$req->input('id_cita'))
+                ->get();
+
+       
+         // dd($appointments);
+
+        return $appointments;
+    }
+    public function updateCita(Request $req)
+    {
+        
+       // dd($req->all());
+
+        $appointments=DB::table('citas')
+                ->where('citas.id_cita',$req->input('id_edit'))
+                ->update([
+                    'motivo'=>$req->input('motivo'),
+                    'clinica'=>$req->input('clinica2'),
+                    'especialidad'=>$req->input('especialidad2'),
+                    'fecha_cita'=>$req->input('date_appointment'),
+                    'hora'=>$req->input('hour_send'),
+                    'observacion'=>$req->input('observacion'),
+
+
+                    ]);
+
+       
+         // dd($appointments);
+
+        return redirect('Vercitas/1/1');
+    }
 }

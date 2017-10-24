@@ -428,14 +428,14 @@
 
             data: {
                 '_token': $('input[name=_token]').val(),
-                id_paciente: val
+                id_cita: val
             },
 
             success: function(data) {
 
                 console.log(data);
 
-                document.getElementById("id_edit").value = data[0].id_paciente;
+               /* document.getElementById("id_edit").value = data[0].id_paciente;
 
                 document.getElementById("persona_id").value = data[0].id_persona;
 
@@ -483,7 +483,7 @@
 
                 document.getElementById("zona_residencia").value = data[0].zona_residencia;
 
-                document.getElementById("nivel_educacional").value = data[0].nivel_educacional;
+                document.getElementById("nivel_educacional").value = data[0].nivel_educacional;*/
 
 
 

@@ -231,6 +231,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
+                            <p>*Nota: todos los campos son obligatorios</p>
                                 <button type="submit" onclick="$('#register_user_form').submit();"  class="btn btn-primary">
                                     <i class="fa fa-btn fa-user"></i> Registrar
                                 </button>

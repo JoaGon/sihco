@@ -59,6 +59,11 @@ q:before, q:after, blockquote:before, blockquote:after {
 a img {
   border: none;
 }
+#logo {
+  text-align: left;
+  margin-bottom: 30px;
+  float:left;
+}
 
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
@@ -108,7 +113,7 @@ body .no-break {
 }
 
 header {
-  margin-top: 15px;
+  margin-top: 0px;
   margin-bottom: 45px;
 }
 header figure {
@@ -302,28 +307,28 @@ footer .end {
 
 <body onload="window.print()">
  
-
-
-
-<canvas id="the-canvas"></canvas>
-
 <header class="clearfix">
-    <div class="container ">
-
-      <div class="company-info" style="float:right">
-        <h2 class="title" style="color:black">Reporte Pacientes </h2>
-        <h2 class="title"  style="color:black"> </h2>
+  <title>Usuarios Registrados</title>
+<table>
+  <tr>
+    <td>
+      <img src="landing/img/logo.png" align="left"  width="80"/></td>
+      <td><p align="center" style="padding-left:30pt; padding-right: 30pt;font-weight:normal;"><font size="1" style="font-size: 10pt"><font face="Arial, serif"><font color="#000000">UNIVERSIDAD DE LOS ANDES<br style="padding: 40pt">
+      FACULTAD DE ODONTOLOG&Iacute;A<br>
+      CLINICA INTEGRAL DEL ADULTO<br>
+      M&Eacute;RIDA-VENEZUELA</font></font></font></p></td>
+      <td align="right">
+      </td></tr></table>
     
-    
-      </div>
-    </div>
+           
   </header>
   
+  <h1>Reporte de Pacientes Registrados</h1>
 
   <section>
     <div class="container top-cont">
 
- 
+  
       <table border="0" cellspacing="0" cellpadding="0">
         <test>
           <tr style="border:1px solid black">

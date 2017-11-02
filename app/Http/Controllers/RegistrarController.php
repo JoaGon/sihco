@@ -266,6 +266,8 @@ class RegistrarController extends Controller
             ->where('ci', $request->input('ci'))
             ->count();
        $data = $request->all();
+
+
         if ($flag) {
             $persona = DB::table('persona')
                 ->where('ci', $request->input('ci'))
@@ -290,8 +292,8 @@ class RegistrarController extends Controller
 
         ]);
 
-         PacienteFamiliar::create([
-    
+        PacienteFamiliar::create([
+
             'familiar_cercano'   => $data['familiar_cercano'],
             'parentesco'         => $data['parentesco'],
             'telefono_familiar'  => $data['telefono_familiar'],
@@ -299,10 +301,20 @@ class RegistrarController extends Controller
             'paciente_id'        => $paciente->id_paciente,
 
         ]);
+     
+
+        //('aqi',$paciente->id_paciente,$data['familiar_cercano'],$data['parentesco'],$data['telefono_familiar'] , $data['direccion_familiar']  );
+
+ 
+
+       //  dd('llega');
             return redirect()->back()->with('user_registered', 'El paciente se creó
         satisfactoriamente');
+
+
         } else
         if ($flag2) {
+
             return redirect()->back()->with('user_registered', 'El paciente ya se encuentra registrado');
 
         } else {
@@ -311,6 +323,7 @@ class RegistrarController extends Controller
             $persona = DB::table('persona')
                 ->where('ci', $request->input('ci'))
                 ->pluck('persona.id_persona');
+
             $data = $request->all();
             $paciente = Paciente::create([
             'ocupacion'          => $data['ocupacion'],

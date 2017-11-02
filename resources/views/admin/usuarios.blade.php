@@ -97,7 +97,7 @@
                                     <input style="margin-bottom: 15px;" type="text" class="form-control" name="apellido_edit" id="apellido_edit" placeholder="Apellido">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div style="display: none;" class="form-group">
                                 <label for="cedula_edit" class="col-sm-2 control-label">Cedula</label>
                                 <div class="col-sm-10">
                                     <input style="margin-bottom: 15px;" type="text" class="form-control" name="cedula_edit" id="cedula_edit" placeholder="Nro de Cedula">

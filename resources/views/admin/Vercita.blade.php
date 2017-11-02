@@ -541,8 +541,8 @@ function buscar (){
                 var val2 = "{!! $especialidad !!}";
         console.log("es",val,val2)
             $('#clinica').val(val);
-            $('#especialidad').val(especialidad);
-               // buscar();
+            $('#especialidad').val(val2);
+                buscar();
 
     });
 

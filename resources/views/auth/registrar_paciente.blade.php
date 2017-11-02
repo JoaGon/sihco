@@ -30,6 +30,7 @@
             <div class="col-lg-10 col-sm-8 col-sm-offset-4 col-lg-offset-2 col-md-offset-1">
                 <div class="panel panel-default" style="margin-top: 15px">
                     <div class="panel-heading">Registrar Paciente</div>
+                     <p> *Nota: todos los campos son obligatorios</p>
                     <div class="panel-body">
                         <form class="form-horizontal" id="register_patient" role="form" method="POST" action="{{ url('/auth/paciente/registrado') }}">
                             {{ csrf_field() }}
@@ -387,6 +388,7 @@
 
          <div class="form-group">
         <div class="col-md-6 col-md-offset-4">
+
             <button type="submit" onclick="$('#register_patient').submit();" class="btn btn-primary">
                 <i class="fa fa-btn fa-user"></i> Registrar Paciente
             </button>

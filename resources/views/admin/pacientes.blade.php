@@ -119,7 +119,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div style="display: none;" class="form-group">
                                 <div class="form-group  col-md-4">
                                    <div class="col-md-12">
                                         <label for="name_edit" class="control-label">Cedula</label>
@@ -428,14 +428,14 @@
 
             data: {
                 '_token': $('input[name=_token]').val(),
-                id_cita: val
+                id_paciente: val
             },
 
             success: function(data) {
 
                 console.log(data);
 
-               /* document.getElementById("id_edit").value = data[0].id_paciente;
+                document.getElementById("id_edit").value = data[0].id_paciente;
 
                 document.getElementById("persona_id").value = data[0].id_persona;
 
@@ -483,7 +483,7 @@
 
                 document.getElementById("zona_residencia").value = data[0].zona_residencia;
 
-                document.getElementById("nivel_educacional").value = data[0].nivel_educacional;*/
+                document.getElementById("nivel_educacional").value = data[0].nivel_educacional;
 
 
 

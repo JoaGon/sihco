@@ -538,7 +538,7 @@ border-radius: 10px;
                     @endforeach
                 </div>
                 <!-- /.col-lg-12 -->
-                </form>
+                
                 </fieldset>
             </div>
         </div>
@@ -874,6 +874,7 @@ border-radius: 10px;
           
          
 </div>
+</form>
 </div>
 <!--<script src="{{ url('bower_components/jquery/dist/jquery.min.js') }}"></script>-->
 <!-- jQuery -->

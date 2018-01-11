@@ -471,8 +471,8 @@ class Historia2Controller extends Controller
     {
 
         $data = $req->all();
-     /*   $d = RegistroImageneologia::all();
-        dd($d);*/
+        //$d = RegistroImageneologia::all();
+        dd($data);
         DB::beginTransaction();
 
         try {

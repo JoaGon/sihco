@@ -107,9 +107,8 @@ $(document).ready(function() {
             var reader = new FileReader();
 
             reader.onload = function(e) {
-                document.getElementById("primera3").style.backgroundImage = "url('" + e.target.result + "')";
-
-
+              document.getElementById("primera3").style.backgroundImage = "url('" + e.target.result + "')";
+               
             };
 
             reader.readAsDataURL(input.files[0]);

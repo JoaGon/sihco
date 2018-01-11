@@ -195,7 +195,7 @@
             });
             var monkeyList = new List('usuario', {
                 valueNames: ['name'],
-                page: 5,
+                page: 10,
                 pagination: true
             });
         });

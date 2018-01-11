@@ -392,7 +392,7 @@
 
         var monkeyList = new List('paciente_table', {
             valueNames: ['name', 'ci'],
-            page: 5,
+            page: 10,
             pagination: true
         });
 

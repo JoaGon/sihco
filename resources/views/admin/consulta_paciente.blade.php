@@ -99,7 +99,7 @@ $(document).ready(function () {
   });
   var monkeyList = new List('pacientes', {
     valueNames: ['name'],
-    page: 3,
+    page: 10,
     pagination: true
   });
   $('[data-submenu]').submenupicker();

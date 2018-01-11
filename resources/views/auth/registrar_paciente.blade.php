@@ -30,6 +30,7 @@
             <div class="col-lg-10 col-sm-8 col-sm-offset-4 col-lg-offset-2 col-md-offset-1">
                 <div class="panel panel-default" style="margin-top: 15px">
                     <div class="panel-heading">Registrar Paciente</div>
+                     <p> *Nota: todos los campos son obligatorios</p>
                     <div class="panel-body">
                         <form class="form-horizontal" id="register_patient" role="form" method="POST" action="{{ url('/auth/paciente/registrado') }}">
                             {{ csrf_field() }}
@@ -80,7 +81,7 @@
                 <div class="col-md-4">
                    <label for="telefono" class="">Telefono</label>
 
-                   <input id="telefono" type="text" class="form-control"  data-validation="required" data-validation-error-msg="Debe Introducir un numero de Telefono" name="telefono" value="{{ old('telefono') }}">
+                   <input id="telefono" type="text" class="form-control"  name="telefono" value="{{ old('telefono') }}">
 
                    @if ($errors->has('telefono'))
                    <span class="help-block">
@@ -172,7 +173,7 @@
         <div class="col-md-4">
                           <label for="fecha_nacimiento" class="">Fecha de Nacimiento</label>
 
-                          <input id="fecha_nacimiento" type="text"  data-validation="date" data-validation-error-msg="Debe Introducir una fecha valida" class="form-control" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}">
+                          <input id="fecha_nacimiento" type="text" placeholder="yyyy-mm-dd"  data-validation="date" data-validation-error-msg="Debe escribir en formato correcto"  data-validation-format="yyyy-mm-dd" class="form-control" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}">
 
                           @if ($errors->has('fecha_nacimiento'))
                           <span class="help-block">
@@ -200,7 +201,7 @@
 
         <div class="col-md-4">
         <label for="grupo_sanguineo" class="">Grupo Sanguineo</label>
- <select class="form-control" id="grupo_sanguineo"  data-validation="required" data-validation-error-msg="Debe seleccionar un valor" name="grupo_sanguineo" value="{{ old('grupo_sanguineo') }}">
+ <select class="form-control" id="grupo_sanguineo"   name="grupo_sanguineo" value="{{ old('grupo_sanguineo') }}">
        
         <option value="" selected>Selecione..</option>
             <option value="A+">A+</option>
@@ -387,6 +388,7 @@
 
          <div class="form-group">
         <div class="col-md-6 col-md-offset-4">
+
             <button type="submit" onclick="$('#register_patient').submit();" class="btn btn-primary">
                 <i class="fa fa-btn fa-user"></i> Registrar Paciente
             </button>
@@ -411,7 +413,7 @@
     <script>
 
       $(document).ready(function () {
-        $("#fecha_nacimiento").datepicker({dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true});
+      /*  $("#fecha_nacimiento").datepicker({dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true});*/
         $("#fecha_ingreso").datepicker({dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true});
 
         $(".notification").fadeTo(3000, 500).slideUp(500, function(){

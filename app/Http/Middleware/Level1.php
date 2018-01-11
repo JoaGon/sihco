@@ -49,7 +49,7 @@ class Level1 {
 	{
         try {
             if ($this->auth->guest()){
-                return redirect()->guest('index');
+                return redirect()->guest('login');
             }
 
             $acceso = DB::table('roles')

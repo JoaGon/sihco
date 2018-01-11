@@ -25,6 +25,9 @@
         height: 60% !important;
         min-height: 0px !important;
     }
+    .bg-primary {
+    background-color: white !important;
+    }
 }
 </style>
 
@@ -51,25 +54,16 @@
             </div>
         </div>
     </nav>
-    <header class="masthead">
-        <div class="header-content">
-            <div class="header-content-inner">
-                <!--h1 id="homeHeading">Your Favorite Source of Free Bootstrap Themes</h1-->
-                <hr>
-                <!--p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a-->
-            </div>
-        </div>
-    </header>
+   
     <section class="bg-primary" id="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mx-auto text-center" style="text-align: justify;">
-                    <h2 class="section-heading text-white">Rese&ntilde;a Hist&oacute;rica!</h2>
+                    <h2 class="section-heading">Rese&ntilde;a Hist&oacute;rica!</h2>
                     <hr class="light">
-                    <p class="text-faded">Misión La Facultad tiene como propósito formar integralmente a los profesionales de la odontología y al personal técnico mediante la integración de las áreas docencia-asistencial, investigación y extensión en los niveles de pregrado y postgrado; caracterizados por ser de alta calidad y prestigio, con sensibilidad social y calor humano, valores éticos y universales, críticos y generadores de conocimientos; capaces de prevenir y dar respuesta a las necesidades de salud bucal como parte de la salud general de la población en el ámbito regional, nacional e inclusive internacional
+                    <p class="text-faded" style="color: black">Misión La Facultad tiene como propósito formar integralmente a los profesionales de la odontología y al personal técnico mediante la integración de las áreas docencia-asistencial, investigación y extensión en los niveles de pregrado y postgrado; caracterizados por ser de alta calidad y prestigio, con sensibilidad social y calor humano, valores éticos y universales, críticos y generadores de conocimientos; capaces de prevenir y dar respuesta a las necesidades de salud bucal como parte de la salud general de la población en el ámbito regional, nacional e inclusive internacional
                     </p>
-                    <p class="text-faded">
+                    <p class="text-faded" style="color: black">
                         Visión Ser una facultad de calidad de reconocimiento nacional e internacional en la formación del personal odontológico y técnico altamente cualificado, promoviendo la existencia de una comunidad organizada, integra, andragógica, competente, de excelencia, proactiva, innovadora, creativa, comprometida, solidaria, tolerante, respetuosa, ética y abierta a los cambios, global, dinámica, competitiva, generadora de nuevos conocimientos y alternativas científico-técnicas disponibles al servicio de la humanidad y al desarrollo sustentable de la sociedad.
                     </p>
                 </div>

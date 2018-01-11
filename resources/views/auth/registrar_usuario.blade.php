@@ -91,7 +91,7 @@
                             <label for="fecha_nacimiento" class="col-md-4 control-label">Fecha de Nacimiento</label>
 
                             <div class="col-md-6">
-                                <input id="fecha_nacimiento" type="text" class="form-control" data-validation="date" data-validation-error-msg="Debe Introducir una Fecha Valida" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}">
+                                <input id="fecha_nacimiento" type="text" placeholder="yyyy-mm-dd" class="form-control" data-validation-error-msg="Debe escribir en formato correcto" data-validation="date" data-validation-format="yyyy-mm-dd" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}">
 
                                 @if ($errors->has('fecha_nacimiento'))
                                     <span class="help-block">
@@ -231,6 +231,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
+                            <p>*Nota: todos los campos son obligatorios</p>
                                 <button type="submit" onclick="$('#register_user_form').submit();"  class="btn btn-primary">
                                     <i class="fa fa-btn fa-user"></i> Registrar
                                 </button>
@@ -256,7 +257,7 @@
 <script>
 
 $(document).ready(function () {
-  $("#fecha_nacimiento").datepicker({dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true});
+ /* $("#fecha_nacimiento").datepicker({dateFormat: "yy-mm-dd", changeYear: true, changeMonth: true});*/
 
   $(".notification").fadeTo(3000, 500).slideUp(500, function(){
       $(".notification").slideUp(500);

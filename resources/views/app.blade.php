@@ -65,8 +65,10 @@
                 <!-- /.dropdown -->
             </ul>
         </nav>
+        <section class="row" style="height: 950px;" >
+            @yield('content')
+        </section><
 
-    @yield('content')
 
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 

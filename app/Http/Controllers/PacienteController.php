@@ -119,6 +119,7 @@ class PacienteController extends Controller
     public function destroy($id)
     {
         $paciente = DB::table('paciente')->where('id_paciente', $id)->pluck('paciente.persona_id');
+        PacienteFamiliar::where('paciente_id', $id)->delete();
         Paciente::where('id_paciente', $id)->delete();
         Persona::where('id_persona', $paciente[0])->delete();
 
